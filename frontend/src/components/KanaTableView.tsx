@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Play, 
   Volume2,
-  CheckCircle2,
   Check,
   Lock,
   Calendar,
@@ -789,14 +788,11 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
           ? currentDayTargets.katakanaCount
           : (activeScript === 'hiragana' ? currentDayTargets.hiraganaCount : currentDayTargets.kanaCount);
         const todayLearnedKanaCount = todayTargetKana.filter(k => learnedKana.has(k.char)).length;
-        const isAllKanaDone = learnedKana.size >= 164;
-        const isScriptDone = scriptLearnedCount >= scriptTotalCount;
 
         return (
-          <>
-            <div className={`p-4 sm:p-5 rounded-2xl border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${
-              theme === 'dark' ? 'bg-[#17171C] border-slate-800' : 'bg-white border-slate-200/80 shadow-xs'
-            }`}>
+          <div className={`p-4 sm:p-5 rounded-2xl border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${
+            theme === 'dark' ? 'bg-[#17171C] border-slate-800' : 'bg-white border-slate-200/80 shadow-xs'
+          }`}>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-orange-500/10 text-[#FF5E3A] flex items-center justify-center shrink-0">
                   <Calendar className="w-5 h-5" />
@@ -917,94 +913,6 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                 </div>
               </div>
             </div>
-
-            {/* Kana Mastery Progress Card */}
-            <div className={`p-4 sm:p-5 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
-              theme === 'dark' ? 'bg-slate-900/60 border-slate-800' : 'bg-emerald-50/40 border-emerald-200/60 shadow-xs'
-            }`}>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center shadow-md shadow-emerald-500/20 shrink-0">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="text-sm font-black text-slate-900 dark:text-white">
-                      {isScriptDone 
-                        ? `${scriptName} Mastered! 🎉` 
-                        : `${scriptName} Mastery Progress`}
-                    </h3>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500 text-white font-mono font-bold shadow-xs">
-                      {scriptLearnedCount} / {scriptTotalCount} Learned ({Math.round((scriptLearnedCount / scriptTotalCount) * 100)}%)
-                    </span>
-                  </div>
-                  <div className="text-[11px] font-mono font-bold text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2">
-                    <span className="text-[#FF5E3A]">🌸 {hiraganaLearnedCount}/82 Hiragana</span>
-                    <span>•</span>
-                    <span className="text-pink-500">⚡ {katakanaLearnedCount}/82 Katakana</span>
-                  </div>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    {isAllKanaDone
-                      ? 'Congratulations! Full JLPT N5 curriculum (Lessons, Words, Sentence Drills) is unlocked on your homepage.'
-                      : (isScriptDone
-                          ? `Great job mastering ${scriptName}! Complete all 164 Kana to unlock the rest of your JLPT N5 curriculum.`
-                          : `Master all ${scriptTotalCount} ${scriptName} to progress toward unlocking your full JLPT N5 curriculum (${scriptTotalCount - scriptLearnedCount} remaining).`)}
-                  </p>
-                </div>
-              </div>
-
-              {/* Right side: Skip button if not done, or Filter pills */}
-              <div className="flex items-center gap-2 flex-wrap self-stretch sm:self-auto justify-end">
-                {!isAllKanaDone && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      audio.playSuccess();
-                      confetti({ particleCount: 50, spread: 60 });
-                      learnedStore.markAllKanaLearned();
-                    }}
-                    className="px-3 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-600 dark:text-emerald-400 text-xs font-bold font-mono transition cursor-pointer border border-emerald-500/30"
-                    title="Already know Kana? Unlock all cards"
-                  >
-                    ✓ Skip (Already Know Kana)
-                  </button>
-                )}
-
-                {/* Filter Pills: All / Learned / Unlearned */}
-                <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-800 overflow-x-auto no-scrollbar touch-pan-x">
-                  <button
-                    onClick={() => setFilterLearned('ALL')}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer whitespace-nowrap ${
-                      filterLearned === 'ALL'
-                        ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-2xs'
-                        : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
-                    }`}
-                  >
-                    All ({scriptTotalCount})
-                  </button>
-                  <button
-                    onClick={() => setFilterLearned('LEARNED')}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
-                      filterLearned === 'LEARNED'
-                        ? 'bg-emerald-500 text-white shadow-2xs'
-                        : 'text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10'
-                    }`}
-                  >
-                    <span>Learned ({scriptLearnedCount})</span>
-                  </button>
-                  <button
-                    onClick={() => setFilterLearned('UNLEARNED')}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer whitespace-nowrap ${
-                      filterLearned === 'UNLEARNED'
-                        ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-2xs'
-                        : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
-                    }`}
-                  >
-                    To Learn ({scriptTotalCount - scriptLearnedCount})
-                  </button>
-                </div>
-              </div>
-            </div>
-          </>
         );
       })()}
 
