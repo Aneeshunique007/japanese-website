@@ -132,9 +132,16 @@ async function fetchSentenceBatch(batchNum: number): Promise<any[]> {
   return [];
 }
 
+export interface AuthResponse {
+  success: boolean;
+  user?: UserProfile;
+  token?: string;
+  error?: string;
+}
+
 export const api = {
   // 1. Authentication & User Profile (Client-Side LocalStorage)
-  async register(data: { name: string; email: string; password?: string; targetLevel?: string; avatar?: string }) {
+  async register(data: { name: string; email: string; password?: string; targetLevel?: string; avatar?: string }): Promise<AuthResponse> {
     const id = 'user_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
     const newUser: UserProfile = {
       id,
@@ -154,7 +161,7 @@ export const api = {
     return { success: true, user: newUser, token: 'local_jwt_' + id };
   },
 
-  async login(data: { email: string; password?: string }) {
+  async login(data: { email: string; password?: string }): Promise<AuthResponse> {
     let user = getLocalUser();
     if (user.email !== data.email) {
       // Check stored users list

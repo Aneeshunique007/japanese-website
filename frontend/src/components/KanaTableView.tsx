@@ -69,7 +69,6 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
 }) => {
   const [activeScript, setActiveScript] = useState<'hiragana' | 'katakana' | 'both'>(forcedScript || initialScript);
   const [activeGroup, setActiveGroup] = useState<'progressive' | 'basic' | 'dakuten' | 'yoon'>('progressive');
-  const [filterLearned, setFilterLearned] = useState<'ALL' | 'LEARNED' | 'UNLEARNED'>('ALL');
   const [scheduleFilter, setScheduleFilter] = useState<'ALL' | 'TODAY' | 'UNLOCKED'>('ALL');
   const [learnedKana, setLearnedKana] = useState<Set<string>>(() => new Set(learnedStore.getLearnedKanaList()));
   const [scheduleTargetDays, setScheduleTargetDays] = useState<ScheduleDuration>(() => studyScheduleStore.getTargetDays());
@@ -1069,11 +1068,8 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
               const hasVisibleRealItem = slots.some(slot => {
                 if (!slot.item) return false;
                 const char = slot.item.char;
-                const isLearned = learnedKana.has(char);
                 const isToday = studyScheduleStore.isKanaToday(char);
                 const isUnlocked = studyScheduleStore.isKanaUnlocked(char);
-                if (filterLearned === 'LEARNED' && !isLearned) return false;
-                if (filterLearned === 'UNLEARNED' && isLearned) return false;
                 if (scheduleFilter === 'TODAY' && !isToday) return false;
                 if (scheduleFilter === 'UNLOCKED' && !isUnlocked) return false;
                 return true;
@@ -1143,8 +1139,6 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                       const isUnlocked = studyScheduleStore.isKanaUnlocked(item.char);
                       const isToday = studyScheduleStore.isKanaToday(item.char);
 
-                      if (filterLearned === 'LEARNED' && !isLearned) return null;
-                      if (filterLearned === 'UNLEARNED' && isLearned) return null;
                       if (scheduleFilter === 'TODAY' && !isToday) return null;
                       if (scheduleFilter === 'UNLOCKED' && !isUnlocked) return null;
 
@@ -1339,8 +1333,6 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
               const isUnlocked = studyScheduleStore.isKanaUnlocked(item.char);
               const isToday = studyScheduleStore.isKanaToday(item.char);
 
-              if (filterLearned === 'LEARNED' && !isLearned) return null;
-              if (filterLearned === 'UNLEARNED' && isLearned) return null;
               if (scheduleFilter === 'TODAY' && !isToday) return null;
               if (scheduleFilter === 'UNLOCKED' && !isUnlocked) return null;
 

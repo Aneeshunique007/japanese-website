@@ -22,7 +22,7 @@ export async function searchAll(rawQuery: string, limit: number = 25): Promise<S
   if (!query) return [];
 
   try {
-    const data = await api.search(query);
+    const data: any = await api.search(query);
     const results: SearchResultItem[] = [];
 
     // Backend returns { words, kanji, kana, grammar } arrays
