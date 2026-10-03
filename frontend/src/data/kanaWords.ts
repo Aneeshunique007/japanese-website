@@ -1,5 +1,5 @@
-// Comprehensive Dictionary of 100% Authentic, Beginner-Friendly Words for Kana
 import { KanaWord } from '../types';
+import { KATAKANA_COMPLETE_MAP } from './katakanaWordsData';
 
 export interface KanaDetailsData {
   char: string;
@@ -4916,8 +4916,14 @@ export const KANA_WORDS_MAP: Record<string, KanaDetailsData> = {
 
 // Fallback provider ensuring clean, beginner-friendly words
 export function getKanaDetails(char: string, romaji: string, script: 'Hiragana' | 'Katakana'): KanaDetailsData {
+  if (script === 'Katakana' && KATAKANA_COMPLETE_MAP[char]) {
+    return KATAKANA_COMPLETE_MAP[char];
+  }
   if (KANA_WORDS_MAP[char]) {
     return KANA_WORDS_MAP[char];
+  }
+  if (KATAKANA_COMPLETE_MAP[char]) {
+    return KATAKANA_COMPLETE_MAP[char];
   }
 
   // Beginner-friendly dynamic fallback
