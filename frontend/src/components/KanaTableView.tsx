@@ -8,7 +8,9 @@ import {
   Calendar,
   ChevronLeft,
   ChevronRight,
-  Sliders
+  Sliders,
+  X,
+  ArrowLeft
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { getKanaDetails, KanaDetailsData } from '../data/kanaWords';
@@ -78,6 +80,113 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
   const [showCustomizeModal, setShowCustomizeModal] = useState<boolean>(false);
   const [, setScheduleTick] = useState(0);
   const [lockedKanaModalItem, setLockedKanaModalItem] = useState<{ char: string; day: number; romaji: string } | null>(null);
+  const [selectedRomajiPopup, setSelectedRomajiPopup] = useState<string | null>(null);
+  const [showRomajiPage, setShowRomajiPage] = useState<boolean>(false);
+
+  // All romaji sounds with their hiragana + katakana equivalents, grouped by row
+  const ROMAJI_ROWS: { label: string; type: 'basic' | 'dakuten'; chars: { romaji: string; hira: string; kata: string }[] }[] = [
+    { label: 'Vowels', type: 'basic', chars: [
+      { romaji: 'a',   hira: 'あ', kata: 'ア' },
+      { romaji: 'i',   hira: 'い', kata: 'イ' },
+      { romaji: 'u',   hira: 'う', kata: 'ウ' },
+      { romaji: 'e',   hira: 'え', kata: 'エ' },
+      { romaji: 'o',   hira: 'お', kata: 'オ' },
+    ]},
+    { label: 'Ka-row', type: 'basic', chars: [
+      { romaji: 'ka',  hira: 'か', kata: 'カ' },
+      { romaji: 'ki',  hira: 'き', kata: 'キ' },
+      { romaji: 'ku',  hira: 'く', kata: 'ク' },
+      { romaji: 'ke',  hira: 'け', kata: 'ケ' },
+      { romaji: 'ko',  hira: 'こ', kata: 'コ' },
+    ]},
+    { label: 'Sa-row', type: 'basic', chars: [
+      { romaji: 'sa',  hira: 'さ', kata: 'サ' },
+      { romaji: 'shi', hira: 'し', kata: 'シ' },
+      { romaji: 'su',  hira: 'す', kata: 'ス' },
+      { romaji: 'se',  hira: 'せ', kata: 'セ' },
+      { romaji: 'so',  hira: 'そ', kata: 'ソ' },
+    ]},
+    { label: 'Ta-row', type: 'basic', chars: [
+      { romaji: 'ta',  hira: 'た', kata: 'タ' },
+      { romaji: 'chi', hira: 'ち', kata: 'チ' },
+      { romaji: 'tsu', hira: 'つ', kata: 'ツ' },
+      { romaji: 'te',  hira: 'て', kata: 'テ' },
+      { romaji: 'to',  hira: 'と', kata: 'ト' },
+    ]},
+    { label: 'Na-row', type: 'basic', chars: [
+      { romaji: 'na',  hira: 'な', kata: 'ナ' },
+      { romaji: 'ni',  hira: 'に', kata: 'ニ' },
+      { romaji: 'nu',  hira: 'ぬ', kata: 'ヌ' },
+      { romaji: 'ne',  hira: 'ね', kata: 'ネ' },
+      { romaji: 'no',  hira: 'の', kata: 'ノ' },
+    ]},
+    { label: 'Ha-row', type: 'basic', chars: [
+      { romaji: 'ha',  hira: 'は', kata: 'ハ' },
+      { romaji: 'hi',  hira: 'ひ', kata: 'ヒ' },
+      { romaji: 'fu',  hira: 'ふ', kata: 'フ' },
+      { romaji: 'he',  hira: 'へ', kata: 'ヘ' },
+      { romaji: 'ho',  hira: 'ほ', kata: 'ホ' },
+    ]},
+    { label: 'Ma-row', type: 'basic', chars: [
+      { romaji: 'ma',  hira: 'ま', kata: 'マ' },
+      { romaji: 'mi',  hira: 'み', kata: 'ミ' },
+      { romaji: 'mu',  hira: 'む', kata: 'ム' },
+      { romaji: 'me',  hira: 'め', kata: 'メ' },
+      { romaji: 'mo',  hira: 'も', kata: 'モ' },
+    ]},
+    { label: 'Ya-row', type: 'basic', chars: [
+      { romaji: 'ya',  hira: 'や', kata: 'ヤ' },
+      { romaji: 'yu',  hira: 'ゆ', kata: 'ユ' },
+      { romaji: 'yo',  hira: 'よ', kata: 'ヨ' },
+    ]},
+    { label: 'Ra-row', type: 'basic', chars: [
+      { romaji: 'ra',  hira: 'ら', kata: 'ラ' },
+      { romaji: 'ri',  hira: 'り', kata: 'リ' },
+      { romaji: 'ru',  hira: 'る', kata: 'ル' },
+      { romaji: 're',  hira: 'れ', kata: 'レ' },
+      { romaji: 'ro',  hira: 'ろ', kata: 'ロ' },
+    ]},
+    { label: 'Wa / N', type: 'basic', chars: [
+      { romaji: 'wa',  hira: 'わ', kata: 'ワ' },
+      { romaji: 'wo',  hira: 'を', kata: 'ヲ' },
+      { romaji: 'n',   hira: 'ん', kata: 'ン' },
+    ]},
+    { label: 'Ga-row ゛', type: 'dakuten', chars: [
+      { romaji: 'ga',  hira: 'が', kata: 'ガ' },
+      { romaji: 'gi',  hira: 'ぎ', kata: 'ギ' },
+      { romaji: 'gu',  hira: 'ぐ', kata: 'グ' },
+      { romaji: 'ge',  hira: 'げ', kata: 'ゲ' },
+      { romaji: 'go',  hira: 'ご', kata: 'ゴ' },
+    ]},
+    { label: 'Za-row ゛', type: 'dakuten', chars: [
+      { romaji: 'za',  hira: 'ざ', kata: 'ザ' },
+      { romaji: 'ji',  hira: 'じ', kata: 'ジ' },
+      { romaji: 'zu',  hira: 'ず', kata: 'ズ' },
+      { romaji: 'ze',  hira: 'ぜ', kata: 'ゼ' },
+      { romaji: 'zo',  hira: 'ぞ', kata: 'ゾ' },
+    ]},
+    { label: 'Da-row ゛', type: 'dakuten', chars: [
+      { romaji: 'da',  hira: 'だ', kata: 'ダ' },
+      { romaji: 'de',  hira: 'で', kata: 'デ' },
+      { romaji: 'do',  hira: 'ど', kata: 'ド' },
+    ]},
+    { label: 'Ba-row ゛', type: 'dakuten', chars: [
+      { romaji: 'ba',  hira: 'ば', kata: 'バ' },
+      { romaji: 'bi',  hira: 'び', kata: 'ビ' },
+      { romaji: 'bu',  hira: 'ぶ', kata: 'ブ' },
+      { romaji: 'be',  hira: 'べ', kata: 'ベ' },
+      { romaji: 'bo',  hira: 'ぼ', kata: 'ボ' },
+    ]},
+    { label: 'Pa-row ゜', type: 'dakuten', chars: [
+      { romaji: 'pa',  hira: 'ぱ', kata: 'パ' },
+      { romaji: 'pi',  hira: 'ぴ', kata: 'ピ' },
+      { romaji: 'pu',  hira: 'ぷ', kata: 'プ' },
+      { romaji: 'pe',  hira: 'ぺ', kata: 'ペ' },
+      { romaji: 'po',  hira: 'ぽ', kata: 'ポ' },
+    ]},
+  ];
+  // Flat lookup used by comparison panel
+  const ROMAJI_QUICK_PICKS = ROMAJI_ROWS.flatMap(r => r.chars);
 
   useEffect(() => {
     if (forcedScript) {
@@ -243,6 +352,351 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
   const drillQuestionCount = scriptLearnedCount >= 100
     ? Math.min(30, scriptLearnedCount)
     : Math.min(10, Math.max(5, scriptLearnedCount));
+
+  // Romaji Comparison Popup Modal (Opens when clicking any Romaji letter)
+  const renderRomajiPopupModal = () => {
+    if (!selectedRomajiPopup) return null;
+    const activePick = ROMAJI_QUICK_PICKS.find(p => p.romaji === selectedRomajiPopup) || ROMAJI_QUICK_PICKS[0];
+    const hiraDetails = getKanaDetails(activePick.hira, activePick.romaji, 'Hiragana');
+    const kataDetails = getKanaDetails(activePick.kata, activePick.romaji, 'Katakana');
+    const hiraExamples = hiraDetails.words.slice(0, 2);
+    const kataExamples = kataDetails.words.slice(0, 2);
+    const cardBg = theme === 'dark' ? 'bg-[#15151C] text-white border-slate-800' : 'bg-white text-slate-900 border-slate-200';
+
+    return (
+      <div 
+        className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/75 backdrop-blur-sm animate-fade-in"
+        onClick={() => setSelectedRomajiPopup(null)}
+      >
+        <div 
+          className={`w-full max-w-4xl rounded-3xl border ${cardBg} shadow-2xl overflow-hidden flex flex-col max-h-[90vh]`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Modal Header */}
+          <div className="flex items-center justify-between p-3 sm:p-5 border-b border-slate-100 dark:border-slate-800 shrink-0 gap-2">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+              <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-xl bg-[#FF5E3A] text-white font-mono font-black text-xs sm:text-sm tracking-wider shadow-sm shadow-orange-500/30 shrink-0">
+                /{activePick.romaji}/
+              </span>
+              <div className="min-w-0">
+                <h3 className="text-sm sm:text-base font-black text-slate-900 dark:text-white flex items-center gap-1.5 truncate">
+                  <span>Sound:</span>
+                  <span className="font-mono text-[#FF5E3A]">"{activePick.romaji}"</span>
+                </h3>
+                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 truncate hidden xs:block">
+                  Comparing Hiragana &amp; Katakana side-by-side
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+              <button
+                onClick={() => audio.speak(activePick.hira)}
+                className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-[#FF5E3A] text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-200 transition flex items-center gap-1 cursor-pointer shadow-2xs"
+                title={`Listen to sound "${activePick.romaji}"`}
+              >
+                <Volume2 className="w-3.5 h-3.5 text-[#FF5E3A]" />
+                <span className="hidden xs:inline">Hear Sound</span>
+              </button>
+              <button
+                onClick={() => setSelectedRomajiPopup(null)}
+                className="p-1 sm:p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                title="Close popup"
+              >
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Modal Body: Always Two Columns Side-by-Side (grid-cols-2 on Mobile & Desktop) */}
+          <div className="overflow-y-auto p-2.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-2 gap-2 xs:gap-3 sm:gap-4 md:gap-5">
+              {/* 🌸 Hiragana Side (Always Left) */}
+              <div className={`rounded-2xl p-2.5 xs:p-3 sm:p-4 md:p-5 border relative overflow-hidden flex flex-col justify-between space-y-2.5 sm:space-y-4 ${
+                theme === 'dark' 
+                  ? 'bg-[#121217] border-orange-500/20' 
+                  : 'bg-orange-50/70 border-orange-200/80 shadow-xs'
+              }`}>
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1">
+                  <span className="px-1.5 xs:px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-[9px] xs:text-[10px] sm:text-xs font-black uppercase tracking-wider bg-orange-500/15 text-[#FF5E3A] border border-orange-500/30 flex items-center gap-1 w-fit">
+                    <span>🌸</span>
+                    <span className="hidden xs:inline">HIRAGANA</span>
+                    <span className="xs:hidden">HIRA</span>
+                  </span>
+                  <span className="text-[9px] xs:text-[10px] sm:text-xs font-bold text-slate-400 font-mono">
+                    {hiraDetails.strokeCount} strokes
+                  </span>
+                </div>
+
+                {/* Huge Char & Audio */}
+                <div className="flex flex-col items-center justify-center py-1 sm:py-3 text-center">
+                  <span 
+                    className="font-jp font-black text-slate-900 dark:text-white leading-none hover:scale-105 transition-transform cursor-pointer select-none"
+                    style={{ fontSize: 'clamp(2.8rem, 10vw, 5.5rem)' }}
+                    onClick={() => audio.speak(activePick.hira)}
+                    title="Click to speak"
+                  >
+                    {activePick.hira}
+                  </span>
+                  <div className="flex items-center gap-1 sm:gap-1.5 mt-1 sm:mt-2">
+                    <span className="text-xs sm:text-base font-black text-[#FF5E3A] font-mono">/{activePick.romaji}/</span>
+                    <button 
+                      onClick={() => audio.speak(activePick.hira)}
+                      className="p-1 rounded-full text-slate-400 hover:text-[#FF5E3A] hover:bg-orange-500/10 transition cursor-pointer"
+                      title="Pronounce Hiragana"
+                    >
+                      <Volume2 className="w-3 h-3 sm:w-4 sm:h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Example Words */}
+                <div className="space-y-1.5 sm:space-y-2 pt-2 sm:pt-3 border-t border-orange-200/60 dark:border-slate-800">
+                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-[#FF5E3A] block">
+                    EXAMPLE WORDS
+                  </span>
+                  <div className="flex flex-col gap-1.5 sm:gap-2">
+                    {hiraExamples.map((w, idx) => (
+                      <div 
+                        key={idx} 
+                        onClick={() => audio.speak(w.furigana)}
+                        className={`p-2 sm:p-2.5 rounded-xl border transition cursor-pointer group hover:border-[#FF5E3A] ${
+                          theme === 'dark' ? 'bg-slate-900/80 border-slate-800' : 'bg-white border-orange-100 shadow-2xs'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-1">
+                          <span className="font-jp font-bold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-[#FF5E3A] transition truncate">
+                            {w.furigana}
+                          </span>
+                          <Volume2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-400 group-hover:text-[#FF5E3A] transition shrink-0" />
+                        </div>
+                        <div className="text-[9px] sm:text-[11px] font-mono text-slate-400 font-semibold truncate">{w.romaji}</div>
+                        <div className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-300 font-medium mt-0.5 truncate">{w.english}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* ⚡ Katakana Side (Always Right) */}
+              <div className={`rounded-2xl p-2.5 xs:p-3 sm:p-4 md:p-5 border relative overflow-hidden flex flex-col justify-between space-y-2.5 sm:space-y-4 ${
+                theme === 'dark' 
+                  ? 'bg-[#121217] border-purple-500/20' 
+                  : 'bg-purple-50/70 border-purple-200/80 shadow-xs'
+              }`}>
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1">
+                  <span className="px-1.5 xs:px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-[9px] xs:text-[10px] sm:text-xs font-black uppercase tracking-wider bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30 flex items-center gap-1 w-fit">
+                    <span>⚡</span>
+                    <span className="hidden xs:inline">KATAKANA</span>
+                    <span className="xs:hidden">KATA</span>
+                  </span>
+                  <span className="text-[9px] xs:text-[10px] sm:text-xs font-bold text-slate-400 font-mono">
+                    {kataDetails.strokeCount} strokes
+                  </span>
+                </div>
+
+                {/* Huge Char & Audio */}
+                <div className="flex flex-col items-center justify-center py-1 sm:py-3 text-center">
+                  <span 
+                    className="font-jp font-black text-slate-900 dark:text-white leading-none hover:scale-105 transition-transform cursor-pointer select-none"
+                    style={{ fontSize: 'clamp(2.8rem, 10vw, 5.5rem)' }}
+                    onClick={() => audio.speak(activePick.kata)}
+                    title="Click to speak"
+                  >
+                    {activePick.kata}
+                  </span>
+                  <div className="flex items-center gap-1 sm:gap-1.5 mt-1 sm:mt-2">
+                    <span className="text-xs sm:text-base font-black text-purple-600 dark:text-purple-400 font-mono">/{activePick.romaji}/</span>
+                    <button 
+                      onClick={() => audio.speak(activePick.kata)}
+                      className="p-1 rounded-full text-slate-400 hover:text-purple-500 hover:bg-purple-500/10 transition cursor-pointer"
+                      title="Pronounce Katakana"
+                    >
+                      <Volume2 className="w-3 h-3 sm:w-4 sm:h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Example Words */}
+                <div className="space-y-1.5 sm:space-y-2 pt-2 sm:pt-3 border-t border-purple-200/60 dark:border-slate-800">
+                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
+                    EXAMPLE WORDS
+                  </span>
+                  <div className="flex flex-col gap-1.5 sm:gap-2">
+                    {kataExamples.map((w, idx) => (
+                      <div 
+                        key={idx} 
+                        onClick={() => audio.speak(w.furigana)}
+                        className={`p-2 sm:p-2.5 rounded-xl border transition cursor-pointer group hover:border-purple-500 ${
+                          theme === 'dark' ? 'bg-slate-900/80 border-slate-800' : 'bg-white border-purple-100 shadow-2xs'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-1">
+                          <span className="font-jp font-bold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-purple-500 transition truncate">
+                            {w.furigana}
+                          </span>
+                          <Volume2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-400 group-hover:text-purple-500 transition shrink-0" />
+                        </div>
+                        <div className="text-[9px] sm:text-[11px] font-mono text-slate-400 font-semibold truncate">{w.romaji}</div>
+                        <div className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-300 font-medium mt-0.5 truncate">{w.english}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick switcher to next/prev sound inside popup */}
+            <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
+              <button
+                type="button"
+                onClick={() => {
+                  audio.playClick();
+                  const currentIndex = ROMAJI_QUICK_PICKS.findIndex(p => p.romaji === activePick.romaji);
+                  const prevIndex = (currentIndex - 1 + ROMAJI_QUICK_PICKS.length) % ROMAJI_QUICK_PICKS.length;
+                  setSelectedRomajiPopup(ROMAJI_QUICK_PICKS[prevIndex].romaji);
+                }}
+                className="px-2.5 sm:px-3.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-[#FF5E3A] text-[11px] sm:text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-[#FF5E3A] transition cursor-pointer"
+              >
+                ← Prev Sound
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  audio.playClick();
+                  const currentIndex = ROMAJI_QUICK_PICKS.findIndex(p => p.romaji === activePick.romaji);
+                  const nextIndex = (currentIndex + 1) % ROMAJI_QUICK_PICKS.length;
+                  setSelectedRomajiPopup(ROMAJI_QUICK_PICKS[nextIndex].romaji);
+                }}
+                className="px-2.5 sm:px-3.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-[#FF5E3A] text-[11px] sm:text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-[#FF5E3A] transition cursor-pointer"
+              >
+                Next Sound →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Dedicated Romaji Page Mode (opens when user clicks button near "Go to Katakana")
+  if (showRomajiPage) {
+    return (
+      <div className="space-y-6 animate-fade-in">
+        {/* Top Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b border-slate-200/80 dark:border-slate-800">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => {
+                audio.playClick();
+                setShowRomajiPage(false);
+              }}
+              className="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-[#FF5E3A] text-xs font-bold transition flex items-center gap-2 text-slate-700 dark:text-slate-200 hover:text-[#FF5E3A] cursor-pointer shadow-2xs"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to {forcedScript === 'katakana' ? 'Katakana' : 'Hiragana'} Table</span>
+            </button>
+            <div className="h-4 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block" />
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-black uppercase tracking-widest text-[#FF5E3A] font-mono">🔤 Romaji Syllabary</span>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500/10 text-[#FF5E3A] border border-orange-500/20">
+                  Click any letter to open popup
+                </span>
+              </div>
+              <h1 className="text-xl sm:text-2xl font-black font-heading text-slate-900 dark:text-white">
+                All Romaji Letters (a, i, u, e, o...)
+              </h1>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => {
+                audio.playClick();
+                setShowRomajiPage(false);
+              }}
+              className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition cursor-pointer"
+              title="Close Romaji Page"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Romaji Letters Grid */}
+        <div className={`rounded-3xl border p-5 sm:p-7 space-y-6 ${
+          theme === 'dark' ? 'bg-[#15151C] border-slate-800' : 'bg-white border-slate-200/80 shadow-sm'
+        }`}>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-black uppercase tracking-wider text-slate-900 dark:text-white">
+                Romaji Sound Directory
+              </span>
+              <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-orange-500/10 text-[#FF5E3A] font-mono">
+                {ROMAJI_QUICK_PICKS.length} Sounds
+              </span>
+            </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+              Click any Romaji letter below to open its Hiragana &amp; Katakana comparison popup with stroke counts and examples.
+            </p>
+          </div>
+
+          {/* Grouped by row */}
+          <div className="space-y-4">
+            {ROMAJI_ROWS.map((row) => (
+              <div key={row.label} className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className={`text-[11px] font-black uppercase tracking-wider font-mono ${
+                    row.type === 'dakuten' ? 'text-amber-500' : 'text-[#FF5E3A]'
+                  }`}>
+                    {row.label}
+                  </span>
+                  <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800/80" />
+                </div>
+                <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5 gap-2.5 sm:gap-3">
+                  {row.chars.map(({ romaji, hira, kata }) => (
+                    <button
+                      key={romaji}
+                      type="button"
+                      onClick={() => {
+                        audio.playClick();
+                        setSelectedRomajiPopup(romaji);
+                      }}
+                      className={`group relative flex flex-col items-center justify-center p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer text-center hover:scale-[1.03] active:scale-[0.98] shadow-2xs hover:shadow-md ${
+                        row.type === 'dakuten'
+                          ? theme === 'dark'
+                            ? 'bg-amber-950/20 border-amber-900/40 text-amber-300 hover:border-amber-500 hover:bg-amber-950/40'
+                            : 'bg-amber-50/70 border-amber-200/80 text-amber-800 hover:border-amber-400'
+                          : theme === 'dark'
+                            ? 'bg-slate-900/60 border-slate-800 text-slate-200 hover:border-[#FF5E3A] hover:text-[#FF5E3A]'
+                            : 'bg-slate-50/80 border-slate-200/80 text-slate-700 hover:border-[#FF5E3A] hover:text-[#FF5E3A]'
+                      }`}
+                    >
+                      <span className="text-lg sm:text-xl font-black font-mono leading-none tracking-tight group-hover:text-[#FF5E3A] transition">
+                        {romaji}
+                      </span>
+                      <div className="flex items-center gap-2 mt-2 text-xs font-jp text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200 transition">
+                        <span className="font-bold text-slate-600 dark:text-slate-300">{hira}</span>
+                        <span className="opacity-30">/</span>
+                        <span className="font-bold text-slate-600 dark:text-slate-300">{kata}</span>
+                      </div>
+                      <span className="mt-2 text-[9px] font-bold uppercase tracking-wider text-slate-400/80 group-hover:text-[#FF5E3A] transition">
+                        Click to view popup ↗
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* POPUP MODAL (Opens when clicking any romaji letter) */}
+        {renderRomajiPopupModal()}
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -627,6 +1081,18 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                 <span>→</span>
               </button>
             )}
+            <button
+              type="button"
+              onClick={() => {
+                audio.playClick();
+                setShowRomajiPage(true);
+              }}
+              className="px-3.5 py-1.5 rounded-xl border border-orange-400/40 dark:border-orange-500/30 bg-orange-500/10 hover:bg-orange-500/20 text-[#FF5E3A] text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-2xs hover:scale-[1.02] active:scale-[0.98]"
+              title="Open full Romaji page to view all sounds and compare Hiragana & Katakana"
+            >
+              <span>🔤</span>
+              <span>All Romaji Sounds (a, i, u, e, o...)</span>
+            </button>
           </div>
         )}
 
@@ -1148,6 +1614,9 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
         onClose={() => setShowCustomizeModal(false)}
         theme={theme}
       />
+
+      {/* 5. Romaji Comparison Modal Popup */}
+      {renderRomajiPopupModal()}
 
     </div>
   );
