@@ -1,0 +1,2527 @@
+{
+  "id": "day-7",
+  "dayNumber": 7,
+  "classCode": "Class 464",
+  "theme": "School Levels, Describing People, Particle Precision & Morning Reading",
+  "japaneseTheme": "テーマ：学校と人・外見の描写・助詞のまとめ (Gakkō to hito, gaiken no byōsha, joshi no matome)",
+  "subtitle": "Kanji building blocks for school levels, describing height and hair, character profile matching, and particle mastery",
+  "description": "Master Japanese terminology for school levels (小学校, 中学校, 高校, 大学) and student ranks (小学生, 中学生, 高校生, 大学生), describe people by height and hair (背が高い, 髪が長い), apply particles with 100% precision (は, の, に, で, を), analyze 5 student dossiers, and comprehend Yui’s school morning reading.",
+  "badge": "Class 464 · School & People",
+  "goals": [
+    "Learn people kanji: 男 (man), 女 (woman), 子 (child) and combinations (男の人, 女の人, 男の子, 女の子)",
+    "Build school words by combining 学, 校, 小, 中, 高, 大 into 小学校, 中学校, 高校, 大学 and student titles",
+    "Describe physical traits: Height (背が高い / 背が低い) and Hair (髪が長い / 髪が短い)",
+    "Solve the 5 Character Profiles Matching Game (Ken, Mia, Taku, Yui, Rina)",
+    "Master Japanese particles in context: は (topic), の (possessive), に (time/target), で (location), を (object)"
+  ],
+  "keyHighlights": [
+    "Kanji Lego Blocks: Look how effortlessly kanji combine: 小 (small) + 学校 = 小学校 (elementary school); 中 (middle) + 学校 = 中学校 (junior high); 高 (high) + 校 = 高校 (high school); 大 (big) + 学 = 大学 (university)!",
+    "Adding 生 (student): 小学生 (elementary student), 中学生 (middle school student), 高校生 (high school student), 大学生 (university student)!",
+    "Describing People: Use [Trait が Adjective] + [Noun]: 背が高い男の人 (tall man), 髪が長い女の人 (woman with long hair).",
+    "Particle Checklist: は (topic marker), の (connection/possessive), に (specific time/destination), で (location of activity), を (direct object)!"
+  ],
+  "kanjiList": [
+    {
+      "kanji": "男",
+      "meaning": "male, man",
+      "onyomi": "ダン・ナン (dan / nan)",
+      "kunyomi": "おとこ (otoko)",
+      "strokes": 7,
+      "radical": "男",
+      "radicalClue": "Core element: 男",
+      "examples": [
+        {
+          "word": "男の人",
+          "reading": "おとこのひと (otoko no hito)",
+          "meaning": "man",
+          "romaji": "otoko no hito"
+        },
+        {
+          "word": "男の子",
+          "reading": "おとこのこ (otoko no ko)",
+          "meaning": "boy",
+          "romaji": "otoko no ko"
+        }
+      ]
+    },
+    {
+      "kanji": "女",
+      "meaning": "female, woman",
+      "onyomi": "ジョ・ニョ (jo / nyo)",
+      "kunyomi": "おんな・め (onna / me)",
+      "strokes": 3,
+      "radical": "女",
+      "radicalClue": "Core element: 女",
+      "examples": [
+        {
+          "word": "女の人",
+          "reading": "おんなのひと (onna no hito)",
+          "meaning": "woman",
+          "romaji": "onna no hito"
+        },
+        {
+          "word": "女の子",
+          "reading": "おんなのこ (onna no ko)",
+          "meaning": "girl",
+          "romaji": "onna no ko"
+        }
+      ]
+    },
+    {
+      "kanji": "子",
+      "meaning": "child",
+      "onyomi": "シ・ス (shi / su)",
+      "kunyomi": "こ (ko)",
+      "strokes": 3,
+      "radical": "子",
+      "radicalClue": "Core element: 子",
+      "examples": [
+        {
+          "word": "子ども",
+          "reading": "こども (kodomo)",
+          "meaning": "child / children",
+          "romaji": "kodomo"
+        },
+        {
+          "word": "男の子",
+          "reading": "おとこのこ (otoko no ko)",
+          "meaning": "boy",
+          "romaji": "otoko no ko"
+        },
+        {
+          "word": "女の子",
+          "reading": "おんなのこ (onna no ko)",
+          "meaning": "girl",
+          "romaji": "onna no ko"
+        }
+      ]
+    },
+    {
+      "kanji": "校",
+      "meaning": "school, examine",
+      "onyomi": "コウ (kou)",
+      "kunyomi": "",
+      "strokes": 10,
+      "radical": "校",
+      "radicalClue": "Core element: 校",
+      "examples": [
+        {
+          "word": "学校",
+          "reading": "がっこう (gakkou)",
+          "meaning": "school",
+          "romaji": "gakkou"
+        },
+        {
+          "word": "小学校",
+          "reading": "しょうがっこう (shougakkou)",
+          "meaning": "elementary school",
+          "romaji": "shougakkou"
+        },
+        {
+          "word": "中学校",
+          "reading": "ちゅうがっこう (chuugakkou)",
+          "meaning": "middle school",
+          "romaji": "chuugakkou"
+        },
+        {
+          "word": "高校",
+          "reading": "こうこう (koukou)",
+          "meaning": "high school",
+          "romaji": "koukou"
+        }
+      ]
+    },
+    {
+      "kanji": "高",
+      "meaning": "high, expensive, tall",
+      "onyomi": "コウ (kou)",
+      "kunyomi": "たか(い) (taka(i))",
+      "strokes": 10,
+      "radical": "高",
+      "radicalClue": "Core element: 高",
+      "examples": [
+        {
+          "word": "高校",
+          "reading": "こうこう (koukou)",
+          "meaning": "high school",
+          "romaji": "koukou"
+        },
+        {
+          "word": "背が高い",
+          "reading": "せがたかい (se ga takai)",
+          "meaning": "tall (height)",
+          "romaji": "se ga takai"
+        },
+        {
+          "word": "高い",
+          "reading": "たかい (takai)",
+          "meaning": "tall / expensive",
+          "romaji": "takai"
+        }
+      ]
+    },
+    {
+      "kanji": "低",
+      "meaning": "low, short",
+      "onyomi": "テイ (tei)",
+      "kunyomi": "ひく(い) (hiku(i))",
+      "strokes": 7,
+      "radical": "低",
+      "radicalClue": "Core element: 低",
+      "examples": [
+        {
+          "word": "背が低い",
+          "reading": "せがひくい (se ga hikui)",
+          "meaning": "short (height)",
+          "romaji": "se ga hikui"
+        },
+        {
+          "word": "低い",
+          "reading": "ひくい (hikui)",
+          "meaning": "low / short",
+          "romaji": "hikui"
+        }
+      ]
+    },
+    {
+      "kanji": "長",
+      "meaning": "long, leader",
+      "onyomi": "チョウ (chou)",
+      "kunyomi": "なが(い) (naga(i))",
+      "strokes": 8,
+      "radical": "長",
+      "radicalClue": "Core element: 長",
+      "examples": [
+        {
+          "word": "髪が長い",
+          "reading": "かみがながい (kami ga nagai)",
+          "meaning": "has long hair",
+          "romaji": "kami ga nagai"
+        },
+        {
+          "word": "長い髪",
+          "reading": "ながいかみ (nagai kami)",
+          "meaning": "long hair",
+          "romaji": "nagai kami"
+        }
+      ]
+    },
+    {
+      "kanji": "短",
+      "meaning": "short",
+      "onyomi": "タン (tan)",
+      "kunyomi": "みじか(い) (mijika(i))",
+      "strokes": 12,
+      "radical": "短",
+      "radicalClue": "Core element: 短",
+      "examples": [
+        {
+          "word": "髪が短い",
+          "reading": "かみがみじかい (kami ga mijikai)",
+          "meaning": "has short hair",
+          "romaji": "kami ga mijikai"
+        },
+        {
+          "word": "短い髪",
+          "reading": "みじかいかみ (mijikai kami)",
+          "meaning": "short hair",
+          "romaji": "mijikai kami"
+        }
+      ]
+    },
+    {
+      "kanji": "小",
+      "meaning": "small, little",
+      "onyomi": "ショウ (shou)",
+      "kunyomi": "ちい(さい)・こ・お (chii(sai) / ko / o)",
+      "strokes": 3,
+      "radical": "小",
+      "radicalClue": "Core element: 小",
+      "examples": [
+        {
+          "word": "小学校",
+          "reading": "しょうがっこう (shougakkou)",
+          "meaning": "elementary school",
+          "romaji": "shougakkou"
+        },
+        {
+          "word": "小学生",
+          "reading": "しょうがくせい (shougakusei)",
+          "meaning": "elementary student",
+          "romaji": "shougakusei"
+        },
+        {
+          "word": "小さい",
+          "reading": "ちいさい (chiisai)",
+          "meaning": "small",
+          "romaji": "chiisai"
+        }
+      ]
+    },
+    {
+      "kanji": "中",
+      "meaning": "middle, inside",
+      "onyomi": "チュウ (chuu)",
+      "kunyomi": "なか (naka)",
+      "strokes": 4,
+      "radical": "中",
+      "radicalClue": "Core element: 中",
+      "examples": [
+        {
+          "word": "中学校",
+          "reading": "ちゅうがっこう (chuugakkou)",
+          "meaning": "middle school",
+          "romaji": "chuugakkou"
+        },
+        {
+          "word": "中学生",
+          "reading": "ちゅうがくせい (chuugakusei)",
+          "meaning": "middle school student",
+          "romaji": "chuugakusei"
+        }
+      ]
+    },
+    {
+      "kanji": "大",
+      "meaning": "big, large",
+      "onyomi": "ダイ・タイ (dai / tai)",
+      "kunyomi": "おお(きい) (oo(kii))",
+      "strokes": 3,
+      "radical": "大",
+      "radicalClue": "Core element: 大",
+      "examples": [
+        {
+          "word": "大学",
+          "reading": "だいがく (daigaku)",
+          "meaning": "university",
+          "romaji": "daigaku"
+        },
+        {
+          "word": "大学生",
+          "reading": "だいがくせい (daigakusei)",
+          "meaning": "university student",
+          "romaji": "daigakusei"
+        },
+        {
+          "word": "大きい",
+          "reading": "おおきい (ookii)",
+          "meaning": "big / large",
+          "romaji": "ookii"
+        }
+      ]
+    },
+    {
+      "kanji": "髪",
+      "meaning": "hair (on head)",
+      "onyomi": "ハツ (hatsu)",
+      "kunyomi": "かみ (kami)",
+      "strokes": 14,
+      "radical": "髪",
+      "radicalClue": "Core element: 髪",
+      "examples": [
+        {
+          "word": "髪",
+          "reading": "かみ (kami)",
+          "meaning": "hair",
+          "romaji": "kami"
+        },
+        {
+          "word": "髪が長い",
+          "reading": "かみがながい (kami ga nagai)",
+          "meaning": "has long hair",
+          "romaji": "kami ga nagai"
+        }
+      ]
+    },
+    {
+      "kanji": "背",
+      "meaning": "back, stature",
+      "onyomi": "ハイ (hai)",
+      "kunyomi": "せ・せい・そむ(く) (se / sei / somu(ku))",
+      "strokes": 9,
+      "radical": "背",
+      "radicalClue": "Core element: 背",
+      "examples": [
+        {
+          "word": "背が高い",
+          "reading": "せがたかい (se ga takai)",
+          "meaning": "tall (height)",
+          "romaji": "se ga takai"
+        },
+        {
+          "word": "背が低い",
+          "reading": "せがひくい (se ga hikui)",
+          "meaning": "short (height)",
+          "romaji": "se ga hikui"
+        }
+      ]
+    },
+    {
+      "kanji": "毎",
+      "meaning": "every",
+      "onyomi": "マイ (mai)",
+      "kunyomi": "ごと (goto)",
+      "strokes": 6,
+      "radical": "毎",
+      "radicalClue": "Core element: 毎",
+      "examples": [
+        {
+          "word": "毎日",
+          "reading": "まいにち (mainichi)",
+          "meaning": "every day",
+          "romaji": "mainichi"
+        }
+      ]
+    }
+  ],
+  "vocabularyList": [
+    {
+      "japanese": "男",
+      "reading": "おとこ (otoko)",
+      "english": "male, man",
+      "category": "Noun",
+      "notes": "男の人。",
+      "romaji": "otoko"
+    },
+    {
+      "japanese": "女",
+      "reading": "おんな (onna)",
+      "english": "female, woman",
+      "category": "Noun",
+      "notes": "女の人。",
+      "romaji": "onna"
+    },
+    {
+      "japanese": "男の人",
+      "reading": "おとこのひと (otokonohito)",
+      "english": "man",
+      "category": "Noun",
+      "notes": "この男の人は背が高いです。",
+      "romaji": "otokonohito"
+    },
+    {
+      "japanese": "女の人",
+      "reading": "おんなのひと (onnanohito)",
+      "english": "woman",
+      "category": "Noun",
+      "notes": "この女の人は髪が長いです。",
+      "romaji": "onnanohito"
+    },
+    {
+      "japanese": "男の子",
+      "reading": "おとこのこ (otokonoko)",
+      "english": "boy",
+      "category": "Noun",
+      "notes": "男の子が走ります。",
+      "romaji": "otokonoko"
+    },
+    {
+      "japanese": "女の子",
+      "reading": "おんなのこ (onnanoko)",
+      "english": "girl",
+      "category": "Noun",
+      "notes": "女の子のかばんは赤いです。",
+      "romaji": "onnanoko"
+    },
+    {
+      "japanese": "子ども",
+      "reading": "こども (kodomo)",
+      "english": "child, children",
+      "category": "Noun",
+      "notes": "子どもが公園にいます。",
+      "romaji": "kodomo"
+    },
+    {
+      "japanese": "学校",
+      "reading": "がっこう (gakkou)",
+      "english": "school",
+      "category": "Noun",
+      "notes": "午前八時に学校へ行きます。",
+      "romaji": "gakkou"
+    },
+    {
+      "japanese": "小学校",
+      "reading": "しょうがっこう (shougakkou)",
+      "english": "elementary school",
+      "category": "Noun",
+      "notes": "小学校に行きます。",
+      "romaji": "shougakkou"
+    },
+    {
+      "japanese": "中学校",
+      "reading": "ちゅうがっこう (chuugakkou)",
+      "english": "junior high school",
+      "category": "Noun",
+      "notes": "中学校の先生。",
+      "romaji": "chuugakkou"
+    },
+    {
+      "japanese": "高校",
+      "reading": "こうこう (koukou)",
+      "english": "high school",
+      "category": "Noun",
+      "notes": "高校の学生。",
+      "romaji": "koukou"
+    },
+    {
+      "japanese": "大学",
+      "reading": "だいがく (daigaku)",
+      "english": "university, college",
+      "category": "Noun",
+      "notes": "大学で勉強します。",
+      "romaji": "daigaku"
+    },
+    {
+      "japanese": "小学生",
+      "reading": "しょうがくせい (shougakusei)",
+      "english": "elementary school student",
+      "category": "Noun",
+      "notes": "ゆいは小学生です。",
+      "romaji": "shougakusei"
+    },
+    {
+      "japanese": "中学生",
+      "reading": "ちゅうがくせい (chuugakusei)",
+      "english": "middle school student",
+      "category": "Noun",
+      "notes": "たくは中学生です。",
+      "romaji": "chuugakusei"
+    },
+    {
+      "japanese": "高校生",
+      "reading": "こうこうせい (koukousei)",
+      "english": "high school student",
+      "category": "Noun",
+      "notes": "りなは高校生です。",
+      "romaji": "koukousei"
+    },
+    {
+      "japanese": "大学生",
+      "reading": "だいがくせい (daigakusei)",
+      "english": "university student",
+      "category": "Noun",
+      "notes": "けん、みあは大学生です。",
+      "romaji": "daigakusei"
+    },
+    {
+      "japanese": "二年生",
+      "reading": "にねんせい (ninensei)",
+      "english": "2nd year student",
+      "category": "Noun",
+      "notes": "ゆいは小学二年生です。",
+      "romaji": "ninensei"
+    },
+    {
+      "japanese": "背が高い",
+      "reading": "せが たかい (sega takai)",
+      "english": "tall (stature)",
+      "category": "Adjective",
+      "notes": "背が高い男の人。",
+      "romaji": "sega takai"
+    },
+    {
+      "japanese": "背が低い",
+      "reading": "せが ひくい (sega hikui)",
+      "english": "short (stature)",
+      "category": "Adjective",
+      "notes": "背が低い女の人。",
+      "romaji": "sega hikui"
+    },
+    {
+      "japanese": "髪が長い",
+      "reading": "かみが ながい (kamiga nagai)",
+      "english": "has long hair",
+      "category": "Adjective",
+      "notes": "髪が長い女の人。",
+      "romaji": "kamiga nagai"
+    },
+    {
+      "japanese": "髪が短い",
+      "reading": "かみが みじかい (kamiga mijikai)",
+      "english": "has short hair",
+      "category": "Adjective",
+      "notes": "髪が短い男の人。",
+      "romaji": "kamiga mijikai"
+    },
+    {
+      "japanese": "大きい",
+      "reading": "おおきい (ookii)",
+      "english": "big, large",
+      "category": "Adjective",
+      "notes": "大きい学校。",
+      "romaji": "ookii"
+    },
+    {
+      "japanese": "小さい",
+      "reading": "ちいさい (chiisai)",
+      "english": "small, little",
+      "category": "Adjective",
+      "notes": "小さい学校。",
+      "romaji": "chiisai"
+    },
+    {
+      "japanese": "毎日",
+      "reading": "まいにち (mainichi)",
+      "english": "every day",
+      "category": "Noun",
+      "notes": "毎日、午前九時に行きます。",
+      "romaji": "mainichi"
+    },
+    {
+      "japanese": "かばん",
+      "reading": "かばん (kaban)",
+      "english": "bag",
+      "category": "Noun",
+      "notes": "ゆいのかばんは赤いです。",
+      "romaji": "kaban"
+    }
+  ],
+  "grammarNotes": [
+    {
+      "title": "School Compounding System",
+      "structure": "",
+      "explanation": "Japanese education levels follow a clean tier structure: 小 (small), 中 (middle), 高 (high), and 大 (big). Adding 学校 (or shortened 校/学) names the school, and adding 生 (せい) names the student.",
+      "examples": [
+        {
+          "japanese": "小 + 学校 = 小学校",
+          "reading": "shou + gakkou = shougakkou",
+          "english": "elementary",
+          "romaji": "shou + gakkou = shougakkou"
+        },
+        {
+          "japanese": "中 + 学校 = 中学校",
+          "reading": "chuu + gakkou = chuugakkou",
+          "english": "middle school",
+          "romaji": "chuu + gakkou = chuugakkou"
+        },
+        {
+          "japanese": "高 + 校 = 高校",
+          "reading": "kou + kou = koukou",
+          "english": "high school",
+          "romaji": "kou + kou = koukou"
+        },
+        {
+          "japanese": "大 + 学 = 大学",
+          "reading": "dai + gaku = daigaku",
+          "english": "university",
+          "romaji": "dai + gaku = daigaku"
+        }
+      ]
+    },
+    {
+      "title": "Physical Appearance: Feature + が + Adjective",
+      "structure": "",
+      "explanation": "To describe physical body traits, use the pattern [Body Part] が [Adjective]. When placed before a noun, the whole phrase acts as a modifier.",
+      "examples": [
+        {
+          "japanese": "背が高い",
+          "reading": "せがたかい (se ga takai)",
+          "english": "tall",
+          "romaji": "se ga takai"
+        },
+        {
+          "japanese": "背が高い男の人",
+          "reading": "せがたかいおとこのひと (se ga takai otoko no hito)",
+          "english": "the tall man",
+          "romaji": "se ga takai otoko no hito"
+        },
+        {
+          "japanese": "髪が長い",
+          "reading": "かみがながい (kami ga nagai)",
+          "english": "has long hair",
+          "romaji": "kami ga nagai"
+        },
+        {
+          "japanese": "髪が長い女の人",
+          "reading": "かみがながいおんなのひと (kami ga nagai onna no hito)",
+          "english": "the woman with long hair",
+          "romaji": "kami ga nagai onna no hito"
+        }
+      ]
+    },
+    {
+      "title": "Mastery of 5 Core Particles in Action",
+      "structure": "",
+      "explanation": "は introduces the main topic, の marks possession/association, に indicates specific time or destination, で indicates the active location of an event, and を marks the direct object of the verb.",
+      "examples": [
+        {
+          "japanese": "みあは大学生です",
+          "reading": "みあはだいがくせいです (Mia wa daigakusei desu)",
+          "english": "は: topic",
+          "romaji": "Mia wa daigakusei desu"
+        },
+        {
+          "japanese": "ゆいのかばんは赤いです",
+          "reading": "ゆいのかばんはあかいです (Yui no kaban wa akai desu)",
+          "english": "の: possession",
+          "romaji": "Yui no kaban wa akai desu"
+        },
+        {
+          "japanese": "午前八時に学校へ行きます",
+          "reading": "ごぜんはちじにがっこうへいきます (gozen hachiji ni gakkou e ikimasu)",
+          "english": "に: time, へ: destination",
+          "romaji": "gozen hachiji ni gakkou e ikimasu"
+        },
+        {
+          "japanese": "学校で日本語を話します",
+          "reading": "がっこうでにほんごをはなします (gakkou de nihongo o hanashimasu)",
+          "english": "で: location",
+          "romaji": "gakkou de nihongo o hanashimasu"
+        },
+        {
+          "japanese": "本を読みます",
+          "reading": "ほんをよみます (hon o yomimasu)",
+          "english": "を: object",
+          "romaji": "hon o yomimasu"
+        }
+      ]
+    }
+  ],
+  "readingPassages": [
+    {
+      "title": "学校の朝 (A School Morning with Yui)",
+      "text": "今日は月曜日です。ゆいは小学二年生です。午前八時に学校へ行きます。ゆいのかばんは赤いです。学校で青い本を読みます。先生の名前を書きます。友達と日本語を話します。",
+      "translation": "Today is Monday. Yui is in 2nd grade of elementary school. At 8:00 AM, she goes to school. Yui's bag is red. At school, she reads a blue book. She writes the teacher's name. She speaks Japanese with her friends.",
+      "questions": [
+        {
+          "q": "今日は何曜日ですか？ (Kyō wa nan-yōbi desu ka? / What day of the week is today?)",
+          "a": "月曜日（げつようび / getsuyōbi）です。(Monday)"
+        },
+        {
+          "q": "ゆいは何年生ですか？ (Yui wa nan-nensei desu ka? / What school grade is Yui?)",
+          "a": "小学二年生（しょうがく にねんせい / shōgaku ninensei）です。(2nd grade elementary)"
+        },
+        {
+          "q": "何時に学校へ行きますか？ (Nan-ji ni gakkō e ikimasu ka? / What time do they go to school?)",
+          "a": "午前八時（ごぜん はちじ / gozen hachiji）です。(8:00 AM)"
+        },
+        {
+          "q": "ゆいのかばんは何色ですか？ (Yui no kaban wa nani-iro desu ka? / What color is Yui's bag?)",
+          "a": "赤（あかいかばん / akai kaban）です。(Red bag)"
+        },
+        {
+          "q": "学校で何を読みますか？ (Gakkō de nani o yomimasu ka? / What do they read at school?)",
+          "a": "青い本を読みます。(Aoi hon o yomimasu. / Reads a blue book)"
+        }
+      ],
+      "romaji": "Kyou wa getsuyoubi desu. Yui wa shougaku ninensei desu. Gozen hachiji ni gakkou e ikimasu. Yui no kaban wa akai desu. Gakkou de aoi hon o yomimasu. Sensei no namae o kakimasu. Tomodachi to nihongo o hanashimasu."
+    },
+    {
+      "title": "会話：学校のインタビュー (School Interview)",
+      "text": "質問者：大学生ですか？\n学生：はい、大学生です。\n質問者：何時に学校へ行きますか？\n学生：毎日、午前九時に行きます。\n質問者：学校で何をしますか？\n学生：本を読みます。日本語を話します。",
+      "translation": "Interviewer: Are you a university student?\nStudent: Yes, I am a university student.\nInterviewer: What time do you go to school?\nStudent: I go at 9:00 AM every day.\nInterviewer: What do you do at school?\nStudent: I read books. I speak Japanese.",
+      "romaji": "Shitsumonsha: Daigakusei desu ka?\nGakusei: Hai, daigakusei desu.\nShitsumonsha: Nanji ni gakkou e ikimasu ka?\nGakusei: Mainichi, gozen kuji ni ikimasu.\nShitsumonsha: Gakkou de nani o shimasu ka?\nGakusei: Hon o yomimasu. Nihongo o hanashimasu."
+    }
+  ],
+  "practiceQuiz": [
+    {
+      "question": "How do you say \"elementary school student\" in Japanese?",
+      "options": [
+        "小学生 (しょうがくせい / shōgakusei)",
+        "中学生 (ちゅうがくせい / chūgakusei)",
+        "高校生 (こうこうせい / kōkōsei)",
+        "大学生 (だいがくせい / daigakusei)"
+      ],
+      "correct": "小学生 (しょうがくせい / shōgakusei)",
+      "explanation": "小学生 (しょうがくせい / shōgakusei) is an elementary school student."
+    },
+    {
+      "question": "What is the Japanese expression for \"tall in height\"?",
+      "options": [
+        "足が長い (あしがながい / ashi ga nagai)",
+        "背が高い (せがたかい / se ga takai)",
+        "手が大きい (てがおおきい / te ga ookii)",
+        "髪が短い (かみがみじかい / kami ga mijikai)"
+      ],
+      "correct": "背が高い (せがたかい / se ga takai)",
+      "explanation": "背が高い (せがたかい / se ga takai) literally means \"back is high\" and is the idiomatic expression for a tall person."
+    },
+    {
+      "question": "Which particle marks the direct object of a verb (e.g. 本 ___ 読みます / hon ___ yomimasu)?",
+      "options": [
+        "は (wa)",
+        "の (no)",
+        "を (o / wo)",
+        "で (de)"
+      ],
+      "correct": "を (o / wo)",
+      "explanation": "The particle を (pronounced \"o\") marks the direct object of a transitive action verb."
+    },
+    {
+      "question": "What does \"高校\" (こうこう / kōkō) mean?",
+      "options": [
+        "Elementary school",
+        "Middle school",
+        "High school",
+        "University"
+      ],
+      "correct": "High school",
+      "explanation": "高校 (こうこう / kōkō) is short for 高等学校, meaning high school."
+    }
+  ],
+  "slides": [
+    {
+      "slideNumber": 1,
+      "title": "日本語 Class 464 · 学校と人",
+      "blocks": [
+        [
+          "日本語 Class 464"
+        ],
+        [
+          "Nikki JP Class 464   1"
+        ],
+        [
+          "学校と人"
+        ],
+        [
+          "がっこう と ひと"
+        ],
+        [
+          "School and people"
+        ],
+        [
+          "漢字・Reading・Speaking"
+        ],
+        [
+          "By: ニッキ"
+        ]
+      ],
+      "jpTitle": "表紙：日本語 Class 464",
+      "summary": "Core theme: School, education levels, describing people, and particle mastery.",
+      "bullets": [
+        "Class: Nikki JP Class 464",
+        "Topic: 学校と人 (がっこう と ひと · School and people)",
+        "Focus: Combining familiar kanji to build comprehensive school vocabulary."
+      ],
+      "highlight": "Learn to describe individuals and educational environments accurately in Japanese."
+    },
+    {
+      "slideNumber": 2,
+      "title": "Warm-up Review: 3 Core Questions",
+      "blocks": [
+        [
+          "復習・Warm-up"
+        ],
+        [
+          "Nikki JP Class 464   2"
+        ],
+        [
+          "① 今日は何曜日ですか？"
+        ],
+        [
+          "② 今、何時ですか？"
+        ],
+        [
+          "③ 何色が好きですか？"
+        ],
+        [
+          "④ 何を読みますか？"
+        ],
+        [
+          "⑤ 日本語を話しますか？"
+        ]
+      ],
+      "jpTitle": "復習・ウォームアップ",
+      "summary": "Three rapid oral questions reviewing weekdays, time, and colors.",
+      "bullets": [
+        "① 今日は何曜日ですか？ (What day of the week is today?)",
+        "② 今、何時ですか？ (What time is it now?)",
+        "③ 何色が好きですか？ (What colour do you like?)"
+      ],
+      "highlight": "Start class by speaking immediately."
+    },
+    {
+      "slideNumber": 3,
+      "title": "Kanji We Can Reuse from Past Classes",
+      "blocks": [
+        [
+          "前の漢字・Kanji we can reuse"
+        ],
+        [
+          "Nikki JP Class 464   3"
+        ],
+        [
+          "人　大　生　先"
+        ],
+        [
+          "本　日　月　行"
+        ],
+        [
+          "ひと　　おおきい　　がくせい　　せんせい"
+        ],
+        [
+          "Same kanji, new school words"
+        ]
+      ],
+      "jpTitle": "前の漢字・再利用できる漢字",
+      "summary": "Eight previously taught kanji that will form today's compound building blocks.",
+      "bullets": [
+        "人 (ひと) · Person",
+        "大 (おおきい) · Big",
+        "生 (せい) · Student / life",
+        "先 (せん) · Before",
+        "本 (ほん) · Book",
+        "日 (にち) · Day",
+        "月 (げつ) · Moon/month",
+        "行 (いく) · Go"
+      ],
+      "highlight": "Building new vocabulary from existing kanji is the fastest way to achieve fluency."
+    },
+    {
+      "slideNumber": 4,
+      "title": "Today's Kanji: People (男・女)",
+      "blocks": [
+        [
+          "今日の漢字・People"
+        ],
+        [
+          "Nikki JP Class 464   4"
+        ],
+        [
+          "男"
+        ],
+        [
+          "おとこ"
+        ],
+        [
+          "male / man"
+        ],
+        [
+          "女"
+        ],
+        [
+          "おんな"
+        ],
+        [
+          "female / woman"
+        ],
+        [
+          "子"
+        ],
+        [
+          "こ"
+        ],
+        [
+          "child"
+        ]
+      ],
+      "jpTitle": "今日の漢字：男・女",
+      "summary": "The foundational kanji for male and female.",
+      "bullets": [
+        "男 (おとこ) · Male / man (rice field 田 + power 力)",
+        "女 (おんな) · Female / woman (graceful seated figure)"
+      ],
+      "highlight": "男 combines 田 (rice field) and 力 (power/strength)."
+    },
+    {
+      "slideNumber": 5,
+      "title": "Adults: 男の人 and 女の人",
+      "blocks": [
+        [
+          "大人と子ども・Adults and children"
+        ],
+        [
+          "Nikki JP Class 464   5"
+        ],
+        [
+          "男の人"
+        ],
+        [
+          "おとこのひと"
+        ],
+        [
+          "man"
+        ],
+        [
+          "女の人"
+        ],
+        [
+          "おんなのひと"
+        ],
+        [
+          "woman"
+        ]
+      ],
+      "jpTitle": "大人：男の人・女の人",
+      "summary": "Using the modifier の to refer politely to adult men and women.",
+      "bullets": [
+        "男の人 (おとこのひと) · Man",
+        "女の人 (おんなのひと) · Woman",
+        "Literally: person of the male/female gender."
+      ],
+      "highlight": "Never call someone just '男' or '女'—always say '男の人' or '女の人' to be respectful."
+    },
+    {
+      "slideNumber": 6,
+      "title": "Children: 男の子 and 女の子",
+      "blocks": [
+        [
+          "子ども・Children"
+        ],
+        [
+          "Nikki JP Class 464   6"
+        ],
+        [
+          "男の子"
+        ],
+        [
+          "おとこのこ"
+        ],
+        [
+          "boy"
+        ],
+        [
+          "女の子"
+        ],
+        [
+          "おんなのこ"
+        ],
+        [
+          "girl"
+        ],
+        [
+          "子ども"
+        ],
+        [
+          "こども"
+        ],
+        [
+          "child / children"
+        ]
+      ],
+      "jpTitle": "子ども：男の子・女の子",
+      "summary": "Combining male/female with 子 (child) to refer to young boys and girls.",
+      "bullets": [
+        "男の子 (おとこのこ) · Boy",
+        "女の子 (おんなのこ) · Girl",
+        "子ども (こども) · Child / children"
+      ],
+      "highlight": "子 (こ) means child. 男の子 is a male child; 女の子 is a female child."
+    },
+    {
+      "slideNumber": 7,
+      "title": "School Building Blocks: 学 and 校",
+      "blocks": [
+        [
+          "学校・School"
+        ],
+        [
+          "Nikki JP Class 464   7"
+        ],
+        [
+          "学"
+        ],
+        [
+          "がく"
+        ],
+        [
+          "learning"
+        ],
+        [
+          "学生・がくせい"
+        ],
+        [
+          "校"
+        ],
+        [
+          "こう"
+        ],
+        [
+          "school"
+        ],
+        [
+          "学校・がっこう"
+        ]
+      ],
+      "jpTitle": "学校：学と校の組み合わせ",
+      "summary": "The root kanji for learning and school institutions.",
+      "bullets": [
+        "学 (がく) · Learning / study",
+        "学生 (がくせい) · Student (learning + life)",
+        "校 (こう) · School / institution",
+        "学校 (がっこう) · School (study + institution)"
+      ],
+      "highlight": "Notice the small tsu gemination: 学 (がく) + 校 (こう) becomes がっこう!"
+    },
+    {
+      "slideNumber": 8,
+      "title": "Reusing Small, Middle, and Big: 小・中・大",
+      "blocks": [
+        [
+          "再利用・Small, middle, big"
+        ],
+        [
+          "Nikki JP Class 464   8"
+        ],
+        [
+          "小"
+        ],
+        [
+          "しょう / ちいさい"
+        ],
+        [
+          "small"
+        ],
+        [
+          "小学校"
+        ],
+        [
+          "中"
+        ],
+        [
+          "ちゅう / なか"
+        ],
+        [
+          "middle / inside"
+        ],
+        [
+          "中学校"
+        ],
+        [
+          "大"
+        ],
+        [
+          "だい / おおきい"
+        ],
+        [
+          "big"
+        ],
+        [
+          "大学"
+        ]
+      ],
+      "jpTitle": "再利用：小・中・大",
+      "summary": "Applying size modifiers to educational institutions.",
+      "bullets": [
+        "小 (しょう / ちいさい) · Small",
+        "中 (ちゅう / なか) · Middle / inside",
+        "大 (だい / おおきい) · Big / large"
+      ],
+      "highlight": "These three simple kanji form the Japanese school grading tiers."
+    },
+    {
+      "slideNumber": 9,
+      "title": "School Names ①: 小学校 and 中学校",
+      "blocks": [
+        [
+          "学校の名前 ①"
+        ],
+        [
+          "Nikki JP Class 464   9"
+        ],
+        [
+          "小学校"
+        ],
+        [
+          "しょうがっこう"
+        ],
+        [
+          "primary / elementary school"
+        ],
+        [
+          "小 ＋ 学校"
+        ],
+        [
+          "中学校"
+        ],
+        [
+          "ちゅうがっこう"
+        ],
+        [
+          "middle / junior high school"
+        ],
+        [
+          "中 ＋ 学校"
+        ]
+      ],
+      "jpTitle": "学校の名前 ①：小学校・中学校",
+      "summary": "Elementary and middle school terminology.",
+      "bullets": [
+        "小学校 (しょうがっこう) · Primary / Elementary school (小 + 学校)",
+        "中学校 (ちゅうがっこう) · Middle / Junior high school (中 + 学校)"
+      ],
+      "highlight": "Both words inherit the geminated sound -がっこう."
+    },
+    {
+      "slideNumber": 10,
+      "title": "School Names ②: 高校 and 大学",
+      "blocks": [
+        [
+          "学校の名前 ②"
+        ],
+        [
+          "Nikki JP Class 464   10"
+        ],
+        [
+          "高校"
+        ],
+        [
+          "こうこう"
+        ],
+        [
+          "high school"
+        ],
+        [
+          "高 ＋ 校"
+        ],
+        [
+          "大学"
+        ],
+        [
+          "だいがく"
+        ],
+        [
+          "university"
+        ],
+        [
+          "大 ＋ 学"
+        ]
+      ],
+      "jpTitle": "学校の名前 ②：高校・大学",
+      "summary": "High school and university terminology.",
+      "bullets": [
+        "高校 (こうこう) · High school (abbreviation of 高等学校: 高 high + 校 school)",
+        "大学 (だいがく) · University / College (大 big + 学 learning)"
+      ],
+      "highlight": "Notice 大学 ends in がく, while 高校 ends in こう."
+    },
+    {
+      "slideNumber": 11,
+      "title": "Reusing「生」for School Students: 小学生・中学生",
+      "blocks": [
+        [
+          "生を再利用・School students"
+        ],
+        [
+          "Nikki JP Class 464   11"
+        ],
+        [
+          "小学生"
+        ],
+        [
+          "しょうがくせい"
+        ],
+        [
+          "primary school student"
+        ],
+        [
+          "中学生"
+        ],
+        [
+          "ちゅうがくせい"
+        ],
+        [
+          "middle school student"
+        ]
+      ],
+      "jpTitle": "「生」を再利用：小学生・中学生",
+      "summary": "Forming student titles by appending「生」to the school tier.",
+      "bullets": [
+        "小学生 (しょうがくせい) · Primary school student (小 + 学生)",
+        "中学生 (ちゅうがくせい) · Middle school student (中 + 学生)"
+      ],
+      "highlight": "Append 生 (せい) to indicate a student of that institution."
+    },
+    {
+      "slideNumber": 12,
+      "title": "Reusing「生」for Older Students: 高校生・大学生",
+      "blocks": [
+        [
+          "生を再利用・Older students"
+        ],
+        [
+          "Nikki JP Class 464   12"
+        ],
+        [
+          "高校生"
+        ],
+        [
+          "こうこうせい"
+        ],
+        [
+          "high school student"
+        ],
+        [
+          "大学生"
+        ],
+        [
+          "だいがくせい"
+        ],
+        [
+          "university student"
+        ]
+      ],
+      "jpTitle": "「生」を再利用：高校生・大学生",
+      "summary": "High school and university student terms.",
+      "bullets": [
+        "高校生 (こうこうせい) · High school student (高校 + 生)",
+        "大学生 (だいがくせい) · University student (大学 + 生)"
+      ],
+      "highlight": "From age 6 to 22+, every student category is built with「生」!"
+    },
+    {
+      "slideNumber": 13,
+      "title": "Teacher and Student: 先生 and 学生",
+      "blocks": [
+        [
+          "先生と学生・Teacher and student"
+        ],
+        [
+          "Nikki JP Class 464   13"
+        ],
+        [
+          "先生"
+        ],
+        [
+          "せんせい"
+        ],
+        [
+          "teacher"
+        ],
+        [
+          "先 ＋ 生"
+        ],
+        [
+          "学生"
+        ],
+        [
+          "がくせい"
+        ],
+        [
+          "student"
+        ],
+        [
+          "学 ＋ 生"
+        ]
+      ],
+      "jpTitle": "先生と学生",
+      "summary": "Contrasting the teacher and the learner.",
+      "bullets": [
+        "先生 (せんせい) · Teacher (literally: one born before)",
+        "学生 (がくせい) · Student (literally: one studying life)"
+      ],
+      "highlight": "先生 is used both as an occupation and as an honorific title when addressing instructors."
+    },
+    {
+      "slideNumber": 14,
+      "title": "School Year: 何年生ですか？",
+      "blocks": [
+        [
+          "何年生ですか？・School year"
+        ],
+        [
+          "Nikki JP Class 464   14"
+        ],
+        [
+          "一年生　いちねんせい"
+        ],
+        [
+          "二年生　にねんせい"
+        ],
+        [
+          "三年生　さんねんせい"
+        ],
+        [
+          "A：何年生ですか？　B：二年生です。"
+        ]
+      ],
+      "jpTitle": "学年：何年生ですか？",
+      "summary": "Expressing grade levels 1st, 2nd, and 3rd year.",
+      "bullets": [
+        "一年生 (いちねんせい) · 1st year student",
+        "二年生 (にねんせい) · 2nd year student",
+        "三年生 (さんねんせい) · 3rd year student",
+        "Dialogue: A: 何年生ですか？ (What grade are you in?) → B: 二年生です。 (I am in 2nd grade.)"
+      ],
+      "highlight": "Combine number + 年生 (ねんせい) for any school grade."
+    },
+    {
+      "slideNumber": 15,
+      "title": "Height: 背が高い and 背が低い",
+      "blocks": [
+        [
+          "背の高さ・Tall and short"
+        ],
+        [
+          "Nikki JP Class 464   15"
+        ],
+        [
+          "背が高い"
+        ],
+        [
+          "せが たかい"
+        ],
+        [
+          "tall"
+        ],
+        [
+          "高い・たかい"
+        ],
+        [
+          "背が低い"
+        ],
+        [
+          "せが ひくい"
+        ],
+        [
+          "short in height"
+        ],
+        [
+          "低い・ひくい"
+        ]
+      ],
+      "jpTitle": "背の高さ：高い・低い",
+      "summary": "How to describe physical stature in Japanese.",
+      "bullets": [
+        "背が高い (せが たかい) · Tall (literally: back/stature is high)",
+        "高い (たかい) · High / tall",
+        "背が低い (せが ひくい) · Short in height (literally: back/stature is low)",
+        "低い (ひくい) · Low / short"
+      ],
+      "highlight": "In Japanese, you do not say 'a person is high'; you say 'stature is high' (背が高い)."
+    },
+    {
+      "slideNumber": 16,
+      "title": "Size: 大きい and 小さい",
+      "blocks": [
+        [
+          "大きい・小さい"
+        ],
+        [
+          "Nikki JP Class 464   16"
+        ],
+        [
+          "大きい"
+        ],
+        [
+          "おおきい"
+        ],
+        [
+          "big / large"
+        ],
+        [
+          "大きい学校"
+        ],
+        [
+          "小さい"
+        ],
+        [
+          "ちいさい"
+        ],
+        [
+          "small / little"
+        ],
+        [
+          "小さい学校"
+        ]
+      ],
+      "jpTitle": "大きさ：大きい・小さい",
+      "summary": "Modifying facilities and objects by size.",
+      "bullets": [
+        "大きい (おおきい) · Big / large → 大きい学校 (big school)",
+        "小さい (ちいさい) · Small / little → 小さい学校 (small school)"
+      ],
+      "highlight": "Pre-nominal adjectives directly modify the following noun."
+    },
+    {
+      "slideNumber": 17,
+      "title": "Hair: 髪が長い and 髪が短い",
+      "blocks": [
+        [
+          "髪・Hair"
+        ],
+        [
+          "Nikki JP Class 464   17"
+        ],
+        [
+          "髪が長い"
+        ],
+        [
+          "かみが ながい"
+        ],
+        [
+          "has long hair"
+        ],
+        [
+          "長い髪"
+        ],
+        [
+          "髪が短い"
+        ],
+        [
+          "かみが みじかい"
+        ],
+        [
+          "has short hair"
+        ],
+        [
+          "短い髪"
+        ]
+      ],
+      "jpTitle": "髪：長い・短い",
+      "summary": "Describing hair length.",
+      "bullets": [
+        "髪が長い (かみが ながい) · Has long hair → 長い髪 (long hair)",
+        "髪が短い (かみが みじかい) · Has short hair → 短い髪 (short hair)"
+      ],
+      "highlight": "髪 (かみ) specifically means hair on the head."
+    },
+    {
+      "slideNumber": 18,
+      "title": "Describing People: Adjective + Noun Construction",
+      "blocks": [
+        [
+          "人の説明・Describing a person"
+        ],
+        [
+          "Nikki JP Class 464   18"
+        ],
+        [
+          "この男の人は背が高いです。"
+        ],
+        [
+          "背が高い男の人"
+        ],
+        [
+          "この女の人は髪が長いです。"
+        ],
+        [
+          "髪が長い女の人"
+        ],
+        [
+          "高い ＋ 人　　長い ＋ 髪"
+        ]
+      ],
+      "jpTitle": "人の説明：形容詞＋名詞の形",
+      "summary": "Comparing predicative sentences and noun-modifying clauses.",
+      "bullets": [
+        "Predicative: この男の人は背が高いです。 (This man is tall.)",
+        "Noun-modifying: 背が高い男の人 (The tall man)",
+        "Predicative: この女の人は髪が長いです。 (This woman has long hair.)",
+        "Noun-modifying: 髪が長い女の人 (The woman with long hair)"
+      ],
+      "highlight": "In Japanese, relative clauses and adjectives precede the noun without needing 'who is' or 'that is'."
+    },
+    {
+      "slideNumber": 19,
+      "title": "Which Person?: どの人ですか？",
+      "blocks": [
+        [
+          "どの人ですか？・Which person?"
+        ],
+        [
+          "Nikki JP Class 464   19"
+        ],
+        [
+          "背が高い男の人はどの人ですか？"
+        ],
+        [
+          "Which person is the tall man?"
+        ],
+        [
+          "Bの人です。"
+        ],
+        [
+          "Bの人は背が高いです。"
+        ]
+      ],
+      "jpTitle": "どの人ですか？の質問と回答",
+      "summary": "Identifying an individual out of a group.",
+      "bullets": [
+        "Question: 背が高い男の人はどの人ですか？ (Which person is the tall man?)",
+        "Answer: Bの人です。 (It is person B.)",
+        "Explanation: Bの人は背が高いです。 (Person B is tall.)"
+      ],
+      "highlight": "どの人 (dono hito) means 'which person?' among three or more choices."
+    },
+    {
+      "slideNumber": 20,
+      "title": "Five Student Profiles: Dossiers A to E",
+      "blocks": [
+        [
+          "５人のプロフィール・Five profiles"
+        ],
+        [
+          "Nikki JP Class 464   20"
+        ],
+        [
+          "A　けん"
+        ],
+        [
+          "男の人　大学生"
+        ],
+        [
+          "背が高い。髪が短い。"
+        ],
+        [
+          "B　みあ"
+        ],
+        [
+          "女の人　大学生"
+        ],
+        [
+          "背が低い。髪が長い。"
+        ],
+        [
+          "C　たく"
+        ],
+        [
+          "男の子　中学生"
+        ],
+        [
+          "背が高い。髪が短い。"
+        ],
+        [
+          "D　ゆい"
+        ],
+        [
+          "女の子　小学生"
+        ],
+        [
+          "背が低い。髪が長い。"
+        ],
+        [
+          "E　りな"
+        ],
+        [
+          "女の子　高校生"
+        ],
+        [
+          "背が高い。髪が短い。"
+        ]
+      ],
+      "jpTitle": "5人のプロフィール：A〜E",
+      "summary": "Detailed characteristics for five students in the Nikki JP cohort.",
+      "bullets": [
+        "A けん: 男の人, 大学生, 背が高い, 髪が短い (Ken: tall male university student with short hair)",
+        "B みあ: 女の人, 大学生, 背が低い, 髪が長い (Mia: short female university student with long hair)",
+        "C たく: 男の子, 中学生, 背が高い, 髪が短い (Taku: tall middle-school boy with short hair)",
+        "D ゆい: 女の子, 小学生, 背が低い, 髪が長い (Yui: short elementary-school girl with long hair)",
+        "E りな: 女の子, 高校生, 背が高い, 髪が短い (Rina: tall high-school girl with short hair)"
+      ],
+      "highlight": "Every student profile is a unique combination of age tier, gender, height, and hairstyle."
+    },
+    {
+      "slideNumber": 21,
+      "title": "Who Matches?: 5 Deduction Questions",
+      "blocks": [
+        [
+          "プロフィールから・Who matches?"
+        ],
+        [
+          "Nikki JP Class 464   21"
+        ],
+        [
+          "① 背が高い男の人はだれですか？"
+        ],
+        [
+          "② 髪が長い女の人はだれですか？"
+        ],
+        [
+          "③ 中学生の男の子はだれですか？"
+        ],
+        [
+          "④ 小学生の女の子はだれですか？"
+        ],
+        [
+          "⑤ 髪が短い高校生はだれですか？"
+        ]
+      ],
+      "jpTitle": "プロフィールクイズ：だれですか？",
+      "summary": "Five logic questions matching descriptions to profiles A through E.",
+      "bullets": [
+        "① 背が高い男の人はだれですか？ → けん (Ken)",
+        "② 髪が長い女の人はだれですか？ → みあ (Mia)",
+        "③ 中学生の男の子はだれですか？ → たく (Taku)",
+        "④ 小学生の女の子はだれですか？ → ゆい (Yui)",
+        "⑤ 髪が短い高校生はだれですか？ → りな (Rina)"
+      ],
+      "highlight": "Cross-reference each attribute carefully to identify the matching individual."
+    },
+    {
+      "slideNumber": 22,
+      "title": "Picture Questions ①: People and Height",
+      "blocks": [
+        [
+          "写真で質問 ①・People and height"
+        ],
+        [
+          "Nikki JP Class 464   22"
+        ],
+        [
+          "A"
+        ],
+        [
+          "画像 A"
+        ],
+        [
+          "B"
+        ],
+        [
+          "画像 B"
+        ],
+        [
+          "C"
+        ],
+        [
+          "画像 C"
+        ],
+        [
+          "D"
+        ],
+        [
+          "画像 D"
+        ],
+        [
+          "E"
+        ],
+        [
+          "画像 E"
+        ],
+        [
+          "1  男の人はどの人ですか？"
+        ],
+        [
+          "2  女の人はどの人ですか？"
+        ],
+        [
+          "3  男の子はどの人ですか？"
+        ],
+        [
+          "4  女の子はどの人ですか？"
+        ],
+        [
+          "5  背が高い男の人はどの人ですか？"
+        ]
+      ],
+      "jpTitle": "写真で質問 ①：人と背の高さ",
+      "summary": "Visual identification questions.",
+      "bullets": [
+        "1. 男の人はどの人ですか？",
+        "2. 女の人はどの人ですか？",
+        "3. 男の子はどの人ですか？",
+        "4. 女の子はどの人ですか？",
+        "5. 背が高い男の人はどの人ですか？"
+      ],
+      "highlight": "Connect spoken descriptions directly to visual traits."
+    },
+    {
+      "slideNumber": 23,
+      "title": "Picture Questions ②: Hair and Color",
+      "blocks": [
+        [
+          "写真で質問 ②・Hair and colour"
+        ],
+        [
+          "Nikki JP Class 464   23"
+        ],
+        [
+          "A"
+        ],
+        [
+          "画像 A"
+        ],
+        [
+          "B"
+        ],
+        [
+          "画像 B"
+        ],
+        [
+          "C"
+        ],
+        [
+          "画像 C"
+        ],
+        [
+          "D"
+        ],
+        [
+          "画像 D"
+        ],
+        [
+          "E"
+        ],
+        [
+          "画像 E"
+        ],
+        [
+          "1  髪が長い人はどの人ですか？"
+        ],
+        [
+          "2  髪が短い男の子はどの人ですか？"
+        ],
+        [
+          "3  背が低い女の人はどの人ですか？"
+        ],
+        [
+          "4  赤いかばんの人はどの人ですか？"
+        ],
+        [
+          "5  青い本の人はどの人ですか？"
+        ]
+      ],
+      "jpTitle": "写真で質問 ②：髪と持ち物の色",
+      "summary": "Visual identification by accessory colours and hair length.",
+      "bullets": [
+        "1. 髪が長い人はどの人ですか？",
+        "2. 髪が短い男の子はどの人ですか？",
+        "3. 背が低い女の人はどの人ですか？",
+        "4. 赤いかばんの人はどの人ですか？",
+        "5. 青い本の人はどの人ですか？"
+      ],
+      "highlight": "Compound multiple clues: gender + accessory colour + hairstyle."
+    },
+    {
+      "slideNumber": 24,
+      "title": "Actions at School",
+      "blocks": [
+        [
+          "学校で何をしますか？・Actions"
+        ],
+        [
+          "Nikki JP Class 464   24"
+        ],
+        [
+          "読む"
+        ],
+        [
+          "よむ"
+        ],
+        [
+          "read"
+        ],
+        [
+          "本を読みます。"
+        ],
+        [
+          "書く"
+        ],
+        [
+          "かく"
+        ],
+        [
+          "write"
+        ],
+        [
+          "名前を書きます。"
+        ],
+        [
+          "話す"
+        ],
+        [
+          "はなす"
+        ],
+        [
+          "speak"
+        ],
+        [
+          "日本語を話します。"
+        ]
+      ],
+      "jpTitle": "学校で何をしますか？",
+      "summary": "Three primary actions performed by students in Japanese schools.",
+      "bullets": [
+        "読む (よむ) · Read → 本を読みます。 (I read books.)",
+        "書く (かく) · Write → 名前を書きます。 (I write names.)",
+        "話す (はなす) · Speak → 日本語を話します。 (I speak Japanese.)"
+      ],
+      "highlight": "These three actions are universal across all education levels."
+    },
+    {
+      "slideNumber": 25,
+      "title": "School Sentences: Particles in Real Context",
+      "blocks": [
+        [
+          "学校の文・Particles in context"
+        ],
+        [
+          "Nikki JP Class 464   25"
+        ],
+        [
+          "は　みあは大学生です。"
+        ],
+        [
+          "の　ゆいのかばんは赤いです。"
+        ],
+        [
+          "に　午前八時に学校へ行きます。"
+        ],
+        [
+          "で　学校で日本語を話します。"
+        ],
+        [
+          "を　本を読みます。"
+        ]
+      ],
+      "jpTitle": "学校の文：文脈で覚える5つの助詞",
+      "summary": "Mastering は, の, に, で, and を through school examples.",
+      "bullets": [
+        "は (Topic): みあは大学生です。 (Mia is a college student.)",
+        "の (Possession): ゆいのかばんは赤いです。 (Yui's bag is red.)",
+        "に (Time/Destination): 午前八時に学校へ行きます。 (At 8:00 AM I go to school.)",
+        "で (Location of action): 学校で日本語を話します。 (At school I speak Japanese.)",
+        "を (Object): 本を読みます。 (I read a book.)"
+      ],
+      "highlight": "Each particle has a distinct grammatical role: は (topic), の ('s), に (at time), で (location of doing), を (object)."
+    },
+    {
+      "slideNumber": 26,
+      "title": "Longer Sentences: Particle Flow",
+      "blocks": [
+        [
+          "長い文・Longer sentences"
+        ],
+        [
+          "Nikki JP Class 464   26"
+        ],
+        [
+          "① 月曜日　午前八時　小学校　行きます"
+        ],
+        [
+          "② 中学生　学校　青い本　読みます"
+        ],
+        [
+          "③ 女の子　かばん　赤い"
+        ],
+        [
+          "④ 先生　学校　名前　書きます"
+        ],
+        [
+          "⑤ 大学生　午後三時　日本語　話します"
+        ]
+      ],
+      "jpTitle": "長い文の組み立て練習",
+      "summary": "Assembling complete complex thoughts from vocabulary tiles.",
+      "bullets": [
+        "① 月曜日、午前八時に小学校へ行きます。 (On Monday, at 8:00 AM I go to elementary school.)",
+        "② 中学生は学校で青い本を読みます。 (Middle school students read blue books at school.)",
+        "③ 女の子のかばんは赤いです。 (The girl's bag is red.)",
+        "④ 先生は学校で名前を書きます。 (The teacher writes names at school.)",
+        "⑤ 大学生は午後三時に日本語を話します。 (University students speak Japanese at 3:00 PM.)"
+      ],
+      "highlight": "Particles glue the sentence together into natural, rhythmic Japanese."
+    },
+    {
+      "slideNumber": 27,
+      "title": "Reading Passage: A School Morning (ゆい)",
+      "blocks": [
+        [
+          "読んでみよう・A school morning"
+        ],
+        [
+          "Nikki JP Class 464   27"
+        ],
+        [
+          "今日は月曜日です。"
+        ],
+        [
+          "ゆいは小学二年生です。"
+        ],
+        [
+          "午前八時に学校へ行きます。"
+        ],
+        [
+          "ゆいのかばんは赤いです。"
+        ],
+        [
+          "学校で青い本を読みます。"
+        ]
+      ],
+      "jpTitle": "読んでみよう：学校の朝（ゆい）",
+      "summary": "A 5-sentence reading story about Yui's Monday morning at school.",
+      "bullets": [
+        "今日は月曜日です。 (Today is Monday.)",
+        "ゆいは小学二年生です。 (Yui is a 2nd grade elementary student.)",
+        "午前八時に学校へ行きます。 (At 8:00 AM she goes to school.)",
+        "ゆいのかばんは赤いです。 (Yui's bag is red.)",
+        "学校で青い本を読みます。 (At school she reads a blue book.)"
+      ],
+      "highlight": "All 7 classes converge in this comprehensive morning story."
+    },
+    {
+      "slideNumber": 28,
+      "title": "Reading Comprehension: 5 Questions",
+      "blocks": [
+        [
+          "読んだあと・Five questions"
+        ],
+        [
+          "Nikki JP Class 464   28"
+        ],
+        [
+          "① 今日は何曜日ですか？"
+        ],
+        [
+          "② ゆいは何年生ですか？"
+        ],
+        [
+          "③ 何時に学校へ行きますか？"
+        ],
+        [
+          "④ かばんは何色ですか？"
+        ],
+        [
+          "⑤ 学校で何を読みますか？"
+        ]
+      ],
+      "jpTitle": "読んだあとの5つの質問",
+      "summary": "Checking factual comprehension of Yui's school day.",
+      "bullets": [
+        "① 今日は何曜日ですか？ → 月曜日です。",
+        "② ゆいは何年生ですか？ → 小学二年生です。",
+        "③ 何時に学校へ行きますか？ → 午前八時です。",
+        "④ かばんは何色ですか？ → 赤です。",
+        "⑤ 学校で何を読みますか？ → 青い本です。"
+      ],
+      "highlight": "Answer each item accurately based on the passage text."
+    },
+    {
+      "slideNumber": 29,
+      "title": "School Interview Dialogue",
+      "blocks": [
+        [
+          "会話・School interview"
+        ],
+        [
+          "Nikki JP Class 464   29"
+        ],
+        [
+          "A：大学生ですか？"
+        ],
+        [
+          "B：はい、大学生です。"
+        ],
+        [
+          "A：何時に学校へ行きますか？"
+        ],
+        [
+          "B：毎日、午前九時に行きます。"
+        ],
+        [
+          "A：学校で何をしますか？"
+        ],
+        [
+          "B：本を読みます。日本語を話します。"
+        ]
+      ],
+      "jpTitle": "会話：学校インタビュー",
+      "summary": "Realistic natural dialogue between two students.",
+      "bullets": [
+        "A：大学生ですか？ (Are you a college student?)",
+        "B：はい、大学生です。 (Yes, I am a college student.)",
+        "A：何時に学校へ行きますか？ (What time do you go to school?)",
+        "B：毎日、午前九時に行きます。 (I go every day at 9:00 AM.)",
+        "A：学校で何をしますか？ (What do you do at school?)",
+        "B：本を読みます。日本語を話します。 (I read books and speak Japanese.)"
+      ],
+      "highlight": "Notice '毎日' (まいにち · every day) added to describe routine frequency."
+    },
+    {
+      "slideNumber": 30,
+      "title": "5-Student Classroom Speaking Exchange",
+      "blocks": [
+        [
+          "５人で話そう・Your own answers"
+        ],
+        [
+          "Nikki JP Class 464   30"
+        ],
+        [
+          "① 学生ですか？　先生ですか？"
+        ],
+        [
+          "② 何時に学校へ行きますか？"
+        ],
+        [
+          "③ 学校で何をしますか？"
+        ],
+        [
+          "④ あなたのかばんは何色ですか？"
+        ],
+        [
+          "⑤ 何を読むのが好きですか？"
+        ]
+      ],
+      "jpTitle": "5人で話そう：自分の答え",
+      "summary": "Personal interview questions for each student.",
+      "bullets": [
+        "① 学生ですか？ 先生ですか？ (Are you a student or a teacher?)",
+        "② 何時に学校へ行きますか？ (What time do you go to school?)",
+        "③ 学校で何をしますか？ (What do you do at school?)",
+        "④ あなたのかばんは何色ですか？ (What colour is your bag?)",
+        "⑤ 何を読むのが好きですか？ (What do you like reading?)"
+      ],
+      "highlight": "Personalize the Japanese patterns with your own true life circumstances."
+    },
+    {
+      "slideNumber": 31,
+      "title": "Kanji Combination Mix: Final Compound Matrix",
+      "blocks": [
+        [
+          "漢字を組み合わせよう・Kanji mix"
+        ],
+        [
+          "Nikki JP Class 464   31"
+        ],
+        [
+          "① 学 ＋ 校　　　② 大 ＋ 学"
+        ],
+        [
+          "③ 学 ＋ 生　　　④ 先 ＋ 生"
+        ],
+        [
+          "⑤ 高 ＋ 校"
+        ],
+        [
+          "もう５つ・Five more"
+        ],
+        [
+          "小＋学校　中＋学校　大学＋生　男＋の子　女＋の子"
+        ]
+      ],
+      "jpTitle": "漢字を組み合わせよう：総復習",
+      "summary": "Comprehensive overview of all compound kanji taught across the course.",
+      "bullets": [
+        "① 学 ＋ 校 → 学校 (がっこう · school)",
+        "② 大 ＋ 学 → 大学 (だいがく · university)",
+        "③ 学 ＋ 生 → 学生 (がくせい · student)",
+        "④ 先 ＋ 生 → 先生 (せんせい · teacher)",
+        "⑤ 高 ＋ 校 → 高校 (こうこう · high school)",
+        "Five more: 小学校 (elementary school), 中学校 (middle school), 大学生 (college student), 男の子 (boy), 女の子 (girl)"
+      ],
+      "highlight": "Look at how much Japanese you can express using just 10 foundational kanji!"
+    },
+    {
+      "slideNumber": 32,
+      "title": "Homework & Next Steps",
+      "blocks": [
+        [
+          "宿題・Homework"
+        ],
+        [
+          "Nikki JP Class 464   32"
+        ],
+        [
+          "① 学校や学生のことを一文。"
+        ],
+        [
+          "② 人の説明を一文。"
+        ],
+        [
+          "③ 色を使って一文。"
+        ],
+        [
+          "④ 曜日や時間を使って一文。"
+        ],
+        [
+          "⑤ 学校ですることを一文。"
+        ],
+        [
+          "Five sentences. Read them aloud next class."
+        ]
+      ],
+      "jpTitle": "宿題・自主練習",
+      "summary": "Final assignment consolidating all seven classes of Nikki's course.",
+      "bullets": [
+        "① 学校や学生のことを一文。 (One sentence about school or students.)",
+        "② 人の説明を一文。 (One sentence describing a person's appearance.)",
+        "③ 色を使って一文。 (One sentence using a colour.)",
+        "④ 曜日や時間を使って一文。 (One sentence using weekdays and time.)",
+        "⑤ 学校ですることを一文。 (One sentence about what you do at school.)",
+        "Five sentences in total. Read them aloud in the next class!"
+      ],
+      "highlight": "Congratulations on completing all 7 days of Nikki's Japanese course!"
+    }
+  ],
+  "title": "School, People, Descriptive Modifiers & Particles Mastery",
+  "jpTitle": "第7回：学校と人・男と女・小学校〜大学・背の高さ・髪・助詞・読解",
+  "vocabulary": [
+    {
+      "id": "v7-1",
+      "kanji": "男",
+      "furigana": "おとこ",
+      "romaji": "otoko",
+      "english": "male, man",
+      "type": "Noun",
+      "example": "男の人。"
+    },
+    {
+      "id": "v7-2",
+      "kanji": "女",
+      "furigana": "おんな",
+      "romaji": "onna",
+      "english": "female, woman",
+      "type": "Noun",
+      "example": "女の人。"
+    },
+    {
+      "id": "v7-3",
+      "kanji": "男の人",
+      "furigana": "おとこのひと",
+      "romaji": "otoko no hito",
+      "english": "man",
+      "type": "Noun",
+      "example": "この男の人は背が高いです。"
+    },
+    {
+      "id": "v7-4",
+      "kanji": "女の人",
+      "furigana": "おんなのひと",
+      "romaji": "onna no hito",
+      "english": "woman",
+      "type": "Noun",
+      "example": "この女の人は髪が長いです。"
+    },
+    {
+      "id": "v7-5",
+      "kanji": "男の子",
+      "furigana": "おとこのこ",
+      "romaji": "otoko no ko",
+      "english": "boy",
+      "type": "Noun",
+      "example": "男の子が走ります。"
+    },
+    {
+      "id": "v7-6",
+      "kanji": "女の子",
+      "furigana": "おんなのこ",
+      "romaji": "onna no ko",
+      "english": "girl",
+      "type": "Noun",
+      "example": "女の子のかばんは赤いです。"
+    },
+    {
+      "id": "v7-7",
+      "kanji": "子ども",
+      "furigana": "こども",
+      "romaji": "kodomo",
+      "english": "child, children",
+      "type": "Noun",
+      "example": "子どもが公園にいます。"
+    },
+    {
+      "id": "v7-8",
+      "kanji": "学校",
+      "furigana": "がっこう",
+      "romaji": "gakkou",
+      "english": "school",
+      "type": "Noun",
+      "example": "午前八時に学校へ行きます。"
+    },
+    {
+      "id": "v7-9",
+      "kanji": "小学校",
+      "furigana": "しょうがっこう",
+      "romaji": "shougakkou",
+      "english": "elementary school",
+      "type": "Noun",
+      "example": "小学校に行きます。"
+    },
+    {
+      "id": "v7-10",
+      "kanji": "中学校",
+      "furigana": "ちゅうがっこう",
+      "romaji": "chuugakkou",
+      "english": "junior high school",
+      "type": "Noun",
+      "example": "中学校の先生。"
+    },
+    {
+      "id": "v7-11",
+      "kanji": "高校",
+      "furigana": "こうこう",
+      "romaji": "koukou",
+      "english": "high school",
+      "type": "Noun",
+      "example": "高校の学生。"
+    },
+    {
+      "id": "v7-12",
+      "kanji": "大学",
+      "furigana": "だいがく",
+      "romaji": "daigaku",
+      "english": "university, college",
+      "type": "Noun",
+      "example": "大学で勉強します。"
+    },
+    {
+      "id": "v7-13",
+      "kanji": "小学生",
+      "furigana": "しょうがくせい",
+      "romaji": "shougakusei",
+      "english": "elementary school student",
+      "type": "Noun",
+      "example": "ゆいは小学生です。"
+    },
+    {
+      "id": "v7-14",
+      "kanji": "中学生",
+      "furigana": "ちゅうがくせい",
+      "romaji": "chuugakusei",
+      "english": "middle school student",
+      "type": "Noun",
+      "example": "たくは中学生です。"
+    },
+    {
+      "id": "v7-15",
+      "kanji": "高校生",
+      "furigana": "こうこうせい",
+      "romaji": "koukousei",
+      "english": "high school student",
+      "type": "Noun",
+      "example": "りなは高校生です。"
+    },
+    {
+      "id": "v7-16",
+      "kanji": "大学生",
+      "furigana": "だいがくせい",
+      "romaji": "daigakusei",
+      "english": "university student",
+      "type": "Noun",
+      "example": "けん、みあは大学生です。"
+    },
+    {
+      "id": "v7-17",
+      "kanji": "二年生",
+      "furigana": "にねんせい",
+      "romaji": "ninensei",
+      "english": "2nd year student",
+      "type": "Noun",
+      "example": "ゆいは小学二年生です。"
+    },
+    {
+      "id": "v7-18",
+      "kanji": "背が高い",
+      "furigana": "せが たかい",
+      "romaji": "se ga takai",
+      "english": "tall (stature)",
+      "type": "Adjective",
+      "example": "背が高い男の人。"
+    },
+    {
+      "id": "v7-19",
+      "kanji": "背が低い",
+      "furigana": "せが ひくい",
+      "romaji": "se ga hikui",
+      "english": "short (stature)",
+      "type": "Adjective",
+      "example": "背が低い女の人。"
+    },
+    {
+      "id": "v7-20",
+      "kanji": "髪が長い",
+      "furigana": "かみが ながい",
+      "romaji": "kami ga nagai",
+      "english": "has long hair",
+      "type": "Adjective",
+      "example": "髪が長い女の人。"
+    },
+    {
+      "id": "v7-21",
+      "kanji": "髪が短い",
+      "furigana": "かみが みじかい",
+      "romaji": "kami ga mijikai",
+      "english": "has short hair",
+      "type": "Adjective",
+      "example": "髪が短い男の人。"
+    },
+    {
+      "id": "v7-22",
+      "kanji": "大きい",
+      "furigana": "おおきい",
+      "romaji": "ookii",
+      "english": "big, large",
+      "type": "Adjective",
+      "example": "大きい学校。"
+    },
+    {
+      "id": "v7-23",
+      "kanji": "小さい",
+      "furigana": "ちいさい",
+      "romaji": "chiisai",
+      "english": "small, little",
+      "type": "Adjective",
+      "example": "小さい学校。"
+    },
+    {
+      "id": "v7-24",
+      "kanji": "毎日",
+      "furigana": "まいにち",
+      "romaji": "mainichi",
+      "english": "every day",
+      "type": "Noun",
+      "example": "毎日、午前九時に行きます。"
+    },
+    {
+      "id": "v7-25",
+      "kanji": "かばん",
+      "furigana": "かばん",
+      "romaji": "kaban",
+      "english": "bag",
+      "type": "Noun",
+      "example": "ゆいのかばんは赤いです。"
+    }
+  ],
+  "kanji": [
+    {
+      "kanji": "男",
+      "onyomi": "ダン・ナン",
+      "kunyomi": "おとこ",
+      "meaning": "male, man",
+      "strokes": 7,
+      "examples": [
+        "男の人",
+        "男の子"
+      ]
+    },
+    {
+      "kanji": "女",
+      "onyomi": "ジョ・ニョ",
+      "kunyomi": "おんな・め",
+      "meaning": "female, woman",
+      "strokes": 3,
+      "examples": [
+        "女の人",
+        "女の子"
+      ]
+    },
+    {
+      "kanji": "子",
+      "onyomi": "シ・ス",
+      "kunyomi": "こ",
+      "meaning": "child",
+      "strokes": 3,
+      "examples": [
+        "子ども",
+        "男の子",
+        "女の子"
+      ]
+    },
+    {
+      "kanji": "校",
+      "onyomi": "コウ",
+      "kunyomi": "",
+      "meaning": "school, examine",
+      "strokes": 10,
+      "examples": [
+        "学校",
+        "小学校",
+        "中学校",
+        "高校"
+      ]
+    },
+    {
+      "kanji": "高",
+      "onyomi": "コウ",
+      "kunyomi": "たか(い)",
+      "meaning": "high, expensive, tall",
+      "strokes": 10,
+      "examples": [
+        "高校",
+        "背が高い",
+        "高い"
+      ]
+    },
+    {
+      "kanji": "低",
+      "onyomi": "テイ",
+      "kunyomi": "ひく(い)",
+      "meaning": "low, short",
+      "strokes": 7,
+      "examples": [
+        "背が低い",
+        "低い"
+      ]
+    },
+    {
+      "kanji": "長",
+      "onyomi": "チョウ",
+      "kunyomi": "なが(い)",
+      "meaning": "long, leader",
+      "strokes": 8,
+      "examples": [
+        "髪が長い",
+        "長い髪"
+      ]
+    },
+    {
+      "kanji": "短",
+      "onyomi": "タン",
+      "kunyomi": "みじか(い)",
+      "meaning": "short",
+      "strokes": 12,
+      "examples": [
+        "髪が短い",
+        "短い髪"
+      ]
+    },
+    {
+      "kanji": "小",
+      "onyomi": "ショウ",
+      "kunyomi": "ちい(さい)・こ・お",
+      "meaning": "small, little",
+      "strokes": 3,
+      "examples": [
+        "小学校",
+        "小学生",
+        "小さい"
+      ]
+    },
+    {
+      "kanji": "中",
+      "onyomi": "チュウ",
+      "kunyomi": "なか",
+      "meaning": "middle, inside",
+      "strokes": 4,
+      "examples": [
+        "中学校",
+        "中学生"
+      ]
+    },
+    {
+      "kanji": "大",
+      "onyomi": "ダイ・タイ",
+      "kunyomi": "おお(きい)",
+      "meaning": "big, large",
+      "strokes": 3,
+      "examples": [
+        "大学",
+        "大学生",
+        "大きい"
+      ]
+    },
+    {
+      "kanji": "髪",
+      "onyomi": "ハツ",
+      "kunyomi": "かみ",
+      "meaning": "hair (on head)",
+      "strokes": 14,
+      "examples": [
+        "髪",
+        "髪が長い"
+      ]
+    },
+    {
+      "kanji": "背",
+      "onyomi": "ハイ",
+      "kunyomi": "せ・せい・そむ(く)",
+      "meaning": "back, stature",
+      "strokes": 9,
+      "examples": [
+        "背が高い",
+        "背が低い"
+      ]
+    },
+    {
+      "kanji": "毎",
+      "onyomi": "マイ",
+      "kunyomi": "ごと",
+      "meaning": "every",
+      "strokes": 6,
+      "examples": [
+        "毎日"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2815 @@
+{
+  "id": "day-5",
+  "dayNumber": 5,
+  "classCode": "Class 444",
+  "theme": "Action Verbs, Body Clues, Calendar Dates 1–10 & Telling Time",
+  "japaneseTheme": "動作・漢字の身体ヒント・日付（1日〜10日）・時刻と分 (Dōsa, karada hinto, hizuke, jikoku to fun)",
+  "subtitle": "Discover hidden body parts in action verbs (耳, 目, 言), master the irregular 1日〜10日 date readings, and tell exact clock times",
+  "description": "Master 6 core action verbs (見る, 聞く, 話す, 読む, 書く, 行く/帰る), sensory body clues (目, 耳, 口, 舌), 1st to 10th irregular calendar dates, telling time (時, 分, 半, 午前, 午後), and Yuki’s park day reading.",
+  "badge": "Class 444 · Action Verbs & Time",
+  "goals": [
+    "Spot anatomical clues in action kanji: 耳 (ear) in 聞く, 目 (eye) in 見る, 言 (speech) in 話す & 読む",
+    "Master the 6 core action verbs: 見る, 聞く, 話す, 読む, 書く, 行く",
+    "Learn irregular calendar date readings for 1日 to 10日 (ついたち〜とおか)",
+    "Tell exact clock time: Hours (1時〜12時 with 4時 よじ, 7時 しちじ, 9時 くじ) & Minutes (1分〜10分)",
+    "Construct full Japanese sentences: [Person] は [Time] に [Place] で [Object] を [Verb]"
+  ],
+  "keyHighlights": [
+    "Kanji Clue Superpower: You don't need to guess verb meanings from scratch! Look for the body radical: 耳 (ear) = 聞く (listen), 目 (eye) = 見る (see), 言 (words) = 話す (speak) and 読む (read)!",
+    "Special Dates 1-10: 1日 ついたち, 2日 ふつか, 3日 みっか, 4日 よっか, 5日 いつか, 6日 むいか, 7日 なのか, 8日 ようか, 9日 ここのか, 10日 とおか. Notice the rhythm!",
+    "Irregular Hours: 4 o'clock is よじ (never 'yonji'), 7 o'clock is しちじ (rarely 'nanaji'), and 9 o'clock is くじ (never 'kyuuji')!"
+  ],
+  "kanjiList": [
+    {
+      "kanji": "見",
+      "meaning": "see, look, watch",
+      "onyomi": "ケン (ken)",
+      "kunyomi": "み(る)・み(せる) (mi(ru) / mi(seru))",
+      "strokes": 7,
+      "radical": "見",
+      "radicalClue": "Core element: 見",
+      "examples": [
+        {
+          "word": "見る",
+          "reading": "みる (miru)",
+          "meaning": "to see / watch",
+          "romaji": "miru"
+        },
+        {
+          "word": "見ます",
+          "reading": "みます (mimasu)",
+          "meaning": "see / watch (polite)",
+          "romaji": "mimasu"
+        }
+      ]
+    },
+    {
+      "kanji": "聞",
+      "meaning": "hear, listen, ask",
+      "onyomi": "ブン・モン (bun / mon)",
+      "kunyomi": "き(く)・き(こえる) (ki(ku) / ki(koeru))",
+      "strokes": 14,
+      "radical": "聞",
+      "radicalClue": "Core element: 聞",
+      "examples": [
+        {
+          "word": "聞く",
+          "reading": "きく (kiku)",
+          "meaning": "to hear / listen",
+          "romaji": "kiku"
+        },
+        {
+          "word": "聞きます",
+          "reading": "ききます (kikimasu)",
+          "meaning": "listen (polite)",
+          "romaji": "kikimasu"
+        }
+      ]
+    },
+    {
+      "kanji": "話",
+      "meaning": "talk, speak, story",
+      "onyomi": "ワ (wa)",
+      "kunyomi": "はな(す)・はなし (hana(su) / hanashi)",
+      "strokes": 13,
+      "radical": "話",
+      "radicalClue": "Core element: 話",
+      "examples": [
+        {
+          "word": "話す",
+          "reading": "はなす (hanasu)",
+          "meaning": "to speak / talk",
+          "romaji": "hanasu"
+        },
+        {
+          "word": "話します",
+          "reading": "はなします (hanashimasu)",
+          "meaning": "speak (polite)",
+          "romaji": "hanashimasu"
+        }
+      ]
+    },
+    {
+      "kanji": "読",
+      "meaning": "read",
+      "onyomi": "ドク・トク (doku / toku)",
+      "kunyomi": "よ(む) (yo(mu))",
+      "strokes": 14,
+      "radical": "読",
+      "radicalClue": "Core element: 読",
+      "examples": [
+        {
+          "word": "読む",
+          "reading": "よむ (yomu)",
+          "meaning": "to read",
+          "romaji": "yomu"
+        },
+        {
+          "word": "読みます",
+          "reading": "よみます (yomimasu)",
+          "meaning": "read (polite)",
+          "romaji": "yomimasu"
+        }
+      ]
+    },
+    {
+      "kanji": "書",
+      "meaning": "write, book",
+      "onyomi": "ショ (sho)",
+      "kunyomi": "か(く) (ka(ku))",
+      "strokes": 10,
+      "radical": "書",
+      "radicalClue": "Core element: 書",
+      "examples": [
+        {
+          "word": "書く",
+          "reading": "かく (kaku)",
+          "meaning": "to write",
+          "romaji": "kaku"
+        },
+        {
+          "word": "書きます",
+          "reading": "かきます (kakimasu)",
+          "meaning": "write (polite)",
+          "romaji": "kakimasu"
+        }
+      ]
+    },
+    {
+      "kanji": "行",
+      "meaning": "go, act",
+      "onyomi": "コウ・ギョウ (kou / gyou)",
+      "kunyomi": "い(く)・ゆ(く)・おこな(う) (i(ku) / yu(ku) / okona(u))",
+      "strokes": 6,
+      "radical": "行",
+      "radicalClue": "Core element: 行",
+      "examples": [
+        {
+          "word": "行く",
+          "reading": "いく (iku)",
+          "meaning": "to go",
+          "romaji": "iku"
+        },
+        {
+          "word": "行きます",
+          "reading": "いきます (ikimasu)",
+          "meaning": "go (polite)",
+          "romaji": "ikimasu"
+        }
+      ]
+    },
+    {
+      "kanji": "帰",
+      "meaning": "return, go home",
+      "onyomi": "キ (ki)",
+      "kunyomi": "かえ(る) (kae(ru))",
+      "strokes": 10,
+      "radical": "帰",
+      "radicalClue": "Core element: 帰",
+      "examples": [
+        {
+          "word": "帰る",
+          "reading": "かえる (kaeru)",
+          "meaning": "to return / go home",
+          "romaji": "kaeru"
+        },
+        {
+          "word": "帰ります",
+          "reading": "かえります (kaerimasu)",
+          "meaning": "return (polite)",
+          "romaji": "kaerimasu"
+        }
+      ]
+    },
+    {
+      "kanji": "耳",
+      "meaning": "ear",
+      "onyomi": "ジ (ji)",
+      "kunyomi": "みみ (mimi)",
+      "strokes": 6,
+      "radical": "耳",
+      "radicalClue": "Core element: 耳",
+      "examples": [
+        {
+          "word": "耳",
+          "reading": "みみ (mimi)",
+          "meaning": "ear",
+          "romaji": "mimi"
+        }
+      ]
+    },
+    {
+      "kanji": "口",
+      "meaning": "mouth",
+      "onyomi": "コウ・ク (kou / ku)",
+      "kunyomi": "くち (kuchi)",
+      "strokes": 3,
+      "radical": "口",
+      "radicalClue": "Core element: 口",
+      "examples": [
+        {
+          "word": "口",
+          "reading": "くち (kuchi)",
+          "meaning": "mouth",
+          "romaji": "kuchi"
+        }
+      ]
+    },
+    {
+      "kanji": "目",
+      "meaning": "eye",
+      "onyomi": "モク・ボク (moku / boku)",
+      "kunyomi": "め・ま (me / ma)",
+      "strokes": 5,
+      "radical": "目",
+      "radicalClue": "Core element: 目",
+      "examples": [
+        {
+          "word": "目",
+          "reading": "め (me)",
+          "meaning": "eye",
+          "romaji": "me"
+        }
+      ]
+    },
+    {
+      "kanji": "舌",
+      "meaning": "tongue",
+      "onyomi": "ゼツ (zetsu)",
+      "kunyomi": "した (shita)",
+      "strokes": 6,
+      "radical": "舌",
+      "radicalClue": "Core element: 舌",
+      "examples": [
+        {
+          "word": "舌",
+          "reading": "した (shita)",
+          "meaning": "tongue",
+          "romaji": "shita"
+        }
+      ]
+    },
+    {
+      "kanji": "時",
+      "meaning": "time, hour",
+      "onyomi": "ジ (ji)",
+      "kunyomi": "とき (toki)",
+      "strokes": 10,
+      "radical": "時",
+      "radicalClue": "Core element: 時",
+      "examples": [
+        {
+          "word": "時間",
+          "reading": "じかん (jikan)",
+          "meaning": "time / hours",
+          "romaji": "jikan"
+        },
+        {
+          "word": "何時",
+          "reading": "なんじ (nanji)",
+          "meaning": "what time",
+          "romaji": "nanji"
+        },
+        {
+          "word": "一時",
+          "reading": "いちじ (ichiji)",
+          "meaning": "1 o clock",
+          "romaji": "ichiji"
+        }
+      ]
+    },
+    {
+      "kanji": "分",
+      "meaning": "minute, part, understand",
+      "onyomi": "フン・ブン・プン (fun / bun / pun)",
+      "kunyomi": "わ(ける) (wa(keru))",
+      "strokes": 4,
+      "radical": "分",
+      "radicalClue": "Core element: 分",
+      "examples": [
+        {
+          "word": "分",
+          "reading": "ふん / ぷん (fun / pun)",
+          "meaning": "minute / part",
+          "romaji": "fun / pun"
+        },
+        {
+          "word": "十分",
+          "reading": "じゅっぷん / じゅうぶん (juppun / juubun)",
+          "meaning": "10 minutes / enough",
+          "romaji": "juppun / juubun"
+        },
+        {
+          "word": "一分",
+          "reading": "いっぷん (ippun)",
+          "meaning": "one minute",
+          "romaji": "ippun"
+        }
+      ]
+    },
+    {
+      "kanji": "前",
+      "meaning": "before, front",
+      "onyomi": "ゼン (zen)",
+      "kunyomi": "まえ (mae)",
+      "strokes": 9,
+      "radical": "前",
+      "radicalClue": "Core element: 前",
+      "examples": [
+        {
+          "word": "午前",
+          "reading": "ごぜん (gozen)",
+          "meaning": "morning / AM",
+          "romaji": "gozen"
+        },
+        {
+          "word": "名前",
+          "reading": "なまえ (namae)",
+          "meaning": "name",
+          "romaji": "namae"
+        }
+      ]
+    },
+    {
+      "kanji": "後",
+      "meaning": "after, back, behind",
+      "onyomi": "ゴ・コウ (go / kou)",
+      "kunyomi": "のち・うし(ろ)・あと (nochi / ushi(ro) / ato)",
+      "strokes": 9,
+      "radical": "後",
+      "radicalClue": "Core element: 後",
+      "examples": [
+        {
+          "word": "午後",
+          "reading": "ごご (gogo)",
+          "meaning": "afternoon / PM",
+          "romaji": "gogo"
+        },
+        {
+          "word": "あと",
+          "reading": "あと (ato)",
+          "meaning": "after / later",
+          "romaji": "ato"
+        }
+      ]
+    },
+    {
+      "kanji": "半",
+      "meaning": "half",
+      "onyomi": "ハン (han)",
+      "kunyomi": "なか(ば) (naka(ba))",
+      "strokes": 5,
+      "radical": "半",
+      "radicalClue": "Core element: 半",
+      "examples": [
+        {
+          "word": "半",
+          "reading": "はん (han)",
+          "meaning": "half",
+          "romaji": "han"
+        },
+        {
+          "word": "一時半",
+          "reading": "いちじはん (ichijihan)",
+          "meaning": "half past 1",
+          "romaji": "ichijihan"
+        }
+      ]
+    },
+    {
+      "kanji": "今",
+      "meaning": "now",
+      "onyomi": "コン・キン (kon / kin)",
+      "kunyomi": "いま (ima)",
+      "strokes": 4,
+      "radical": "今",
+      "radicalClue": "Core element: 今",
+      "examples": [
+        {
+          "word": "今",
+          "reading": "いま (ima)",
+          "meaning": "now",
+          "romaji": "ima"
+        },
+        {
+          "word": "今日",
+          "reading": "きょう (kyou)",
+          "meaning": "today",
+          "romaji": "kyou"
+        }
+      ]
+    },
+    {
+      "kanji": "家",
+      "meaning": "house, home",
+      "onyomi": "カ・ケ (ka / ke)",
+      "kunyomi": "いえ・や (ie / ya)",
+      "strokes": 10,
+      "radical": "家",
+      "radicalClue": "Core element: 家",
+      "examples": [
+        {
+          "word": "家",
+          "reading": "いえ (ie)",
+          "meaning": "house / home",
+          "romaji": "ie"
+        }
+      ]
+    }
+  ],
+  "vocabularyList": [
+    {
+      "japanese": "見る",
+      "reading": "みる (miru)",
+      "english": "to see, watch",
+      "category": "Verb",
+      "notes": "テレビを見ます。",
+      "romaji": "miru"
+    },
+    {
+      "japanese": "聞く",
+      "reading": "きく (kiku)",
+      "english": "to listen, ask",
+      "category": "Verb",
+      "notes": "音楽を聞きます。",
+      "romaji": "kiku"
+    },
+    {
+      "japanese": "話す",
+      "reading": "はなす (hanasu)",
+      "english": "to speak, talk",
+      "category": "Verb",
+      "notes": "あきと話します。",
+      "romaji": "hanasu"
+    },
+    {
+      "japanese": "読む",
+      "reading": "よむ (yomu)",
+      "english": "to read",
+      "category": "Verb",
+      "notes": "青い本を読みます。",
+      "romaji": "yomu"
+    },
+    {
+      "japanese": "書く",
+      "reading": "かく (kaku)",
+      "english": "to write",
+      "category": "Verb",
+      "notes": "名前を書きます。",
+      "romaji": "kaku"
+    },
+    {
+      "japanese": "行く",
+      "reading": "いく (iku)",
+      "english": "to go",
+      "category": "Verb",
+      "notes": "公園へ行きます。",
+      "romaji": "iku"
+    },
+    {
+      "japanese": "帰る",
+      "reading": "かえる (kaeru)",
+      "english": "to return, go home",
+      "category": "Verb",
+      "notes": "午後五時に家へ帰ります。",
+      "romaji": "kaeru"
+    },
+    {
+      "japanese": "言う",
+      "reading": "いう (iu)",
+      "english": "to say, speak",
+      "category": "Verb",
+      "notes": "犬はワンワンといいます。",
+      "romaji": "iu"
+    },
+    {
+      "japanese": "耳",
+      "reading": "みみ (mimi)",
+      "english": "ear",
+      "category": "Noun",
+      "notes": "耳で聞きます。",
+      "romaji": "mimi"
+    },
+    {
+      "japanese": "口",
+      "reading": "くち / ぐち (kuchi / guchi)",
+      "english": "mouth",
+      "category": "Noun",
+      "notes": "口で話します。",
+      "romaji": "kuchi / guchi"
+    },
+    {
+      "japanese": "目",
+      "reading": "め (me)",
+      "english": "eye",
+      "category": "Noun",
+      "notes": "目で見る。",
+      "romaji": "me"
+    },
+    {
+      "japanese": "舌",
+      "reading": "した (shita)",
+      "english": "tongue",
+      "category": "Noun",
+      "notes": "舌を出す。",
+      "romaji": "shita"
+    },
+    {
+      "japanese": "一日",
+      "reading": "ついたち (tsuitachi)",
+      "english": "1st day of month",
+      "category": "Date",
+      "notes": "九月一日。",
+      "romaji": "tsuitachi"
+    },
+    {
+      "japanese": "二日",
+      "reading": "ふつか (futsuka)",
+      "english": "2nd day of month",
+      "category": "Date",
+      "notes": "九月二日。",
+      "romaji": "futsuka"
+    },
+    {
+      "japanese": "三日",
+      "reading": "みっか (mikka)",
+      "english": "3rd day of month",
+      "category": "Date",
+      "notes": "九月三日。",
+      "romaji": "mikka"
+    },
+    {
+      "japanese": "四日",
+      "reading": "よっか (yokka)",
+      "english": "4th day of month",
+      "category": "Date",
+      "notes": "九月四日。",
+      "romaji": "yokka"
+    },
+    {
+      "japanese": "五日",
+      "reading": "いつか (itsuka)",
+      "english": "5th day of month",
+      "category": "Date",
+      "notes": "九月五日。",
+      "romaji": "itsuka"
+    },
+    {
+      "japanese": "六日",
+      "reading": "むいか (muika)",
+      "english": "6th day of month",
+      "category": "Date",
+      "notes": "九月六日。",
+      "romaji": "muika"
+    },
+    {
+      "japanese": "七日",
+      "reading": "なのか (nanoka)",
+      "english": "7th day of month",
+      "category": "Date",
+      "notes": "九月七日。",
+      "romaji": "nanoka"
+    },
+    {
+      "japanese": "八日",
+      "reading": "ようか (youka)",
+      "english": "8th day of month",
+      "category": "Date",
+      "notes": "九月八日、火曜日です。",
+      "romaji": "youka"
+    },
+    {
+      "japanese": "九日",
+      "reading": "ここのか (kokonoka)",
+      "english": "9th day of month",
+      "category": "Date",
+      "notes": "九月九日。",
+      "romaji": "kokonoka"
+    },
+    {
+      "japanese": "十日",
+      "reading": "とおか (tooka)",
+      "english": "10th day of month",
+      "category": "Date",
+      "notes": "九月十日。",
+      "romaji": "tooka"
+    },
+    {
+      "japanese": "時",
+      "reading": "じ (ji)",
+      "english": "o'clock, hour",
+      "category": "Counter",
+      "notes": "何時ですか？",
+      "romaji": "ji"
+    },
+    {
+      "japanese": "分",
+      "reading": "ふん / ぷん (fun / pun)",
+      "english": "minute",
+      "category": "Counter",
+      "notes": "十分。",
+      "romaji": "fun / pun"
+    },
+    {
+      "japanese": "午前",
+      "reading": "ごぜん (gozen)",
+      "english": "AM, morning",
+      "category": "Noun",
+      "notes": "午前九時。",
+      "romaji": "gozen"
+    },
+    {
+      "japanese": "午後",
+      "reading": "ごご (gogo)",
+      "english": "PM, afternoon",
+      "category": "Noun",
+      "notes": "午後三時に公園へ行きます。",
+      "romaji": "gogo"
+    },
+    {
+      "japanese": "半",
+      "reading": "はん (han)",
+      "english": "half (past)",
+      "category": "Noun",
+      "notes": "四時半。",
+      "romaji": "han"
+    },
+    {
+      "japanese": "今日",
+      "reading": "きょう (kyou)",
+      "english": "today",
+      "category": "Noun",
+      "notes": "今日は何日ですか？",
+      "romaji": "kyou"
+    },
+    {
+      "japanese": "先月",
+      "reading": "せんげつ (sengetsu)",
+      "english": "last month",
+      "category": "Noun",
+      "notes": "先月日本へ行きました。",
+      "romaji": "sengetsu"
+    },
+    {
+      "japanese": "今",
+      "reading": "いま (ima)",
+      "english": "now",
+      "category": "Noun",
+      "notes": "いま何時ですか？",
+      "romaji": "ima"
+    },
+    {
+      "japanese": "音楽",
+      "reading": "おんがく (ongaku)",
+      "english": "music",
+      "category": "Noun",
+      "notes": "音楽を聞きます。",
+      "romaji": "ongaku"
+    },
+    {
+      "japanese": "テレビ",
+      "reading": "てれび (terebi)",
+      "english": "television",
+      "category": "Noun",
+      "notes": "テレビを見ます。",
+      "romaji": "terebi"
+    },
+    {
+      "japanese": "家",
+      "reading": "いえ (ie)",
+      "english": "house, home",
+      "category": "Noun",
+      "notes": "家へ帰ります。",
+      "romaji": "ie"
+    }
+  ],
+  "grammarNotes": [
+    {
+      "title": "Object Particle: を (wo / o)",
+      "structure": "",
+      "explanation": "Marks the direct receiver or object of an action verb. Placed immediately after the noun.",
+      "examples": [
+        {
+          "japanese": "本を読みます",
+          "reading": "ほんをよみます (hon o yomimasu)",
+          "english": "I read a book",
+          "romaji": "hon o yomimasu"
+        },
+        {
+          "japanese": "音楽を聞きます",
+          "reading": "おんがくをききます (ongaku o kikimasu)",
+          "english": "I listen to music",
+          "romaji": "ongaku o kikimasu"
+        },
+        {
+          "japanese": "テレビを見ます",
+          "reading": "てれびをみます (terebi o mimasu)",
+          "english": "I watch television",
+          "romaji": "terebi o mimasu"
+        }
+      ]
+    },
+    {
+      "title": "Direction Particle: へ (e)",
+      "structure": "",
+      "explanation": "Written with the hiragana 'へ' but pronounced 'e'. Indicates physical direction toward a goal or destination.",
+      "examples": [
+        {
+          "japanese": "公園へ行きます",
+          "reading": "こうえんへいきます (kouen e ikimasu)",
+          "english": "I go to the park",
+          "romaji": "kouen e ikimasu"
+        },
+        {
+          "japanese": "家へ帰ります",
+          "reading": "いえへかえります (ie e kaerimasu)",
+          "english": "I go back home",
+          "romaji": "ie e kaerimasu"
+        }
+      ]
+    },
+    {
+      "title": "Specific Time Particle: に (ni)",
+      "structure": "",
+      "explanation": "Marks specific clock times and calendar dates at which an action takes place.",
+      "examples": [
+        {
+          "japanese": "午後三時に公園へ行きます",
+          "reading": "ごごさんじにこうえんへいきます (gogo sanji ni kouen e ikimasu)",
+          "english": "At 3:00 PM I go to the park",
+          "romaji": "gogo sanji ni kouen e ikimasu"
+        },
+        {
+          "japanese": "午前八時に学校へ行きます",
+          "reading": "ごぜんはちじにがっこうへいきます (gozen hachiji ni gakkou e ikimasu)",
+          "english": "At 8:00 AM I go to school",
+          "romaji": "gozen hachiji ni gakkou e ikimasu"
+        }
+      ]
+    },
+    {
+      "title": "With / Together Particle: と (to)",
+      "structure": "",
+      "explanation": "Connects two people acting together, meaning 'with' or 'and'.",
+      "examples": [
+        {
+          "japanese": "あきと話します",
+          "reading": "あきとはなします (Aki to hanashimasu)",
+          "english": "I talk with Aki",
+          "romaji": "Aki to hanashimasu"
+        },
+        {
+          "japanese": "ゆきとあき",
+          "reading": "ゆきとあき (Yuki to Aki)",
+          "english": "Yuki and Aki",
+          "romaji": "Yuki to Aki"
+        }
+      ]
+    }
+  ],
+  "readingPassages": [
+    {
+      "title": "ゆきの火曜日 (Yuki's Tuesday Afternoon)",
+      "text": "九月八日、火曜日です。ゆきは午後三時に公園へ行きます。青い本を読みます。あきと話します。午後五時に家へ帰ります。",
+      "translation": "September 8th, Tuesday. Yuki goes to the park at 3:00 PM. She reads a blue book. She talks with Aki. At 5:00 PM she returns home.",
+      "questions": [
+        {
+          "q": "何月何日ですか？ (Nan-gatsu nan-nichi desu ka? / What date is it?)",
+          "a": "九月八日（くがつ ようか / kugatsu yōka）です。(Sep 8)"
+        },
+        {
+          "q": "何曜日ですか？ (Nan-yōbi desu ka? / What day of the week is it?)",
+          "a": "火曜日（かようび / kayōbi）です。(Tuesday)"
+        },
+        {
+          "q": "何時に公園へ行きますか？ (Nan-ji ni kōen e ikimasu ka? / What time do they go to the park?)",
+          "a": "午後三時（ごご さんじ / gogo sanji）です。(3:00 PM)"
+        },
+        {
+          "q": "本は何色ですか？ (Hon wa nani-iro desu ka? / What color is the book?)",
+          "a": "青（あお / ao）です。(Blue)"
+        },
+        {
+          "q": "ゆきは何をしますか？ (Yuki wa nani o shimasu ka? / What does Yuki do?)",
+          "a": "本を読みます。あきと話します。(Hon o yomimasu. Aki to hanashimasu. / Reads a book and talks with Aki.)"
+        }
+      ],
+      "romaji": "Kugatsu youka, kayoubi desu. Yuki wa gogo sanji ni kouen e ikimasu. Aoi hon o yomimasu. Aki to hanashimasu. Gogo goji ni ie e kaerimasu."
+    }
+  ],
+  "practiceQuiz": [
+    {
+      "question": "Which radical inside the kanji 聞く (きく / kiku - to listen) gives away its meaning?",
+      "options": [
+        "目 (め / me - eye)",
+        "耳 (みみ / mimi - ear)",
+        "口 (くち / kuchi - mouth)",
+        "手 (て / te - hand)"
+      ],
+      "correct": "耳 (みみ / mimi - ear)",
+      "explanation": "The kanji 聞 has the radical 耳 (ear) placed inside the gate 門."
+    },
+    {
+      "question": "How do you pronounce September 4th (九月四日)?",
+      "options": [
+        "くがつ よんにち (kugatsu yonnichi)",
+        "くがつ よっか (kugatsu yokka)",
+        "くがつ しにち (kugatsu shinichi)",
+        "きゅうがつ ようか (kyūgatsu yōka)"
+      ],
+      "correct": "くがつ よっか (kugatsu yokka)",
+      "explanation": "September is くがつ (kugatsu) and the 4th is よっか (yokka)."
+    },
+    {
+      "question": "How do you read 4:00 PM in Japanese?",
+      "options": [
+        "午後 よじ (gogo yoji)",
+        "午後 よんじ (gogo yonji)",
+        "午後 しじ (gogo shiji)",
+        "午前 よじ (gozen yoji)"
+      ],
+      "correct": "午後 よじ (gogo yoji)",
+      "explanation": "4 o'clock is always よじ (yoji), never yonji or shiji. PM is 午後 (gogo)."
+    },
+    {
+      "question": "What is the correct particle for \"at home\" in \"家 ___ 本を読みます (Ie ___ hon o yomimasu)\"?",
+      "options": [
+        "に (ni)",
+        "で (de)",
+        "を (o / wo)",
+        "の (no)"
+      ],
+      "correct": "で (de)",
+      "explanation": "The particle で (de) indicates the location where an action takes place."
+    }
+  ],
+  "slides": [
+    {
+      "slideNumber": 1,
+      "title": "日本語 Class 444 · Actions, Colours, Dates & Time",
+      "blocks": [
+        [
+          "日本語 Class 44⃣4"
+        ],
+        [
+          "Update: Actions・Colours・Dates・Time",
+          "(less AI slides)"
+        ],
+        [
+          "By: ニッキ"
+        ],
+        [
+          "動作"
+        ],
+        [
+          "Actions"
+        ],
+        [
+          "色"
+        ],
+        [
+          "Colours"
+        ],
+        [
+          "日付・時間"
+        ],
+        [
+          "Dates / Time"
+        ],
+        [
+          "Goal"
+        ],
+        [
+          "Recognize useful kanji, speak a little on every topic, and build short Japanese answers."
+        ],
+        [
+          "Nikki JP Class 444 · Actions / Colours / Dates / Time"
+        ],
+        [
+          "どう さ"
+        ],
+        [
+          "いろ"
+        ],
+        [
+          "ひ づけ     じ かん"
+        ]
+      ],
+      "jpTitle": "表紙：日本語 Class 444",
+      "summary": "Core update introducing everyday action verbs, colour reinforcement, calendar dates 1-10, and time.",
+      "bullets": [
+        "Topic: 動作 (Actions), 色 (Colours), 日付・時間 (Dates / Time)",
+        "Instructor: Nikki (ニッキ)",
+        "Goal: Recognize useful kanji, speak a little on every topic, and build short Japanese answers."
+      ],
+      "highlight": "Build sentences with confidence by linking the who, the thing, and the action verb."
+    },
+    {
+      "slideNumber": 2,
+      "title": "Today's Lecture Plan",
+      "blocks": [
+        [
+          "Todays Lecture"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "Today"
+        ],
+        [
+          "• 動作\t・どうさ\tActions",
+          "• 色\t・いろ　\tColours",
+          "• 日付\t・ひづけ\tCalendar dates",
+          "• 時間\t・じかん\tTime",
+          "• 漢字\t・かんじ\tKanji",
+          "• Speaking　\tMini practice"
+        ],
+        [
+          "Goal"
+        ],
+        [
+          "Big text, clear examples, and short speaking tasks."
+        ],
+        [
+          "Reminder"
+        ],
+        [
+          "On calendars, Japanese often shows:\n日　月　火　水　木　金　土"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "本日の講義マップ",
+      "summary": "Overview of today's six interactive segments.",
+      "bullets": [
+        "動作 (どうさ) · Actions",
+        "色 (いろ) · Colours",
+        "日付 (ひづけ) · Calendar dates 1-10",
+        "時間 (じかん) · Telling time in hours & minutes",
+        "漢字 (かんじ) · Action kanji radicals",
+        "Speaking · Mini practice & sentence chain"
+      ],
+      "highlight": "Calendar reminder: Japanese schedules use 日 月 火 水 木 金 土."
+    },
+    {
+      "slideNumber": 3,
+      "title": "Sensory Clues: Body Parts Before Actions",
+      "blocks": [
+        [
+          "Before going to Actions"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "耳・みみ"
+        ],
+        [
+          "Ear"
+        ],
+        [
+          "口・ぐち"
+        ],
+        [
+          "Mouth"
+        ],
+        [
+          "目・め"
+        ],
+        [
+          "Eye"
+        ],
+        [
+          "Nikki JP Class 444"
+        ],
+        [
+          "舌・した"
+        ],
+        [
+          "Tongue"
+        ]
+      ],
+      "jpTitle": "動作の前の感覚器漢字",
+      "summary": "Four body parts that serve as meaning clues in Japanese action verbs.",
+      "bullets": [
+        "耳 (みみ) · Ear",
+        "口 (くち / ぐち) · Mouth",
+        "目 (め) · Eye",
+        "舌 (した) · Tongue"
+      ],
+      "highlight": "When you see 耳, think of hearing; when you see 目, think of seeing; when you see 言/口, think of speaking."
+    },
+    {
+      "slideNumber": 4,
+      "title": "Action Verbs & Kanji Hints",
+      "blocks": [
+        [
+          "Todays Theme・動作・Actions"
+        ],
+        [
+          "きょう　　　　　　どうさ"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "Main idea"
+        ],
+        [
+          "Japanese action words often hide useful kanji clues."
+        ],
+        [
+          "聞く・きく"
+        ],
+        [
+          "to listen / ask\n\n耳 = ear"
+        ],
+        [
+          "言う・いう"
+        ],
+        [
+          "to speak / talk"
+        ],
+        [
+          "読む・よむ"
+        ],
+        [
+          "to read\n\nLook for familiar parts first.",
+          "Part of Kanji does not always mean something, sometimes its there for phonetic sounds."
+        ],
+        [
+          "Nikki JP Class 444"
+        ],
+        [
+          "話す・はなす"
+        ],
+        [
+          "words / speech"
+        ]
+      ],
+      "jpTitle": "動作動詞と漢字のヒント",
+      "summary": "Connecting sensory organs to action verbs.",
+      "bullets": [
+        "聞く (きく) · To listen / ask (clue: 耳 ear inside gate 門)",
+        "言う (いう) · To speak / say (lines of sound leaving mouth 口)",
+        "読む (よむ) · To read (clue: 言 words)",
+        "話す (はなす) · To speak / talk (clue: 言 words)"
+      ],
+      "highlight": "Part of a kanji does not always mean something; sometimes it gives a phonetic sound, but here they are pure meaning clues!"
+    },
+    {
+      "slideNumber": 5,
+      "title": "Action Kanji Radical Clues ①",
+      "blocks": [
+        [
+          "Todays Kanji・今日の漢字 ①"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "聞"
+        ],
+        [
+          "き(く)"
+        ],
+        [
+          "listen / ask"
+        ],
+        [
+          "clue: 耳"
+        ],
+        [
+          "話"
+        ],
+        [
+          "はな(す)"
+        ],
+        [
+          "speak"
+        ],
+        [
+          "clue: 言"
+        ],
+        [
+          "読"
+        ],
+        [
+          "よ(む)"
+        ],
+        [
+          "read"
+        ],
+        [
+          "clue: 言"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "今日の漢字 ①：聞・話・読",
+      "summary": "Detailed look at the verbal communication kanji.",
+      "bullets": [
+        "聞 (きく · listen/ask) → Radical: 耳 (ear)",
+        "話 (はなす · speak) → Radical: 言 (words/speech)",
+        "読 (よむ · read) → Radical: 言 (words/speech)"
+      ],
+      "highlight": "Notice how both 話 (speak) and 読 (read) share the speech radical 言!"
+    },
+    {
+      "slideNumber": 6,
+      "title": "Action Kanji Radical Clues ②",
+      "blocks": [
+        [
+          "Todays Kanji・今日の漢字 ②"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "書"
+        ],
+        [
+          "か(く)"
+        ],
+        [
+          "write"
+        ],
+        [
+          "writing"
+        ],
+        [
+          "見"
+        ],
+        [
+          "み(る)"
+        ],
+        [
+          "see / watch"
+        ],
+        [
+          "clue: 目"
+        ],
+        [
+          "行"
+        ],
+        [
+          "い(く)"
+        ],
+        [
+          "go"
+        ],
+        [
+          "movement"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "今日の漢字 ②：書・見・行",
+      "summary": "Detailed look at physical action and movement kanji.",
+      "bullets": [
+        "書 (かく · write) → Concept: brush on hand / writing",
+        "見 (みる · see/watch) → Radical: 目 (eye on human legs)",
+        "行 (いく · go) → Concept: crossroads / movement"
+      ],
+      "highlight": "見 is an eye 目 standing on legs 儿!"
+    },
+    {
+      "slideNumber": 7,
+      "title": "Colours Review & Sentence Frames",
+      "blocks": [
+        [
+          "色・いろ・Colours"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "赤・あか  ・  red"
+        ],
+        [
+          "黒・くろ  ・  black"
+        ],
+        [
+          "白・しろ  ・  white"
+        ],
+        [
+          "青・あお  ・  blue"
+        ],
+        [
+          "Use it"
+        ],
+        [
+          "これは ＿＿＿ です。",
+          "＿＿は ＿＿＿ です。"
+        ],
+        [
+          "Nikki JP Class 444"
+        ],
+        [
+          "これは何色ですか？"
+        ]
+      ],
+      "jpTitle": "基本の4色と文型",
+      "summary": "The four native Japanese primary colours and practice frames.",
+      "bullets": [
+        "赤 (あか) · Red",
+        "黒 (くろ) · Black",
+        "白 (しろ) · White",
+        "青 (あお) · Blue",
+        "Sentence pattern: これは ＿＿＿ です。 (This is ___.)",
+        "Sentence pattern: ＿＿は ＿＿＿ です。 (___ is ___.)",
+        "Question: これは何色ですか？ (What colour is this?)"
+      ],
+      "highlight": "Use 'これは赤です' for objects, or '赤い' when describing nouns directly."
+    },
+    {
+      "slideNumber": 8,
+      "title": "Loanword Colours",
+      "blocks": [
+        [
+          "More Colours・色"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "オレンジ色  ・  orange"
+        ],
+        [
+          "ピンク色  ・  pink"
+        ],
+        [
+          "グレー  ・  grey"
+        ],
+        [
+          "Simple"
+        ],
+        [
+          "English in Japanese",
+          "Even other colours will be understood"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "カタカナの外来語色",
+      "summary": "Three loanword colours used with the suffix 色 (いろ).",
+      "bullets": [
+        "オレンジ色 (おれんじいろ) · Orange",
+        "ピンク色 (ぴんくいろ) · Pink",
+        "グレー (ぐれー) · Grey",
+        "Even other foreign colour names (グリーン, パープル) will be readily understood in Japan!"
+      ],
+      "highlight": "Katakana colours are loanwords from English and very easy to memorize."
+    },
+    {
+      "slideNumber": 9,
+      "title": "Calendar Dates & Japanese Habits",
+      "blocks": [
+        [
+          "日付・ひづけ・Calendar Dates"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "September 2026"
+        ],
+        [
+          "Sunday starts the week in Japan."
+        ],
+        [
+          "日"
+        ],
+        [
+          "月"
+        ],
+        [
+          "火"
+        ],
+        [
+          "水"
+        ],
+        [
+          "木"
+        ],
+        [
+          "金"
+        ],
+        [
+          "土"
+        ],
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4"
+        ],
+        [
+          "5"
+        ],
+        [
+          "6"
+        ],
+        [
+          "7"
+        ],
+        [
+          "8"
+        ],
+        [
+          "9"
+        ],
+        [
+          "10"
+        ],
+        [
+          "11"
+        ],
+        [
+          "12"
+        ],
+        [
+          "13"
+        ],
+        [
+          "14"
+        ],
+        [
+          "15"
+        ],
+        [
+          "16"
+        ],
+        [
+          "17"
+        ],
+        [
+          "18"
+        ],
+        [
+          "19"
+        ],
+        [
+          "20"
+        ],
+        [
+          "21"
+        ],
+        [
+          "22"
+        ],
+        [
+          "23"
+        ],
+        [
+          "24"
+        ],
+        [
+          "25"
+        ],
+        [
+          "26"
+        ],
+        [
+          "27"
+        ],
+        [
+          "28"
+        ],
+        [
+          "29"
+        ],
+        [
+          "30"
+        ],
+        [
+          "Useful facts"
+        ],
+        [
+          "• Japanese people use physical calendar many places (hotel, restaurant, hospital)",
+          "• Trash are collected in specific days for different type",
+          "• Many holidays does not use a specific date, but instead a specific day on a week"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "カレンダーと日本の習慣",
+      "summary": "Cultural context of physical calendars in Japan.",
+      "bullets": [
+        "Japanese people still frequently use physical wall and desk calendars in hotels, restaurants, and hospitals.",
+        "Trash is collected on specific days for different types (burnable, non-burnable, plastics).",
+        "Many Japanese public holidays do not fall on a fixed date, but on a specific Monday (Happy Monday System)."
+      ],
+      "highlight": "Knowing days and dates is essential for daily living in Japan."
+    },
+    {
+      "slideNumber": 10,
+      "title": "Time Anchors: 今, 先, 後",
+      "blocks": [
+        [
+          "Time Kanji"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "いま"
+        ],
+        [
+          "Now"
+        ],
+        [
+          "Nikki JP Class 444"
+        ],
+        [
+          "さき"
+        ],
+        [
+          "Before"
+        ],
+        [
+          "あと"
+        ],
+        [
+          "After"
+        ],
+        [
+          "今+日→　今日"
+        ],
+        [
+          "先+月→　先月"
+        ]
+      ],
+      "jpTitle": "時間の基準漢字：今・先・後",
+      "summary": "Relative time references built from fundamental kanji.",
+      "bullets": [
+        "今 (いま) · Now → 今 + 日 = 今日 (きょう · today)",
+        "先 (さき) · Before / previous → 先 + 月 = 先月 (せんげつ · last month)",
+        "後 (あと) · After / later"
+      ],
+      "highlight": "今日 is read 'きょう' (special reading) rather than 'こんにち' in casual conversation."
+    },
+    {
+      "slideNumber": 11,
+      "title": "Calendar Dates 1st to 5th (Special Readings)",
+      "blocks": [
+        [
+          "1日〜5日"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "1日"
+        ],
+        [
+          "ついたち"
+        ],
+        [
+          "2日"
+        ],
+        [
+          "ふつか"
+        ],
+        [
+          "3日"
+        ],
+        [
+          "みっか"
+        ],
+        [
+          "4日"
+        ],
+        [
+          "よっか"
+        ],
+        [
+          "5日"
+        ],
+        [
+          "いつか"
+        ],
+        [
+          "Pattern"
+        ],
+        [
+          "The first 10 days have special readings.\nOnly way is to memorize them."
+        ],
+        [
+          "Speaking"
+        ],
+        [
+          "今日は何日ですか？"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "1日〜5日の特別な読み方",
+      "summary": "The irregular native Japanese names for the first five days of the month.",
+      "bullets": [
+        "1日 · ついたち (1st)",
+        "2日 · ふつか (2nd)",
+        "3日 · みっか (3rd)",
+        "4日 · よっか (4th · NOT よんにち)",
+        "5日 · いつか (5th)",
+        "Pattern: The first 10 days have special historical readings—you must memorize them!"
+      ],
+      "highlight": "Prompt: 今日は何日ですか？ (What day is today?)"
+    },
+    {
+      "slideNumber": 12,
+      "title": "Calendar Dates 6th to 10th",
+      "blocks": [
+        [
+          "6日〜10日"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "6日"
+        ],
+        [
+          "むいか"
+        ],
+        [
+          "7日"
+        ],
+        [
+          "なのか"
+        ],
+        [
+          "8日"
+        ],
+        [
+          "ようか"
+        ],
+        [
+          "9日"
+        ],
+        [
+          "ここのか"
+        ],
+        [
+          "10日"
+        ],
+        [
+          "とおか"
+        ],
+        [
+          "Watch out"
+        ],
+        [
+          "4日 = よっか\n8日 = ようか"
+        ],
+        [
+          "Pair prompt"
+        ],
+        [
+          "誕生日は何月何日ですか？"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "6日〜10日の特別な読み方",
+      "summary": "The irregular native Japanese names for days 6 through 10.",
+      "bullets": [
+        "6日 · むいか (6th)",
+        "7日 · なのか (7th)",
+        "8日 · ようか (8th · long 'ou' vowel)",
+        "9日 · ここのか (9th)",
+        "10日 · とおか (10th)",
+        "Watch out: 4日 = よっか (small tsu), 8日 = ようか (long vowel)!"
+      ],
+      "highlight": "Pair prompt: 誕生日は何月何日ですか？ (When is your birthday?)"
+    },
+    {
+      "slideNumber": 13,
+      "title": "Telling Time: Hours (時・じ)",
+      "blocks": [
+        [
+          "時間・じかん・Hours"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "1時"
+        ],
+        [
+          "いちじ"
+        ],
+        [
+          "2時"
+        ],
+        [
+          "にじ"
+        ],
+        [
+          "4時"
+        ],
+        [
+          "よじ"
+        ],
+        [
+          "7時"
+        ],
+        [
+          "しちじ"
+        ],
+        [
+          "9時"
+        ],
+        [
+          "くじ"
+        ],
+        [
+          "Example"
+        ],
+        [
+          "7:00 = しちじ\n9:00 = くじ"
+        ],
+        [
+          "Question"
+        ],
+        [
+          "いま なんじですか？"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "時間：時（じ）の読み方",
+      "summary": "How to count hours in Japanese, highlighting the three irregulars.",
+      "bullets": [
+        "1時 · いちじ (1:00)",
+        "2時 · にじ (2:00)",
+        "4時 · よじ (4:00 · NOT よんじ!)",
+        "7時 · しちじ (7:00 · NOT ななじ!)",
+        "9時 · くじ (9:00 · NOT きゅうじ!)",
+        "Key question: いま なんじですか？ (What time is it now?)"
+      ],
+      "highlight": "Be careful with 4 (よじ), 7 (しちじ), and 9 (くじ)!"
+    },
+    {
+      "slideNumber": 14,
+      "title": "Telling Time: Minutes (分・ふん/ぷん)",
+      "blocks": [
+        [
+          "時間・じかん・Minutes"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "1分"
+        ],
+        [
+          "いっぷん"
+        ],
+        [
+          "3分"
+        ],
+        [
+          "さんぷん"
+        ],
+        [
+          "4分"
+        ],
+        [
+          "よんぷん"
+        ],
+        [
+          "6分"
+        ],
+        [
+          "ろっぷん"
+        ],
+        [
+          "8分"
+        ],
+        [
+          "はっぷん"
+        ],
+        [
+          "10分"
+        ],
+        [
+          "じゅっぷん"
+        ],
+        [
+          "Example"
+        ],
+        [
+          "7:10 = しちじ じゅっぷん"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "時間：分（ふん・ぷん）の読み方",
+      "summary": "Minute counters with consonant sound shifts.",
+      "bullets": [
+        "1分 · いっぷん (1 min)",
+        "3分 · さんぷん (3 min)",
+        "4分 · よんぷん (4 min)",
+        "6分 · ろっぷん (6 min)",
+        "8分 · はっぷん (8 min)",
+        "10分 · じゅっぷん (10 min)",
+        "Example: 7:10 = しちじ じゅっぷん"
+      ],
+      "highlight": "Minutes change between ふん and ぷん based on phonetic euphony."
+    },
+    {
+      "slideNumber": 15,
+      "title": "AM and PM: 午前・午後",
+      "blocks": [
+        [
+          "午前・午後"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "午前・ごぜん"
+        ],
+        [
+          "AM\n午前九時 = ごぜん くじ"
+        ],
+        [
+          "午後・ごご"
+        ],
+        [
+          "PM\n午後三時半 = ごご さんじはん"
+        ],
+        [
+          "Speaking"
+        ],
+        [
+          "Ask and answer:\nいま なんじですか？"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "午前（ごぜん）と午後（ごご）",
+      "summary": "Specifying morning vs afternoon.",
+      "bullets": [
+        "午前 (ごぜん) · AM (before noon) → 午前九時 (9:00 AM)",
+        "午後 (ごご) · PM (after noon) → 午後三時半 (3:30 PM)",
+        "Rule: 半 (はん) means 'half past' (e.g. 3:30 = さんじはん)."
+      ],
+      "highlight": "In Japanese, 午前 and 午後 are always placed BEFORE the time, unlike in English."
+    },
+    {
+      "slideNumber": 16,
+      "title": "Kanji Parts Inside Actions Review",
+      "blocks": [
+        [
+          "Kanji Parts Inside Actions"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "耳"
+        ],
+        [
+          "ear"
+        ],
+        [
+          "聞く"
+        ],
+        [
+          "listen / ask"
+        ],
+        [
+          "言"
+        ],
+        [
+          "words"
+        ],
+        [
+          "話す"
+        ],
+        [
+          "speak"
+        ],
+        [
+          "言"
+        ],
+        [
+          "words"
+        ],
+        [
+          "読む"
+        ],
+        [
+          "read"
+        ],
+        [
+          "目"
+        ],
+        [
+          "eye"
+        ],
+        [
+          "見る"
+        ],
+        [
+          "see / watch"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "動作の中のパーツ再確認",
+      "summary": "Visual recap of semantic radicals.",
+      "bullets": [
+        "耳 (ear) → 聞く (listen / ask)",
+        "言 (words) → 話す (speak)",
+        "言 (words) → 読む (read)",
+        "目 (eye) → 見る (see / watch)"
+      ],
+      "highlight": "Radicals help you deduce meaning before you even know the pronunciation."
+    },
+    {
+      "slideNumber": 17,
+      "title": "Colour Challenge: What Colour is It?",
+      "blocks": [
+        [
+          "Colour Challenge・色あてゲーム"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "りんご"
+        ],
+        [
+          "何色ですか？\n答え: 赤"
+        ],
+        [
+          "そら"
+        ],
+        [
+          "何色ですか？\n答え: 青"
+        ],
+        [
+          "くも"
+        ],
+        [
+          "何色ですか？\n答え: 白"
+        ],
+        [
+          "かばん"
+        ],
+        [
+          "何色ですか？\n答え: 黒"
+        ],
+        [
+          "Round 2"
+        ],
+        [
+          "Hide the answers and ask another student."
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "色あてゲーム",
+      "summary": "Rapid-fire matching of nouns to their signature colours.",
+      "bullets": [
+        "りんご (apple) → 赤 (あか · red)",
+        "そら (sky) → 青 (あお · blue)",
+        "くも (cloud) → 白 (しろ · white)",
+        "かばん (bag) → 黒 (くろ · black)"
+      ],
+      "highlight": "Round 2: Hide the answers and quiz your classmate!"
+    },
+    {
+      "slideNumber": 18,
+      "title": "Date Speaking Drill",
+      "blocks": [
+        [
+          "Date Speaking・何日ですか？"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "9/1"
+        ],
+        [
+          "九月一日\nくがつ ついたち"
+        ],
+        [
+          "9/4"
+        ],
+        [
+          "九月四日\nくがつ よっか"
+        ],
+        [
+          "9/8"
+        ],
+        [
+          "九月八日\nくがつ ようか"
+        ],
+        [
+          "9/10"
+        ],
+        [
+          "九月十日\nくがつ とおか"
+        ],
+        [
+          "Pair prompt"
+        ],
+        [
+          "誕生日は何月何日ですか？\n＿＿月＿＿日です。"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "日付のスピーキング練習",
+      "summary": "Practicing specific calendar dates aloud.",
+      "bullets": [
+        "9/1 → 九月一日 (くがつ ついたち)",
+        "9/4 → 九月四日 (くがつ よっか)",
+        "9/8 → 九月八日 (くがつ ようか)",
+        "9/10 → 九月十日 (くがつ とおか)",
+        "Sentence: 誕生日は＿＿月＿＿日です。 (My birthday is __/___.)"
+      ],
+      "highlight": "Notice September is always くがつ, not きゅうがつ!"
+    },
+    {
+      "slideNumber": 19,
+      "title": "Time Quiz: Quick-Fire Clocks",
+      "blocks": [
+        [
+          "Time Quiz・何時ですか？"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "7:10"
+        ],
+        [
+          "しちじ じゅっぷん"
+        ],
+        [
+          "4:30"
+        ],
+        [
+          "よじ はん"
+        ],
+        [
+          "9:08"
+        ],
+        [
+          "くじ はっぷん"
+        ],
+        [
+          "15:00"
+        ],
+        [
+          "ごご さんじ"
+        ],
+        [
+          "Challenge"
+        ],
+        [
+          "何時に起きますか？"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "時間クイズ",
+      "summary": "Deciphering realistic digital times into natural Japanese speech.",
+      "bullets": [
+        "7:10 → しちじ じゅっぷん",
+        "4:30 → よじ はん",
+        "9:08 → くじ はっぷん",
+        "15:00 → ごご さんじ",
+        "Challenge question: 何時に起きますか？ (What time do you wake up?)"
+      ],
+      "highlight": "Military time 15:00 is read as '午後三時' in spoken Japanese."
+    },
+    {
+      "slideNumber": 20,
+      "title": "6 Core Action Verbs Summary",
+      "blocks": [
+        [
+          "Action Words・動作"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "見る"
+        ],
+        [
+          "みる\nsee / watch"
+        ],
+        [
+          "聞く"
+        ],
+        [
+          "きく\nlisten / ask"
+        ],
+        [
+          "話す"
+        ],
+        [
+          "はなす\nspeak"
+        ],
+        [
+          "読む"
+        ],
+        [
+          "よむ\nread"
+        ],
+        [
+          "書く"
+        ],
+        [
+          "かく\nwrite"
+        ],
+        [
+          "行く"
+        ],
+        [
+          "いく\ngo"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "基本の6つの動作動詞",
+      "summary": "Master reference table for the 6 foundational N5 action verbs.",
+      "bullets": [
+        "見る (みる) · To see / watch",
+        "聞く (きく) · To listen / ask",
+        "話す (はなす) · To speak / talk",
+        "読む (よむ) · To read",
+        "書く (かく) · To write",
+        "行く (いく) · To go"
+      ],
+      "highlight": "All 6 verbs end in -u in plain form and -masu in polite form (見ます, 聞きます, 話します, 読みます, 書きます, 行きます)."
+    },
+    {
+      "slideNumber": 21,
+      "title": "Build a Sentence: Who + What + Action",
+      "blocks": [
+        [
+          "Build a Sentence・文を作ろう"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "Choose one from each column."
+        ],
+        [
+          "Who"
+        ],
+        [
+          "わたしは"
+        ],
+        [
+          "ゆきは"
+        ],
+        [
+          "あきは"
+        ],
+        [
+          "Thing / Place"
+        ],
+        [
+          "本を"
+        ],
+        [
+          "音楽を"
+        ],
+        [
+          "テレビを"
+        ],
+        [
+          "公園へ"
+        ],
+        [
+          "Action"
+        ],
+        [
+          "読みます"
+        ],
+        [
+          "聞きます"
+        ],
+        [
+          "見ます"
+        ],
+        [
+          "行きます"
+        ],
+        [
+          "Example"
+        ],
+        [
+          "ゆきは + 音楽を + 聞きます。"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "文を作ろう：誰が・何を・どうする",
+      "summary": "Grammar slot machine combining subjects, objects, and verbs.",
+      "bullets": [
+        "Who (は): わたしは, ゆきは, あきは",
+        "Thing / Place (を / へ): 本を, 音楽を, テレビを, 公園へ",
+        "Action (ます): 読みます, 聞きます, 見ます, 行きます",
+        "Example combination: ゆきは + 音楽を + 聞きます。 (Yuki listens to music.)"
+      ],
+      "highlight": "Japanese sentence structure is Subject (は) + Object (を) / Destination (へ) + Verb!"
+    },
+    {
+      "slideNumber": 22,
+      "title": "Speaking Chain: 5 Quick Questions",
+      "blocks": [
+        [
+          "Speaking Chain・話してみよう"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "① 何色が好きですか？　→　＿＿が好きです。"
+        ],
+        [
+          "② 今日は何日ですか？　→　＿＿月＿＿日です。"
+        ],
+        [
+          "③ いま何時ですか？　→　＿＿時＿＿分です。"
+        ],
+        [
+          "④ 何を見ますか？　→　＿＿を見ます。"
+        ],
+        [
+          "⑤ 何を聞きますか？　→　＿＿を聞きます。"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "話してみよう：5つの質問",
+      "summary": "Personal speaking practice with sentence starters.",
+      "bullets": [
+        "① 何色が好きですか？ → ＿＿が好きです。",
+        "② 今日は何日ですか？ → ＿＿月＿＿日です。",
+        "③ いま何時ですか？ → ＿＿時＿＿分です。",
+        "④ 何を見ますか？ → ＿＿を見ます。",
+        "⑤ 何を聞きますか？ → ＿＿を聞きます。"
+      ],
+      "highlight": "Answer immediately without translating into English first."
+    },
+    {
+      "slideNumber": 23,
+      "title": "Mini Reading: Yuki at the Park",
+      "blocks": [
+        [
+          "Mini Reading・読んでみよう"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "Story"
+        ],
+        [
+          "九月八日、火曜日です。\nゆきは午後三時に公園へ行きます。\n青い本を読みます。\nあきと話します。\n午後五時に家へ帰ります。"
+        ],
+        [
+          "Questions"
+        ],
+        [
+          "1. 何月何日ですか？\n2. 何曜日ですか？\n3. 何時に公園へ行きますか？\n4. 本は何色ですか？\n5. ゆきは何をしますか？"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "ミニストーリー：ゆきの公園での一日",
+      "summary": "A 5-sentence reading passage putting today's grammar into context.",
+      "bullets": [
+        "Story: 九月八日、火曜日です。 (It is Tuesday, September 8th.)",
+        "ゆきは午後三時に公園へ行きます。 (Yuki goes to the park at 3:00 PM.)",
+        "青い本を読みます。 (She reads a blue book.)",
+        "あきと話します。 (She talks with Aki.)",
+        "午後五時に家へ帰ります。 (She returns home at 5:00 PM.)",
+        "Questions: 1. 何月何日？ 2. 何曜日？ 3. 何時に公園へ？ 4. 本は何色？ 5. ゆきは何をする？"
+      ],
+      "highlight": "Notice how all elements—date, weekday, time, place, colour, and actions—are woven together."
+    },
+    {
+      "slideNumber": 24,
+      "title": "Mini Reading: Official Answers",
+      "blocks": [
+        [
+          "Mini Reading・答え"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "1. 九月八日です。"
+        ],
+        [
+          "2. 火曜日です。"
+        ],
+        [
+          "3. 午後三時です。"
+        ],
+        [
+          "4. 青です。"
+        ],
+        [
+          "5. 本を読みます。あきと話します。"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "ミニストーリーの答え",
+      "summary": "Complete answer key for the Yuki park story.",
+      "bullets": [
+        "1. 九月八日です。 (September 8th)",
+        "2. 火曜日です。 (Tuesday)",
+        "3. 午後三時です。 (3:00 PM)",
+        "4. 青です。 (Blue)",
+        "5. 本を読みます。あきと話します。 (Reads a book and talks with Aki)"
+      ],
+      "highlight": "Every answer can be found directly in the text runs."
+    },
+    {
+      "slideNumber": 25,
+      "title": "Quick Review: Today's Achievements",
+      "blocks": [
+        [
+          "Quick Review・今日できること"
+        ],
+        [
+          "Nikki JP"
+        ],
+        [
+          "✓  色を言う"
+        ],
+        [
+          "✓  1日〜10日の読み方を聞き分ける"
+        ],
+        [
+          "✓  時・分・午前・午後で時間を言う"
+        ],
+        [
+          "✓  見る・聞く・話す・読む・書く・行くを使う"
+        ],
+        [
+          "✓  漢字の中のヒントを見つける"
+        ],
+        [
+          "Exit question"
+        ],
+        [
+          "今日、何を読みましたか？　何を話しましたか？"
+        ],
+        [
+          "Nikki JP Class 444"
+        ]
+      ],
+      "jpTitle": "今日の達成度チェック",
+      "summary": "Checklist of skills mastered in Class 444.",
+      "bullets": [
+        "✓ 色を言う (Say colours)",
+        "✓ 1日〜10日の読み方を聞き分ける (Distinguish 1st-10th days)",
+        "✓ 時・分・午前・午後で時間を言う (Tell time with hours/minutes/AM/PM)",
+        "✓ 見る・聞く・話す・読む・書く・行くを使う (Use 6 action verbs)",
+        "✓ 漢字の中のヒントを見つける (Find semantic kanji hints)",
+        "Exit question: 今日、何を読みましたか？ 何を話しましたか？"
+      ],
+      "highlight": "Congratulations! You can now express dates, times, and actions fluently in Japanese."
+    }
+  ],
+  "title": "Actions, Sensory Organs, Calendar Dates 1–10 & Time",
+  "jpTitle": "第5回：動作・目・耳・口・舌・1日〜10日・時間・ミニストーリー",
+  "vocabulary": [
+    {
+      "id": "v5-1",
+      "kanji": "見る",
+      "furigana": "みる",
+      "romaji": "miru",
+      "english": "to see, watch",
+      "type": "Verb",
+      "example": "テレビを見ます。"
+    },
+    {
+      "id": "v5-2",
+      "kanji": "聞く",
+      "furigana": "きく",
+      "romaji": "kiku",
+      "english": "to listen, ask",
+      "type": "Verb",
+      "example": "音楽を聞きます。"
+    },
+    {
+      "id": "v5-3",
+      "kanji": "話す",
+      "furigana": "はなす",
+      "romaji": "hanasu",
+      "english": "to speak, talk",
+      "type": "Verb",
+      "example": "あきと話します。"
+    },
+    {
+      "id": "v5-4",
+      "kanji": "読む",
+      "furigana": "よむ",
+      "romaji": "yomu",
+      "english": "to read",
+      "type": "Verb",
+      "example": "青い本を読みます。"
+    },
+    {
+      "id": "v5-5",
+      "kanji": "書く",
+      "furigana": "かく",
+      "romaji": "kaku",
+      "english": "to write",
+      "type": "Verb",
+      "example": "名前を書きます。"
+    },
+    {
+      "id": "v5-6",
+      "kanji": "行く",
+      "furigana": "いく",
+      "romaji": "iku",
+      "english": "to go",
+      "type": "Verb",
+      "example": "公園へ行きます。"
+    },
+    {
+      "id": "v5-7",
+      "kanji": "帰る",
+      "furigana": "かえる",
+      "romaji": "kaeru",
+      "english": "to return, go home",
+      "type": "Verb",
+      "example": "午後五時に家へ帰ります。"
+    },
+    {
+      "id": "v5-8",
+      "kanji": "言う",
+      "furigana": "いう",
+      "romaji": "iu",
+      "english": "to say, speak",
+      "type": "Verb",
+      "example": "犬はワンワンといいます。"
+    },
+    {
+      "id": "v5-9",
+      "kanji": "耳",
+      "furigana": "みみ",
+      "romaji": "mimi",
+      "english": "ear",
+      "type": "Noun",
+      "example": "耳で聞きます。"
+    },
+    {
+      "id": "v5-10",
+      "kanji": "口",
+      "furigana": "くち / ぐち",
+      "romaji": "kuchi / guchi",
+      "english": "mouth",
+      "type": "Noun",
+      "example": "口で話します。"
+    },
+    {
+      "id": "v5-11",
+      "kanji": "目",
+      "furigana": "め",
+      "romaji": "me",
+      "english": "eye",
+      "type": "Noun",
+      "example": "目で見る。"
+    },
+    {
+      "id": "v5-12",
+      "kanji": "舌",
+      "furigana": "した",
+      "romaji": "shita",
+      "english": "tongue",
+      "type": "Noun",
+      "example": "舌を出す。"
+    },
+    {
+      "id": "v5-13",
+      "kanji": "一日",
+      "furigana": "ついたち",
+      "romaji": "tsuitachi",
+      "english": "1st day of month",
+      "type": "Date",
+      "example": "九月一日。"
+    },
+    {
+      "id": "v5-14",
+      "kanji": "二日",
+      "furigana": "ふつか",
+      "romaji": "futsuka",
+      "english": "2nd day of month",
+      "type": "Date",
+      "example": "九月二日。"
+    },
+    {
+      "id": "v5-15",
+      "kanji": "三日",
+      "furigana": "みっか",
+      "romaji": "mikka",
+      "english": "3rd day of month",
+      "type": "Date",
+      "example": "九月三日。"
+    },
+    {
+      "id": "v5-16",
+      "kanji": "四日",
+      "furigana": "よっか",
+      "romaji": "yokka",
+      "english": "4th day of month",
+      "type": "Date",
+      "example": "九月四日。"
+    },
+    {
+      "id": "v5-17",
+      "kanji": "五日",
+      "furigana": "いつか",
+      "romaji": "itsuka",
+      "english": "5th day of month",
+      "type": "Date",
+      "example": "九月五日。"
+    },
+    {
+      "id": "v5-18",
+      "kanji": "六日",
+      "furigana": "むいか",
+      "romaji": "muika",
+      "english": "6th day of month",
+      "type": "Date",
+      "example": "九月六日。"
+    },
+    {
+      "id": "v5-19",
+      "kanji": "七日",
+      "furigana": "なのか",
+      "romaji": "nanoka",
+      "english": "7th day of month",
+      "type": "Date",
+      "example": "九月七日。"
+    },
+    {
+      "id": "v5-20",
+      "kanji": "八日",
+      "furigana": "ようか",
+      "romaji": "youka",
+      "english": "8th day of month",
+      "type": "Date",
+      "example": "九月八日、火曜日です。"
+    },
+    {
+      "id": "v5-21",
+      "kanji": "九日",
+      "furigana": "ここのか",
+      "romaji": "kokonoka",
+      "english": "9th day of month",
+      "type": "Date",
+      "example": "九月九日。"
+    },
+    {
+      "id": "v5-22",
+      "kanji": "十日",
+      "furigana": "とおか",
+      "romaji": "tooka",
+      "english": "10th day of month",
+      "type": "Date",
+      "example": "九月十日。"
+    },
+    {
+      "id": "v5-23",
+      "kanji": "時",
+      "furigana": "じ",
+      "romaji": "ji",
+      "english": "o'clock, hour",
+      "type": "Counter",
+      "example": "何時ですか？"
+    },
+    {
+      "id": "v5-24",
+      "kanji": "分",
+      "furigana": "ふん / ぷん",
+      "romaji": "fun / pun",
+      "english": "minute",
+      "type": "Counter",
+      "example": "十分。"
+    },
+    {
+      "id": "v5-25",
+      "kanji": "午前",
+      "furigana": "ごぜん",
+      "romaji": "gozen",
+      "english": "AM, morning",
+      "type": "Noun",
+      "example": "午前九時。"
+    },
+    {
+      "id": "v5-26",
+      "kanji": "午後",
+      "furigana": "ごご",
+      "romaji": "gogo",
+      "english": "PM, afternoon",
+      "type": "Noun",
+      "example": "午後三時に公園へ行きます。"
+    },
+    {
+      "id": "v5-27",
+      "kanji": "半",
+      "furigana": "はん",
+      "romaji": "han",
+      "english": "half (past)",
+      "type": "Noun",
+      "example": "四時半。"
+    },
+    {
+      "id": "v5-28",
+      "kanji": "今日",
+      "furigana": "きょう",
+      "romaji": "kyou",
+      "english": "today",
+      "type": "Noun",
+      "example": "今日は何日ですか？"
+    },
+    {
+      "id": "v5-29",
+      "kanji": "先月",
+      "furigana": "せんげつ",
+      "romaji": "sengetsu",
+      "english": "last month",
+      "type": "Noun",
+      "example": "先月日本へ行きました。"
+    },
+    {
+      "id": "v5-30",
+      "kanji": "今",
+      "furigana": "いま",
+      "romaji": "ima",
+      "english": "now",
+      "type": "Noun",
+      "example": "いま何時ですか？"
+    },
+    {
+      "id": "v5-31",
+      "kanji": "音楽",
+      "furigana": "おんがく",
+      "romaji": "ongaku",
+      "english": "music",
+      "type": "Noun",
+      "example": "音楽を聞きます。"
+    },
+    {
+      "id": "v5-32",
+      "kanji": "テレビ",
+      "furigana": "てれび",
+      "romaji": "terebi",
+      "english": "television",
+      "type": "Noun",
+      "example": "テレビを見ます。"
+    },
+    {
+      "id": "v5-33",
+      "kanji": "家",
+      "furigana": "いえ",
+      "romaji": "ie",
+      "english": "house, home",
+      "type": "Noun",
+      "example": "家へ帰ります。"
+    }
+  ],
+  "kanji": [
+    {
+      "kanji": "見",
+      "onyomi": "ケン",
+      "kunyomi": "み(る)・み(せる)",
+      "meaning": "see, look, watch",
+      "strokes": 7,
+      "examples": [
+        "見る",
+        "見ます"
+      ]
+    },
+    {
+      "kanji": "聞",
+      "onyomi": "ブン・モン",
+      "kunyomi": "き(く)・き(こえる)",
+      "meaning": "hear, listen, ask",
+      "strokes": 14,
+      "examples": [
+        "聞く",
+        "聞きます"
+      ]
+    },
+    {
+      "kanji": "話",
+      "onyomi": "ワ",
+      "kunyomi": "はな(す)・はなし",
+      "meaning": "talk, speak, story",
+      "strokes": 13,
+      "examples": [
+        "話す",
+        "話します"
+      ]
+    },
+    {
+      "kanji": "読",
+      "onyomi": "ドク・トク",
+      "kunyomi": "よ(む)",
+      "meaning": "read",
+      "strokes": 14,
+      "examples": [
+        "読む",
+        "読みます"
+      ]
+    },
+    {
+      "kanji": "書",
+      "onyomi": "ショ",
+      "kunyomi": "か(く)",
+      "meaning": "write, book",
+      "strokes": 10,
+      "examples": [
+        "書く",
+        "書きます"
+      ]
+    },
+    {
+      "kanji": "行",
+      "onyomi": "コウ・ギョウ",
+      "kunyomi": "い(く)・ゆ(く)・おこな(う)",
+      "meaning": "go, act",
+      "strokes": 6,
+      "examples": [
+        "行く",
+        "行きます"
+      ]
+    },
+    {
+      "kanji": "帰",
+      "onyomi": "キ",
+      "kunyomi": "かえ(る)",
+      "meaning": "return, go home",
+      "strokes": 10,
+      "examples": [
+        "帰る",
+        "帰ります"
+      ]
+    },
+    {
+      "kanji": "耳",
+      "onyomi": "ジ",
+      "kunyomi": "みみ",
+      "meaning": "ear",
+      "strokes": 6,
+      "examples": [
+        "耳"
+      ]
+    },
+    {
+      "kanji": "口",
+      "onyomi": "コウ・ク",
+      "kunyomi": "くち",
+      "meaning": "mouth",
+      "strokes": 3,
+      "examples": [
+        "口"
+      ]
+    },
+    {
+      "kanji": "目",
+      "onyomi": "モク・ボク",
+      "kunyomi": "め・ま",
+      "meaning": "eye",
+      "strokes": 5,
+      "examples": [
+        "目"
+      ]
+    },
+    {
+      "kanji": "舌",
+      "onyomi": "ゼツ",
+      "kunyomi": "した",
+      "meaning": "tongue",
+      "strokes": 6,
+      "examples": [
+        "舌"
+      ]
+    },
+    {
+      "kanji": "時",
+      "onyomi": "ジ",
+      "kunyomi": "とき",
+      "meaning": "time, hour",
+      "strokes": 10,
+      "examples": [
+        "時間",
+        "何時",
+        "一時"
+      ]
+    },
+    {
+      "kanji": "分",
+      "onyomi": "フン・ブン・プン",
+      "kunyomi": "わ(ける)",
+      "meaning": "minute, part, understand",
+      "strokes": 4,
+      "examples": [
+        "分",
+        "十分",
+        "一分"
+      ]
+    },
+    {
+      "kanji": "前",
+      "onyomi": "ゼン",
+      "kunyomi": "まえ",
+      "meaning": "before, front",
+      "strokes": 9,
+      "examples": [
+        "午前",
+        "名前"
+      ]
+    },
+    {
+      "kanji": "後",
+      "onyomi": "ゴ・コウ",
+      "kunyomi": "のち・うし(ろ)・あと",
+      "meaning": "after, back, behind",
+      "strokes": 9,
+      "examples": [
+        "午後",
+        "あと"
+      ]
+    },
+    {
+      "kanji": "半",
+      "onyomi": "ハン",
+      "kunyomi": "なか(ば)",
+      "meaning": "half",
+      "strokes": 5,
+      "examples": [
+        "半",
+        "一時半"
+      ]
+    },
+    {
+      "kanji": "今",
+      "onyomi": "コン・キン",
+      "kunyomi": "いま",
+      "meaning": "now",
+      "strokes": 4,
+      "examples": [
+        "今",
+        "今日"
+      ]
+    },
+    {
+      "kanji": "家",
+      "onyomi": "カ・ケ",
+      "kunyomi": "いえ・や",
+      "meaning": "house, home",
+      "strokes": 10,
+      "examples": [
+        "家"
+      ]
+    }
+  ]
+}

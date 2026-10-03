@@ -1,0 +1,79 @@
+[
+  {
+    "id": "qna-424-1",
+    "question": "Q1. Who is the Protagonist in the story?",
+    "options": [
+      "Sato",
+      "Aki",
+      "Kia",
+      "Yuki (ゆき)",
+      "George"
+    ],
+    "correct": "Yuki (ゆき)",
+    "explanation": "Yuki (ゆき) is the central protagonist born in February 1999."
+  },
+  {
+    "id": "qna-424-2",
+    "question": "Q2. How old is the Protagonist Yuki?",
+    "options": [
+      "二十四 (24)",
+      "二十五 (25)",
+      "二十六 (26)",
+      "二十七 (27)",
+      "二十八 (28)"
+    ],
+    "correct": "二十五 (25)",
+    "explanation": "Yuki is 25 years old (二十五歳)."
+  },
+  {
+    "id": "qna-424-3",
+    "question": "Q3. What is the name of Yuki's Friend?",
+    "options": [
+      "Sato",
+      "Oki",
+      "Aki (あき)",
+      "Kia",
+      "George"
+    ],
+    "correct": "Aki (あき)",
+    "explanation": "Aki (あき) is Yuki's friend who hangs out at the park."
+  },
+  {
+    "id": "qna-424-4",
+    "question": "Q4. What year was Friend Aki born in?",
+    "options": [
+      "1999",
+      "2000",
+      "2001",
+      "2002",
+      "2003"
+    ],
+    "correct": "1999",
+    "explanation": "Both Yuki and Aki share birth year 1999 (making them 25 in 2024)."
+  },
+  {
+    "id": "qna-424-5",
+    "question": "Q5. What are the Names of the two Dogs in the park?",
+    "options": [
+      "FiFi & MiMi",
+      "FuFu & MaMa",
+      "FaFa & MoMo",
+      "FuFu & MoMo (ふふ & もも)",
+      "FiFi & MoMo"
+    ],
+    "correct": "FuFu & MoMo (ふふ & もも)",
+    "explanation": "The blue dog is FuFu (ふふ) and the pink dog is MoMo (もも)."
+  },
+  {
+    "id": "qna-424-6",
+    "question": "Q6. Which statement about the dogs is TRUE?",
+    "options": [
+      "青い犬はピンク犬より大きいです (Blue dog is bigger)",
+      "ピンク犬は青い犬より大きいです",
+      "青い犬はピンク色です",
+      "犬は話します"
+    ],
+    "correct": "青い犬はピンク犬より大きいです (Blue dog is bigger)",
+    "explanation": "In Slide 14 of Class 424, the blue dog (ふふ) is depicted larger than pink dog (もも)."
+  }
+]

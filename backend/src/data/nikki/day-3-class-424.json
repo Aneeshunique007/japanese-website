@@ -1,0 +1,1577 @@
+{
+  "id": "day-3",
+  "dayNumber": 3,
+  "classCode": "Class 424",
+  "theme": "Theme: The Public Park (公園), Colors, Yuki & Aki Storyline",
+  "japaneseTheme": "テーマ：公園・色・ゆきとあきのストーリー (Kōen, iro, Yuki to Aki no sutōrī)",
+  "subtitle": "Discover Japanese park etiquette signs, katakanizing names, the full color palette, and meet protagonists Yuki & Aki",
+  "description": "Step into a Japanese public park (公園・こうえん), decode signs like '花火禁止' (No fireworks), discover how foreign names undergo Japanification (Aneesh -> あに), master colors (赤・青・白・黒), and explore the story of Yuki and Aki with their dogs FuFu & MoMo.",
+  "badge": "Class 424 · Park Storyline & Colors",
+  "goals": [
+    "Learn the kanji and meaning of 公園 (こうえん, public park) and park signs",
+    "Master the foreign name katakanization process (e.g. Aneesh -> あに, Ajay -> えJ)",
+    "Learn the Japanese color palette: 赤, 青, 白, 黒, オレンジ, ピンク, グレー",
+    "Master small vs large animal counters: カンガルー (一匹), おおかみ (一匹), ポニー (一頭), and 人 (一人・ひとり)",
+    "Read '〇' (ぜろ/れい) in multi-digit numbers and years (二○二六)",
+    "Meet story protagonists: Yuki (born Feb 2 1999) and Aki (born Nov 1, age 25)",
+    "Meet the two dogs: FuFu (青い犬) and MoMo (ピンクの犬)",
+    "Learn the 5 cosmic elements: 木, 水, 火, 日, 土",
+    "Spot differences in look-alike kanji: 日 (day), 白 (white), 百 (hundred), 月 (moon)"
+  ],
+  "keyHighlights": [
+    "公園 (こうえん) means 'Public Park'. In Japan, local parks are quiet community hubs with rules like 'No fireworks', 'No walking dog', 'Do not throw away litter'.",
+    "Foreign names use Katakana, often adopting short nicknames among friends (e.g., Aneesh -> あに, Ajay -> えJ, Jacob -> Jこ, Midhun -> とま, Skaria -> すかり).",
+    "Kanji Visual Quadruplets: 日 (sun/day) vs 白 (add top slash = white) vs 百 (add top horizontal bar = hundred) vs 月 (moon/month).",
+    "Zero character '〇' is read as ぜろ/れい, frequently used in years (二○二六・2026) and building/room numbers (八〇三・803)."
+  ],
+  "kanjiList": [
+    {
+      "kanji": "公",
+      "meaning": "public",
+      "onyomi": "コウ (kou)",
+      "kunyomi": "おおやけ (ooyake)",
+      "strokes": 4,
+      "radical": "公",
+      "radicalClue": "Core element: 公",
+      "examples": [
+        {
+          "word": "公園",
+          "reading": "こうえん (kouen)",
+          "meaning": "park",
+          "romaji": "kouen"
+        },
+        {
+          "word": "公衆",
+          "reading": "こうしゅう (koushuu)",
+          "meaning": "public",
+          "romaji": "koushuu"
+        }
+      ]
+    },
+    {
+      "kanji": "園",
+      "meaning": "garden, park",
+      "onyomi": "エン (en)",
+      "kunyomi": "その (sono)",
+      "strokes": 13,
+      "radical": "園",
+      "radicalClue": "Core element: 園",
+      "examples": [
+        {
+          "word": "公園",
+          "reading": "こうえん (kouen)",
+          "meaning": "park",
+          "romaji": "kouen"
+        },
+        {
+          "word": "動物園",
+          "reading": "どうぶつえん (doubutsuen)",
+          "meaning": "zoo",
+          "romaji": "doubutsuen"
+        }
+      ]
+    },
+    {
+      "kanji": "赤",
+      "meaning": "red",
+      "onyomi": "セキ・シャク (seki / shaku)",
+      "kunyomi": "あか・あか(い) (aka / aka(i))",
+      "strokes": 7,
+      "radical": "赤",
+      "radicalClue": "Core element: 赤",
+      "examples": [
+        {
+          "word": "赤",
+          "reading": "あか (aka)",
+          "meaning": "red color",
+          "romaji": "aka"
+        },
+        {
+          "word": "赤い",
+          "reading": "あかい (akai)",
+          "meaning": "red (adj)",
+          "romaji": "akai"
+        }
+      ]
+    },
+    {
+      "kanji": "黒",
+      "meaning": "black",
+      "onyomi": "コク (koku)",
+      "kunyomi": "くろ・くろ(い) (kuro / kuro(i))",
+      "strokes": 11,
+      "radical": "黒",
+      "radicalClue": "Core element: 黒",
+      "examples": [
+        {
+          "word": "黒",
+          "reading": "くろ (kuro)",
+          "meaning": "black color",
+          "romaji": "kuro"
+        },
+        {
+          "word": "黒い",
+          "reading": "くろい (kuroi)",
+          "meaning": "black (adj)",
+          "romaji": "kuroi"
+        }
+      ]
+    },
+    {
+      "kanji": "青",
+      "meaning": "blue",
+      "onyomi": "セイ・ショウ (sei / shou)",
+      "kunyomi": "あお・あお(い) (ao / ao(i))",
+      "strokes": 8,
+      "radical": "青",
+      "radicalClue": "Core element: 青",
+      "examples": [
+        {
+          "word": "青",
+          "reading": "あお (ao)",
+          "meaning": "blue color",
+          "romaji": "ao"
+        },
+        {
+          "word": "青い",
+          "reading": "あおい (aoi)",
+          "meaning": "blue (adj)",
+          "romaji": "aoi"
+        }
+      ]
+    },
+    {
+      "kanji": "木",
+      "meaning": "tree, wood",
+      "onyomi": "モク・ボク (moku / boku)",
+      "kunyomi": "き (ki)",
+      "strokes": 4,
+      "radical": "木",
+      "radicalClue": "Core element: 木",
+      "examples": [
+        {
+          "word": "木",
+          "reading": "き (ki)",
+          "meaning": "tree / wood",
+          "romaji": "ki"
+        },
+        {
+          "word": "木星",
+          "reading": "もくせい (mokusei)",
+          "meaning": "Jupiter",
+          "romaji": "mokusei"
+        },
+        {
+          "word": "木曜日",
+          "reading": "もくようび (mokuyoubi)",
+          "meaning": "Thursday",
+          "romaji": "mokuyoubi"
+        }
+      ]
+    },
+    {
+      "kanji": "水",
+      "meaning": "water",
+      "onyomi": "スイ (sui)",
+      "kunyomi": "みず (mizu)",
+      "strokes": 4,
+      "radical": "水",
+      "radicalClue": "Core element: 水",
+      "examples": [
+        {
+          "word": "水",
+          "reading": "みず (mizu)",
+          "meaning": "water",
+          "romaji": "mizu"
+        },
+        {
+          "word": "水星",
+          "reading": "すいせい (suisei)",
+          "meaning": "Mercury",
+          "romaji": "suisei"
+        },
+        {
+          "word": "水曜日",
+          "reading": "すいようび (suiyoubi)",
+          "meaning": "Wednesday",
+          "romaji": "suiyoubi"
+        }
+      ]
+    },
+    {
+      "kanji": "火",
+      "meaning": "fire",
+      "onyomi": "カ (ka)",
+      "kunyomi": "ひ (hi)",
+      "strokes": 4,
+      "radical": "火",
+      "radicalClue": "Core element: 火",
+      "examples": [
+        {
+          "word": "火",
+          "reading": "ひ (hi)",
+          "meaning": "fire",
+          "romaji": "hi"
+        },
+        {
+          "word": "火星",
+          "reading": "かせい (kasei)",
+          "meaning": "Mars",
+          "romaji": "kasei"
+        },
+        {
+          "word": "火曜日",
+          "reading": "かようび (kayoubi)",
+          "meaning": "Tuesday",
+          "romaji": "kayoubi"
+        }
+      ]
+    },
+    {
+      "kanji": "金",
+      "meaning": "gold, money",
+      "onyomi": "キン (kin)",
+      "kunyomi": "かね (kane)",
+      "strokes": 8,
+      "radical": "金",
+      "radicalClue": "Core element: 金",
+      "examples": [
+        {
+          "word": "お金",
+          "reading": "おかね (okane)",
+          "meaning": "money",
+          "romaji": "okane"
+        },
+        {
+          "word": "金星",
+          "reading": "きんせい (kinsei)",
+          "meaning": "Venus",
+          "romaji": "kinsei"
+        },
+        {
+          "word": "金曜日",
+          "reading": "きんようび (kinyoubi)",
+          "meaning": "Friday",
+          "romaji": "kinyoubi"
+        }
+      ]
+    },
+    {
+      "kanji": "土",
+      "meaning": "soil, earth",
+      "onyomi": "ド・ト (do / to)",
+      "kunyomi": "つち (tsuchi)",
+      "strokes": 3,
+      "radical": "土",
+      "radicalClue": "Core element: 土",
+      "examples": [
+        {
+          "word": "土",
+          "reading": "つち (tsuchi)",
+          "meaning": "soil / earth",
+          "romaji": "tsuchi"
+        },
+        {
+          "word": "土星",
+          "reading": "どせい (dosei)",
+          "meaning": "Saturn",
+          "romaji": "dosei"
+        },
+        {
+          "word": "土曜日",
+          "reading": "どようび (doyoubi)",
+          "meaning": "Saturday",
+          "romaji": "doyoubi"
+        }
+      ]
+    }
+  ],
+  "vocabularyList": [
+    {
+      "japanese": "公園",
+      "reading": "こうえん (kouen)",
+      "english": "public park",
+      "category": "Noun",
+      "notes": "公園へ行きます。",
+      "romaji": "kouen"
+    },
+    {
+      "japanese": "赤",
+      "reading": "あか (aka)",
+      "english": "red",
+      "category": "Colour",
+      "notes": "赤が好きです。",
+      "romaji": "aka"
+    },
+    {
+      "japanese": "黒",
+      "reading": "くろ (kuro)",
+      "english": "black",
+      "category": "Colour",
+      "notes": "黒い犬。",
+      "romaji": "kuro"
+    },
+    {
+      "japanese": "白",
+      "reading": "しろ (shiro)",
+      "english": "white",
+      "category": "Colour",
+      "notes": "白いねこ。",
+      "romaji": "shiro"
+    },
+    {
+      "japanese": "青",
+      "reading": "あお (ao)",
+      "english": "blue",
+      "category": "Colour",
+      "notes": "青い本。",
+      "romaji": "ao"
+    },
+    {
+      "japanese": "オレンジ色",
+      "reading": "おれんじいろ (orenjiiro)",
+      "english": "orange",
+      "category": "Colour",
+      "notes": "オレンジ色のみかん。",
+      "romaji": "orenjiiro"
+    },
+    {
+      "japanese": "ピンク色",
+      "reading": "ぴんくいろ (pinkuiro)",
+      "english": "pink",
+      "category": "Colour",
+      "notes": "ピンク色の花。",
+      "romaji": "pinkuiro"
+    },
+    {
+      "japanese": "グレー色",
+      "reading": "ぐれーいろ (gureeiro)",
+      "english": "grey",
+      "category": "Colour",
+      "notes": "グレー色の車。",
+      "romaji": "gureeiro"
+    },
+    {
+      "japanese": "カンガルー",
+      "reading": "かんがるー (kangaruu)",
+      "english": "kangaroo",
+      "category": "Animal",
+      "notes": "カンガルーが一匹います。",
+      "romaji": "kangaruu"
+    },
+    {
+      "japanese": "おおかみ",
+      "reading": "おおかみ (ookami)",
+      "english": "wolf",
+      "category": "Animal",
+      "notes": "おおかみが一匹います。",
+      "romaji": "ookami"
+    },
+    {
+      "japanese": "ポニー",
+      "reading": "ぽにー (ponii)",
+      "english": "pony",
+      "category": "Animal",
+      "notes": "ポニーが一頭います。",
+      "romaji": "ponii"
+    },
+    {
+      "japanese": "人",
+      "reading": "ひとり / ひと (hitori / hito)",
+      "english": "person",
+      "category": "Counter",
+      "notes": "人が一人います。",
+      "romaji": "hitori / hito"
+    },
+    {
+      "japanese": "ゆき",
+      "reading": "ゆき (yuki)",
+      "english": "Yuki (protagonist)",
+      "category": "Name",
+      "notes": "ゆきは25歳です。",
+      "romaji": "yuki"
+    },
+    {
+      "japanese": "あき",
+      "reading": "あき (aki)",
+      "english": "Aki (friend)",
+      "category": "Name",
+      "notes": "あきと公園へ行きます。",
+      "romaji": "aki"
+    },
+    {
+      "japanese": "ふふ",
+      "reading": "ふふ (fufu)",
+      "english": "FuFu (blue dog)",
+      "category": "Name",
+      "notes": "ふふは青い犬です。",
+      "romaji": "fufu"
+    },
+    {
+      "japanese": "もも",
+      "reading": "もも (momo)",
+      "english": "MoMo (pink dog)",
+      "category": "Name",
+      "notes": "ももはピンクの犬です。",
+      "romaji": "momo"
+    },
+    {
+      "japanese": "火星",
+      "reading": "かせい (kasei)",
+      "english": "Mars",
+      "category": "Astronomy",
+      "notes": "火星は赤い惑星です。",
+      "romaji": "kasei"
+    },
+    {
+      "japanese": "水星",
+      "reading": "すいせい (suisei)",
+      "english": "Mercury",
+      "category": "Astronomy",
+      "notes": "水星。",
+      "romaji": "suisei"
+    },
+    {
+      "japanese": "木星",
+      "reading": "もくせい (mokusei)",
+      "english": "Jupiter",
+      "category": "Astronomy",
+      "notes": "木星は大きいです。",
+      "romaji": "mokusei"
+    },
+    {
+      "japanese": "金星",
+      "reading": "きんせい (kinsei)",
+      "english": "Venus",
+      "category": "Astronomy",
+      "notes": "金星がきれいです。",
+      "romaji": "kinsei"
+    },
+    {
+      "japanese": "土星",
+      "reading": "どせい (dosei)",
+      "english": "Saturn",
+      "category": "Astronomy",
+      "notes": "土星の輪。",
+      "romaji": "dosei"
+    },
+    {
+      "japanese": "エイチェイ",
+      "reading": "えいちぇい (eichiぇi)",
+      "english": "Ajay",
+      "category": "Classmate",
+      "notes": "エイチェイさん（えJ）。",
+      "romaji": "eichiぇi"
+    },
+    {
+      "japanese": "アニーシュ",
+      "reading": "あにーしゅ (aniishu)",
+      "english": "Aneesh",
+      "category": "Classmate",
+      "notes": "アニーシュさん（あに）。",
+      "romaji": "aniishu"
+    },
+    {
+      "japanese": "チェイカッブ",
+      "reading": "ちぇいかっぶ (chiぇikabbu)",
+      "english": "Jacob",
+      "category": "Classmate",
+      "notes": "チェイカッブさん（Jこ）。",
+      "romaji": "chiぇikabbu"
+    },
+    {
+      "japanese": "ミデゥン トマス",
+      "reading": "みでぅん とます (mideぅn tomasu)",
+      "english": "Midhun Thomas",
+      "category": "Classmate",
+      "notes": "ミデゥンさん（とま）。",
+      "romaji": "mideぅn tomasu"
+    },
+    {
+      "japanese": "スカリヤ",
+      "reading": "すかりや (sukariya)",
+      "english": "Skaria",
+      "category": "Classmate",
+      "notes": "スカリヤさん（すかり）。",
+      "romaji": "sukariya"
+    },
+    {
+      "japanese": "ニッキ",
+      "reading": "にっき (nikki)",
+      "english": "Nikki (Sensei)",
+      "category": "Teacher",
+      "notes": "ニッキ先生。",
+      "romaji": "nikki"
+    },
+    {
+      "japanese": "マドセン",
+      "reading": "まどせん (madosen)",
+      "english": "Madsen (Surname)",
+      "category": "Teacher",
+      "notes": "マドセン先生。",
+      "romaji": "madosen"
+    }
+  ],
+  "grammarNotes": [
+    {
+      "title": "Foreign Names Japanification & Friend Nicknames",
+      "structure": "[Full English Name] -> [Katakana / Hiragana] -> [2-3 Mora Nickname]",
+      "explanation": "From Slide 5 & 6: In Japan, foreign names are written in Katakana. Among friends or co-workers, short nicknames are commonly used: Ajay -> えJ, Aneesh -> あに, Jacob -> Jこ, Midhun -> とま, Skaria -> すかり.",
+      "examples": [
+        {
+          "japanese": "アニーシュ → あに",
+          "reading": "Aniishu -> Ani",
+          "english": "Aneesh -> Ani",
+          "romaji": "Aniishu -> Ani"
+        },
+        {
+          "japanese": "エイチェイ → えJ",
+          "reading": "Eichei -> E-J",
+          "english": "Ajay -> AJ",
+          "romaji": "Eichei -> E-J"
+        },
+        {
+          "japanese": "チェイカッブ → Jこ",
+          "reading": "Cheikabbu -> J-ko",
+          "english": "Jacob -> Jko",
+          "romaji": "Cheikabbu -> J-ko"
+        }
+      ]
+    },
+    {
+      "title": "Animal Counters: New Animals on Slide 9",
+      "structure": "[Animal] + 一匹 (small/medium) | [Animal] + 一頭 (large) | 人 + 一人 (human)",
+      "explanation": "From Slide 9: カンガルー (Kangaroo) takes 一匹, おおかみ (Wolf) takes 一匹, ポニー (Pony) takes 一頭, and 人 (Person) takes 一人 (ひとり).",
+      "examples": [
+        {
+          "japanese": "カンガルー → 一匹",
+          "reading": "kangaruu -> ippiki",
+          "english": "Kangaroo -> 1 small animal",
+          "romaji": "kangaruu -> ippiki"
+        },
+        {
+          "japanese": "ポニー → 一頭",
+          "reading": "ponii -> ittou",
+          "english": "Pony -> 1 large animal",
+          "romaji": "ponii -> ittou"
+        },
+        {
+          "japanese": "人 → 一人",
+          "reading": "hito -> hitori",
+          "english": "Person -> 1 person (ひとり)",
+          "romaji": "hito -> hitori"
+        }
+      ]
+    }
+  ],
+  "readingPassages": [
+    {
+      "title": "ゆきとあきの公園ストーリー (Class 424 Storyline)",
+      "text": "ゆきは1999年2月2日生まれです。ゆきは25歳です。あきはゆきの友だちです。あきは11月1日生まれで、25歳です。ゆきとあきは公園に行きます。ゆきは青い犬「ふふ」がいます。あきはピンクの犬「もも」がいます。犬は「ワンワン」といいます。",
+      "translation": "Yuki was born on February 2, 1999 and is 25 years old. Aki is Yuki's friend. Aki was born on November 1st and is 25 years old. Yuki and Aki hang out at the park. Yuki has a blue dog named 'FuFu'. Aki has a pink dog named 'MoMo'. The dogs say 'wan wan'.",
+      "romaji": "Yuki wa 1999-nen 2-gatsu 2-nichi umare desu. Yuki wa 25-sai desu. Aki wa Yuki no tomodachi desu. Aki wa 11-gatsu 1-nichi umare de, 25-sai desu. Yuki to Aki wa kouen ni ikimasu. Yuki wa aoi inu \"Fufu\" ga imasu. Aki wa pinku no inu \"Momo\" ga imasu. Inu wa \"wan wan\" to iimasu.",
+      "questions": [
+        {
+          "q": "ゆきとあきはどこへ行きますか？ (Yuki to Aki wa doko e ikimasu ka? / Where do Yuki and Aki go?)",
+          "a": "公園 (こうえん / kōen) へ行きます。(They go to the park.)"
+        },
+        {
+          "q": "青い犬の名前は何ですか？ (Aoi inu no namae wa nan desu ka? / What is the blue dog's name?)",
+          "a": "ふふ (FuFu / fufu) です。"
+        },
+        {
+          "q": "ゆきは何歳ですか？ (Yuki wa nan-sai desu ka? / How old is Yuki?)",
+          "a": "二十五歳 (にじゅうごさい / nijūgosai - 25 years old) です。"
+        }
+      ]
+    }
+  ],
+  "practiceQuiz": [
+    {
+      "question": "What does 公園 (こうえん / kōen) mean? (From Slide 4)",
+      "options": [
+        "Public Park",
+        "Train Station",
+        "School",
+        "Library"
+      ],
+      "correct": "Public Park",
+      "explanation": "公園 (こうえん / kōen) is a public park."
+    },
+    {
+      "question": "Which counter does a ポニー (Pony / ponī) take according to Slide 9?",
+      "options": [
+        "一頭 (いっとう / ittou)",
+        "一匹 (いっぴき / ippiki)",
+        "一人 (ひとり / hitori)",
+        "一個 (いっこ / ikko)"
+      ],
+      "correct": "一頭 (いっとう / ittou)",
+      "explanation": "Slide 9 shows ポニー (horses/ponies) takes the large animal counter 頭 (とう / tou) -> 一頭 (いっとう / ittou)."
+    },
+    {
+      "question": "How is \"〇\" read when writing numbers or years? (From Slide 10)",
+      "options": [
+        "ぜろ / れい (zero / rei)",
+        "まる / わ (maru / wa)",
+        "えん / たま (en / tama)",
+        "くう / む (kū / mu)"
+      ],
+      "correct": "ぜろ / れい (zero / rei)",
+      "explanation": "Slide 10 shows 〇 is read as ぜろ (zero) or れい (rei)."
+    },
+    {
+      "question": "Who is the protagonist born on February 2, 1999? (From Slide 11)",
+      "options": [
+        "ゆき (Yuki / yuki)",
+        "あき (Aki / aki)",
+        "にっき (Nikki / nikki)",
+        "あに (Ani / ani)"
+      ],
+      "correct": "ゆき (Yuki / yuki)",
+      "explanation": "Slide 11: ゆき was born on February 2, 1999 (1999年2月2日)."
+    },
+    {
+      "question": "What color is FuFu (ふふ / fufu), Yuki's dog? (From Slide 14)",
+      "options": [
+        "青い (あおい / aoi - Blue)",
+        "ピンク (pinku - Pink)",
+        "赤い (あかい / akai - Red)",
+        "白い (しろい / shiroi - White)"
+      ],
+      "correct": "青い (あおい / aoi - Blue)",
+      "explanation": "Slide 14 introduces FuFu: 青い 犬が います (There is a blue dog)."
+    }
+  ],
+  "slides": [
+    {
+      "slideNumber": 1,
+      "title": "日本語 Class 424",
+      "category": "Title Slide",
+      "subtitle": "Update: Storyline, Answer-sheet · By: Nikki (ニッキ)",
+      "summary": "Welcome to Class 424 introducing the storyline and review.",
+      "bullets": [
+        "日本語 Class 424",
+        "Update: Storyline, Answer-sheet",
+        "By: Nikki (ニッキ)"
+      ],
+      "highlight": "Class 424 introduces the Yuki & Aki storyline, park culture, colors, and names.",
+      "blocks": [
+        [
+          "に    ほん    ご                                                   .日本語 Class 42⃣4"
+        ],
+        [
+          "Update: Storyline, Answer-sheet"
+        ],
+        [
+          "By: Nikki",
+          "ニッキ"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 2,
+      "title": "宿題・Homework from Class 414",
+      "category": "Review",
+      "subtitle": "N5 Lessons review checklist",
+      "summary": "Checking homework from previous class.",
+      "bullets": [
+        "Complete following N5 Lessons: Lesson 1, Lesson 2, Lesson 3, Lesson 4, Lesson 5"
+      ],
+      "highlight": "Reviewing foundational lessons 1 to 5.",
+      "blocks": [
+        [
+          "しゅく    だい 宿  題・Homework from Class 41⃣4"
+        ],
+        [
+          "Complete following N5 Lessons",
+          "Lesson 1",
+          "Lesson 2",
+          "Lesson 3",
+          "Lesson 4",
+          "Lesson 5"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 3,
+      "title": "Todays Lecture",
+      "category": "Roadmap",
+      "subtitle": "Overview of today's topics",
+      "summary": "Topics covered in Class 424.",
+      "bullets": [
+        "お名前・おなまえ (Your Name - not anime)",
+        "色・いろ (Colours)",
+        "匹・ひき (Small animal count)",
+        "数字 (Numbers)",
+        "曜日・ようび (Days of the Week)",
+        "ひらがな",
+        "カタカナ"
+      ],
+      "highlight": "Integrating names, colors, counters, numbers, and weekdays into the storyline.",
+      "blocks": [
+        [
+          "Todays Lecture"
+        ],
+        [
+          "お名前・おなまえ",
+          "色・いろ",
+          "匹・ひき",
+          "数字",
+          "曜日・ようび",
+          "ひらがな",
+          "カタカナ"
+        ],
+        [
+          "Your Name (not anime)",
+          "Colours",
+          "Small animal count",
+          "Numbers",
+          "Days of the Week",
+          "Hiragana",
+          "Katakana"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 4,
+      "title": "Todays Theme・Park・公園",
+      "category": "Theme",
+      "subtitle": "Public Park rules and etiquette",
+      "summary": "Exploring the concept of 公園 (こうえん) and park signage in Japan.",
+      "bullets": [
+        "公園・こうえん means “Public Park”",
+        "Japan has many small parks",
+        "Parks sometimes have specific rules written signs:",
+        "  • “No fireworks”",
+        "  • “No walking dog”",
+        "  • “Please do not throw away litter”"
+      ],
+      "highlight": "Parks in Japan are quiet neighbourhood community centers with explicit civic etiquette signs.",
+      "blocks": [
+        [
+          "Todays Theme・Park・公園"
+        ],
+        [
+          "公園・こうえん means “Public Park”",
+          "Japan has many small parks",
+          "Parks sometimes have specific rules written sign(“No fireworks”, “No walking dog”, “Please do not throw out away litter”)"
+        ],
+        [
+          "こう えん公園・Park"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 5,
+      "title": "What is your name? お名前？ (Japanification)",
+      "category": "Names & Katakana",
+      "subtitle": "How foreign names adapt to Japanese phonetics",
+      "summary": "Writing classroom student names in Japanese script.",
+      "bullets": [
+        "Japan uses Katakana for foreign names",
+        "Name may change a bit (Japanification)",
+        "Class student examples from slide:",
+        "  • Ajay → えいちぇい / エイチェイ",
+        "  • Aneesh → あにーしゅ / アニーシュ",
+        "  • Jacob → ちぇいかっぶ / チェイカッブ",
+        "  • Midhun Thomas → みでぅん とます / ミデゥン トマス",
+        "  • Skaria → すかりや / スカリヤ",
+        "  • Nikki → にっき",
+        "  • Madsen → まどせん (✕ まぜん)"
+      ],
+      "highlight": "Foreign names conform to Japanese mora beats (e.g. Aneesh -> アニーシュ).",
+      "blocks": [
+        [
+          "What is your name? お名前？"
+        ],
+        [
+          "Japan uses Katakana for foreign names",
+          "Name may change a bit（Japanification）",
+          "Let’s try to write your name(in Hiragana)"
+        ],
+        [
+          "Ajay: えいちぇい / エイチェイ",
+          "Aneesh: あにーしゅ / アニーシュ",
+          "Jacob: ちぇいかっぶ / チェイカッブ",
+          "Midhun Thomas: みでぅん とます / ミデゥン トマス",
+          "Skaria: すかりや / スカリヤ",
+          "Nikki: にっき",
+          "Madsen: まどせん (✕ まぜん)"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 6,
+      "title": "What is your name? お名前？ (Nicknames)",
+      "category": "Names & Culture",
+      "subtitle": "Using nicknames among friends and co-workers",
+      "summary": "Short 2 to 3 mora nicknames in Japanese social life.",
+      "bullets": [
+        "Japan uses Nicknames among friends or co-workers",
+        "Classroom examples from slide:",
+        "  • Ajay → えJ",
+        "  • Aneesh → あに",
+        "  • Jacob → Jこ",
+        "  • Midhun → とま",
+        "  • Skaria → すかり",
+        "(just examples)"
+      ],
+      "highlight": "Japanese speakers naturally condense names to 2 or 3 beats for friendly warmth!",
+      "blocks": [
+        [
+          "What is your name? お名前？"
+        ],
+        [
+          "Japan uses Nicknames among friends or co-workers"
+        ],
+        [
+          "Ajay → えJ",
+          "Aneesh → あに",
+          "Jacob → Jこ",
+          "Midhun Thomas → とま",
+          "Skaria → すかり",
+          "(just examples)"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 7,
+      "title": "色・いろ・Colours Colors",
+      "category": "Colors",
+      "subtitle": "The 7 Japanese colors from Nikki's slide",
+      "summary": "Core color vocabulary introduced in Class 424.",
+      "bullets": [
+        "赤・あか (Red)",
+        "黒・くろ (Black)",
+        "白・しろ (White)",
+        "青・あお (Blue)",
+        "オレンジ色・おれんじ (Orange)",
+        "ピンク色・ぴんく (Pink)",
+        "グレー色・ぐれえ (Gray)"
+      ],
+      "highlight": "Notice native traditional colors (赤, 黒, 白, 青) vs Katakana loanword colors (オレンジ, ピンク, グレー).",
+      "blocks": [
+        [
+          "色・いろ・Colours Colors"
+        ],
+        [
+          "赤・あか",
+          "黒・くろ",
+          "白・しろ",
+          "青・あお",
+          "オレンジ色・おれんじ",
+          "ピンク色・ぴんく",
+          "グレー色・ぐれえ"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 8,
+      "title": "一匹 or 一頭 (Review: 4 Animals)",
+      "category": "Counters",
+      "subtitle": "Quick review of animal counters from Class 414",
+      "summary": "Matching the 4 animals to 一匹 vs 一頭.",
+      "bullets": [
+        "うし (Cow) → 一頭 (いっとう)",
+        "ねこ (Cat) → 一匹 (いっぴき)",
+        "うま (Horse) → 一頭 (いっとう)",
+        "とり (Bird) → 一匹 (いっぴき)"
+      ],
+      "highlight": "Reinforcing: Large livestock take 一頭, small animals take 一匹.",
+      "blocks": [
+        [
+          "いっ   ぴき             　いっ  とう一匹 or 一頭"
+        ],
+        [
+          "うし → 一頭",
+          "ねこ → 一匹",
+          "うま → 一頭",
+          "とり → 一匹"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 9,
+      "title": "一匹 or 一頭 (Part 2: New Animals & People)",
+      "category": "Counters",
+      "subtitle": "Kangaroos, wolves, ponies, and humans",
+      "summary": "Applying counters to new creatures and counting humans.",
+      "bullets": [
+        "カンガルー (Kangaroo) → 一匹 (いっぴき)",
+        "おおかみ (Wolf) → 一匹 (いっぴき)",
+        "ポニー (Pony) → 一頭 (いっとう)",
+        "人 (Person) → 一人（ひとり）"
+      ],
+      "highlight": "People do NOT take 匹 or 頭! One person is 一人 (ひとり).",
+      "blocks": [
+        [
+          "いっ   ぴき             　いっ  とう一匹 or 一頭"
+        ],
+        [
+          "カンガルー → 一匹",
+          "おおかみ → 一匹",
+          "ポニー → 一頭",
+          "人 → 一人 (ひとり)"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 10,
+      "title": "Numbers & The '〇' Zero Rule",
+      "category": "Numbers",
+      "subtitle": "Reading 3-digit numbers and the 〇 zero symbol",
+      "summary": "Practicing complex numbers and understanding 〇 (zero / rei).",
+      "bullets": [
+        "3-Digit practice: 496, 763, 278, 344, 167",
+        "Tens & Hundreds: 五〇 (50), 一〇 (10), 五〇〇 (500), 一〇〇〇 (1000), 一〇〇〇〇 (10000)",
+        "The “〇” symbol:",
+        "  • Read as ぜろ / れい",
+        "  • Most common in writing Years: 二○二六 (2026)",
+        "  • Sometimes used in individual numbering: 八〇三 (8-0-3)"
+      ],
+      "highlight": "“〇” is the Japanese zero character, seen everywhere on calendars, room numbers, and dates.",
+      "blocks": [
+        [
+          "Numbers"
+        ],
+        [
+          "496, 763, 278, 344, 167",
+          "五〇〇, 一〇〇〇, 五〇, 一〇, 一〇〇〇〇"
+        ],
+        [
+          "“〇” is read as ぜろ/れい",
+          "Most common in writing Years: 二○二六・2026",
+          "Sometimes used in individual numbering: 八〇三・8-0-3"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 11,
+      "title": "Meet Protagonist: ゆき (Yuki)",
+      "category": "Storyline",
+      "subtitle": "Character profile of Yuki",
+      "summary": "First main character profile in the Class 424 storyline.",
+      "bullets": [
+        "Name: ゆき (Yuki)",
+        "Birthday: 2日２月1999年 (Feb 2, 1999)",
+        "Age: 25 years old",
+        "Plan: Hangout at Park with friend",
+        "→ Answer QnA: Q1, Q2"
+      ],
+      "highlight": "Q1 & Q2 in the Q&A drill ask about Yuki's identity and age!",
+      "blocks": [
+        [
+          "Meet Protagonist"
+        ],
+        [
+          "Name: ゆき",
+          "Birthday: 2日２月1999年",
+          "Plan: Hangout at Park with friend"
+        ],
+        [
+          "Answer QnA: Q1, Q2"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 12,
+      "title": "Friend: あき (Aki)",
+      "category": "Storyline",
+      "subtitle": "Character profile of Aki",
+      "summary": "Second main character profile in the Class 424 storyline.",
+      "bullets": [
+        "Name: あき (Aki)",
+        "Birthday: １日１１月 (Nov 1st)",
+        "Age: 25 years old",
+        "Plan: Hangout at Park with ゆき",
+        "→ Answer QnA: Q3, Q4"
+      ],
+      "highlight": "Q3 & Q4 ask about Aki's friendship with Yuki and birthday on Dog Day (11/1)!",
+      "blocks": [
+        [
+          "Friend"
+        ],
+        [
+          "Name: あき",
+          "Birthday: １日１１月",
+          "Age: 25",
+          "Hangout at Park with ゆき"
+        ],
+        [
+          "Answer QnA: Q3, Q4"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 13,
+      "title": "Guessing Game: The 5 Cosmic Elements",
+      "category": "Kanji Elements",
+      "subtitle": "Matching kanji to natural elements",
+      "summary": "The 5 elemental kanji used in nature and days of the week.",
+      "bullets": [
+        "木 (き / モク): Tree / Wood",
+        "水 (みず / スイ): Water",
+        "火 (ひ / カ): Fire",
+        "日 (ひ / ニチ): Sun / Day",
+        "土 (つち / ド): Earth / Soil",
+        "→ Answer QnA: Q5"
+      ],
+      "highlight": "These 5 kanji form the names of weekdays (火曜日, 水曜日, 木曜日, 土曜日) and planets!",
+      "blocks": [
+        [
+          "木, 水, 火, 日, 土"
+        ],
+        [
+          "Guessing Game: 1, 2, 3, 4, 5 -> ア, イ, ウ, エ, オ"
+        ],
+        [
+          "Answer QnA: Q5"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 14,
+      "title": "Doggies: ふふ & もも",
+      "category": "Storyline",
+      "subtitle": "The two colorful pet dogs in the park",
+      "summary": "Yuki and Aki's dogs and their colors.",
+      "bullets": [
+        "🔵 ふふ (FuFu): 青 / 青い (Blue dog)",
+        "もも (MoMo): ピンク / ぴんく (Pink dog)",
+        "Dog bark: ワンワン (wan wan)",
+        "→ Answer QnA: Q6, Q7"
+      ],
+      "highlight": "FuFu is the blue dog (青い犬) and MoMo is the pink dog (ピンクの犬)!",
+      "blocks": [
+        [
+          "Doggies"
+        ],
+        [
+          "🔵ふふ: あお / 青い",
+          "もも: ぴんく / ピンク"
+        ],
+        [
+          "ワン ワン"
+        ],
+        [
+          "Answer QnA: Q6, Q7"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 15,
+      "title": "Days of the Week (曜日)",
+      "category": "Calendar",
+      "subtitle": "How weekdays work in Japanese calendars",
+      "summary": "Rules for reading and writing days of the week.",
+      "bullets": [
+        "Each day is a different element (Sun, Moon, Fire, Water, Wood, Metal, Earth)",
+        "Calendar shows only the first kanji, no 「曜日」 (e.g. 日, 月, 火, 水, 木, 金, 土)",
+        "When mentioning specific days of the week, first kanji is enough"
+      ],
+      "highlight": "Japanese calendars write just (月), (火), (水) instead of full 月曜日, saving space!",
+      "blocks": [
+        [
+          "Days of the Week"
+        ],
+        [
+          "Each day is a different element",
+          "Calendar shows only the first kanji, no 「曜日」",
+          "When mentioning specific days of the week, first kanji is enough"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 16,
+      "title": "Fun Fact: Planets of the Solar System",
+      "category": "Astronomy & Kanji",
+      "subtitle": "Planetary names derived from the 5 elements",
+      "summary": "Connecting the weekdays to astronomy.",
+      "bullets": [
+        "First five planets use the same kanji as week days:",
+        "  • 火星 (Mars - Fire Star)",
+        "  • 水星 (Mercury - Water Star)",
+        "  • 木星 (Jupiter - Wood Star)",
+        "  • 金星 (Venus - Metal/Gold Star)",
+        "  • 土星 (Saturn - Earth Star)",
+        "Other outer planets use Deity names (天王星 Uranus, 海王星 Neptune, 冥王星 Pluto)"
+      ],
+      "highlight": "Learn the days of the week, and you automatically learn the Solar System in Japanese!",
+      "blocks": [
+        [
+          "Fun fact:Planets of the Solar System"
+        ],
+        [
+          "First five planets uses same kanji as week days",
+          "Other planets are Deity names"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 17,
+      "title": "Similar Kanjis: 日 vs 白 vs 百 vs 月",
+      "category": "Kanji Clones",
+      "subtitle": "Distinguishing visually identical character families",
+      "summary": "Comparing 4 similar box-like characters.",
+      "bullets": [
+        "日: ひ / にち (Day / Sun) — Basic box with crossbar",
+        "白: しろ(い) (White) — Sun with a top tick",
+        "百: ひゃく (100) — White with a top ceiling bar",
+        "月: つき / ゲツ, ガツ (Moon / Month)",
+        "Kunyomi / Onyomi for 月: つき (Kun) / ゲツ, ガツ (On)",
+        "Examples from slide:",
+        "  • 月曜日 (げつようび · Monday)",
+        "  • 三月 (さんがつ · March)"
+      ],
+      "highlight": "日 (Sun) + tick = 白 (White) + bar = 百 (100). Do not confuse them with curved legs in 月 (Moon)!",
+      "blocks": [
+        [
+          "Similar Kanjis"
+        ],
+        [
+          "日: ひ・にち・Day",
+          "白: しろ（い）・White",
+          "百: ひゃく・100",
+          "月: つき・げつ・がつ・Moon、Month"
+        ],
+        [
+          "Kunyomi / Onyomi for 月: つき / ゲツ/ガツ"
+        ],
+        [
+          "Example: 月曜日（げつようび・Monday）, 三月（さんがつ・March）"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 18,
+      "title": "宿題・Homework (N5 Lessons)",
+      "category": "Homework",
+      "subtitle": "Target lessons for Class 424",
+      "summary": "Curriculum milestones from Nikki's slide.",
+      "bullets": [
+        "Complete following N5 Lessons:",
+        "  • Lesson 6",
+        "  • Lesson 9",
+        "  • Lesson 15"
+      ],
+      "highlight": "Lesson 6, 9, and 15 focus on colors, weekdays, and dialogue comprehension.",
+      "blocks": [
+        [
+          "しゅく    だい 宿  題・Homework"
+        ],
+        [
+          "Complete following N5 Lessons: Lesson 6, Lesson 9, Lesson 15"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 19,
+      "title": "宿題・Homework (App & 25 Questions)",
+      "category": "Homework",
+      "subtitle": "Daily app drills and questions",
+      "summary": "Check-in on app practice.",
+      "bullets": [
+        "How is the app？",
+        "25 Questions ？"
+      ],
+      "highlight": "Keep up daily practice drills in the app.",
+      "blocks": [
+        [
+          "しゅく    だい 宿  題・Homework"
+        ],
+        [
+          "How is the app？",
+          "25 Questions ？"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 20,
+      "title": "Self Evaluation Sheet",
+      "category": "Self Evaluation",
+      "subtitle": "Rate your understanding",
+      "summary": "Reflecting on today's progress.",
+      "bullets": [
+        "Self Evaluation Sheet 1"
+      ],
+      "highlight": "Track your personal mastery of Class 424 concepts.",
+      "blocks": [
+        [
+          "Self Evaluation Sheet"
+        ]
+      ]
+    }
+  ],
+  "vocabulary": [
+    {
+      "id": "v3-1",
+      "kanji": "公園",
+      "furigana": "こうえん",
+      "romaji": "kouen",
+      "english": "public park",
+      "type": "Noun",
+      "example": "公園へ行きます。"
+    },
+    {
+      "id": "v3-2",
+      "kanji": "赤",
+      "furigana": "あか",
+      "romaji": "aka",
+      "english": "red",
+      "type": "Colour",
+      "example": "赤が好きです。"
+    },
+    {
+      "id": "v3-3",
+      "kanji": "黒",
+      "furigana": "くろ",
+      "romaji": "kuro",
+      "english": "black",
+      "type": "Colour",
+      "example": "黒い犬。"
+    },
+    {
+      "id": "v3-4",
+      "kanji": "白",
+      "furigana": "しろ",
+      "romaji": "shiro",
+      "english": "white",
+      "type": "Colour",
+      "example": "白いねこ。"
+    },
+    {
+      "id": "v3-5",
+      "kanji": "青",
+      "furigana": "あお",
+      "romaji": "ao",
+      "english": "blue",
+      "type": "Colour",
+      "example": "青い本。"
+    },
+    {
+      "id": "v3-6",
+      "kanji": "オレンジ色",
+      "furigana": "おれんじいろ",
+      "romaji": "orenjiiro",
+      "english": "orange",
+      "type": "Colour",
+      "example": "オレンジ色のみかん。"
+    },
+    {
+      "id": "v3-7",
+      "kanji": "ピンク色",
+      "furigana": "ぴんくいろ",
+      "romaji": "pinkuiro",
+      "english": "pink",
+      "type": "Colour",
+      "example": "ピンク色の花。"
+    },
+    {
+      "id": "v3-8",
+      "kanji": "グレー色",
+      "furigana": "ぐれーいろ",
+      "romaji": "gureeiro",
+      "english": "grey",
+      "type": "Colour",
+      "example": "グレー色の車。"
+    },
+    {
+      "id": "v3-9",
+      "kanji": "カンガルー",
+      "furigana": "かんがるー",
+      "romaji": "kangaruu",
+      "english": "kangaroo",
+      "type": "Animal",
+      "example": "カンガルーが一匹います。"
+    },
+    {
+      "id": "v3-10",
+      "kanji": "おおかみ",
+      "furigana": "おおかみ",
+      "romaji": "ookami",
+      "english": "wolf",
+      "type": "Animal",
+      "example": "おおかみが一匹います。"
+    },
+    {
+      "id": "v3-11",
+      "kanji": "ポニー",
+      "furigana": "ぽにー",
+      "romaji": "ponii",
+      "english": "pony",
+      "type": "Animal",
+      "example": "ポニーが一頭います。"
+    },
+    {
+      "id": "v3-12",
+      "kanji": "人",
+      "furigana": "ひとり / ひと",
+      "romaji": "hitori / hito",
+      "english": "person",
+      "type": "Counter",
+      "example": "人が一人います。"
+    },
+    {
+      "id": "v3-13",
+      "kanji": "ゆき",
+      "furigana": "ゆき",
+      "romaji": "yuki",
+      "english": "Yuki (protagonist)",
+      "type": "Name",
+      "example": "ゆきは25歳です。"
+    },
+    {
+      "id": "v3-14",
+      "kanji": "あき",
+      "furigana": "あき",
+      "romaji": "aki",
+      "english": "Aki (friend)",
+      "type": "Name",
+      "example": "あきと公園へ行きます。"
+    },
+    {
+      "id": "v3-15",
+      "kanji": "ふふ",
+      "furigana": "ふふ",
+      "romaji": "fufu",
+      "english": "FuFu (blue dog)",
+      "type": "Name",
+      "example": "ふふは青い犬です。"
+    },
+    {
+      "id": "v3-16",
+      "kanji": "もも",
+      "furigana": "もも",
+      "romaji": "momo",
+      "english": "MoMo (pink dog)",
+      "type": "Name",
+      "example": "ももはピンクの犬です。"
+    },
+    {
+      "id": "v3-17",
+      "kanji": "火星",
+      "furigana": "かせい",
+      "romaji": "kasei",
+      "english": "Mars",
+      "type": "Astronomy",
+      "example": "火星は赤い惑星です。"
+    },
+    {
+      "id": "v3-18",
+      "kanji": "水星",
+      "furigana": "すいせい",
+      "romaji": "suisei",
+      "english": "Mercury",
+      "type": "Astronomy",
+      "example": "水星。"
+    },
+    {
+      "id": "v3-19",
+      "kanji": "木星",
+      "furigana": "もくせい",
+      "romaji": "mokusei",
+      "english": "Jupiter",
+      "type": "Astronomy",
+      "example": "木星は大きいです。"
+    },
+    {
+      "id": "v3-20",
+      "kanji": "金星",
+      "furigana": "きんせい",
+      "romaji": "kinsei",
+      "english": "Venus",
+      "type": "Astronomy",
+      "example": "金星がきれいです。"
+    },
+    {
+      "id": "v3-21",
+      "kanji": "土星",
+      "furigana": "どせい",
+      "romaji": "dosei",
+      "english": "Saturn",
+      "type": "Astronomy",
+      "example": "土星の輪。"
+    },
+    {
+      "id": "v3-22",
+      "kanji": "エイチェイ",
+      "furigana": "えいちぇい",
+      "romaji": "eichei",
+      "english": "Ajay",
+      "type": "Classmate",
+      "example": "エイチェイさん（えJ）。"
+    },
+    {
+      "id": "v3-23",
+      "kanji": "アニーシュ",
+      "furigana": "あにーしゅ",
+      "romaji": "aniishu",
+      "english": "Aneesh",
+      "type": "Classmate",
+      "example": "アニーシュさん（あに）。"
+    },
+    {
+      "id": "v3-24",
+      "kanji": "チェイカッブ",
+      "furigana": "ちぇいかっぶ",
+      "romaji": "cheikabbu",
+      "english": "Jacob",
+      "type": "Classmate",
+      "example": "チェイカッブさん（Jこ）。"
+    },
+    {
+      "id": "v3-25",
+      "kanji": "ミデゥン トマス",
+      "furigana": "みでぅん とます",
+      "romaji": "midwun tomasu",
+      "english": "Midhun Thomas",
+      "type": "Classmate",
+      "example": "ミデゥンさん（とま）。"
+    },
+    {
+      "id": "v3-26",
+      "kanji": "スカリヤ",
+      "furigana": "すかりや",
+      "romaji": "sukariya",
+      "english": "Skaria",
+      "type": "Classmate",
+      "example": "スカリヤさん（すかり）。"
+    },
+    {
+      "id": "v3-27",
+      "kanji": "ニッキ",
+      "furigana": "にっき",
+      "romaji": "nikki",
+      "english": "Nikki (Sensei)",
+      "type": "Teacher",
+      "example": "ニッキ先生。"
+    },
+    {
+      "id": "v3-28",
+      "kanji": "マドセン",
+      "furigana": "まどせん",
+      "romaji": "madosen",
+      "english": "Madsen (Surname)",
+      "type": "Teacher",
+      "example": "マドセン先生。"
+    }
+  ],
+  "kanji": [
+    {
+      "kanji": "公",
+      "onyomi": "コウ",
+      "kunyomi": "おおやけ",
+      "meaning": "public",
+      "strokes": 4,
+      "examples": [
+        "公園",
+        "公衆"
+      ]
+    },
+    {
+      "kanji": "園",
+      "onyomi": "エン",
+      "kunyomi": "その",
+      "meaning": "garden, park",
+      "strokes": 13,
+      "examples": [
+        "公園",
+        "動物園"
+      ]
+    },
+    {
+      "kanji": "赤",
+      "onyomi": "セキ・シャク",
+      "kunyomi": "あか・あか(い)",
+      "meaning": "red",
+      "strokes": 7,
+      "examples": [
+        "赤",
+        "赤い"
+      ]
+    },
+    {
+      "kanji": "黒",
+      "onyomi": "コク",
+      "kunyomi": "くろ・くろ(い)",
+      "meaning": "black",
+      "strokes": 11,
+      "examples": [
+        "黒",
+        "黒い"
+      ]
+    },
+    {
+      "kanji": "青",
+      "onyomi": "セイ・ショウ",
+      "kunyomi": "あお・あお(い)",
+      "meaning": "blue",
+      "strokes": 8,
+      "examples": [
+        "青",
+        "青い"
+      ]
+    },
+    {
+      "kanji": "木",
+      "onyomi": "モク・ボク",
+      "kunyomi": "き",
+      "meaning": "tree, wood",
+      "strokes": 4,
+      "examples": [
+        "木",
+        "木星",
+        "木曜日"
+      ]
+    },
+    {
+      "kanji": "水",
+      "onyomi": "スイ",
+      "kunyomi": "みず",
+      "meaning": "water",
+      "strokes": 4,
+      "examples": [
+        "水",
+        "水星",
+        "水曜日"
+      ]
+    },
+    {
+      "kanji": "火",
+      "onyomi": "カ",
+      "kunyomi": "ひ",
+      "meaning": "fire",
+      "strokes": 4,
+      "examples": [
+        "火",
+        "火星",
+        "火曜日"
+      ]
+    },
+    {
+      "kanji": "金",
+      "onyomi": "キン",
+      "kunyomi": "かね",
+      "meaning": "gold, money",
+      "strokes": 8,
+      "examples": [
+        "お金",
+        "金星",
+        "金曜日"
+      ]
+    },
+    {
+      "kanji": "土",
+      "onyomi": "ド・ト",
+      "kunyomi": "つち",
+      "meaning": "soil, earth",
+      "strokes": 3,
+      "examples": [
+        "土",
+        "土星",
+        "土曜日"
+      ]
+    }
+  ]
+}

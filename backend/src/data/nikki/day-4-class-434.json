@@ -1,0 +1,2756 @@
+{
+  "id": "day-4",
+  "dayNumber": 4,
+  "classCode": "Class 434",
+  "theme": "Days of the Week & Kanji Building Blocks",
+  "japaneseTheme": "曜日・七曜の元素・文脈による読み分け・「生」の漢字 (Yōbi, shichiyō no genso, bunmyaku dokkai, \"sei\" no kanji)",
+  "subtitle": "Uncover how the 7 days of the week mirror the solar system planets, context reading changes, and the versatile kanji 生",
+  "description": "Master all 7 days of the week, calendar patterns, reading shifts across contexts (日, 月, 火, 水, 木, 金, 土), look-alike kanji sets, Yuki’s 7-day story, compound kanji (火山, 金魚), and the versatile kanji「生」.",
+  "badge": "Class 434 · Weekdays & Elements",
+  "goals": [
+    "Master the 7 Days of the Week: 日曜日〜土曜日 and calendar shorthand (日 月 火 水 木 金 土)",
+    "Understand their planetary origins: Sun, Moon, Mars (火), Mercury (水), Jupiter (木), Venus (金), Saturn (土)",
+    "Recognize contextual reading changes: 日 = ひ (sun) vs にち (weekday), 月 = つき (moon) vs げつ (Monday) vs がつ (month)",
+    "Solve compound kanji puzzles: 火山 (volcano), 水曜日, 三月, 金魚 (goldfish)",
+    "Master the kanji 生 across N5 words: 学生 (student), 先生 (teacher), 一年生, 生きる, 誕生日"
+  ],
+  "keyHighlights": [
+    "The Japanese days of the week directly mirror ancient Babylonian and Roman astronomy: Sunday=Sun, Monday=Moon, Tuesday=Mars (Fire Star), Wednesday=Mercury (Water Star), Thursday=Jupiter (Wood Star), Friday=Venus (Gold Star), Saturday=Saturn (Earth Star)!",
+    "Calendar Shorthand: Japanese calendars only print the first character (日, 月, 火, 水, 木, 金, 土). Sunday is placed first and printed in red!",
+    "Kanji are not single words—they are reusable meaning-blocks. For example, 火 (fire) + 山 (mountain) = 火山 (kazan, volcano); 金 (gold) + 魚 (fish) = 金魚 (kingyo, goldfish)!"
+  ],
+  "kanjiList": [
+    {
+      "kanji": "日",
+      "meaning": "sun, day",
+      "onyomi": "ニチ・ジツ (nichi / jitsu)",
+      "kunyomi": "ひ・び・か (hi / bi / ka)",
+      "strokes": 4,
+      "radical": "日",
+      "radicalClue": "Core element: 日",
+      "examples": [
+        {
+          "word": "日曜日",
+          "reading": "にちようび (nichiyoubi)",
+          "meaning": "Sunday",
+          "romaji": "nichiyoubi"
+        },
+        {
+          "word": "日本",
+          "reading": "にほん (nihon)",
+          "meaning": "Japan",
+          "romaji": "nihon"
+        },
+        {
+          "word": "誕生日",
+          "reading": "たんじょうび (tanjoubi)",
+          "meaning": "birthday",
+          "romaji": "tanjoubi"
+        }
+      ]
+    },
+    {
+      "kanji": "月",
+      "meaning": "moon, month",
+      "onyomi": "ゲツ・ガツ (getsu / gatsu)",
+      "kunyomi": "つき (tsuki)",
+      "strokes": 4,
+      "radical": "月",
+      "radicalClue": "Core element: 月",
+      "examples": [
+        {
+          "word": "月曜日",
+          "reading": "げつようび (getsuyoubi)",
+          "meaning": "Monday",
+          "romaji": "getsuyoubi"
+        },
+        {
+          "word": "三月",
+          "reading": "さんがつ (sangatsu)",
+          "meaning": "March",
+          "romaji": "sangatsu"
+        },
+        {
+          "word": "三か月",
+          "reading": "さんかげつ (sankagetsu)",
+          "meaning": "three months",
+          "romaji": "sankagetsu"
+        }
+      ]
+    },
+    {
+      "kanji": "火",
+      "meaning": "fire",
+      "onyomi": "カ (ka)",
+      "kunyomi": "ひ (hi)",
+      "strokes": 4,
+      "radical": "火",
+      "radicalClue": "Core element: 火",
+      "examples": [
+        {
+          "word": "火曜日",
+          "reading": "かようび (kayoubi)",
+          "meaning": "Tuesday",
+          "romaji": "kayoubi"
+        },
+        {
+          "word": "火山",
+          "reading": "かざん (kazan)",
+          "meaning": "volcano",
+          "romaji": "kazan"
+        },
+        {
+          "word": "花火",
+          "reading": "はなび (hanabi)",
+          "meaning": "fireworks",
+          "romaji": "hanabi"
+        }
+      ]
+    },
+    {
+      "kanji": "水",
+      "meaning": "water",
+      "onyomi": "スイ (sui)",
+      "kunyomi": "みず (mizu)",
+      "strokes": 4,
+      "radical": "水",
+      "radicalClue": "Core element: 水",
+      "examples": [
+        {
+          "word": "水曜日",
+          "reading": "すいようび (suiyoubi)",
+          "meaning": "Wednesday",
+          "romaji": "suiyoubi"
+        },
+        {
+          "word": "水",
+          "reading": "みず (mizu)",
+          "meaning": "water",
+          "romaji": "mizu"
+        }
+      ]
+    },
+    {
+      "kanji": "木",
+      "meaning": "tree, wood",
+      "onyomi": "モク・ボク (moku / boku)",
+      "kunyomi": "き・こ (ki / ko)",
+      "strokes": 4,
+      "radical": "木",
+      "radicalClue": "Core element: 木",
+      "examples": [
+        {
+          "word": "木曜日",
+          "reading": "もくようび (mokuyoubi)",
+          "meaning": "Thursday",
+          "romaji": "mokuyoubi"
+        },
+        {
+          "word": "木",
+          "reading": "き (ki)",
+          "meaning": "tree / wood",
+          "romaji": "ki"
+        }
+      ]
+    },
+    {
+      "kanji": "金",
+      "meaning": "gold, money",
+      "onyomi": "キン・コン (kin / kon)",
+      "kunyomi": "かね・かな (kane / kana)",
+      "strokes": 8,
+      "radical": "金",
+      "radicalClue": "Core element: 金",
+      "examples": [
+        {
+          "word": "金曜日",
+          "reading": "きんようび (kinyoubi)",
+          "meaning": "Friday",
+          "romaji": "kinyoubi"
+        },
+        {
+          "word": "お金",
+          "reading": "おかね (okane)",
+          "meaning": "money",
+          "romaji": "okane"
+        },
+        {
+          "word": "金魚",
+          "reading": "きんぎょ (kingyo)",
+          "meaning": "goldfish",
+          "romaji": "kingyo"
+        }
+      ]
+    },
+    {
+      "kanji": "土",
+      "meaning": "soil, earth",
+      "onyomi": "ド・ト (do / to)",
+      "kunyomi": "つち (tsuchi)",
+      "strokes": 3,
+      "radical": "土",
+      "radicalClue": "Core element: 土",
+      "examples": [
+        {
+          "word": "土曜日",
+          "reading": "どようび (doyoubi)",
+          "meaning": "Saturday",
+          "romaji": "doyoubi"
+        },
+        {
+          "word": "土",
+          "reading": "つち (tsuchi)",
+          "meaning": "soil / earth",
+          "romaji": "tsuchi"
+        }
+      ]
+    },
+    {
+      "kanji": "山",
+      "meaning": "mountain",
+      "onyomi": "サン (san)",
+      "kunyomi": "やま (yama)",
+      "strokes": 3,
+      "radical": "山",
+      "radicalClue": "Core element: 山",
+      "examples": [
+        {
+          "word": "火山",
+          "reading": "かざん (kazan)",
+          "meaning": "volcano",
+          "romaji": "kazan"
+        },
+        {
+          "word": "富士山",
+          "reading": "ふじさん (fujisan)",
+          "meaning": "Mt. Fuji",
+          "romaji": "fujisan"
+        }
+      ]
+    },
+    {
+      "kanji": "魚",
+      "meaning": "fish",
+      "onyomi": "ギョ (gyo)",
+      "kunyomi": "さかな・うお (sakana / uo)",
+      "strokes": 11,
+      "radical": "魚",
+      "radicalClue": "Core element: 魚",
+      "examples": [
+        {
+          "word": "金魚",
+          "reading": "きんぎょ (kingyo)",
+          "meaning": "goldfish",
+          "romaji": "kingyo"
+        }
+      ]
+    },
+    {
+      "kanji": "白",
+      "meaning": "white",
+      "onyomi": "ハク・ビャク (haku / byaku)",
+      "kunyomi": "しろ・しろ(い) (shiro / shiro(i))",
+      "strokes": 5,
+      "radical": "白",
+      "radicalClue": "Core element: 白",
+      "examples": [
+        {
+          "word": "白",
+          "reading": "しろ (shiro)",
+          "meaning": "white color",
+          "romaji": "shiro"
+        },
+        {
+          "word": "白い",
+          "reading": "しろい (shiroi)",
+          "meaning": "white (adj)",
+          "romaji": "shiroi"
+        }
+      ]
+    },
+    {
+      "kanji": "百",
+      "meaning": "hundred",
+      "onyomi": "ヒャク・ビャク (hyaku / byaku)",
+      "kunyomi": "もも (momo)",
+      "strokes": 6,
+      "radical": "百",
+      "radicalClue": "Core element: 百",
+      "examples": [
+        {
+          "word": "百",
+          "reading": "ひゃく (hyaku)",
+          "meaning": "hundred",
+          "romaji": "hyaku"
+        },
+        {
+          "word": "三百",
+          "reading": "さんびゃく (sanbyaku)",
+          "meaning": "three hundred",
+          "romaji": "sanbyaku"
+        }
+      ]
+    },
+    {
+      "kanji": "本",
+      "meaning": "book, origin",
+      "onyomi": "ホン (hon)",
+      "kunyomi": "もと (moto)",
+      "strokes": 5,
+      "radical": "本",
+      "radicalClue": "Core element: 本",
+      "examples": [
+        {
+          "word": "本",
+          "reading": "ほん (hon)",
+          "meaning": "book",
+          "romaji": "hon"
+        },
+        {
+          "word": "日本",
+          "reading": "にほん (nihon)",
+          "meaning": "Japan",
+          "romaji": "nihon"
+        }
+      ]
+    },
+    {
+      "kanji": "休",
+      "meaning": "rest",
+      "onyomi": "キュウ (kyuu)",
+      "kunyomi": "やす(む) (yasu(mu))",
+      "strokes": 6,
+      "radical": "休",
+      "radicalClue": "Core element: 休",
+      "examples": [
+        {
+          "word": "休み",
+          "reading": "やすみ (yasumi)",
+          "meaning": "holiday / rest",
+          "romaji": "yasumi"
+        },
+        {
+          "word": "休む",
+          "reading": "やすむ (yasumu)",
+          "meaning": "to rest / take day off",
+          "romaji": "yasumu"
+        }
+      ]
+    },
+    {
+      "kanji": "体",
+      "meaning": "body",
+      "onyomi": "タイ・テイ (tai / tei)",
+      "kunyomi": "からだ (karada)",
+      "strokes": 7,
+      "radical": "体",
+      "radicalClue": "Core element: 体",
+      "examples": [
+        {
+          "word": "体",
+          "reading": "からだ (karada)",
+          "meaning": "body",
+          "romaji": "karada"
+        }
+      ]
+    },
+    {
+      "kanji": "士",
+      "meaning": "gentleman, samurai",
+      "onyomi": "シ (shi)",
+      "kunyomi": "さむらい (samurai)",
+      "strokes": 3,
+      "radical": "士",
+      "radicalClue": "Core element: 士",
+      "examples": [
+        {
+          "word": "士",
+          "reading": "さむらい / し (samurai / shi)",
+          "meaning": "warrior / gentleman",
+          "romaji": "samurai / shi"
+        }
+      ]
+    },
+    {
+      "kanji": "全",
+      "meaning": "all, whole",
+      "onyomi": "ゼン (zen)",
+      "kunyomi": "まった(く) (matta(ku))",
+      "strokes": 6,
+      "radical": "全",
+      "radicalClue": "Core element: 全",
+      "examples": [
+        {
+          "word": "全部",
+          "reading": "ぜんぶ (zenbu)",
+          "meaning": "all / everything",
+          "romaji": "zenbu"
+        },
+        {
+          "word": "完全",
+          "reading": "かんぜん (kanzen)",
+          "meaning": "perfect / complete",
+          "romaji": "kanzen"
+        }
+      ]
+    },
+    {
+      "kanji": "生",
+      "meaning": "life, birth, raw",
+      "onyomi": "セイ・ショウ (sei / shou)",
+      "kunyomi": "い(きる)・う(まれる)・なま (i(kiru) / u(mareru) / nama)",
+      "strokes": 5,
+      "radical": "生",
+      "radicalClue": "Core element: 生",
+      "examples": [
+        {
+          "word": "学生",
+          "reading": "がくせい (gakusei)",
+          "meaning": "student",
+          "romaji": "gakusei"
+        },
+        {
+          "word": "先生",
+          "reading": "せんせい (sensei)",
+          "meaning": "teacher",
+          "romaji": "sensei"
+        },
+        {
+          "word": "一年生",
+          "reading": "いちねんせい (ichinensei)",
+          "meaning": "first-year student",
+          "romaji": "ichinensei"
+        },
+        {
+          "word": "生きる",
+          "reading": "いきる (ikiru)",
+          "meaning": "to live",
+          "romaji": "ikiru"
+        },
+        {
+          "word": "生まれる",
+          "reading": "うまれる (umareru)",
+          "meaning": "to be born",
+          "romaji": "umareru"
+        },
+        {
+          "word": "誕生日",
+          "reading": "たんじょうび (tanjoubi)",
+          "meaning": "birthday",
+          "romaji": "tanjoubi"
+        },
+        {
+          "word": "生ビール",
+          "reading": "なまビール (nama biiru)",
+          "meaning": "draft beer",
+          "romaji": "nama biiru"
+        },
+        {
+          "word": "生活",
+          "reading": "せいかつ (seikatsu)",
+          "meaning": "life / daily living",
+          "romaji": "seikatsu"
+        }
+      ]
+    },
+    {
+      "kanji": "学",
+      "meaning": "study, learning",
+      "onyomi": "ガク (gaku)",
+      "kunyomi": "まな(ぶ) (mana(bu))",
+      "strokes": 8,
+      "radical": "学",
+      "radicalClue": "Core element: 学",
+      "examples": [
+        {
+          "word": "学生",
+          "reading": "がくせい (gakusei)",
+          "meaning": "student",
+          "romaji": "gakusei"
+        },
+        {
+          "word": "大学",
+          "reading": "だいがく (daigaku)",
+          "meaning": "university",
+          "romaji": "daigaku"
+        }
+      ]
+    },
+    {
+      "kanji": "先",
+      "meaning": "before, previous",
+      "onyomi": "セン (sen)",
+      "kunyomi": "さき (saki)",
+      "strokes": 6,
+      "radical": "先",
+      "radicalClue": "Core element: 先",
+      "examples": [
+        {
+          "word": "先生",
+          "reading": "せんせい (sensei)",
+          "meaning": "teacher",
+          "romaji": "sensei"
+        },
+        {
+          "word": "先月",
+          "reading": "せんげつ (sengetsu)",
+          "meaning": "last month",
+          "romaji": "sengetsu"
+        }
+      ]
+    },
+    {
+      "kanji": "年",
+      "meaning": "year",
+      "onyomi": "ネン (nen)",
+      "kunyomi": "とし (toshi)",
+      "strokes": 6,
+      "radical": "年",
+      "radicalClue": "Core element: 年",
+      "examples": [
+        {
+          "word": "一年生",
+          "reading": "いちねんせい (ichinensei)",
+          "meaning": "first-year student",
+          "romaji": "ichinensei"
+        },
+        {
+          "word": "二○二六年",
+          "reading": "にせんにじゅうろくねん (nisen nijuuroku-nen)",
+          "meaning": "year 2026",
+          "romaji": "nisen nijuuroku-nen"
+        }
+      ]
+    },
+    {
+      "kanji": "誕",
+      "meaning": "birth",
+      "onyomi": "タン (tan)",
+      "kunyomi": "",
+      "strokes": 15,
+      "radical": "誕",
+      "radicalClue": "Core element: 誕",
+      "examples": [
+        {
+          "word": "誕生日",
+          "reading": "たんじょうび (tanjoubi)",
+          "meaning": "birthday",
+          "romaji": "tanjoubi"
+        }
+      ]
+    },
+    {
+      "kanji": "活",
+      "meaning": "living, activity",
+      "onyomi": "カツ (katsu)",
+      "kunyomi": "い(きる) (i(kiru))",
+      "strokes": 9,
+      "radical": "活",
+      "radicalClue": "Core element: 活",
+      "examples": [
+        {
+          "word": "生活",
+          "reading": "せいかつ (seikatsu)",
+          "meaning": "life / daily living",
+          "romaji": "seikatsu"
+        }
+      ]
+    }
+  ],
+  "vocabularyList": [
+    {
+      "japanese": "日曜日",
+      "reading": "にちようび (nichiyoubi)",
+      "english": "Sunday",
+      "category": "Day",
+      "notes": "日曜日は休みです。",
+      "romaji": "nichiyoubi"
+    },
+    {
+      "japanese": "月曜日",
+      "reading": "げつようび (getsuyoubi)",
+      "english": "Monday",
+      "category": "Day",
+      "notes": "月曜日、ゆきは公園へ行きます。",
+      "romaji": "getsuyoubi"
+    },
+    {
+      "japanese": "火曜日",
+      "reading": "かようび (kayoubi)",
+      "english": "Tuesday",
+      "category": "Day",
+      "notes": "火曜日、公園で花火禁止を見ます。",
+      "romaji": "kayoubi"
+    },
+    {
+      "japanese": "水曜日",
+      "reading": "すいようび (suiyoubi)",
+      "english": "Wednesday",
+      "category": "Day",
+      "notes": "水曜日、あきと水を飲みます。",
+      "romaji": "suiyoubi"
+    },
+    {
+      "japanese": "木曜日",
+      "reading": "もくようび (mokuyoubi)",
+      "english": "Thursday",
+      "category": "Day",
+      "notes": "木曜日、大きい木の下で休みます。",
+      "romaji": "mokuyoubi"
+    },
+    {
+      "japanese": "金曜日",
+      "reading": "きんようび (kinyoubi)",
+      "english": "Friday",
+      "category": "Day",
+      "notes": "金曜日、お金でジュースを買います。",
+      "romaji": "kinyoubi"
+    },
+    {
+      "japanese": "土曜日",
+      "reading": "どようび (doyoubi)",
+      "english": "Saturday",
+      "category": "Day",
+      "notes": "土曜日に買い物をします。",
+      "romaji": "doyoubi"
+    },
+    {
+      "japanese": "曜日",
+      "reading": "ようび (youbi)",
+      "english": "day of the week",
+      "category": "Noun",
+      "notes": "今日は何曜日ですか？",
+      "romaji": "youbi"
+    },
+    {
+      "japanese": "日",
+      "reading": "ひ / にち (hi / nichi)",
+      "english": "sun, day",
+      "category": "Noun",
+      "notes": "日が出る。",
+      "romaji": "hi / nichi"
+    },
+    {
+      "japanese": "月",
+      "reading": "つき / げつ / がつ (tsuki / getsu / gatsu)",
+      "english": "moon, month",
+      "category": "Noun",
+      "notes": "月が大きいです。",
+      "romaji": "tsuki / getsu / gatsu"
+    },
+    {
+      "japanese": "火",
+      "reading": "ひ / か (hi / ka)",
+      "english": "fire",
+      "category": "Noun",
+      "notes": "火をつけます。",
+      "romaji": "hi / ka"
+    },
+    {
+      "japanese": "水",
+      "reading": "みず / すい (mizu / sui)",
+      "english": "water",
+      "category": "Noun",
+      "notes": "水を飲みます。",
+      "romaji": "mizu / sui"
+    },
+    {
+      "japanese": "木",
+      "reading": "き / もく (ki / moku)",
+      "english": "tree, wood",
+      "category": "Noun",
+      "notes": "大きい木の下で休みます。",
+      "romaji": "ki / moku"
+    },
+    {
+      "japanese": "お金",
+      "reading": "おかね (okane)",
+      "english": "money",
+      "category": "Noun",
+      "notes": "お金でジュースを買います。",
+      "romaji": "okane"
+    },
+    {
+      "japanese": "土",
+      "reading": "つち / ど (tsuchi / do)",
+      "english": "soil, earth",
+      "category": "Noun",
+      "notes": "黒い土。",
+      "romaji": "tsuchi / do"
+    },
+    {
+      "japanese": "日本",
+      "reading": "にほん (nihon)",
+      "english": "Japan",
+      "category": "Noun",
+      "notes": "日本が好きです。",
+      "romaji": "nihon"
+    },
+    {
+      "japanese": "三月",
+      "reading": "さんがつ (sangatsu)",
+      "english": "March",
+      "category": "Month",
+      "notes": "三月のカレンダー。",
+      "romaji": "sangatsu"
+    },
+    {
+      "japanese": "三か月",
+      "reading": "さんかげつ (sankagetsu)",
+      "english": "three months",
+      "category": "Counter",
+      "notes": "日本に三か月います。",
+      "romaji": "sankagetsu"
+    },
+    {
+      "japanese": "白",
+      "reading": "しろ (shiro)",
+      "english": "white",
+      "category": "Noun",
+      "notes": "白い犬。",
+      "romaji": "shiro"
+    },
+    {
+      "japanese": "百",
+      "reading": "ひゃく (hyaku)",
+      "english": "hundred",
+      "category": "Number",
+      "notes": "百円です。",
+      "romaji": "hyaku"
+    },
+    {
+      "japanese": "休み",
+      "reading": "やすみ (yasumi)",
+      "english": "rest, holiday",
+      "category": "Noun",
+      "notes": "木の下で休みます。",
+      "romaji": "yasumi"
+    },
+    {
+      "japanese": "体",
+      "reading": "からだ (karada)",
+      "english": "body",
+      "category": "Noun",
+      "notes": "体が強い。",
+      "romaji": "karada"
+    },
+    {
+      "japanese": "士",
+      "reading": "さむらい (samurai)",
+      "english": "samurai, gentleman",
+      "category": "Noun",
+      "notes": "日本の士。",
+      "romaji": "samurai"
+    },
+    {
+      "japanese": "全",
+      "reading": "ぜん (zen)",
+      "english": "all, whole",
+      "category": "Noun",
+      "notes": "全部。",
+      "romaji": "zen"
+    },
+    {
+      "japanese": "花火禁止",
+      "reading": "はなびきんし (hanabikinshi)",
+      "english": "fireworks prohibited",
+      "category": "Phrase",
+      "notes": "公園で花火禁止を見ます。",
+      "romaji": "hanabikinshi"
+    },
+    {
+      "japanese": "火山",
+      "reading": "かざん (kazan)",
+      "english": "volcano",
+      "category": "Noun",
+      "notes": "富士山は火山です。",
+      "romaji": "kazan"
+    },
+    {
+      "japanese": "金魚",
+      "reading": "きんぎょ (kingyo)",
+      "english": "goldfish",
+      "category": "Noun",
+      "notes": "水の中に金魚がいます。",
+      "romaji": "kingyo"
+    },
+    {
+      "japanese": "生",
+      "reading": "せい / しょう / なま (sei / shou / nama)",
+      "english": "life, birth, raw",
+      "category": "Noun",
+      "notes": "生命。",
+      "romaji": "sei / shou / nama"
+    },
+    {
+      "japanese": "生きる",
+      "reading": "いきる (ikiru)",
+      "english": "to live",
+      "category": "Verb",
+      "notes": "強く生きる。",
+      "romaji": "ikiru"
+    },
+    {
+      "japanese": "生まれる",
+      "reading": "うまれる (umareru)",
+      "english": "to be born",
+      "category": "Verb",
+      "notes": "東京で生まれました。",
+      "romaji": "umareru"
+    },
+    {
+      "japanese": "学生",
+      "reading": "がくせい (gakusei)",
+      "english": "student",
+      "category": "Noun",
+      "notes": "わたしは日本語の学生です。",
+      "romaji": "gakusei"
+    },
+    {
+      "japanese": "先生",
+      "reading": "せんせい (sensei)",
+      "english": "teacher",
+      "category": "Noun",
+      "notes": "ニッキ先生。",
+      "romaji": "sensei"
+    },
+    {
+      "japanese": "一年生",
+      "reading": "いちねんせい (ichinensei)",
+      "english": "first-year student",
+      "category": "Noun",
+      "notes": "大学の一年生です。",
+      "romaji": "ichinensei"
+    },
+    {
+      "japanese": "誕生日",
+      "reading": "たんじょうび (tanjoubi)",
+      "english": "birthday",
+      "category": "Noun",
+      "notes": "誕生日は何月何日ですか？",
+      "romaji": "tanjoubi"
+    },
+    {
+      "japanese": "生ビール",
+      "reading": "なまビール (namabiiru)",
+      "english": "draft beer",
+      "category": "Noun",
+      "notes": "生ビールを一杯ください。",
+      "romaji": "namabiiru"
+    },
+    {
+      "japanese": "生活",
+      "reading": "せいかつ (seikatsu)",
+      "english": "daily life",
+      "category": "Noun",
+      "notes": "日本での生活。",
+      "romaji": "seikatsu"
+    }
+  ],
+  "grammarNotes": [
+    {
+      "title": "Weekday Suffix: 曜日 (ようび)",
+      "structure": "",
+      "explanation": "To name a day of the week in Japanese, take the core element kanji (日, 月, 火, 水, 木, 金, 土) and attach 曜日 (ようび).",
+      "examples": [
+        {
+          "japanese": "日曜日",
+          "reading": "にちようび (nichiyoubi)",
+          "english": "Sunday",
+          "romaji": "nichiyoubi"
+        },
+        {
+          "japanese": "水曜日",
+          "reading": "すいようび (suiyoubi)",
+          "english": "Wednesday",
+          "romaji": "suiyoubi"
+        },
+        {
+          "japanese": "金曜日",
+          "reading": "きんようび (kinyoubi)",
+          "english": "Friday",
+          "romaji": "kinyoubi"
+        }
+      ]
+    },
+    {
+      "title": "Calendar Shorthand in Japan",
+      "structure": "",
+      "explanation": "Japanese calendars, receipts, and schedules almost universally list the days with their first single kanji only: 日 月 火 水 木 金 土.",
+      "examples": [
+        {
+          "japanese": "日 = Sunday",
+          "reading": "hi = Sunday",
+          "english": "Sunday shorthand",
+          "romaji": "hi = Sunday"
+        },
+        {
+          "japanese": "月 = Monday",
+          "reading": "tsuki = Monday",
+          "english": "Monday shorthand",
+          "romaji": "tsuki = Monday"
+        },
+        {
+          "japanese": "火 = Tuesday",
+          "reading": "hi = Tuesday",
+          "english": "Tuesday shorthand",
+          "romaji": "hi = Tuesday"
+        },
+        {
+          "japanese": "水 = Wednesday",
+          "reading": "mizu = Wednesday",
+          "english": "Wednesday shorthand",
+          "romaji": "mizu = Wednesday"
+        },
+        {
+          "japanese": "木 = Thursday",
+          "reading": "ki = Thursday",
+          "english": "Thursday shorthand",
+          "romaji": "ki = Thursday"
+        },
+        {
+          "japanese": "金 = Friday",
+          "reading": "kane = Friday",
+          "english": "Friday shorthand",
+          "romaji": "kane = Friday"
+        },
+        {
+          "japanese": "土 = Saturday",
+          "reading": "tsuchi = Saturday",
+          "english": "Saturday shorthand",
+          "romaji": "tsuchi = Saturday"
+        }
+      ]
+    },
+    {
+      "title": "Modular Kanji Compounding (火 + 山 = 火山)",
+      "structure": "",
+      "explanation": "Kanji characters act as conceptual Lego bricks. Combining 火 (fire) and 山 (mountain) yields 火山 (volcano, かざん). Combining 金 (gold) and 魚 (fish) creates 金魚 (goldfish, きんぎょ).",
+      "examples": [
+        {
+          "japanese": "火 + 山 = 火山",
+          "reading": "ka + zan = kazan",
+          "english": "volcano",
+          "romaji": "ka + zan = kazan"
+        },
+        {
+          "japanese": "金 + 魚 = 金魚",
+          "reading": "kin + gyo = kingyo",
+          "english": "goldfish",
+          "romaji": "kin + gyo = kingyo"
+        },
+        {
+          "japanese": "三 + 月 = 三月",
+          "reading": "san + gatsu = sangatsu",
+          "english": "March",
+          "romaji": "san + gatsu = sangatsu"
+        }
+      ]
+    },
+    {
+      "title": "The Chameleon Radical「生」",
+      "structure": "",
+      "explanation": "「生」expresses vitality, emergence, and learning. Placed after an institution or concept, it indicates a student (学生, 一年生); placed after 先 (before), it denotes a teacher (先生); attached to 日, it forms birthday (誕生日).",
+      "examples": [
+        {
+          "japanese": "学 + 生 = 学生",
+          "reading": "gaku + sei = gakusei",
+          "english": "student",
+          "romaji": "gaku + sei = gakusei"
+        },
+        {
+          "japanese": "先 + 生 = 先生",
+          "reading": "sen + sei = sensei",
+          "english": "teacher",
+          "romaji": "sen + sei = sensei"
+        },
+        {
+          "japanese": "誕 + 生 + 日 = 誕生日",
+          "reading": "tan + jou + bi = tanjoubi",
+          "english": "birthday",
+          "romaji": "tan + jou + bi = tanjoubi"
+        },
+        {
+          "japanese": "生ビール = draft beer",
+          "reading": "生biiru = draft beer",
+          "english": "",
+          "romaji": "生biiru = draft beer"
+        }
+      ]
+    }
+  ],
+  "readingPassages": [
+    {
+      "title": "ゆきの一週間 (Yuki's One Week)",
+      "text": "月曜日、ゆきは公園へ行きます。火曜日、公園で「花火禁止」の看板を見ます。水曜日、あきと冷たい水を飲みます。木曜日、大きい木の下で本を読みます。金曜日、お金を使って青い本を買います。土曜日、土の道で犬と散歩します。日曜日、明るい日差しの下で休みます。",
+      "translation": "Monday: Yuki goes to the park. Tuesday: she sees the 'No Fireworks' sign in the park. Wednesday: she drinks cold water with Aki. Thursday: she reads a book under a big tree. Friday: she uses money to buy a blue book. Saturday: she walks the dog along the dirt path. Sunday: she rests under the bright sunshine.",
+      "romaji": "Getsuyoubi, Yuki wa kouen e ikimasu. Kayoubi, kouen de \"hanabi kinshi\" no kanban o mimasu. Suiyoubi, Aki to tsumetai mizu o nomimasu. Mokuyoubi, ookii ki no shita de hon o yomimasu. Kinyoubi, okane o tsukatte aoi hon o kaimasu. Doyoubi, tsuchi no michi de inu to sanpo shimasu. Nichiyoubi, akarui hizashi no shita de yasumimasu.",
+      "questions": [
+        {
+          "q": "月曜日に何をしますか？ (Getsuyōbi ni nani o shimasu ka? / What do they do on Monday?)",
+          "a": "学校へ行きます。(Gakkō e ikimasu. / Go to school.)"
+        },
+        {
+          "q": "水曜日の元素は何ですか？ (Suiyōbi no genso wa nan desu ka? / What element is Wednesday?)",
+          "a": "水 (みず / mizu - Water) です。"
+        },
+        {
+          "q": "日曜日は何ですか？ (Nichiyōbi wa nan desu ka? / What is Sunday?)",
+          "a": "休み (やすみ / yasumi - Day off) です。"
+        }
+      ]
+    }
+  ],
+  "practiceQuiz": [
+    {
+      "question": "Which day of the week is represented by the element \"Water\" (水 / mizu)?",
+      "options": [
+        "火曜日 (かようび / kayōbi - Tuesday)",
+        "水曜日 (すいようび / suiyōbi - Wednesday)",
+        "木曜日 (もくようび / mokuyōbi - Thursday)",
+        "金曜日 (きんようび / kinyōbi - Friday)"
+      ],
+      "correct": "水曜日 (すいようび / suiyōbi - Wednesday)",
+      "explanation": "水曜日 (すいようび / suiyōbi) corresponds to Water (水) and Wednesday."
+    },
+    {
+      "question": "What does the compound word 火山 (かざん / kazan) mean?",
+      "options": [
+        "Firework",
+        "Volcano",
+        "Bonfire",
+        "Hot spring"
+      ],
+      "correct": "Volcano",
+      "explanation": "火山 (火 fire + 山 mountain) means volcano."
+    },
+    {
+      "question": "In the word 先生 (せんせい / sensei, teacher), what does 先 (さき / saki) literally mean?",
+      "options": [
+        "Master",
+        "Before / Earlier",
+        "Wise",
+        "School"
+      ],
+      "correct": "Before / Earlier",
+      "explanation": "先 (sen) means before/ahead, and 生 means born; a teacher is literally \"born before\"."
+    },
+    {
+      "question": "What is the reading of 10th day of the month (十日)?",
+      "options": [
+        "じゅうにち (jūnichi)",
+        "とおか (tōka)",
+        "じゅっか (jukka)",
+        "と日 (tohi)"
+      ],
+      "correct": "とおか (tōka)",
+      "explanation": "十日 is an irregular reading: とおか (tōka)."
+    }
+  ],
+  "slides": [
+    {
+      "slideNumber": 1,
+      "title": "日本語 Class 434 · Days of the Week & Kanji Remix",
+      "blocks": [
+        [
+          "に    ほん    ご                                                   .日本語 Class 44⃣4"
+        ],
+        [
+          "Update: AI ahh slides"
+        ],
+        [
+          "By: Nikki",
+          "ニッキ"
+        ]
+      ],
+      "jpTitle": "表紙：日本語 Class 434",
+      "summary": "Introduction to Class 434 focusing on day kanji, contextual readings, and compound word construction.",
+      "bullets": [
+        "Class: Nikki JP Class 434",
+        "Theme: Days of the week (曜日) and Kanji Building Blocks",
+        "Goal: Recognize day-kanji even when they are NOT weekdays"
+      ],
+      "highlight": "Kanji are not single words—they are modular building blocks that combine into infinite meanings."
+    },
+    {
+      "slideNumber": 2,
+      "title": "Today's Lecture Structure",
+      "blocks": [
+        [
+          "Todays Lecture"
+        ],
+        [
+          "曜日・ようび"
+        ],
+        [
+          "Days of the week"
+        ],
+        [
+          "意味・いみ"
+        ],
+        [
+          "Core meaning"
+        ],
+        [
+          "読み方・よみかた"
+        ],
+        [
+          "Readings change by context"
+        ],
+        [
+          "言葉づくり・ことば"
+        ],
+        [
+          "Build new words"
+        ],
+        [
+          "Goal: recognize day-kanji even when they are NOT weekdays 🧩"
+        ]
+      ],
+      "jpTitle": "本日の講義内容",
+      "summary": "Overview of the four main learning tracks for Class 434.",
+      "bullets": [
+        "曜日 (ようび) · Days of the week",
+        "意味 (いみ) · Core elemental meanings (Sun, Moon, Fire, Water, Tree, Gold, Earth)",
+        "読み方 (よみかた) · Readings that change depending on context",
+        "言葉づくり (ことば) · Building new compound words (e.g., 火山, 金魚)"
+      ],
+      "highlight": "Mastering the root meanings lets you decode words you've never seen before."
+    },
+    {
+      "slideNumber": 3,
+      "title": "Kanji from Last Time (7 Elemental Weekdays)",
+      "blocks": [
+        [
+          "Kanji from Last time"
+        ],
+        [
+          "日"
+        ],
+        [
+          "日曜日"
+        ],
+        [
+          "月"
+        ],
+        [
+          "月曜日"
+        ],
+        [
+          "火"
+        ],
+        [
+          "火曜日"
+        ],
+        [
+          "水"
+        ],
+        [
+          "水曜日"
+        ],
+        [
+          "木"
+        ],
+        [
+          "木曜日"
+        ],
+        [
+          "金"
+        ],
+        [
+          "金曜日"
+        ],
+        [
+          "土"
+        ],
+        [
+          "土曜日"
+        ],
+        [
+          "日・月・火・水・木・金・土"
+        ]
+      ],
+      "jpTitle": "前回の復習：7つの曜日漢字",
+      "summary": "Quick recap of the 7 core week kanji introduced in Class 424.",
+      "bullets": [
+        "日 (にち) · 日曜日 (Sunday)",
+        "月 (げつ) · 月曜日 (Monday)",
+        "火 (か) · 火曜日 (Tuesday)",
+        "水 (すい) · 水曜日 (Wednesday)",
+        "木 (もく) · 木曜日 (Thursday)",
+        "金 (きん) · 金曜日 (Friday)",
+        "土 (ど) · 土曜日 (Saturday)",
+        "Calendar sequence shorthand: 日・月・火・水・木・金・土"
+      ],
+      "highlight": "Remember the sequence: Sun, Moon, Fire, Water, Wood, Gold, Earth."
+    },
+    {
+      "slideNumber": 4,
+      "title": "Quick Review: Weekdays with Pronunciation",
+      "blocks": [
+        [
+          "Quick Review・曜日・"
+        ],
+        [
+          "日"
+        ],
+        [
+          "日曜日",
+          "にちようび",
+          "Sunday"
+        ],
+        [
+          "月"
+        ],
+        [
+          "月曜日",
+          "げつようび",
+          "Monday"
+        ],
+        [
+          "火"
+        ],
+        [
+          "火曜日",
+          "かようび",
+          "Tuesday"
+        ],
+        [
+          "水"
+        ],
+        [
+          "水曜日",
+          "すいようび",
+          "Wednesday"
+        ],
+        [
+          "木"
+        ],
+        [
+          "木曜日",
+          "もくようび",
+          "Thursday"
+        ],
+        [
+          "金"
+        ],
+        [
+          "金曜日",
+          "きんようび",
+          "Friday"
+        ],
+        [
+          "土"
+        ],
+        [
+          "土曜日",
+          "どようび",
+          "Saturday"
+        ],
+        [
+          "曜日 = day of the week",
+          "「ようび」sticks to the end."
+        ],
+        [
+          "On calendars, Japanese often uses only:",
+          "日 月 火 水 木 金 土"
+        ]
+      ],
+      "jpTitle": "曜日まとめと発音",
+      "summary": "Detailed pronunciation and English meaning for each day of the week.",
+      "bullets": [
+        "日曜日 (にちようび) · Sunday",
+        "月曜日 (げつようび) · Monday",
+        "火曜日 (かようび) · Tuesday",
+        "水曜日 (すいようび) · Wednesday",
+        "木曜日 (もくようび) · Thursday",
+        "金曜日 (きんようび) · Friday",
+        "土曜日 (どようび) · Saturday",
+        "Rule: 曜日 (ようび) means 'day of the week' and always sticks to the end!"
+      ],
+      "highlight": "On Japanese calendars and schedules, you will often only see the single kanji: 日 月 火 水 木 金 土."
+    },
+    {
+      "slideNumber": 5,
+      "title": "Calendar Facts & March 2026 Grid",
+      "blocks": [
+        [
+          "Calendar・カレンダー"
+        ],
+        [
+          "日"
+        ],
+        [
+          "月"
+        ],
+        [
+          "火"
+        ],
+        [
+          "水"
+        ],
+        [
+          "木"
+        ],
+        [
+          "金"
+        ],
+        [
+          "土"
+        ],
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4"
+        ],
+        [
+          "5"
+        ],
+        [
+          "6"
+        ],
+        [
+          "7"
+        ],
+        [
+          "8"
+        ],
+        [
+          "9"
+        ],
+        [
+          "10"
+        ],
+        [
+          "11"
+        ],
+        [
+          "12"
+        ],
+        [
+          "13"
+        ],
+        [
+          "14"
+        ],
+        [
+          "15"
+        ],
+        [
+          "16"
+        ],
+        [
+          "17"
+        ],
+        [
+          "18"
+        ],
+        [
+          "19"
+        ],
+        [
+          "20",
+          "Spring Equinox"
+        ],
+        [
+          "21"
+        ],
+        [
+          "22",
+          "29"
+        ],
+        [
+          "23",
+          "30"
+        ],
+        [
+          "24",
+          "31"
+        ],
+        [
+          "25"
+        ],
+        [
+          "26"
+        ],
+        [
+          "27"
+        ],
+        [
+          "28"
+        ],
+        [
+          "Facts"
+        ],
+        [
+          "Sunday is start of the week in Japan",
+          "Sunday is marked as red",
+          "Holidays are red",
+          "March 2026 calendar",
+          "First 10 days have different names",
+          "Days with 4 & 8 have specific way of saying(よっか、ようか)"
+        ]
+      ],
+      "jpTitle": "カレンダーの読み方と日本の習慣",
+      "summary": "Key cultural and linguistic rules for Japanese calendars.",
+      "bullets": [
+        "Sunday is the start of the week in Japan (column 1).",
+        "Sundays and national holidays are always printed in red.",
+        "The first 10 days of any month have completely unique native names (1日 = ついたち, 2日 = ふつか, etc.).",
+        "Days with 4 and 8 have specific readings: 4日 (よっか), 8日 (ようか), 14日 (じゅうよっか), 24日 (にじゅうよっか)."
+      ],
+      "highlight": "Never say 'よんにち' or 'はちにち'—Japanese has dedicated historical readings for calendar dates."
+    },
+    {
+      "slideNumber": 6,
+      "title": "Same Kanji, Different Jobs (Core Meanings)",
+      "blocks": [
+        [
+          "Same Kanji, Different Jobs"
+        ],
+        [
+          "日"
+        ],
+        [
+          "ひ / にち"
+        ],
+        [
+          "sun, day"
+        ],
+        [
+          "月"
+        ],
+        [
+          "つき / げつ / がつ"
+        ],
+        [
+          "moon, month"
+        ],
+        [
+          "火"
+        ],
+        [
+          "ひ / か"
+        ],
+        [
+          "fire"
+        ],
+        [
+          "水"
+        ],
+        [
+          "みず / すい"
+        ],
+        [
+          "water"
+        ],
+        [
+          "木"
+        ],
+        [
+          "き / もく"
+        ],
+        [
+          "tree, wood"
+        ],
+        [
+          "金"
+        ],
+        [
+          "かね / きん"
+        ],
+        [
+          "money, gold"
+        ],
+        [
+          "土"
+        ],
+        [
+          "つち / ど"
+        ],
+        [
+          "soil, earth"
+        ],
+        [
+          "Kanji are not “one word.” They are reusable meaning-blocks."
+        ]
+      ],
+      "jpTitle": "同じ漢字、異なる役割",
+      "summary": "Every weekday kanji has both an On'yomi (Chinese-derived) and Kun'yomi (native Japanese) meaning.",
+      "bullets": [
+        "日: ひ (sun) / にち (day)",
+        "月: つき (moon) / げつ / がつ (month)",
+        "火: ひ (fire) / か (fire element)",
+        "水: みず (water) / すい (water element)",
+        "木: き (tree, wood) / もく (wood element)",
+        "金: かね (money) / きん (gold/metal)",
+        "土: つち (soil, earth) / ど (earth element)"
+      ],
+      "highlight": "Kanji are not single static words; they are modular, reusable meaning-blocks."
+    },
+    {
+      "slideNumber": 7,
+      "title": "Reading Changes in Context",
+      "blocks": [
+        [
+          "Reading Changes・読み方・よみかた"
+        ],
+        [
+          "日 = ひ"
+        ],
+        [
+          "日が出る",
+          "ひ が でる",
+          "sun/day sound"
+        ],
+        [
+          "日 = にち"
+        ],
+        [
+          "日曜日",
+          "にちようび",
+          "weekday sound"
+        ],
+        [
+          "月 = つき"
+        ],
+        [
+          "月がきれい",
+          "つき が きれい",
+          "moon sound"
+        ],
+        [
+          "月 = がつ"
+        ],
+        [
+          "三月",
+          "さんがつ",
+          "march"
+        ],
+        [
+          "金 = かね"
+        ],
+        [
+          "お金",
+          "おかね",
+          "money sound"
+        ],
+        [
+          "金 = きん"
+        ],
+        [
+          "金曜日",
+          "きんようび",
+          "friday"
+        ],
+        [
+          "日 = に"
+        ],
+        [
+          "日本",
+          "にほん",
+          "Japan"
+        ],
+        [
+          "月 = げつ"
+        ],
+        [
+          "三か月",
+          "さんかげつ",
+          "3 months"
+        ]
+      ],
+      "jpTitle": "文脈による読み方の変化",
+      "summary": "Concrete examples demonstrating how pronunciation changes based on surrounding words.",
+      "bullets": [
+        "日 = ひ: 日が出る (ひがでる · the sun rises)",
+        "日 = にち: 日曜日 (にちようび · Sunday)",
+        "日 = に: 日本 (にほん · Japan)",
+        "月 = つき: 月がきれい (つきがきれい · the moon is beautiful)",
+        "月 = がつ: 三月 (さんがつ · March)",
+        "月 = げつ: 三か月 (さんかげつ · 3 months)",
+        "金 = かね: お金 (おかね · money)",
+        "金 = きん: 金曜日 (きんようび · Friday)"
+      ],
+      "highlight": "Listen to the word as a whole unit to pick the right pronunciation."
+    },
+    {
+      "slideNumber": 8,
+      "title": "Similar Kanji Look-Alike Families",
+      "blocks": [
+        [
+          "Similar Kanji ・漢字・かんじ"
+        ],
+        [
+          "日  白  百"
+        ],
+        [
+          "day / white / hundred"
+        ],
+        [
+          "木  本  休  体"
+        ],
+        [
+          "tree / book / rest / body"
+        ],
+        [
+          "土  士"
+        ],
+        [
+          "soil / samurai"
+        ],
+        [
+          "金  全"
+        ],
+        [
+          "gold / all"
+        ],
+        [
+          "ひ / しろ / ひゃく"
+        ],
+        [
+          "き / ほん / やす(み) / からだ"
+        ],
+        [
+          "つち / さむらい"
+        ],
+        [
+          "きん / ぜん"
+        ]
+      ],
+      "jpTitle": "似ている漢字の見分け方",
+      "summary": "Visual comparison between easily confused kanji characters.",
+      "bullets": [
+        "日 (ひ · day) vs 白 (しろ · white) vs 百 (ひゃく · hundred)",
+        "木 (き · tree) vs 本 (ほん · book) vs 休 (やすみ · rest) vs 体 (からだ · body)",
+        "土 (つち · soil) vs 士 (さむらい · samurai/gentleman)",
+        "金 (きん · gold) vs 全 (ぜん · all/whole)"
+      ],
+      "highlight": "Notice how 木 (tree) gains a person radical 亻 to become 休 (a person resting against a tree)!"
+    },
+    {
+      "slideNumber": 9,
+      "title": "Mini Story: Yuki's One Week (ゆきの一週間)",
+      "blocks": [
+        [
+          "Mini Story・ゆきの一週間"
+        ],
+        [
+          "One week, seven kanji clues"
+        ],
+        [
+          "月"
+        ],
+        [
+          "月曜日、ゆきは公園へ行きます。"
+        ],
+        [
+          "Monday: Yuki goes to the park."
+        ],
+        [
+          "火"
+        ],
+        [
+          "火曜日、公園で「花火禁止」を見ます。"
+        ],
+        [
+          "Tuesday: she sees “No fireworks.”"
+        ],
+        [
+          "水"
+        ],
+        [
+          "水曜日、あきと水を飲みます。"
+        ],
+        [
+          "Wednesday: she drinks water with Aki."
+        ],
+        [
+          "木"
+        ],
+        [
+          "木曜日、大きい木の下で休みます。"
+        ],
+        [
+          "Thursday: she rests under a big tree."
+        ],
+        [
+          "金"
+        ],
+        [
+          "金曜日、お金でジュースを買います。"
+        ],
+        [
+          "Friday: she buys juice with money."
+        ],
+        [
+          "Question"
+        ],
+        [
+          "Which kanji helped you understand each sentence?"
+        ],
+        [
+          "Nikki JP Class · Days Kanji Remix · 10"
+        ]
+      ],
+      "jpTitle": "ミニストーリー：ゆきの一週間",
+      "summary": "A 5-day story connecting each day's kanji to a natural daily action.",
+      "bullets": [
+        "月 (Monday): 月曜日、ゆきは公園へ行きます。 (Monday: Yuki goes to the park.)",
+        "火 (Tuesday): 火曜日、公園で「花火禁止」を見ます。 (Tuesday: she sees 'No fireworks' sign.)",
+        "水 (Wednesday): 水曜日、あきと水を飲みます。 (Wednesday: she drinks water with Aki.)",
+        "木 (Thursday): 木曜日、大きい木の下で休みます。 (Thursday: she rests under a big tree.)",
+        "金 (Friday): 金曜日、お金でジュースを買います。 (Friday: she buys juice with money.)"
+      ],
+      "highlight": "Every day sentence incorporates the core elemental kanji (月, 火, 水, 木, 金) into the story context."
+    },
+    {
+      "slideNumber": 10,
+      "title": "Kanji Clue Q&A Drill",
+      "blocks": [
+        [
+          "Answer QnA・質問"
+        ],
+        [
+          "Use the kanji clue first"
+        ],
+        [
+          "Q1  火 + 山 = ?"
+        ],
+        [
+          "a. park  b. volcano  c. tree"
+        ],
+        [
+          "Q2  水 + 曜日 = ?"
+        ],
+        [
+          "a. Tuesday  b. Wednesday  c. Saturday"
+        ],
+        [
+          "Q3  三 + 月 = ?"
+        ],
+        [
+          "a. March  b. moon  c. Monday"
+        ],
+        [
+          "Q4  金 + 魚 = ?"
+        ],
+        [
+          "a. money  b. goldfish  c. Friday"
+        ],
+        [
+          "Do not translate too fast. First notice the kanji-brick."
+        ],
+        [
+          "Nikki JP Class · Days Kanji Remix · 11"
+        ]
+      ],
+      "jpTitle": "漢字のヒントで解く問題",
+      "summary": "Four multiple-choice questions testing kanji compound logic.",
+      "bullets": [
+        "Q1: 火 + 山 = ? (a. park, b. volcano, c. tree)",
+        "Q2: 水 + 曜日 = ? (a. Tuesday, b. Wednesday, c. Saturday)",
+        "Q3: 三 + 月 = ? (a. March, b. moon, c. Monday)",
+        "Q4: 金 + 魚 = ? (a. money, b. goldfish, c. Friday)"
+      ],
+      "highlight": "Do not translate too fast. First notice the kanji-bricks!"
+    },
+    {
+      "slideNumber": 11,
+      "title": "Answer Sheet: Compound Clues",
+      "blocks": [
+        [
+          "Answer Sheet・答え"
+        ],
+        [
+          "Q1"
+        ],
+        [
+          "火山 = かざん = volcano"
+        ],
+        [
+          "Q2"
+        ],
+        [
+          "水曜日 = すいようび = Wednesday"
+        ],
+        [
+          "Q3"
+        ],
+        [
+          "三月 = さんがつ = March"
+        ],
+        [
+          "Q4"
+        ],
+        [
+          "金魚 = きんぎょ = goldfish"
+        ]
+      ],
+      "jpTitle": "問題の答え・解説",
+      "summary": "Official answers and phonetic readings for the compound kanji drill.",
+      "bullets": [
+        "Q1 Answer: 火山 = かざん = Volcano (Fire + Mountain)",
+        "Q2 Answer: 水曜日 = すいようび = Wednesday (Water + Weekday)",
+        "Q3 Answer: 三月 = さんがつ = March (Three + Month)",
+        "Q4 Answer: 金魚 = きんぎょ = Goldfish (Gold + Fish)"
+      ],
+      "highlight": "Compound kanji combine simple concepts to create completely new words!"
+    },
+    {
+      "slideNumber": 12,
+      "title": "Guessing Game: 7 Days & Cosmic Elements",
+      "blocks": [
+        [
+          "Guessing Game・漢字あてゲーム"
+        ],
+        [
+          "1"
+        ],
+        [
+          "☀️ Sun / day"
+        ],
+        [
+          "2"
+        ],
+        [
+          "🌙 Moon / month"
+        ],
+        [
+          "3"
+        ],
+        [
+          "🔥 Fire"
+        ],
+        [
+          "4"
+        ],
+        [
+          "💧 Water"
+        ],
+        [
+          "5"
+        ],
+        [
+          "🌳 Tree / wood"
+        ],
+        [
+          "6"
+        ],
+        [
+          "💰 Gold / money"
+        ],
+        [
+          "7"
+        ],
+        [
+          "🪨 Soil / earth"
+        ],
+        [
+          "水"
+        ],
+        [
+          "金"
+        ],
+        [
+          "日"
+        ],
+        [
+          "土"
+        ],
+        [
+          "月"
+        ],
+        [
+          "木"
+        ],
+        [
+          "火"
+        ],
+        [
+          "A"
+        ],
+        [
+          "B"
+        ],
+        [
+          "C"
+        ],
+        [
+          "D"
+        ],
+        [
+          "E"
+        ],
+        [
+          "F"
+        ],
+        [
+          "G"
+        ]
+      ],
+      "jpTitle": "漢字あてゲーム：7つの要素",
+      "summary": "Matching exercise between natural symbols and kanji characters.",
+      "bullets": [
+        "1. ☀️ Sun / day → 日",
+        "2. 🌙 Moon / month → 月",
+        "3. 🔥 Fire → 火",
+        "4. 💧 Water → 水",
+        "5. 🌳 Tree / wood → 木",
+        "6. 💰 Gold / money → 金",
+        "7. 🪨 Soil / earth → 土"
+      ],
+      "highlight": "The Japanese days of the week are identical to the celestial elements."
+    },
+    {
+      "slideNumber": 13,
+      "title": "生: One Kanji, Many N5 Meanings",
+      "blocks": [
+        [
+          "生: One Kanji, Many N5 Meanings"
+        ],
+        [
+          "生"
+        ],
+        [
+          "life / student"
+        ],
+        [
+          "生"
+        ],
+        [
+          "life / birth"
+        ],
+        [
+          "生きる"
+        ],
+        [
+          "to live"
+        ],
+        [
+          "生まれる"
+        ],
+        [
+          "to be born"
+        ],
+        [
+          "せい"
+        ],
+        [
+          "しょう"
+        ],
+        [
+          "いきる"
+        ],
+        [
+          "うまれる"
+        ]
+      ],
+      "jpTitle": "「生」：一つの漢字、多くの意味",
+      "summary": "Introduction to the chameleon kanji '生' and its diverse semantic range.",
+      "bullets": [
+        "Core concept: Life, student, birth, living, raw",
+        "生きる (いきる · to live)",
+        "生まれる (うまれる · to be born)",
+        "Common readings: せい, しょう, いきる, うまれる, なま"
+      ],
+      "highlight": "「生」is one of the most versatile and frequently tested kanji on the JLPT N5."
+    },
+    {
+      "slideNumber": 14,
+      "title": "「生」in Common N5 Vocabulary",
+      "blocks": [
+        [
+          "生 in Common N5 Words"
+        ],
+        [
+          "学生"
+        ],
+        [
+          "がくせい"
+        ],
+        [
+          "student"
+        ],
+        [
+          "先生"
+        ],
+        [
+          "せんせい"
+        ],
+        [
+          "teacher"
+        ],
+        [
+          "一年生"
+        ],
+        [
+          "いちねんせい"
+        ],
+        [
+          "first-year student"
+        ],
+        [
+          "生きる"
+        ],
+        [
+          "いきる"
+        ],
+        [
+          "to live"
+        ],
+        [
+          "生まれる"
+        ],
+        [
+          "うまれる"
+        ],
+        [
+          "to be born"
+        ],
+        [
+          "誕生日"
+        ],
+        [
+          "たんじょうび"
+        ],
+        [
+          "birthday"
+        ],
+        [
+          "生ビール"
+        ],
+        [
+          "なまビール"
+        ],
+        [
+          "draft beer"
+        ],
+        [
+          "Read the whole word first—生 changes with its job."
+        ]
+      ],
+      "jpTitle": "日常・N5でよく使う「生」の言葉",
+      "summary": "Six essential everyday vocabulary words built with the kanji「生」.",
+      "bullets": [
+        "学生 (がくせい) · Student",
+        "先生 (せんせい) · Teacher",
+        "一年生 (いちねんせい) · First-year student",
+        "生きる (いきる) · To live",
+        "生まれる (うまれる) · To be born",
+        "誕生日 (たんじょうび) · Birthday",
+        "生ビール (なまビール) · Draft beer (raw/unpasteurized beer)"
+      ],
+      "highlight": "Read the whole word first—「生」changes its pronunciation based on its grammatical job."
+    },
+    {
+      "slideNumber": 15,
+      "title": "Reading Changes of「生」",
+      "blocks": [
+        [
+          "Reading Changes・生・せい"
+        ],
+        [
+          "生 = せい"
+        ],
+        [
+          "学生",
+          "がくせい",
+          "student"
+        ],
+        [
+          "生 = せい"
+        ],
+        [
+          "先生",
+          "せんせい",
+          "teacher"
+        ],
+        [
+          "生 = せい"
+        ],
+        [
+          "一年生",
+          "いちねんせい",
+          "first-year student"
+        ],
+        [
+          "生 = い"
+        ],
+        [
+          "生きる",
+          "いきる",
+          "to live"
+        ],
+        [
+          "生 = う"
+        ],
+        [
+          "生まれる",
+          "うまれる",
+          "to be born"
+        ],
+        [
+          "生 = じょう"
+        ],
+        [
+          "誕生日",
+          "たんじょうび",
+          "birthday"
+        ],
+        [
+          "生 = なま"
+        ],
+        [
+          "生ビール",
+          "なまビール",
+          "draft beer"
+        ],
+        [
+          "生 = せい"
+        ],
+        [
+          "生活",
+          "せいかつ",
+          "daily life"
+        ]
+      ],
+      "jpTitle": "「生」の読み方の変化パターン",
+      "summary": "Comprehensive reference of every phonetic shift of the kanji「生」.",
+      "bullets": [
+        "生 = せい: 学生 (がくせい · student), 先生 (せんせい · teacher), 一年生 (いちねんせい), 生活 (せいかつ · daily life)",
+        "生 = い: 生きる (いきる · to live)",
+        "生 = う: 生まれる (うまれる · to be born)",
+        "生 = じょう: 誕生日 (たんじょうび · birthday)",
+        "生 = なま: 生ビール (なまビール · draft beer)"
+      ],
+      "highlight": "When paired with other Sino-Japanese roots, it is usually 'せい'; in native verbs, it is 'い' or 'う'."
+    },
+    {
+      "slideNumber": 16,
+      "title": "Quick Practice:「生」Mastery Quiz",
+      "blocks": [
+        [
+          "Quick Practice・生"
+        ],
+        [
+          "Q1  学 + 生 = ?"
+        ],
+        [
+          "a. teacher  b. student  c. birthday"
+        ],
+        [
+          "Q2  先 + 生 = ?"
+        ],
+        [
+          "a. teacher  b. life  c. draft beer"
+        ],
+        [
+          "Q3  生きる = ?"
+        ],
+        [
+          "a. to be born  b. to live  c. to study"
+        ],
+        [
+          "Q4  誕生日 = ?"
+        ],
+        [
+          "a. birthday  b. student  c. daily life"
+        ]
+      ],
+      "jpTitle": "「生」の理解度チェック",
+      "summary": "Final check quiz testing vocabulary and meaning associations with「生」.",
+      "bullets": [
+        "Q1: 学 + 生 = ? → b. student (学生 · がくせい)",
+        "Q2: 先 + 生 = ? → a. teacher (先生 · せんせい)",
+        "Q3: 生きる = ? → b. to live (いきる)",
+        "Q4: 誕生日 = ? → a. birthday (たんじょうび)"
+      ],
+      "highlight": "You have mastered the foundational building blocks of weekdays and the versatile kanji「生」!"
+    }
+  ],
+  "title": "Days of the Week, Context Readings & The Kanji「生」",
+  "jpTitle": "第4回：曜日・意味・読み方の変化・漢字「生」",
+  "vocabulary": [
+    {
+      "id": "v4-1",
+      "kanji": "日曜日",
+      "furigana": "にちようび",
+      "romaji": "nichiyoubi",
+      "english": "Sunday",
+      "type": "Day",
+      "example": "日曜日は休みです。"
+    },
+    {
+      "id": "v4-2",
+      "kanji": "月曜日",
+      "furigana": "げつようび",
+      "romaji": "getsuyoubi",
+      "english": "Monday",
+      "type": "Day",
+      "example": "月曜日、ゆきは公園へ行きます。"
+    },
+    {
+      "id": "v4-3",
+      "kanji": "火曜日",
+      "furigana": "かようび",
+      "romaji": "kayoubi",
+      "english": "Tuesday",
+      "type": "Day",
+      "example": "火曜日、公園で花火禁止を見ます。"
+    },
+    {
+      "id": "v4-4",
+      "kanji": "水曜日",
+      "furigana": "すいようび",
+      "romaji": "suiyoubi",
+      "english": "Wednesday",
+      "type": "Day",
+      "example": "水曜日、あきと水を飲みます。"
+    },
+    {
+      "id": "v4-5",
+      "kanji": "木曜日",
+      "furigana": "もくようび",
+      "romaji": "mokuyoubi",
+      "english": "Thursday",
+      "type": "Day",
+      "example": "木曜日、大きい木の下で休みます。"
+    },
+    {
+      "id": "v4-6",
+      "kanji": "金曜日",
+      "furigana": "きんようび",
+      "romaji": "kinyoubi",
+      "english": "Friday",
+      "type": "Day",
+      "example": "金曜日、お金でジュースを買います。"
+    },
+    {
+      "id": "v4-7",
+      "kanji": "土曜日",
+      "furigana": "どようび",
+      "romaji": "doyoubi",
+      "english": "Saturday",
+      "type": "Day",
+      "example": "土曜日に買い物をします。"
+    },
+    {
+      "id": "v4-8",
+      "kanji": "曜日",
+      "furigana": "ようび",
+      "romaji": "youbi",
+      "english": "day of the week",
+      "type": "Noun",
+      "example": "今日は何曜日ですか？"
+    },
+    {
+      "id": "v4-9",
+      "kanji": "日",
+      "furigana": "ひ / にち",
+      "romaji": "hi / nichi",
+      "english": "sun, day",
+      "type": "Noun",
+      "example": "日が出る。"
+    },
+    {
+      "id": "v4-10",
+      "kanji": "月",
+      "furigana": "つき / げつ / がつ",
+      "romaji": "tsuki / getsu / gatsu",
+      "english": "moon, month",
+      "type": "Noun",
+      "example": "月が大きいです。"
+    },
+    {
+      "id": "v4-11",
+      "kanji": "火",
+      "furigana": "ひ / か",
+      "romaji": "hi / ka",
+      "english": "fire",
+      "type": "Noun",
+      "example": "火をつけます。"
+    },
+    {
+      "id": "v4-12",
+      "kanji": "水",
+      "furigana": "みず / すい",
+      "romaji": "mizu / sui",
+      "english": "water",
+      "type": "Noun",
+      "example": "水を飲みます。"
+    },
+    {
+      "id": "v4-13",
+      "kanji": "木",
+      "furigana": "き / もく",
+      "romaji": "ki / moku",
+      "english": "tree, wood",
+      "type": "Noun",
+      "example": "大きい木の下で休みます。"
+    },
+    {
+      "id": "v4-14",
+      "kanji": "お金",
+      "furigana": "おかね",
+      "romaji": "okane",
+      "english": "money",
+      "type": "Noun",
+      "example": "お金でジュースを買います。"
+    },
+    {
+      "id": "v4-15",
+      "kanji": "土",
+      "furigana": "つち / ど",
+      "romaji": "tsuchi / do",
+      "english": "soil, earth",
+      "type": "Noun",
+      "example": "黒い土。"
+    },
+    {
+      "id": "v4-16",
+      "kanji": "日本",
+      "furigana": "にほん",
+      "romaji": "nihon",
+      "english": "Japan",
+      "type": "Noun",
+      "example": "日本が好きです。"
+    },
+    {
+      "id": "v4-17",
+      "kanji": "三月",
+      "furigana": "さんがつ",
+      "romaji": "sangatsu",
+      "english": "March",
+      "type": "Month",
+      "example": "三月のカレンダー。"
+    },
+    {
+      "id": "v4-18",
+      "kanji": "三か月",
+      "furigana": "さんかげつ",
+      "romaji": "sankagetsu",
+      "english": "three months",
+      "type": "Counter",
+      "example": "日本に三か月います。"
+    },
+    {
+      "id": "v4-19",
+      "kanji": "白",
+      "furigana": "しろ",
+      "romaji": "shiro",
+      "english": "white",
+      "type": "Noun",
+      "example": "白い犬。"
+    },
+    {
+      "id": "v4-20",
+      "kanji": "百",
+      "furigana": "ひゃく",
+      "romaji": "hyaku",
+      "english": "hundred",
+      "type": "Number",
+      "example": "百円です。"
+    },
+    {
+      "id": "v4-21",
+      "kanji": "休み",
+      "furigana": "やすみ",
+      "romaji": "yasumi",
+      "english": "rest, holiday",
+      "type": "Noun",
+      "example": "木の下で休みます。"
+    },
+    {
+      "id": "v4-22",
+      "kanji": "体",
+      "furigana": "からだ",
+      "romaji": "karada",
+      "english": "body",
+      "type": "Noun",
+      "example": "体が強い。"
+    },
+    {
+      "id": "v4-23",
+      "kanji": "士",
+      "furigana": "さむらい",
+      "romaji": "samurai",
+      "english": "samurai, gentleman",
+      "type": "Noun",
+      "example": "日本の士。"
+    },
+    {
+      "id": "v4-24",
+      "kanji": "全",
+      "furigana": "ぜん",
+      "romaji": "zen",
+      "english": "all, whole",
+      "type": "Noun",
+      "example": "全部。"
+    },
+    {
+      "id": "v4-25",
+      "kanji": "花火禁止",
+      "furigana": "はなびきんし",
+      "romaji": "hanabi kinshi",
+      "english": "fireworks prohibited",
+      "type": "Phrase",
+      "example": "公園で花火禁止を見ます。"
+    },
+    {
+      "id": "v4-26",
+      "kanji": "火山",
+      "furigana": "かざん",
+      "romaji": "kazan",
+      "english": "volcano",
+      "type": "Noun",
+      "example": "富士山は火山です。"
+    },
+    {
+      "id": "v4-27",
+      "kanji": "金魚",
+      "furigana": "きんぎょ",
+      "romaji": "kingyo",
+      "english": "goldfish",
+      "type": "Noun",
+      "example": "水の中に金魚がいます。"
+    },
+    {
+      "id": "v4-28",
+      "kanji": "生",
+      "furigana": "せい / しょう / なま",
+      "romaji": "sei / shou / nama",
+      "english": "life, birth, raw",
+      "type": "Noun",
+      "example": "生命。"
+    },
+    {
+      "id": "v4-29",
+      "kanji": "生きる",
+      "furigana": "いきる",
+      "romaji": "ikiru",
+      "english": "to live",
+      "type": "Verb",
+      "example": "強く生きる。"
+    },
+    {
+      "id": "v4-30",
+      "kanji": "生まれる",
+      "furigana": "うまれる",
+      "romaji": "umareru",
+      "english": "to be born",
+      "type": "Verb",
+      "example": "東京で生まれました。"
+    },
+    {
+      "id": "v4-31",
+      "kanji": "学生",
+      "furigana": "がくせい",
+      "romaji": "gakusei",
+      "english": "student",
+      "type": "Noun",
+      "example": "わたしは日本語の学生です。"
+    },
+    {
+      "id": "v4-32",
+      "kanji": "先生",
+      "furigana": "せんせい",
+      "romaji": "sensei",
+      "english": "teacher",
+      "type": "Noun",
+      "example": "ニッキ先生。"
+    },
+    {
+      "id": "v4-33",
+      "kanji": "一年生",
+      "furigana": "いちねんせい",
+      "romaji": "ichinensei",
+      "english": "first-year student",
+      "type": "Noun",
+      "example": "大学の一年生です。"
+    },
+    {
+      "id": "v4-34",
+      "kanji": "誕生日",
+      "furigana": "たんじょうび",
+      "romaji": "tanjoubi",
+      "english": "birthday",
+      "type": "Noun",
+      "example": "誕生日は何月何日ですか？"
+    },
+    {
+      "id": "v4-35",
+      "kanji": "生ビール",
+      "furigana": "なまビール",
+      "romaji": "namabiiru",
+      "english": "draft beer",
+      "type": "Noun",
+      "example": "生ビールを一杯ください。"
+    },
+    {
+      "id": "v4-36",
+      "kanji": "生活",
+      "furigana": "せいかつ",
+      "romaji": "seikatsu",
+      "english": "daily life",
+      "type": "Noun",
+      "example": "日本での生活。"
+    }
+  ],
+  "kanji": [
+    {
+      "kanji": "日",
+      "onyomi": "ニチ・ジツ",
+      "kunyomi": "ひ・び・か",
+      "meaning": "sun, day",
+      "strokes": 4,
+      "examples": [
+        "日曜日",
+        "日本",
+        "誕生日"
+      ]
+    },
+    {
+      "kanji": "月",
+      "onyomi": "ゲツ・ガツ",
+      "kunyomi": "つき",
+      "meaning": "moon, month",
+      "strokes": 4,
+      "examples": [
+        "月曜日",
+        "三月",
+        "三か月"
+      ]
+    },
+    {
+      "kanji": "火",
+      "onyomi": "カ",
+      "kunyomi": "ひ",
+      "meaning": "fire",
+      "strokes": 4,
+      "examples": [
+        "火曜日",
+        "火山",
+        "花火"
+      ]
+    },
+    {
+      "kanji": "水",
+      "onyomi": "スイ",
+      "kunyomi": "みず",
+      "meaning": "water",
+      "strokes": 4,
+      "examples": [
+        "水曜日",
+        "水"
+      ]
+    },
+    {
+      "kanji": "木",
+      "onyomi": "モク・ボク",
+      "kunyomi": "き・こ",
+      "meaning": "tree, wood",
+      "strokes": 4,
+      "examples": [
+        "木曜日",
+        "木"
+      ]
+    },
+    {
+      "kanji": "金",
+      "onyomi": "キン・コン",
+      "kunyomi": "かね・かな",
+      "meaning": "gold, money",
+      "strokes": 8,
+      "examples": [
+        "金曜日",
+        "お金",
+        "金魚"
+      ]
+    },
+    {
+      "kanji": "土",
+      "onyomi": "ド・ト",
+      "kunyomi": "つち",
+      "meaning": "soil, earth",
+      "strokes": 3,
+      "examples": [
+        "土曜日",
+        "土"
+      ]
+    },
+    {
+      "kanji": "山",
+      "onyomi": "サン",
+      "kunyomi": "やま",
+      "meaning": "mountain",
+      "strokes": 3,
+      "examples": [
+        "火山",
+        "富士山"
+      ]
+    },
+    {
+      "kanji": "魚",
+      "onyomi": "ギョ",
+      "kunyomi": "さかな・うお",
+      "meaning": "fish",
+      "strokes": 11,
+      "examples": [
+        "金魚"
+      ]
+    },
+    {
+      "kanji": "白",
+      "onyomi": "ハク・ビャク",
+      "kunyomi": "しろ・しろ(い)",
+      "meaning": "white",
+      "strokes": 5,
+      "examples": [
+        "白",
+        "白い"
+      ]
+    },
+    {
+      "kanji": "百",
+      "onyomi": "ヒャク・ビャク",
+      "kunyomi": "もも",
+      "meaning": "hundred",
+      "strokes": 6,
+      "examples": [
+        "百",
+        "三百"
+      ]
+    },
+    {
+      "kanji": "本",
+      "onyomi": "ホン",
+      "kunyomi": "もと",
+      "meaning": "book, origin",
+      "strokes": 5,
+      "examples": [
+        "本",
+        "日本"
+      ]
+    },
+    {
+      "kanji": "休",
+      "onyomi": "キュウ",
+      "kunyomi": "やす(む)",
+      "meaning": "rest",
+      "strokes": 6,
+      "examples": [
+        "休み",
+        "休む"
+      ]
+    },
+    {
+      "kanji": "体",
+      "onyomi": "タイ・テイ",
+      "kunyomi": "からだ",
+      "meaning": "body",
+      "strokes": 7,
+      "examples": [
+        "体"
+      ]
+    },
+    {
+      "kanji": "士",
+      "onyomi": "シ",
+      "kunyomi": "さむらい",
+      "meaning": "gentleman, samurai",
+      "strokes": 3,
+      "examples": [
+        "士"
+      ]
+    },
+    {
+      "kanji": "全",
+      "onyomi": "ゼン",
+      "kunyomi": "まった(く)",
+      "meaning": "all, whole",
+      "strokes": 6,
+      "examples": [
+        "全部",
+        "完全"
+      ]
+    },
+    {
+      "kanji": "生",
+      "onyomi": "セイ・ショウ",
+      "kunyomi": "い(きる)・う(まれる)・なま",
+      "meaning": "life, birth, raw",
+      "strokes": 5,
+      "examples": [
+        "学生",
+        "先生",
+        "一年生",
+        "生きる",
+        "生まれる",
+        "誕生日",
+        "生ビール",
+        "生活"
+      ]
+    },
+    {
+      "kanji": "学",
+      "onyomi": "ガク",
+      "kunyomi": "まな(ぶ)",
+      "meaning": "study, learning",
+      "strokes": 8,
+      "examples": [
+        "学生",
+        "大学"
+      ]
+    },
+    {
+      "kanji": "先",
+      "onyomi": "セン",
+      "kunyomi": "さき",
+      "meaning": "before, previous",
+      "strokes": 6,
+      "examples": [
+        "先生",
+        "先月"
+      ]
+    },
+    {
+      "kanji": "年",
+      "onyomi": "ネン",
+      "kunyomi": "とし",
+      "meaning": "year",
+      "strokes": 6,
+      "examples": [
+        "一年生",
+        "二○二六年"
+      ]
+    },
+    {
+      "kanji": "誕",
+      "onyomi": "タン",
+      "kunyomi": "",
+      "meaning": "birth",
+      "strokes": 15,
+      "examples": [
+        "誕生日"
+      ]
+    },
+    {
+      "kanji": "活",
+      "onyomi": "カツ",
+      "kunyomi": "い(きる)",
+      "meaning": "living, activity",
+      "strokes": 9,
+      "examples": [
+        "生活"
+      ]
+    }
+  ]
+}

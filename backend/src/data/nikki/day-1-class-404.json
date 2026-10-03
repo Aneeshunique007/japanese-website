@@ -1,0 +1,1871 @@
+{
+  "id": "day-1",
+  "dayNumber": 1,
+  "classCode": "Class 404",
+  "theme": "Kana Fundamentals, Pronunciation Secrets & Numbers 1–10",
+  "japaneseTheme": "日本語の文字体系と発音 (Nihongo no moji taikei to hatsuon)",
+  "subtitle": "Foundations of Japanese phonetics, stroke order laws, loanwords, and counting basics",
+  "description": "Master essential pronunciation mechanics including the flick R/L, nasal NG/N/M distinctions, stroke order rules, katakana nuances with dakuten, and foundational kanji counting from 1 to 10.",
+  "badge": "Class 404 · Foundations",
+  "goals": [
+    "Master Hiragana (ひらがな / hiragana), Katakana (カタカナ / katakana), and the purpose of Furigana (フリガナ / furigana)",
+    "Understand Japanese pronunciation: N (ん / n) vs M vs NG, and the roof-of-mouth R/L flick (ら, り, る, れ, ろ / ra, ri, ru, re, ro)",
+    "Memorize the 5 Universal Stroke Order Laws (筆順 / hitsujun) for kanji and kana",
+    "Recognize Katakana loanwords (コーヒー / kōhī, ホテル / hoteru, テレビ / terebi, エアコン / eakon)",
+    "Count from 1 to 10 with Kanji: 一 (ichi), 二 (ni), 三 (san), 四 (yon/shi), 五 (go), 六 (roku), 七 (nana/shichi), 八 (hachi), 九 (kyū/ku), 十 (jū)"
+  ],
+  "keyHighlights": [
+    "Pronunciation secret: Japanese \"r\" (ら, り, る, れ, ろ / ra, ri, ru, re, ro) is made by flicking the tip of the tongue against the alveolar ridge (roof of mouth)—neither a true English R nor L!",
+    "Dakuten 「゛」(dakuten) transforms sounds (k→g, s→z, t→d, h→b) and enables modern foreign loanwords like ウイルス (uirusu - virus) and バイオリン (baiorin - violin)",
+    "Katakana shares visual stroke DNA with Hiragana and Kanji (か / カ / 力 [chikara], た / タ / 夕 [yū], に / ニ / 二 [ni])"
+  ],
+  "kanjiList": [
+    {
+      "kanji": "一",
+      "meaning": "one",
+      "onyomi": "イチ (ichi)",
+      "kunyomi": "ひと(つ) (hito(tsu))",
+      "strokes": 1,
+      "radical": "一",
+      "radicalClue": "Core element: 一",
+      "examples": [
+        {
+          "word": "一つ",
+          "reading": "ひとつ (hitotsu)",
+          "meaning": "one thing",
+          "romaji": "hitotsu"
+        },
+        {
+          "word": "一日",
+          "reading": "ついたち / いちにち (tsuitachi / ichinichi)",
+          "meaning": "1st of month / one day",
+          "romaji": "tsuitachi / ichinichi"
+        }
+      ]
+    },
+    {
+      "kanji": "二",
+      "meaning": "two",
+      "onyomi": "ニ (ni)",
+      "kunyomi": "ふた(つ) (futa(tsu))",
+      "strokes": 2,
+      "radical": "二",
+      "radicalClue": "Core element: 二",
+      "examples": [
+        {
+          "word": "二つ",
+          "reading": "ふたつ (futatsu)",
+          "meaning": "two things",
+          "romaji": "futatsu"
+        },
+        {
+          "word": "二日",
+          "reading": "ふつか (futsuka)",
+          "meaning": "2nd of month / two days",
+          "romaji": "futsuka"
+        }
+      ]
+    },
+    {
+      "kanji": "三",
+      "meaning": "three",
+      "onyomi": "サン (san)",
+      "kunyomi": "みっ(つ) (mi(tsu))",
+      "strokes": 3,
+      "radical": "三",
+      "radicalClue": "Core element: 三",
+      "examples": [
+        {
+          "word": "三つ",
+          "reading": "みっつ (mittsu)",
+          "meaning": "three things",
+          "romaji": "mittsu"
+        },
+        {
+          "word": "三日",
+          "reading": "みっか (mikka)",
+          "meaning": "3rd of month / three days",
+          "romaji": "mikka"
+        }
+      ]
+    },
+    {
+      "kanji": "四",
+      "meaning": "four",
+      "onyomi": "シ (shi)",
+      "kunyomi": "よん・よっ(つ) (yon / yo(tsu))",
+      "strokes": 5,
+      "radical": "四",
+      "radicalClue": "Core element: 四",
+      "examples": [
+        {
+          "word": "四つ",
+          "reading": "よっつ (yottsu)",
+          "meaning": "four things",
+          "romaji": "yottsu"
+        },
+        {
+          "word": "四日",
+          "reading": "よっか (yokka)",
+          "meaning": "4th of month / four days",
+          "romaji": "yokka"
+        }
+      ]
+    },
+    {
+      "kanji": "五",
+      "meaning": "five",
+      "onyomi": "ゴ (go)",
+      "kunyomi": "いつ(つ) (itsu(tsu))",
+      "strokes": 4,
+      "radical": "五",
+      "radicalClue": "Core element: 五",
+      "examples": [
+        {
+          "word": "五つ",
+          "reading": "いつつ (itsutsu)",
+          "meaning": "five things",
+          "romaji": "itsutsu"
+        },
+        {
+          "word": "五日",
+          "reading": "いつか (itsuka)",
+          "meaning": "5th of month / five days",
+          "romaji": "itsuka"
+        }
+      ]
+    },
+    {
+      "kanji": "六",
+      "meaning": "six",
+      "onyomi": "ロク (roku)",
+      "kunyomi": "むっ(つ) (mu(tsu))",
+      "strokes": 4,
+      "radical": "六",
+      "radicalClue": "Core element: 六",
+      "examples": [
+        {
+          "word": "六つ",
+          "reading": "むっつ (muttsu)",
+          "meaning": "six things",
+          "romaji": "muttsu"
+        },
+        {
+          "word": "六日",
+          "reading": "むいか (muika)",
+          "meaning": "6th of month / six days",
+          "romaji": "muika"
+        }
+      ]
+    },
+    {
+      "kanji": "七",
+      "meaning": "seven",
+      "onyomi": "シチ (shichi)",
+      "kunyomi": "なな(つ) (nana(tsu))",
+      "strokes": 2,
+      "radical": "七",
+      "radicalClue": "Core element: 七",
+      "examples": [
+        {
+          "word": "七つ",
+          "reading": "ななつ (nanatsu)",
+          "meaning": "seven things",
+          "romaji": "nanatsu"
+        },
+        {
+          "word": "七日",
+          "reading": "なのか (nanoka)",
+          "meaning": "7th of month / seven days",
+          "romaji": "nanoka"
+        }
+      ]
+    },
+    {
+      "kanji": "八",
+      "meaning": "eight",
+      "onyomi": "ハチ (hachi)",
+      "kunyomi": "やっ(つ) (ya(tsu))",
+      "strokes": 2,
+      "radical": "八",
+      "radicalClue": "Core element: 八",
+      "examples": [
+        {
+          "word": "八つ",
+          "reading": "やっつ (yattsu)",
+          "meaning": "eight things",
+          "romaji": "yattsu"
+        },
+        {
+          "word": "八日",
+          "reading": "ようか (youka)",
+          "meaning": "8th of month / eight days",
+          "romaji": "youka"
+        }
+      ]
+    },
+    {
+      "kanji": "九",
+      "meaning": "nine",
+      "onyomi": "キュウ・ク (kyuu / ku)",
+      "kunyomi": "ここの(つ) (kokono(tsu))",
+      "strokes": 2,
+      "radical": "九",
+      "radicalClue": "Core element: 九",
+      "examples": [
+        {
+          "word": "九つ",
+          "reading": "ここのつ (kokonotsu)",
+          "meaning": "nine things",
+          "romaji": "kokonotsu"
+        },
+        {
+          "word": "九日",
+          "reading": "ここのか (kokonoka)",
+          "meaning": "9th of month / nine days",
+          "romaji": "kokonoka"
+        }
+      ]
+    },
+    {
+      "kanji": "十",
+      "meaning": "ten",
+      "onyomi": "ジュウ (juu)",
+      "kunyomi": "とお (too)",
+      "strokes": 2,
+      "radical": "十",
+      "radicalClue": "Core element: 十",
+      "examples": [
+        {
+          "word": "十",
+          "reading": "じゅう (juu)",
+          "meaning": "ten",
+          "romaji": "juu"
+        },
+        {
+          "word": "十日",
+          "reading": "とおか (tooka)",
+          "meaning": "10th of month / ten days",
+          "romaji": "tooka"
+        }
+      ]
+    },
+    {
+      "kanji": "百",
+      "meaning": "hundred",
+      "onyomi": "ヒャク (hyaku)",
+      "kunyomi": "もも (momo)",
+      "strokes": 6,
+      "radical": "百",
+      "radicalClue": "Core element: 百",
+      "examples": [
+        {
+          "word": "百",
+          "reading": "ひゃく (hyaku)",
+          "meaning": "hundred",
+          "romaji": "hyaku"
+        },
+        {
+          "word": "三百",
+          "reading": "さんびゃく (sanbyaku)",
+          "meaning": "three hundred",
+          "romaji": "sanbyaku"
+        },
+        {
+          "word": "六百",
+          "reading": "ろっぴゃく (roppyaku)",
+          "meaning": "six hundred",
+          "romaji": "roppyaku"
+        },
+        {
+          "word": "八百",
+          "reading": "はっぴゃく (happyaku)",
+          "meaning": "eight hundred",
+          "romaji": "happyaku"
+        }
+      ]
+    },
+    {
+      "kanji": "力",
+      "meaning": "power, strength",
+      "onyomi": "リョク・リキ (ryoku / riki)",
+      "kunyomi": "ちから (chikara)",
+      "strokes": 2,
+      "radical": "力",
+      "radicalClue": "Core element: 力",
+      "examples": [
+        {
+          "word": "力",
+          "reading": "ちから (chikara)",
+          "meaning": "power / strength",
+          "romaji": "chikara"
+        }
+      ]
+    },
+    {
+      "kanji": "夕",
+      "meaning": "evening",
+      "onyomi": "セキ (seki)",
+      "kunyomi": "ゆう (yuu)",
+      "strokes": 3,
+      "radical": "夕",
+      "radicalClue": "Core element: 夕",
+      "examples": [
+        {
+          "word": "夕方",
+          "reading": "ゆうがた (yuugata)",
+          "meaning": "evening",
+          "romaji": "yuugata"
+        }
+      ]
+    }
+  ],
+  "vocabularyList": [
+    {
+      "japanese": "コーヒー",
+      "reading": "こーひー (koohii)",
+      "english": "coffee",
+      "category": "Katakana",
+      "notes": "コーヒーを飲みます。",
+      "romaji": "koohii"
+    },
+    {
+      "japanese": "ホテル",
+      "reading": "ほてる (hoteru)",
+      "english": "hotel",
+      "category": "Katakana",
+      "notes": "東京のホテル。",
+      "romaji": "hoteru"
+    },
+    {
+      "japanese": "バス",
+      "reading": "ばす (basu)",
+      "english": "bus",
+      "category": "Katakana",
+      "notes": "バスに乗ります。",
+      "romaji": "basu"
+    },
+    {
+      "japanese": "タクシー",
+      "reading": "たくしー (takushii)",
+      "english": "taxi",
+      "category": "Katakana",
+      "notes": "タクシーを呼びます。",
+      "romaji": "takushii"
+    },
+    {
+      "japanese": "カメラ",
+      "reading": "かめら (kamera)",
+      "english": "camera",
+      "category": "Katakana",
+      "notes": "新しいカメラ。",
+      "romaji": "kamera"
+    },
+    {
+      "japanese": "コンピューター",
+      "reading": "こんぴゅーたー (konpyuutaa)",
+      "english": "computer",
+      "category": "Katakana",
+      "notes": "コンピューターを使います。",
+      "romaji": "konpyuutaa"
+    },
+    {
+      "japanese": "レストラン",
+      "reading": "れすとらん (resutoran)",
+      "english": "restaurant",
+      "category": "Katakana",
+      "notes": "おいしいレストラン。",
+      "romaji": "resutoran"
+    },
+    {
+      "japanese": "バナナ",
+      "reading": "ばなな (banana)",
+      "english": "banana",
+      "category": "Katakana",
+      "notes": "黄色いバナナ。",
+      "romaji": "banana"
+    },
+    {
+      "japanese": "トマト",
+      "reading": "とまと (tomato)",
+      "english": "tomato",
+      "category": "Katakana",
+      "notes": "赤いトマト。",
+      "romaji": "tomato"
+    },
+    {
+      "japanese": "ピザ",
+      "reading": "ぴざ (piza)",
+      "english": "pizza",
+      "category": "Katakana",
+      "notes": "ピザを食べます。",
+      "romaji": "piza"
+    },
+    {
+      "japanese": "ケーキ",
+      "reading": "けーき (keeki)",
+      "english": "cake",
+      "category": "Katakana",
+      "notes": "甘いケーキ。",
+      "romaji": "keeki"
+    },
+    {
+      "japanese": "ミルク",
+      "reading": "みるく (miruku)",
+      "english": "milk",
+      "category": "Katakana",
+      "notes": "冷たいミルク。",
+      "romaji": "miruku"
+    },
+    {
+      "japanese": "テレビ",
+      "reading": "てれび (terebi)",
+      "english": "television",
+      "category": "Katakana",
+      "notes": "テレビを見ます。",
+      "romaji": "terebi"
+    },
+    {
+      "japanese": "エアコン",
+      "reading": "えあこん (eakon)",
+      "english": "air conditioner",
+      "category": "Katakana",
+      "notes": "エアコンをつけます。",
+      "romaji": "eakon"
+    },
+    {
+      "japanese": "ウイルス",
+      "reading": "ういるす (uirusu)",
+      "english": "virus",
+      "category": "Katakana",
+      "notes": "コンピューターウイルス。",
+      "romaji": "uirusu"
+    },
+    {
+      "japanese": "バイオリン",
+      "reading": "ばいおりん (baiorin)",
+      "english": "violin",
+      "category": "Katakana",
+      "notes": "バイオリンを弾きます。",
+      "romaji": "baiorin"
+    },
+    {
+      "japanese": "バージョン",
+      "reading": "ばーじょん (baajon)",
+      "english": "version",
+      "category": "Katakana",
+      "notes": "新しいバージョン。",
+      "romaji": "baajon"
+    },
+    {
+      "japanese": "ねこ",
+      "reading": "ねこ (neko)",
+      "english": "cat",
+      "category": "Noun",
+      "notes": "ねこはかわいい。",
+      "romaji": "neko"
+    },
+    {
+      "japanese": "かわいい",
+      "reading": "かわいい (kawaii)",
+      "english": "cute",
+      "category": "Adjective",
+      "notes": "ねこはかわいい。",
+      "romaji": "kawaii"
+    },
+    {
+      "japanese": "ぞう",
+      "reading": "ぞう (zou)",
+      "english": "elephant",
+      "category": "Noun",
+      "notes": "ぞうはおおきい。",
+      "romaji": "zou"
+    },
+    {
+      "japanese": "おおきい",
+      "reading": "おおきい (ookii)",
+      "english": "big",
+      "category": "Adjective",
+      "notes": "ぞうはおおきい。",
+      "romaji": "ookii"
+    },
+    {
+      "japanese": "いぬ",
+      "reading": "いぬ (inu)",
+      "english": "dog",
+      "category": "Noun",
+      "notes": "いぬはちいさい。",
+      "romaji": "inu"
+    },
+    {
+      "japanese": "ちいさい",
+      "reading": "ちいさい (chiisai)",
+      "english": "small",
+      "category": "Adjective",
+      "notes": "いぬはちいさい。",
+      "romaji": "chiisai"
+    },
+    {
+      "japanese": "あたま",
+      "reading": "あたま (atama)",
+      "english": "head",
+      "category": "Noun",
+      "notes": "あたまがいいね。",
+      "romaji": "atama"
+    },
+    {
+      "japanese": "りんご",
+      "reading": "りんご (ringo)",
+      "english": "apple",
+      "category": "Noun",
+      "notes": "りんごはあかい。",
+      "romaji": "ringo"
+    },
+    {
+      "japanese": "あかい",
+      "reading": "あかい (akai)",
+      "english": "red",
+      "category": "Adjective",
+      "notes": "りんごはあかい。",
+      "romaji": "akai"
+    },
+    {
+      "japanese": "そら",
+      "reading": "そら (sora)",
+      "english": "sky",
+      "category": "Noun",
+      "notes": "そらはあおい。",
+      "romaji": "sora"
+    },
+    {
+      "japanese": "あおい",
+      "reading": "あおい (aoi)",
+      "english": "blue",
+      "category": "Adjective",
+      "notes": "そらはあおい。",
+      "romaji": "aoi"
+    },
+    {
+      "japanese": "きょう",
+      "reading": "きょう (kyou)",
+      "english": "today",
+      "category": "Noun",
+      "notes": "きょうはあつい。",
+      "romaji": "kyou"
+    },
+    {
+      "japanese": "あつい",
+      "reading": "あつい (atsui)",
+      "english": "hot",
+      "category": "Adjective",
+      "notes": "きょうはあつい。",
+      "romaji": "atsui"
+    },
+    {
+      "japanese": "みず",
+      "reading": "みず (mizu)",
+      "english": "water",
+      "category": "Noun",
+      "notes": "みずはつめたい。",
+      "romaji": "mizu"
+    },
+    {
+      "japanese": "つめたい",
+      "reading": "つめたい (tsumetai)",
+      "english": "cold (to touch)",
+      "category": "Adjective",
+      "notes": "みずはつめたい。",
+      "romaji": "tsumetai"
+    },
+    {
+      "japanese": "ほん",
+      "reading": "ほん (hon)",
+      "english": "book",
+      "category": "Noun",
+      "notes": "ほんはおもしろい。",
+      "romaji": "hon"
+    },
+    {
+      "japanese": "おもしろい",
+      "reading": "おもしろい (omoshiroi)",
+      "english": "interesting",
+      "category": "Adjective",
+      "notes": "ほんはおもしろい。",
+      "romaji": "omoshiroi"
+    },
+    {
+      "japanese": "くるま",
+      "reading": "くるま (kuruma)",
+      "english": "car",
+      "category": "Noun",
+      "notes": "くるまははやい。",
+      "romaji": "kuruma"
+    },
+    {
+      "japanese": "はやい",
+      "reading": "はやい (hayai)",
+      "english": "fast",
+      "category": "Adjective",
+      "notes": "くるまははやい。",
+      "romaji": "hayai"
+    },
+    {
+      "japanese": "せんせい",
+      "reading": "せんせい (sensei)",
+      "english": "teacher",
+      "category": "Noun",
+      "notes": "せんせいはやさしい。",
+      "romaji": "sensei"
+    },
+    {
+      "japanese": "やさしい",
+      "reading": "やさしい (yasashii)",
+      "english": "kind",
+      "category": "Adjective",
+      "notes": "せんせいはやさしい。",
+      "romaji": "yasashii"
+    },
+    {
+      "japanese": "にほんご",
+      "reading": "にほんご (nihongo)",
+      "english": "Japanese",
+      "category": "Noun",
+      "notes": "にほんごはたのしい。",
+      "romaji": "nihongo"
+    },
+    {
+      "japanese": "たのしい",
+      "reading": "たのしい (tanoshii)",
+      "english": "fun",
+      "category": "Adjective",
+      "notes": "にほんごはたのしい。",
+      "romaji": "tanoshii"
+    },
+    {
+      "japanese": "やま",
+      "reading": "やま (yama)",
+      "english": "mountain",
+      "category": "Noun",
+      "notes": "やまはたかい。",
+      "romaji": "yama"
+    },
+    {
+      "japanese": "たかい",
+      "reading": "たかい (takai)",
+      "english": "high, tall",
+      "category": "Adjective",
+      "notes": "やまはたかい。",
+      "romaji": "takai"
+    },
+    {
+      "japanese": "うみ",
+      "reading": "うみ (umi)",
+      "english": "sea",
+      "category": "Noun",
+      "notes": "うみはひろい。",
+      "romaji": "umi"
+    },
+    {
+      "japanese": "ひろい",
+      "reading": "ひろい (hiroi)",
+      "english": "wide, spacious",
+      "category": "Adjective",
+      "notes": "うみはひろい。",
+      "romaji": "hiroi"
+    },
+    {
+      "japanese": "はな",
+      "reading": "はな (hana)",
+      "english": "flower",
+      "category": "Noun",
+      "notes": "はなはきれい。",
+      "romaji": "hana"
+    },
+    {
+      "japanese": "きれい",
+      "reading": "きれい (kirei)",
+      "english": "pretty, clean",
+      "category": "Adjective",
+      "notes": "はなはきれい。",
+      "romaji": "kirei"
+    },
+    {
+      "japanese": "わたし",
+      "reading": "わたし (watashi)",
+      "english": "I, me",
+      "category": "Noun",
+      "notes": "わたしはげんき。",
+      "romaji": "watashi"
+    },
+    {
+      "japanese": "げんき",
+      "reading": "げんき (genki)",
+      "english": "healthy, energetic",
+      "category": "Noun",
+      "notes": "わたしはげんき。",
+      "romaji": "genki"
+    },
+    {
+      "japanese": "あさ",
+      "reading": "あさ (asa)",
+      "english": "morning",
+      "category": "Noun",
+      "notes": "あさですね。",
+      "romaji": "asa"
+    },
+    {
+      "japanese": "あした",
+      "reading": "あした (ashita)",
+      "english": "tomorrow",
+      "category": "Noun",
+      "notes": "あしたあいます。",
+      "romaji": "ashita"
+    },
+    {
+      "japanese": "ともだち",
+      "reading": "ともだち (tomodachi)",
+      "english": "friend",
+      "category": "Noun",
+      "notes": "ともだちがすき。",
+      "romaji": "tomodachi"
+    },
+    {
+      "japanese": "よくできました",
+      "reading": "よくできました (yokudekimashita)",
+      "english": "well done",
+      "category": "Phrase",
+      "notes": "よくできました！",
+      "romaji": "yokudekimashita"
+    }
+  ],
+  "grammarNotes": [
+    {
+      "title": "The 5 Universal Stroke Order Rules (筆順)",
+      "structure": "",
+      "explanation": "Writing kanji in correct stroke order produces neat, balanced proportions and matches Japanese muscle memory:",
+      "examples": [
+        {
+          "japanese": "1. 上から下へ (Top to bottom)",
+          "reading": "ue kara shita e",
+          "english": "e.g. 三, 言",
+          "romaji": "ue kara shita e"
+        },
+        {
+          "japanese": "2. 左から右へ (Left to right)",
+          "reading": "hidari kara migi e",
+          "english": "e.g. 川, 州",
+          "romaji": "hidari kara migi e"
+        },
+        {
+          "japanese": "3. 横が先、縦が後 (Horizontal before vertical)",
+          "reading": "yoko ga saki, tate ga ato",
+          "english": "e.g. 十",
+          "romaji": "yoko ga saki, tate ga ato"
+        },
+        {
+          "japanese": "4. 外側から内側へ (Outside before inside)",
+          "reading": "sotogawa kara uchigawa e",
+          "english": "e.g. 四, 国, 風",
+          "romaji": "sotogawa kara uchigawa e"
+        },
+        {
+          "japanese": "5. 左・上パーツが先 (Top/Left components first)",
+          "reading": "hidari/ue paatsu ga saki",
+          "english": "e.g. 話, 校",
+          "romaji": "hidari/ue paatsu ga saki"
+        }
+      ]
+    },
+    {
+      "title": "Pronunciation Secret: The Japanese 'R' Sound",
+      "structure": "",
+      "explanation": "Japanese ら・り・る・れ・ろ is neither English R nor English L. It is a light flap (alveolar tap) where the tongue tip taps the bump behind your upper teeth once. Do not round your lips like English R!",
+      "examples": [
+        {
+          "japanese": "りんご",
+          "reading": "ringo",
+          "english": "Apple (light tongue tap, not 'rringo')",
+          "romaji": "ringo"
+        },
+        {
+          "japanese": "レストラン",
+          "reading": "resutoran",
+          "english": "Restaurant",
+          "romaji": "resutoran"
+        }
+      ]
+    }
+  ],
+  "practiceQuiz": [
+    {
+      "question": "How do you produce the Japanese \"r\" sound (ら, り, る, れ, ろ / ra, ri, ru, re, ro)?",
+      "options": [
+        "Curl the tongue backward like English R",
+        "Press the tongue flat against teeth like English L",
+        "Lightly flick the tip of the tongue against the roof of the mouth",
+        "Breathe through closed teeth like an H"
+      ],
+      "correct": "Lightly flick the tip of the tongue against the roof of the mouth",
+      "explanation": "Japanese R is an alveolar tap, similar to the \"tt\" in American English \"butter\"."
+    },
+    {
+      "question": "What is the stroke order rule for kanji like 十 (じゅう / jū - ten)?",
+      "options": [
+        "Vertical first, then horizontal",
+        "Horizontal first, then vertical",
+        "Top-left diagonal first",
+        "Bottom dot first"
+      ],
+      "correct": "Horizontal first, then vertical",
+      "explanation": "Standard kanji stroke order rule: horizontal strokes precede intersecting vertical strokes (横先縦後)."
+    },
+    {
+      "question": "Which loanword means \"Air Conditioner\" in Katakana?",
+      "options": [
+        "クーラーボックス (kūrābokkusu / cooler box)",
+        "エアコン (eakon / air conditioner)",
+        "エアヒーター (eahītā / air heater)",
+        "コンディショナー (kondishonā / conditioner)"
+      ],
+      "correct": "エアコン (eakon / air conditioner)",
+      "explanation": "エアコン is a wasei-eigo contraction of \"air conditioner\"."
+    },
+    {
+      "question": "What does \"あたま が いいね (atama ga ii ne)\" mean idiomatically?",
+      "options": [
+        "Your hair looks nice",
+        "You are smart / clever",
+        "You have a big head",
+        "Your hat is pretty"
+      ],
+      "correct": "You are smart / clever",
+      "explanation": "頭がいい (atama ga ii) literally translates to \"head is good\" and idiomatically means bright, clever, or smart."
+    }
+  ],
+  "slides": [
+    {
+      "slideNumber": 1,
+      "title": "Welcome to Nikki JP Class 404",
+      "category": "Course Overview",
+      "subtitle": "Foundations: Kana, Numbers & Kanji",
+      "summary": "Kickstart your Japanese journey by mastering phonetics, stroke order laws, loanwords, and essential counting.",
+      "bullets": [
+        "Part 1: Hiragana & Furigana fundamentals",
+        "Part 2: Pronunciation secrets (the alveolar R tap, nasal NG, bilabial F)",
+        "Part 3: The 5 Universal Stroke Order Rules (筆順)",
+        "Part 4: 20 foundational reading sentences",
+        "Part 5: Katakana loanwords & contraction culture",
+        "Part 6: Kanji numbers 1 to 10 & Hundred sound changes"
+      ],
+      "highlight": "With just 13 core kanji learned in this course, you can count up to 99,999,999 in Japanese!",
+      "blocks": [
+        [
+          "Nikki JP Class 404"
+        ],
+        [
+          "Foundations: Kana, Numbers & Kanji"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 2,
+      "title": "Hiragana & Furigana (ひらがな・フリガナ)",
+      "category": "Writing Systems",
+      "subtitle": "Understanding the Japanese script hierarchy",
+      "summary": "Japanese uses three scripts harmoniously. Hiragana forms the grammatical backbone, while Furigana acts as an accessibility guide.",
+      "bullets": [
+        "ひらがな (Hiragana): 46 cursive native characters used for grammar particles (は, が, を, に, で), verb endings, and native words.",
+        "カタカナ (Katakana): Angular counterparts reserved for foreign loanwords, non-Japanese names, and onomatopoeia.",
+        "フリガナ (Furigana): Small phonetic kana printed above or beside kanji to indicate its pronunciation."
+      ],
+      "highlight": "In books, manga, and menus, Furigana ensures you can read any kanji character even before you have memorized it.",
+      "blocks": [
+        [
+          "ひらがな (hiragana)",
+          "46 native phonetic characters"
+        ],
+        [
+          "フリガナ (furigana)",
+          "Small kana pronunciation guides placed above kanji"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 3,
+      "title": "発音・Pronunciation (はつおん)",
+      "category": "Phonetics",
+      "subtitle": "N, M, NG, H sounds, and W",
+      "summary": "Pronunciation focus points directly from Nikki's Class 404 Slide 3.",
+      "bullets": [
+        "N (ん)",
+        "M",
+        "NG",
+        "H sounds",
+        "W"
+      ],
+      "highlight": "Mastering the nasal transitions (N, M, NG) and breath airflow for H and W sounds.",
+      "blocks": [
+        [
+          "発音・",
+          "Pronunciation",
+          "はつ おん",
+          "N",
+          "M",
+          "NG",
+          "H sounds",
+          "W"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 4,
+      "title": "The Japanese 'R' Secret: The Roof-of-Mouth Flick",
+      "category": "Phonetics & Mouth Mechanics",
+      "subtitle": "Neither an English 'R' nor an English 'L'",
+      "summary": "The single biggest mistake English speakers make is curling the tongue for R or pressing flat for L.",
+      "bullets": [
+        "Japanese ら・り・る・れ・ろ (ra, ri, ru, re, ro) is an Alveolar Tap / Flap (ɾ).",
+        "Mouth Mechanic: Flick the very tip of your tongue once against the alveolar ridge (the hard bump on the roof of your mouth just behind your upper teeth).",
+        "Do NOT curl your tongue backward into your throat (English R).",
+        "Do NOT hold your tongue flat against your front teeth (English L).",
+        "It sounds almost like the quick 'tt' in American English 'butter' or 'water'!"
+      ],
+      "highlight": "Pro-tip: Say 'ladder-ladder-ladder' quickly. Notice where your tongue taps? That exact tap is the Japanese 'R'!",
+      "blocks": [
+        [
+          "L? R? Flick top of mouth — Neither R nor L!"
+        ],
+        [
+          "Alveolar Tap: tongue tip flicks once against the roof behind upper teeth"
+        ],
+        [
+          "Never curl the tongue (English R); never hold flat (English L)"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 5,
+      "title": "The 5 Universal Stroke Order Rules (筆順)",
+      "category": "Writing Mechanics",
+      "subtitle": "The timeless geometry of Japanese characters",
+      "summary": "Stroke order is not arbitrary etiquette; it ensures natural balance, speed, and muscle memory.",
+      "bullets": [
+        "Law 1: Top to Bottom (上から下へ / ue kara shita e) — Write upper parts first (e.g. 三, 言)",
+        "Law 2: Left to Right (左から右へ / hidari kara migi e) — Flow from left components to right (e.g. 川, 州)",
+        "Law 3: Horizontal before Vertical (横が先、縦が後 / yoko ga saki, tate ga ato) — Horizontal lines cross first, then vertical spear cuts down (e.g. 十)",
+        "Law 4: Outside before Inside (外側から内側へ / sotogawa kara uchigawa e) — Build the box perimeter, fill the interior, then close the door (e.g. 四, 国, 風)",
+        "Law 5: Center before Symmetry (中央が先 / chūō ga saki) — Draw the central spine first, then side wings (e.g. 水, 小)"
+      ],
+      "highlight": "Mastering Rule 3 (Horizontal before Vertical) makes writing kanji like 十, 土, and 木 effortless and structurally upright.",
+      "blocks": [
+        [
+          "Stroke order rules (筆順)"
+        ],
+        [
+          "1. Top → bottom | 2. Left → right | 3. Horizontal before vertical | 4. Outside → inside | 5. Center before symmetry"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 6,
+      "title": "The 20 Foundational Practice Sentences",
+      "category": "Reading Practice",
+      "subtitle": "Natural adjectives, particles & nouns in action",
+      "summary": "Read 20 natural Japanese sentences aloud to anchor sentence rhythm and core vocabulary.",
+      "bullets": [
+        "Sentences 1–5: ねこ は かわいい (neko wa kawaii / Cats are cute) · ぞう は おおきい (zō wa ookii / Elephants are big) · いぬ は ちいさい (inu wa chiisai / Dogs are small) · あたま が いいね (atama ga ii ne / You're smart!) · りんご は あかい (ringo wa akai / Apples are red)",
+        "Sentences 6–10: そら は あおい (sora wa aoi / Sky is blue) · きょう は あつい (kyō wa atsui / Today is hot) · みず は つめたい (mizu wa tsumetai / Water is cold) · ごはん は おいしい (gohan wa oishii / Meal is delicious) · こうちゃ が すきです (kōcha ga suki desu / I like black tea)",
+        "Sentences 11–15: うみ は ひろい (umi wa hiroi / Ocean is vast) · やま は たかい (yama wa takai / Mountain is tall) · くるま は はやい (kuruma wa hayai / Car is fast) · あるく のは おそい (aruku no wa osoi / Walking is slow) · この ほん は おもしろい (kono hon wa omoshiroi / This book is interesting)",
+        "Sentences 16–20: あの ひと は やさしい (ano hito wa yasashii / That person is kind) · きょう は いい てんき (kyō wa ii tenki / Nice weather today) · かんじ は むずかしい (kanji wa muzukashii / Kanji is difficult) · あした は やすみです (ashita wa yasumi desu / Tomorrow is off) · よく できました (yoku dekimashita / Well done!)"
+      ],
+      "highlight": "Notice the fundamental particle patterns: [Topic は Adjective] (りんごはあかい) and [Object が すきです] (こうちゃがすきです).",
+      "blocks": [
+        [
+          "20 Practice Sentences for Fluency"
+        ],
+        [
+          "Read aloud to lock in noun + particle + adjective structures"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 7,
+      "title": "Katakana: 'Anything Not Japanese'",
+      "category": "Writing Systems",
+      "subtitle": "The visual cousins of Hiragana & Kanji",
+      "summary": "Katakana is your shortcut to instant vocabulary because you already know thousands of English words!",
+      "bullets": [
+        "Purpose 1: Foreign loanwords (外来語) borrowed from English, German, Portuguese, French, etc.",
+        "Purpose 2: Non-Japanese personal names and foreign place names.",
+        "Purpose 3: Animal sounds and vivid sound effects (onomatopoeia).",
+        "Purpose 4: Visual emphasis (similar to italics in English)."
+      ],
+      "highlight": "Over 10% of modern spoken Japanese consists of Katakana loanwords. If you can read Katakana, you already know thousands of Japanese terms!",
+      "blocks": [
+        [
+          "カタカナ (katakana)"
+        ],
+        [
+          "Used for foreign loanwords, names, onomatopoeia, and stylistic emphasis"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 8,
+      "title": "The 12 Katakana Loanwords (From Nikki's Slide)",
+      "category": "Katakana Loanwords",
+      "subtitle": "The 12 words taught in Class 404 Slide 8",
+      "summary": "The exact 12 Katakana loanwords presented on Nikki's Class 404 Slide 8.",
+      "bullets": [
+        "Coffee → コーヒー (koohii)",
+        "Hotel → ホテル (hoteru)",
+        "Bus → バス (basu)",
+        "Taxi → タクシー (takushii)",
+        "Camera → カメラ (kamera)",
+        "Computer → コンピューター (konpyuutaa)",
+        "Restaurant → レストラン (resutoran)",
+        "Banana → バナナ (banana)",
+        "Tomato → トマト (tomato)",
+        "Pizza → ピザ (piza)",
+        "Cake → ケーキ (keeki)",
+        "Milk → ミルク (miruku)"
+      ],
+      "highlight": "These 12 words appear directly on Nikki's Class 404 slide.",
+      "blocks": [
+        [
+          "Coffee",
+          "Hotel",
+          "Bus",
+          "Taxi",
+          "Camera",
+          "Computer",
+          "Restaurant",
+          "Banana",
+          "Tomato",
+          "Pizza",
+          "Cake",
+          "Milk"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 9,
+      "title": "Contraction Culture: The 4-Mora Rule",
+      "category": "Katakana Loanwords",
+      "subtitle": "Why Japanese loves 4-beat portmanteaus",
+      "summary": "Long foreign compound words are almost always contracted down to a crisp 4-mora / 2-beat cadence.",
+      "bullets": [
+        "TeleVision (テレビジョン) → テレビ (terebi) [4 characters / 2 pairs]",
+        "Air Conditioner (エアーコンディショナー) → エアコン (eakon) [4 moras]",
+        "Convenience Store (コンビニエンスストア) → コンビニ (konbini)",
+        "Smartphone (スマートフォーン) → スマホ (sumaho)",
+        "Personal Computer (パーソナルコンピューター) → パソコン (pasokon)"
+      ],
+      "highlight": "Japanese ear finds 4-mora rhythms naturally catchy and balanced. When a foreign word is too long, it gets clipped!",
+      "blocks": [
+        [
+          "Contraction Culture in Loanwords"
+        ],
+        [
+          "TeleVision → テレビ (terebi) | Air Conditioner → エアコン (eakon)"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 10,
+      "title": "The Bilabial 'F': HIT vs FIT",
+      "category": "Phonetics & Mouth Mechanics",
+      "subtitle": "Why Japanese has no lip-biting 'F'",
+      "summary": "Japanese ふ (fu) is a bilabial fricative (ɸ)—blown gently between relaxed lips without upper teeth.",
+      "bullets": [
+        "English 'F': Lower lip tucked against upper teeth (labiodental).",
+        "Japanese 'ふ': Form lips as if gently blowing out a birthday candle without biting your lip.",
+        "In Japanese, 'HIT' (ヒット) and 'FIT' (フィット) feel distinct:",
+        "  • ひ (hi) is articulated toward the hard palate.",
+        "  • ふ (fu) is articulated softly at the lips.",
+        "Foreign 'F' words use small vowels: ファ (fa), フィ (fi), フェ (fe), フォ (fo)."
+      ],
+      "highlight": "Never bite your bottom lip when saying ふ (fu) or ファ (fa). Let the air glide smoothly between both lips!",
+      "blocks": [
+        [
+          "F Sounds: Bilabial Fricative"
+        ],
+        [
+          "Blow air softly between both lips without touching teeth | HIT vs FIT"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 11,
+      "title": "だくてん (Dakuten 「゛」) & The 'V' Dilemma",
+      "category": "Phonetics & Sound Shifts",
+      "subtitle": "Voicing transforms and modern sound innovations",
+      "summary": "Dakuten marks turn voiceless consonants into voiced ones, and Japanese evolved to capture modern 'V' sounds.",
+      "bullets": [
+        "Dakuten transforms: K → G (か→が), S → Z (さ→ざ), T → D (た→だ), H → B (は→ば).",
+        "Handakuten transforms: H → P (は→ぱ).",
+        "The 'V' sound in Japanese: Classical Japanese had no 'V', so loanwords historically converted V to B:",
+        "  • VIRUS → ウイルス (uirusu, borrowed via German/Latin) or ヴァイラス",
+        "  • VIOLIN → バイオリン (baiorin) or ヴァイオリン (vaiorin)",
+        "  • VERSION → バージョン (baajon)"
+      ],
+      "highlight": "In modern Japanese, you can write 'V' using ヴ (U with dakuten) + small kana: ヴァ (va), ヴィ (vi), ヴ (vu), ヴェ (ve), ヴォ (vo)!",
+      "blocks": [
+        [
+          "だくてん – Dakuten 「゛」 & Handakuten 「゜」"
+        ],
+        [
+          "Voiced transformations (K→G, S→Z, T→D, H→B) and the evolution of 'V' (ウイルス, バイオリン, バージョン)"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 12,
+      "title": "Visual Character DNA (Kana vs Kanji Twins)",
+      "category": "Writing Systems",
+      "subtitle": "Seeing the shared historical roots of kana and kanji",
+      "summary": "Hiragana and Katakana are both simplified shorthand derivations of ancient Chinese characters.",
+      "bullets": [
+        "か (Hiragana) vs カ (Katakana) vs 力 (Kanji: 'chikara' / power)",
+        "た (Hiragana) vs タ (Katakana) vs 夕 (Kanji: 'yuu' / evening)",
+        "に (Hiragana) vs ニ (Katakana) vs 二 (Kanji: 'ni' / two)",
+        "Similar visual architectures: 予 (preview / yo) vs 祭 (festival / matsuri)"
+      ],
+      "highlight": "Notice how Katakana uses the sharp geometric corners of kanji, while Hiragana flows in rounded cursive brush strokes from the same origins!",
+      "blocks": [
+        [
+          "Character Similarities & DNA"
+        ],
+        [
+          "か (Hira) vs カ (Kata) vs 力 (Kanji: power) | た vs タ vs 夕 | に vs ニ vs 二"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 13,
+      "title": "Kanji Numbers 1 to 10 (漢字・数字)",
+      "category": "Kanji & Numbers",
+      "subtitle": "Counting up to 99,999,999 with 13 kanji",
+      "summary": "Master the digits 1 through 10, their context-dependent readings, and scale units (百, 千, 万).",
+      "bullets": [
+        "一 (1 - ichi), 二 (2 - ni), 三 (3 - san), 四 (4 - yon / shi), 五 (5 - go)",
+        "六 (6 - roku), 七 (7 - nana / shichi), 八 (8 - hachi), 九 (9 - kyuu / ku), 十 (10 - juu)",
+        "Context Shift 4: 'よん' (standard) vs 'し' (formal/calendar) vs 'よ' (in time: よじ = 4:00)",
+        "Context Shift 7: 'なな' (standard) vs 'しち' (in time: しちじ = 7:00)",
+        "Context Shift 9: 'きゅう' (standard) vs 'く' (in time: くじ = 9:00, in month: くがつ = Sept)"
+      ],
+      "highlight": "Avoid saying 'しじ' or 'yonji' for 4:00—it is always よじ (yoji). And 9:00 is always くじ (kuji)!",
+      "blocks": [
+        [
+          "漢字・数字 (Numbers 1–10)"
+        ],
+        [
+          "一 二 三 四 五 六 七 八 九 十 | Scalers: 百 (100), 千 (1,000), 万 (10,000)"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 14,
+      "title": "Number Reading Drills & The 3 Hundred Sound Shifts",
+      "category": "Kanji & Numbers",
+      "subtitle": "Two-digit combinations & irregular readings for 百 (100)",
+      "summary": "Combine tens and units cleanly, and master the 3 phonetic sound shifts when counting hundreds.",
+      "bullets": [
+        "Two-digit drills: 21 (二十一 / nijūichi), 32 (三十二 / sanjūni), 49 (四十九 / yonjūkyū), 57 (五十七 / gojūnana), 66 (六十六 / rokujūroku), 70 (七十 / nanajū), 83 (八十三 / hachijūsan), 94 (九十四 / kyūjūyon)",
+        "Hundreds drills: 100 (百・ひゃく / hyaku), 220 (二百二十 / nihyaku nijū), 513 (五百十三 / gohyaku jūsanchi), 978 (九百七十八 / kyūhyaku nanajūhachi)",
+        "The 3 Irregular Hundred (百 / hyaku) Sound Shifts:",
+        "  1. 300 = 三百 → さん + びゃく (B sound change: san-byaku)",
+        "  2. 600 = 六百 → ろっ + ぴゃく (P sound change + gemination: ro-ppyaku)",
+        "  3. 800 = 八百 → はっ + ぴゃく (P sound change + gemination: ha-ppyaku)"
+      ],
+      "highlight": "Notice: 100, 200, 400, 500, 700, 900 use regular 'ひゃく'. Only 300 (びゃく), 600 (ぴゃく), and 800 (ぴゃく) shift!",
+      "blocks": [
+        [
+          "Number Drills & Hundred Sound Changes (音便)"
+        ],
+        [
+          "300: さんびゃく | 600: ろっぴゃく | 800: はっぴゃく"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 15,
+      "title": "Day 1 Action Plan: Daily Practice & Phone Drills",
+      "category": "Practice & Wrap Up",
+      "subtitle": "How to lock in Day 1 learnings for good",
+      "summary": "Consolidate today's fundamentals through active recall, phone keyboard practice, and spaced repetition.",
+      "bullets": [
+        "Step 1: Set your phone keyboard to Japanese 12-key (flick input) or QWERTY romaji input.",
+        "Step 2: Practice typing the 20 practice sentences and 14 loanwords.",
+        "Step 3: Test yourself on the 3 Hundred sound shifts (300, 600, 800).",
+        "Step 4: Complete the Day 1 Practice Quiz to earn +50 XP!"
+      ],
+      "highlight": "Flick typing in Japanese builds incredible muscle memory for character families (e.g. flicking 'あ' left for 'い', up for 'う', right for 'え', down for 'お')!",
+      "blocks": [
+        [
+          "Practice on the Phone & Daily Action Plan"
+        ],
+        [
+          "Install Japanese keyboard | Drill 20 sentences | Complete Day 1 Quiz"
+        ]
+      ]
+    }
+  ],
+  "readingPassages": [
+    {
+      "title": "20 Foundational Practice Sentences · Part 1 (Sentences 1–10)",
+      "text": "ねこ は かわいい です。\nぞう は おおきい です。\nいぬ は ちいさい です。\nあたま が いい ね。\nりんご は あかい です。\nそら は あおい です。\nきょう は あつい です。\nみず は つめたい です。\nごはん は おいしい です。\nこうちゃ が すき です。",
+      "translation": "Cats are cute.\nElephants are big.\nDogs are small.\nYou are clever / smart!\nApples are red.\nThe sky is blue.\nToday is hot.\nWater is cold (to the touch).\nThe meal / rice is delicious.\nI like black tea.",
+      "questions": [
+        {
+          "q": "りんごは何色ですか？ (Ringo wa nani-iro desu ka? / What color is the apple?)",
+          "a": "あかい（赤）です。(Akai desu. / It is red.)"
+        },
+        {
+          "q": "みずはどうですか？ (Mizu wa dō desu ka? / How is the water?)",
+          "a": "つめたい（冷たい）です。(Tsumetai desu. / It is cold.)"
+        },
+        {
+          "q": "何が好きですか？ (Nani ga suki desu ka? / What do you like?)",
+          "a": "こうちゃ（紅茶）が好きです。(Kōcha ga suki desu. / I like black tea.)"
+        }
+      ],
+      "romaji": "1. Neko wa kawaii desu.\n2. Zou wa ookii desu.\n3. Inu wa chiisai desu.\n4. Atama ga ii ne.\n5. Ringo wa akai desu.\n6. Sora wa aoi desu.\n7. Kyou wa atsui desu.\n8. Mizu wa tsumetai desu.\n9. Gohan wa oishii desu.\n10. Koucha ga suki desu."
+    },
+    {
+      "title": "20 Foundational Practice Sentences · Part 2 (Sentences 11–20)",
+      "text": "うみ は ひろい です。\nやま は たかい です。\nくるま は はやい です。\nあるく のは おそい です。\nこの ほん は おもしろい です。\nあの ひと は やさしい です。\nきょう は いい てんき です。\nかんじ は むずかしい です。\nあした は やすみ です。\nよく できました！",
+      "translation": "The ocean is vast.\nThe mountain is tall.\nThe car is fast.\nWalking is slow.\nThis book is interesting.\nThat person is kind.\nToday has nice weather.\nKanji is difficult.\nTomorrow is a day off.\nWell done! (Great job!)",
+      "questions": [
+        {
+          "q": "やまはどうですか？ (Yama wa dō desu ka? / How is the mountain?)",
+          "a": "たかい（高い）です。(Takai desu. / It is tall/high.)"
+        },
+        {
+          "q": "あしたは何ですか？ (Ashita wa nan desu ka? / What is tomorrow?)",
+          "a": "やすみ（休み）です。(Yasumi desu. / It is a holiday/day off.)"
+        },
+        {
+          "q": "この本はどうですか？ (Kono hon wa dō desu ka? / How is this book?)",
+          "a": "おもしろい（面白い）です。(Omoshiroi desu. / It is interesting.)"
+        }
+      ],
+      "romaji": "11. Umi wa hiroi desu.\n12. Yama wa takai desu.\n13. Kuruma wa hayai desu.\n14. Aruku no wa osoi desu.\n15. Kono hon wa omoshiroi desu.\n16. Ano hito wa yasashii desu.\n17. Kyou wa ii tenki desu.\n18. Kanji wa muzukashii desu.\n19. Ashita wa yasumi desu.\n20. Yoku dekimashita!"
+    }
+  ],
+  "vocabulary": [
+    {
+      "id": "v1-1",
+      "kanji": "コーヒー",
+      "furigana": "こーひー",
+      "romaji": "koohii",
+      "english": "coffee",
+      "type": "Katakana",
+      "example": "コーヒーを飲みます。"
+    },
+    {
+      "id": "v1-2",
+      "kanji": "ホテル",
+      "furigana": "ほてる",
+      "romaji": "hoteru",
+      "english": "hotel",
+      "type": "Katakana",
+      "example": "東京のホテル。"
+    },
+    {
+      "id": "v1-3",
+      "kanji": "バス",
+      "furigana": "ばす",
+      "romaji": "basu",
+      "english": "bus",
+      "type": "Katakana",
+      "example": "バスに乗ります。"
+    },
+    {
+      "id": "v1-4",
+      "kanji": "タクシー",
+      "furigana": "たくしー",
+      "romaji": "takushii",
+      "english": "taxi",
+      "type": "Katakana",
+      "example": "タクシーを呼びます。"
+    },
+    {
+      "id": "v1-5",
+      "kanji": "カメラ",
+      "furigana": "かめら",
+      "romaji": "kamera",
+      "english": "camera",
+      "type": "Katakana",
+      "example": "新しいカメラ。"
+    },
+    {
+      "id": "v1-6",
+      "kanji": "コンピューター",
+      "furigana": "こんぴゅーたー",
+      "romaji": "konpyuutaa",
+      "english": "computer",
+      "type": "Katakana",
+      "example": "コンピューターを使います。"
+    },
+    {
+      "id": "v1-7",
+      "kanji": "レストラン",
+      "furigana": "れすとらん",
+      "romaji": "resutoran",
+      "english": "restaurant",
+      "type": "Katakana",
+      "example": "おいしいレストラン。"
+    },
+    {
+      "id": "v1-8",
+      "kanji": "バナナ",
+      "furigana": "ばなな",
+      "romaji": "banana",
+      "english": "banana",
+      "type": "Katakana",
+      "example": "黄色いバナナ。"
+    },
+    {
+      "id": "v1-9",
+      "kanji": "トマト",
+      "furigana": "とまと",
+      "romaji": "tomato",
+      "english": "tomato",
+      "type": "Katakana",
+      "example": "赤いトマト。"
+    },
+    {
+      "id": "v1-10",
+      "kanji": "ピザ",
+      "furigana": "ぴざ",
+      "romaji": "piza",
+      "english": "pizza",
+      "type": "Katakana",
+      "example": "ピザを食べます。"
+    },
+    {
+      "id": "v1-11",
+      "kanji": "ケーキ",
+      "furigana": "けーき",
+      "romaji": "keeki",
+      "english": "cake",
+      "type": "Katakana",
+      "example": "甘いケーキ。"
+    },
+    {
+      "id": "v1-12",
+      "kanji": "ミルク",
+      "furigana": "みるく",
+      "romaji": "miruku",
+      "english": "milk",
+      "type": "Katakana",
+      "example": "冷たいミルク。"
+    },
+    {
+      "id": "v1-13",
+      "kanji": "テレビ",
+      "furigana": "てれび",
+      "romaji": "terebi",
+      "english": "television",
+      "type": "Katakana",
+      "example": "テレビを見ます。"
+    },
+    {
+      "id": "v1-14",
+      "kanji": "エアコン",
+      "furigana": "えあこん",
+      "romaji": "eakon",
+      "english": "air conditioner",
+      "type": "Katakana",
+      "example": "エアコンをつけます。"
+    },
+    {
+      "id": "v1-15",
+      "kanji": "ウイルス",
+      "furigana": "ういるす",
+      "romaji": "uirusu",
+      "english": "virus",
+      "type": "Katakana",
+      "example": "コンピューターウイルス。"
+    },
+    {
+      "id": "v1-16",
+      "kanji": "バイオリン",
+      "furigana": "ばいおりん",
+      "romaji": "baiorin",
+      "english": "violin",
+      "type": "Katakana",
+      "example": "バイオリンを弾きます。"
+    },
+    {
+      "id": "v1-17",
+      "kanji": "バージョン",
+      "furigana": "ばーじょん",
+      "romaji": "baajon",
+      "english": "version",
+      "type": "Katakana",
+      "example": "新しいバージョン。"
+    },
+    {
+      "id": "v1-18",
+      "kanji": "ねこ",
+      "furigana": "ねこ",
+      "romaji": "neko",
+      "english": "cat",
+      "type": "Noun",
+      "example": "ねこはかわいい。"
+    },
+    {
+      "id": "v1-19",
+      "kanji": "かわいい",
+      "furigana": "かわいい",
+      "romaji": "kawaii",
+      "english": "cute",
+      "type": "Adjective",
+      "example": "ねこはかわいい。"
+    },
+    {
+      "id": "v1-20",
+      "kanji": "ぞう",
+      "furigana": "ぞう",
+      "romaji": "zou",
+      "english": "elephant",
+      "type": "Noun",
+      "example": "ぞうはおおきい。"
+    },
+    {
+      "id": "v1-21",
+      "kanji": "おおきい",
+      "furigana": "おおきい",
+      "romaji": "ookii",
+      "english": "big",
+      "type": "Adjective",
+      "example": "ぞうはおおきい。"
+    },
+    {
+      "id": "v1-22",
+      "kanji": "いぬ",
+      "furigana": "いぬ",
+      "romaji": "inu",
+      "english": "dog",
+      "type": "Noun",
+      "example": "いぬはちいさい。"
+    },
+    {
+      "id": "v1-23",
+      "kanji": "ちいさい",
+      "furigana": "ちいさい",
+      "romaji": "chiisai",
+      "english": "small",
+      "type": "Adjective",
+      "example": "いぬはちいさい。"
+    },
+    {
+      "id": "v1-24",
+      "kanji": "あたま",
+      "furigana": "あたま",
+      "romaji": "atama",
+      "english": "head",
+      "type": "Noun",
+      "example": "あたまがいいね。"
+    },
+    {
+      "id": "v1-25",
+      "kanji": "りんご",
+      "furigana": "りんご",
+      "romaji": "ringo",
+      "english": "apple",
+      "type": "Noun",
+      "example": "りんごはあかい。"
+    },
+    {
+      "id": "v1-26",
+      "kanji": "あかい",
+      "furigana": "あかい",
+      "romaji": "akai",
+      "english": "red",
+      "type": "Adjective",
+      "example": "りんごはあかい。"
+    },
+    {
+      "id": "v1-27",
+      "kanji": "そら",
+      "furigana": "そら",
+      "romaji": "sora",
+      "english": "sky",
+      "type": "Noun",
+      "example": "そらはあおい。"
+    },
+    {
+      "id": "v1-28",
+      "kanji": "あおい",
+      "furigana": "あおい",
+      "romaji": "aoi",
+      "english": "blue",
+      "type": "Adjective",
+      "example": "そらはあおい。"
+    },
+    {
+      "id": "v1-29",
+      "kanji": "きょう",
+      "furigana": "きょう",
+      "romaji": "kyou",
+      "english": "today",
+      "type": "Noun",
+      "example": "きょうはあつい。"
+    },
+    {
+      "id": "v1-30",
+      "kanji": "あつい",
+      "furigana": "あつい",
+      "romaji": "atsui",
+      "english": "hot",
+      "type": "Adjective",
+      "example": "きょうはあつい。"
+    },
+    {
+      "id": "v1-31",
+      "kanji": "みず",
+      "furigana": "みず",
+      "romaji": "mizu",
+      "english": "water",
+      "type": "Noun",
+      "example": "みずはつめたい。"
+    },
+    {
+      "id": "v1-32",
+      "kanji": "つめたい",
+      "furigana": "つめたい",
+      "romaji": "tsumetai",
+      "english": "cold (to touch)",
+      "type": "Adjective",
+      "example": "みずはつめたい。"
+    },
+    {
+      "id": "v1-33",
+      "kanji": "ほん",
+      "furigana": "ほん",
+      "romaji": "hon",
+      "english": "book",
+      "type": "Noun",
+      "example": "ほんはおもしろい。"
+    },
+    {
+      "id": "v1-34",
+      "kanji": "おもしろい",
+      "furigana": "おもしろい",
+      "romaji": "omoshiroi",
+      "english": "interesting",
+      "type": "Adjective",
+      "example": "ほんはおもしろい。"
+    },
+    {
+      "id": "v1-35",
+      "kanji": "くるま",
+      "furigana": "くるま",
+      "romaji": "kuruma",
+      "english": "car",
+      "type": "Noun",
+      "example": "くるまははやい。"
+    },
+    {
+      "id": "v1-36",
+      "kanji": "はやい",
+      "furigana": "はやい",
+      "romaji": "hayai",
+      "english": "fast",
+      "type": "Adjective",
+      "example": "くるまははやい。"
+    },
+    {
+      "id": "v1-37",
+      "kanji": "せんせい",
+      "furigana": "せんせい",
+      "romaji": "sensei",
+      "english": "teacher",
+      "type": "Noun",
+      "example": "せんせいはやさしい。"
+    },
+    {
+      "id": "v1-38",
+      "kanji": "やさしい",
+      "furigana": "やさしい",
+      "romaji": "yasashii",
+      "english": "kind",
+      "type": "Adjective",
+      "example": "せんせいはやさしい。"
+    },
+    {
+      "id": "v1-39",
+      "kanji": "にほんご",
+      "furigana": "にほんご",
+      "romaji": "nihongo",
+      "english": "Japanese",
+      "type": "Noun",
+      "example": "にほんごはたのしい。"
+    },
+    {
+      "id": "v1-40",
+      "kanji": "たのしい",
+      "furigana": "たのしい",
+      "romaji": "tanoshii",
+      "english": "fun",
+      "type": "Adjective",
+      "example": "にほんごはたのしい。"
+    },
+    {
+      "id": "v1-41",
+      "kanji": "やま",
+      "furigana": "やま",
+      "romaji": "yama",
+      "english": "mountain",
+      "type": "Noun",
+      "example": "やまはたかい。"
+    },
+    {
+      "id": "v1-42",
+      "kanji": "たかい",
+      "furigana": "たかい",
+      "romaji": "takai",
+      "english": "high, tall",
+      "type": "Adjective",
+      "example": "やまはたかい。"
+    },
+    {
+      "id": "v1-43",
+      "kanji": "うみ",
+      "furigana": "うみ",
+      "romaji": "umi",
+      "english": "sea",
+      "type": "Noun",
+      "example": "うみはひろい。"
+    },
+    {
+      "id": "v1-44",
+      "kanji": "ひろい",
+      "furigana": "ひろい",
+      "romaji": "hiroi",
+      "english": "wide, spacious",
+      "type": "Adjective",
+      "example": "うみはひろい。"
+    },
+    {
+      "id": "v1-45",
+      "kanji": "はな",
+      "furigana": "はな",
+      "romaji": "hana",
+      "english": "flower",
+      "type": "Noun",
+      "example": "はなはきれい。"
+    },
+    {
+      "id": "v1-46",
+      "kanji": "きれい",
+      "furigana": "きれい",
+      "romaji": "kirei",
+      "english": "pretty, clean",
+      "type": "Adjective",
+      "example": "はなはきれい。"
+    },
+    {
+      "id": "v1-47",
+      "kanji": "わたし",
+      "furigana": "わたし",
+      "romaji": "watashi",
+      "english": "I, me",
+      "type": "Noun",
+      "example": "わたしはげんき。"
+    },
+    {
+      "id": "v1-48",
+      "kanji": "げんき",
+      "furigana": "げんき",
+      "romaji": "genki",
+      "english": "healthy, energetic",
+      "type": "Noun",
+      "example": "わたしはげんき。"
+    },
+    {
+      "id": "v1-49",
+      "kanji": "あさ",
+      "furigana": "あさ",
+      "romaji": "asa",
+      "english": "morning",
+      "type": "Noun",
+      "example": "あさですね。"
+    },
+    {
+      "id": "v1-50",
+      "kanji": "あした",
+      "furigana": "あした",
+      "romaji": "ashita",
+      "english": "tomorrow",
+      "type": "Noun",
+      "example": "あしたあいます。"
+    },
+    {
+      "id": "v1-51",
+      "kanji": "ともだち",
+      "furigana": "ともだち",
+      "romaji": "tomodachi",
+      "english": "friend",
+      "type": "Noun",
+      "example": "ともだちがすき。"
+    },
+    {
+      "id": "v1-52",
+      "kanji": "よくできました",
+      "furigana": "よくできました",
+      "romaji": "yoku dekimashita",
+      "english": "well done",
+      "type": "Phrase",
+      "example": "よくできました！"
+    }
+  ],
+  "kanji": [
+    {
+      "kanji": "一",
+      "onyomi": "イチ",
+      "kunyomi": "ひと(つ)",
+      "meaning": "one",
+      "strokes": 1,
+      "examples": [
+        "一つ",
+        "一日"
+      ]
+    },
+    {
+      "kanji": "二",
+      "onyomi": "ニ",
+      "kunyomi": "ふた(つ)",
+      "meaning": "two",
+      "strokes": 2,
+      "examples": [
+        "二つ",
+        "二日"
+      ]
+    },
+    {
+      "kanji": "三",
+      "onyomi": "サン",
+      "kunyomi": "みっ(つ)",
+      "meaning": "three",
+      "strokes": 3,
+      "examples": [
+        "三つ",
+        "三日"
+      ]
+    },
+    {
+      "kanji": "四",
+      "onyomi": "シ",
+      "kunyomi": "よん・よっ(つ)",
+      "meaning": "four",
+      "strokes": 5,
+      "examples": [
+        "四つ",
+        "四日"
+      ]
+    },
+    {
+      "kanji": "五",
+      "onyomi": "ゴ",
+      "kunyomi": "いつ(つ)",
+      "meaning": "five",
+      "strokes": 4,
+      "examples": [
+        "五つ",
+        "五日"
+      ]
+    },
+    {
+      "kanji": "六",
+      "onyomi": "ロク",
+      "kunyomi": "むっ(つ)",
+      "meaning": "six",
+      "strokes": 4,
+      "examples": [
+        "六つ",
+        "六日"
+      ]
+    },
+    {
+      "kanji": "七",
+      "onyomi": "シチ",
+      "kunyomi": "なな(つ)",
+      "meaning": "seven",
+      "strokes": 2,
+      "examples": [
+        "七つ",
+        "七日"
+      ]
+    },
+    {
+      "kanji": "八",
+      "onyomi": "ハチ",
+      "kunyomi": "やっ(つ)",
+      "meaning": "eight",
+      "strokes": 2,
+      "examples": [
+        "八つ",
+        "八日"
+      ]
+    },
+    {
+      "kanji": "九",
+      "onyomi": "キュウ・ク",
+      "kunyomi": "ここの(つ)",
+      "meaning": "nine",
+      "strokes": 2,
+      "examples": [
+        "九つ",
+        "九日"
+      ]
+    },
+    {
+      "kanji": "十",
+      "onyomi": "ジュウ",
+      "kunyomi": "とお",
+      "meaning": "ten",
+      "strokes": 2,
+      "examples": [
+        "十",
+        "十日"
+      ]
+    },
+    {
+      "kanji": "百",
+      "onyomi": "ヒャク",
+      "kunyomi": "もも",
+      "meaning": "hundred",
+      "strokes": 6,
+      "examples": [
+        "百",
+        "三百",
+        "六百",
+        "八百"
+      ]
+    },
+    {
+      "kanji": "力",
+      "onyomi": "リョク・リキ",
+      "kunyomi": "ちから",
+      "meaning": "power, strength",
+      "strokes": 2,
+      "examples": [
+        "力"
+      ]
+    },
+    {
+      "kanji": "夕",
+      "onyomi": "セキ",
+      "kunyomi": "ゆう",
+      "meaning": "evening",
+      "strokes": 3,
+      "examples": [
+        "夕方"
+      ]
+    }
+  ]
+}

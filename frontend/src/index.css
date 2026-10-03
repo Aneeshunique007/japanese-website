@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-main: 'Outfit', 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-japanese: 'Noto Sans JP', sans-serif;
+
+  /* Focotech Warm Terracotta & Coral Palette */
+  --primary-orange: #FF5E3A;
+  --primary-orange-dark: #E84E29;
+  --primary-orange-light: #FFF5F2;
+  --bg-cream: #FAF7F5;
+  --bg-surface: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #FAF7F5;
+  color: #1A1A1F;
+}
+
+.dark body {
+  background-color: #0E0E12;
+  color: #F3F4F6;
+}
+
+/* Smooth Horizontal Scrollbar Styling */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 5px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.25);
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.45);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+}
+
+.font-jp {
+  font-family: var(--font-japanese);
+}
+
+.font-heading {
+  font-family: var(--font-main);
+}
+
+/* Floating Animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(0.5deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(0.95); }
+  50% { opacity: 0.85; transform: scale(1.05); }
+}
+
+.animate-float {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Focotech Coral Orange Button Style */
+.btn-orange {
+  background: linear-gradient(135deg, #FF6B4A 0%, #E84E29 100%);
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(232, 78, 41, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-orange:hover {
+  background: linear-gradient(135deg, #FF7B5C 0%, #F05530 100%);
+  box-shadow: 0 10px 26px rgba(232, 78, 41, 0.48);
+  transform: translateY(-2px);
+}
+
+.btn-orange:active {
+  transform: translateY(0px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(232, 78, 41, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 78, 41, 0.4);
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.scrollbar-hide,
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

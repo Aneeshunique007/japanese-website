@@ -1,0 +1,2677 @@
+{
+  "id": "day-6",
+  "dayNumber": 6,
+  "classCode": "Class 454",
+  "theme": "Reading & Speaking Fluency, 10 Questions Speaking Chain & Team Challenge",
+  "japaneseTheme": "読む・話す・もう一度！流暢さトレーニング (Yomu, hanasu, mō ichido! Ryūchōsa torēningu)",
+  "subtitle": "Put theory into rapid execution with action choice drills, rapid date & time recognition, and dual reading passages",
+  "description": "Intensive verbal fluency practice drilling actions in context, colour-noun combinations (赤いりんご, 青いそら), 10 calendar dates and 10 clock times, two parallel mini readings (Yuki vs Aki), a 10-question speaking chain, and the final 10-point team challenge.",
+  "badge": "Class 454 · Fluency & Speaking Chain",
+  "goals": [
+    "Rapidly pick the natural action verb for everyday nouns (本を読みます, 音楽を聞きます, テレビを見ます)",
+    "Pronounce Japanese colors and adjectives without hesitation (赤いりんご, 青いそら, 白いくも, 黒いかばん)",
+    "Instantly read calendar dates (9/1, 9/4, 9/6, 9/8, 9/10) and odd minutes (1:01, 2:03, 4:04, 7:06)",
+    "Read and comprehend two full story passages: Passage A (ゆき) & Passage B (あき)",
+    "Answer all 10 questions in the interactive Speaking Chain"
+  ],
+  "keyHighlights": [
+    "Fluency Rule: Try reading the kanji first without checking the furigana hint! Train your eyes to recognize whole characters instantaneously.",
+    "Color + Noun Combinations: Colors that end in い modify nouns directly: 赤いりんご (red apple), 青いそら (blue sky), 白いくも (white cloud), 黒いかばん (black bag)!",
+    "Dual Passage Timeline: Story A takes place on Friday, Sept 4th at 9 AM with Yuki in the park; Story B takes place on Thursday, Sept 10th at 3-5 PM with Aki listening to music and writing in his white bag!"
+  ],
+  "kanjiList": [
+    {
+      "kanji": "花",
+      "meaning": "flower",
+      "onyomi": "カ (ka)",
+      "kunyomi": "はな (hana)",
+      "strokes": 7,
+      "radical": "花",
+      "radicalClue": "Core element: 花",
+      "examples": [
+        {
+          "word": "花",
+          "reading": "はな (hana)",
+          "meaning": "flower",
+          "romaji": "hana"
+        },
+        {
+          "word": "花火",
+          "reading": "はなび (hanabi)",
+          "meaning": "fireworks",
+          "romaji": "hanabi"
+        }
+      ]
+    },
+    {
+      "kanji": "車",
+      "meaning": "car, vehicle",
+      "onyomi": "シャ (sha)",
+      "kunyomi": "くるま (kuruma)",
+      "strokes": 7,
+      "radical": "車",
+      "radicalClue": "Core element: 車",
+      "examples": [
+        {
+          "word": "車",
+          "reading": "くるま (kuruma)",
+          "meaning": "car",
+          "romaji": "kuruma"
+        }
+      ]
+    },
+    {
+      "kanji": "名",
+      "meaning": "name",
+      "onyomi": "メイ・ミョウ (mei / myou)",
+      "kunyomi": "な (na)",
+      "strokes": 6,
+      "radical": "名",
+      "radicalClue": "Core element: 名",
+      "examples": [
+        {
+          "word": "名前",
+          "reading": "なまえ (namae)",
+          "meaning": "name",
+          "romaji": "namae"
+        }
+      ]
+    },
+    {
+      "kanji": "空",
+      "meaning": "sky, empty",
+      "onyomi": "クウ (kuu)",
+      "kunyomi": "そら・あ(く)・から (sora / a(ku) / kara)",
+      "strokes": 8,
+      "radical": "空",
+      "radicalClue": "Core element: 空",
+      "examples": [
+        {
+          "word": "空",
+          "reading": "そら (sora)",
+          "meaning": "sky",
+          "romaji": "sora"
+        },
+        {
+          "word": "青空",
+          "reading": "あおぞら (aozora)",
+          "meaning": "blue sky",
+          "romaji": "aozora"
+        }
+      ]
+    },
+    {
+      "kanji": "読",
+      "meaning": "read",
+      "onyomi": "ドク (doku)",
+      "kunyomi": "よ(む) (yo(mu))",
+      "strokes": 14,
+      "radical": "読",
+      "radicalClue": "Core element: 読",
+      "examples": [
+        {
+          "word": "読む",
+          "reading": "よむ (yomu)",
+          "meaning": "to read",
+          "romaji": "yomu"
+        }
+      ]
+    },
+    {
+      "kanji": "聞",
+      "meaning": "hear, listen",
+      "onyomi": "ブン (bun)",
+      "kunyomi": "き(く) (ki(ku))",
+      "strokes": 14,
+      "radical": "聞",
+      "radicalClue": "Core element: 聞",
+      "examples": [
+        {
+          "word": "聞く",
+          "reading": "きく (kiku)",
+          "meaning": "to hear / listen",
+          "romaji": "kiku"
+        }
+      ]
+    },
+    {
+      "kanji": "話",
+      "meaning": "speak, talk",
+      "onyomi": "ワ (wa)",
+      "kunyomi": "はな(す) (hana(su))",
+      "strokes": 13,
+      "radical": "話",
+      "radicalClue": "Core element: 話",
+      "examples": [
+        {
+          "word": "話す",
+          "reading": "はなす (hanasu)",
+          "meaning": "to speak / talk",
+          "romaji": "hanasu"
+        }
+      ]
+    },
+    {
+      "kanji": "見",
+      "meaning": "see, watch",
+      "onyomi": "ケン (ken)",
+      "kunyomi": "み(る) (mi(ru))",
+      "strokes": 7,
+      "radical": "見",
+      "radicalClue": "Core element: 見",
+      "examples": [
+        {
+          "word": "見る",
+          "reading": "みる (miru)",
+          "meaning": "to see / watch",
+          "romaji": "miru"
+        }
+      ]
+    },
+    {
+      "kanji": "書",
+      "meaning": "write",
+      "onyomi": "ショ (sho)",
+      "kunyomi": "か(く) (ka(ku))",
+      "strokes": 10,
+      "radical": "書",
+      "radicalClue": "Core element: 書",
+      "examples": [
+        {
+          "word": "書く",
+          "reading": "かく (kaku)",
+          "meaning": "to write",
+          "romaji": "kaku"
+        }
+      ]
+    },
+    {
+      "kanji": "行",
+      "meaning": "go",
+      "onyomi": "コウ (kou)",
+      "kunyomi": "い(く) (i(ku))",
+      "strokes": 6,
+      "radical": "行",
+      "radicalClue": "Core element: 行",
+      "examples": [
+        {
+          "word": "行く",
+          "reading": "いく (iku)",
+          "meaning": "to go",
+          "romaji": "iku"
+        }
+      ]
+    }
+  ],
+  "vocabularyList": [
+    {
+      "japanese": "赤いりんご",
+      "reading": "あかい りんご (akai ringo)",
+      "english": "red apple",
+      "category": "Phrase",
+      "notes": "赤いりんごを食べます。",
+      "romaji": "akai ringo"
+    },
+    {
+      "japanese": "青いそら",
+      "reading": "あおい そら (aoi sora)",
+      "english": "blue sky",
+      "category": "Phrase",
+      "notes": "青いそらがきれいです。",
+      "romaji": "aoi sora"
+    },
+    {
+      "japanese": "白いねこ",
+      "reading": "しろい ねこ (shiroi neko)",
+      "english": "white cat",
+      "category": "Phrase",
+      "notes": "白いねこがいます。",
+      "romaji": "shiroi neko"
+    },
+    {
+      "japanese": "黒い犬",
+      "reading": "くろい いぬ (kuroi inu)",
+      "english": "black dog",
+      "category": "Phrase",
+      "notes": "黒い犬は大きいです。",
+      "romaji": "kuroi inu"
+    },
+    {
+      "japanese": "ピンクの花",
+      "reading": "ぴんくの はな (pinkuno hana)",
+      "english": "pink flower",
+      "category": "Phrase",
+      "notes": "きれいなピンクの花。",
+      "romaji": "pinkuno hana"
+    },
+    {
+      "japanese": "オレンジのみかん",
+      "reading": "おれんじの みかん (orenjino mikan)",
+      "english": "orange mandarin",
+      "category": "Phrase",
+      "notes": "甘いオレンジのみかん。",
+      "romaji": "orenjino mikan"
+    },
+    {
+      "japanese": "グレーの車",
+      "reading": "ぐれーの くるま (gureeno kuruma)",
+      "english": "grey car",
+      "category": "Phrase",
+      "notes": "グレーの車があります。",
+      "romaji": "gureeno kuruma"
+    },
+    {
+      "japanese": "青い本",
+      "reading": "あおい ほん (aoi hon)",
+      "english": "blue book",
+      "category": "Phrase",
+      "notes": "青い本を読みます。",
+      "romaji": "aoi hon"
+    },
+    {
+      "japanese": "九月一日",
+      "reading": "くがつ ついたち (kugatsu tsuitachi)",
+      "english": "September 1st",
+      "category": "Date",
+      "notes": "九月一日です。",
+      "romaji": "kugatsu tsuitachi"
+    },
+    {
+      "japanese": "九月四日",
+      "reading": "くがつ よっか (kugatsu yokka)",
+      "english": "September 4th",
+      "category": "Date",
+      "notes": "九月四日、金曜日です。",
+      "romaji": "kugatsu yokka"
+    },
+    {
+      "japanese": "九月六日",
+      "reading": "くがつ むいか (kugatsu muika)",
+      "english": "September 6th",
+      "category": "Date",
+      "notes": "九月六日です。",
+      "romaji": "kugatsu muika"
+    },
+    {
+      "japanese": "九月八日",
+      "reading": "くがつ ようか (kugatsu youka)",
+      "english": "September 8th",
+      "category": "Date",
+      "notes": "九月八日です。",
+      "romaji": "kugatsu youka"
+    },
+    {
+      "japanese": "九月十日",
+      "reading": "くがつ とおか (kugatsu tooka)",
+      "english": "September 10th",
+      "category": "Date",
+      "notes": "九月十日、木曜日です。",
+      "romaji": "kugatsu tooka"
+    },
+    {
+      "japanese": "金曜日",
+      "reading": "きんようび (kinyoubi)",
+      "english": "Friday",
+      "category": "Day",
+      "notes": "金曜日です。",
+      "romaji": "kinyoubi"
+    },
+    {
+      "japanese": "木曜日",
+      "reading": "もくようび (mokuyoubi)",
+      "english": "Thursday",
+      "category": "Day",
+      "notes": "木曜日です。",
+      "romaji": "mokuyoubi"
+    },
+    {
+      "japanese": "名前",
+      "reading": "なまえ (namae)",
+      "english": "name",
+      "category": "Noun",
+      "notes": "名前を書きます。",
+      "romaji": "namae"
+    },
+    {
+      "japanese": "車",
+      "reading": "くるま (kuruma)",
+      "english": "car",
+      "category": "Noun",
+      "notes": "グレーの車。",
+      "romaji": "kuruma"
+    },
+    {
+      "japanese": "花",
+      "reading": "はな (hana)",
+      "english": "flower",
+      "category": "Noun",
+      "notes": "ピンクの花。",
+      "romaji": "hana"
+    },
+    {
+      "japanese": "そら",
+      "reading": "そら (sora)",
+      "english": "sky",
+      "category": "Noun",
+      "notes": "青いそら。",
+      "romaji": "sora"
+    },
+    {
+      "japanese": "りんご",
+      "reading": "りんご (ringo)",
+      "english": "apple",
+      "category": "Noun",
+      "notes": "赤いりんご。",
+      "romaji": "ringo"
+    }
+  ],
+  "grammarNotes": [
+    {
+      "title": "Colour Adjectives: い vs の",
+      "structure": "",
+      "explanation": "Native Japanese colour terms directly modify nouns using their final い (赤い本, 青いそら, 白いねこ, 黒い犬). Loanword colours (ピンク, オレンジ, グレー) are nouns and require the particle の (ピンクの花, オレンジのみかん, グレーの車).",
+      "examples": [
+        {
+          "japanese": "赤いりんご",
+          "reading": "あかいりんご (akai ringo)",
+          "english": "Red apple",
+          "romaji": "akai ringo"
+        },
+        {
+          "japanese": "ピンクの花",
+          "reading": "ぴんくのはな (pinku no hana)",
+          "english": "Pink flower",
+          "romaji": "pinku no hana"
+        },
+        {
+          "japanese": "グレーの車",
+          "reading": "ぐれーのくるま (guree no kuruma)",
+          "english": "Grey car",
+          "romaji": "guree no kuruma"
+        }
+      ]
+    },
+    {
+      "title": "Subject Particle が with 'だれ' (Who)",
+      "structure": "",
+      "explanation": "When asking who performs an action with 'だれが', the answer must also use 'が' to identify the actor.",
+      "examples": [
+        {
+          "japanese": "だれが名前を書きますか？",
+          "reading": "だれがなまえをかきますか？ (dare ga namae o kakimasu ka?)",
+          "english": "Who writes names?",
+          "romaji": "dare ga namae o kakimasu ka?"
+        },
+        {
+          "japanese": "先生が書きます。",
+          "reading": "せんせいがかきます (sensei ga kakimasu)",
+          "english": "The teacher writes.",
+          "romaji": "sensei ga kakimasu"
+        }
+      ]
+    },
+    {
+      "title": "Time Marker に in Compound Sentences",
+      "structure": "",
+      "explanation": "Specific points in time require に. When multiple activities happen in a sequence, each timestamp takes に.",
+      "examples": [
+        {
+          "japanese": "午後三時にテレビを見ます。",
+          "reading": "ごごさんじにてれびをみます (gogo sanji ni terebi o mimasu)",
+          "english": "At 3:00 PM I watch TV.",
+          "romaji": "gogo sanji ni terebi o mimasu"
+        },
+        {
+          "japanese": "午後四時に音楽を聞きます。",
+          "reading": "ごごよじにおんがくをききます (gogo yoji ni ongaku o kikimasu)",
+          "english": "At 4:00 PM I listen to music.",
+          "romaji": "gogo yoji ni ongaku o kikimasu"
+        }
+      ]
+    }
+  ],
+  "readingPassages": [
+    {
+      "title": "Passage A: ゆきの金曜日 (Yuki's Friday Morning)",
+      "text": "九月四日は金曜日です。ゆきは午前九時に公園へ行きます。公園であきと話します。それから、青い本を読みます。午前十時に家へ帰ります。",
+      "translation": "September 4th is Friday. Yuki goes to the park at 9:00 AM. In the park, she talks with Aki. After that, she reads a blue book. At 10:00 AM, she returns home.",
+      "questions": [
+        {
+          "q": "何月何日ですか？ (Nan-gatsu nan-nichi desu ka? / What date is it?)",
+          "a": "九月四日（くがつ よっか / kugatsu yokka）です。(Sep 4)"
+        },
+        {
+          "q": "何曜日ですか？ (Nan-yōbi desu ka? / What day of the week is it?)",
+          "a": "金曜日（きんようび / kinyōbi）です。(Friday)"
+        },
+        {
+          "q": "ゆきは何時に公園へ行きますか？ (Yuki wa nan-ji ni kōen e ikimasu ka? / What time does Yuki go to the park?)",
+          "a": "午前九時（ごぜん くじ / gozen kuji）です。(9:00 AM)"
+        },
+        {
+          "q": "公園でだれと話しますか？ (Kōen de dare to hanashimasu ka? / Who does she talk with in the park?)",
+          "a": "あきと話します。(Aki to hanashimasu. / Talks with Aki.)"
+        },
+        {
+          "q": "本は何色ですか？ (Hon wa nani-iro desu ka? / What color is the book?)",
+          "a": "青（あおい本 / aoi hon）です。(Blue book)"
+        }
+      ],
+      "romaji": "Kugatsu yokka wa kinyoubi desu. Yuki wa gozen kuji ni kouen e ikimasu. Kouen de Aki to hanashimasu. Sorekara, aoi hon o yomimasu. Gozen juuji ni ie e kaerimasu."
+    },
+    {
+      "title": "Passage B: あきの木曜日 (Aki's Thursday Afternoon)",
+      "text": "九月十日は木曜日です。あきは午後三時に家でテレビを見ます。午後四時に音楽を聞きます。白いかばんに名前を書きます。午後五時にゆきと話します。",
+      "translation": "September 10th is Thursday. Aki watches TV at home at 3:00 PM. At 4:00 PM he listens to music. He writes his name on a white bag. At 5:00 PM he talks with Yuki.",
+      "questions": [
+        {
+          "q": "何月何日ですか？ (Nan-gatsu nan-nichi desu ka? / What date is it?)",
+          "a": "九月十日（くがつ とおか / kugatsu tōka）です。(Sep 10)"
+        },
+        {
+          "q": "何曜日ですか？ (Nan-yōbi desu ka? / What day of the week is it?)",
+          "a": "木曜日（もくようび / mokuyōbi）です。(Thursday)"
+        },
+        {
+          "q": "あきは午後三時にどこでテレビを見ますか？ (Aki wa gogo sanji ni doko de terebi o mimasu ka? / Where does Aki watch TV at 3:00 PM?)",
+          "a": "家（いえ / ie）で見ます。(At home)"
+        },
+        {
+          "q": "午後四時に何をしますか？ (Gogo yoji ni nani o shimasu ka? / What does Aki do at 4:00 PM?)",
+          "a": "音楽を聞きます。(Ongaku o kikimasu. / Listens to music)"
+        },
+        {
+          "q": "かばんは何色ですか？ (Kaban wa nani-iro desu ka? / What color is the bag?)",
+          "a": "白（しろいかばん / shiroi kaban）です。(White bag)"
+        }
+      ],
+      "romaji": "Kugatsu tooka wa mokuyoubi desu. Aki wa gogo sanji ni ie de terebi o mimasu. Gogo yoji ni ongaku o kikimasu. Shiroi kaban ni namae o kakimasu. Gogo goji ni Yuki to hanashimasu."
+    }
+  ],
+  "practiceQuiz": [
+    {
+      "question": "In Passage A, what time does Yuki return home?",
+      "options": [
+        "午前九時 (ごぜんくじ / gozen kuji - 9:00 AM)",
+        "午前十時 (ごぜんじゅうじ / gozen jūji - 10:00 AM)",
+        "午後三時 (ごごさんじ / gogo sanji - 3:00 PM)",
+        "午後五時 (ごごごじ / gogo goji - 5:00 PM)"
+      ],
+      "correct": "午前十時 (ごぜんじゅうじ / gozen jūji - 10:00 AM)",
+      "explanation": "Passage A states: 午前十時に家へ帰ります (Returns home at 10:00 AM)."
+    },
+    {
+      "question": "In Passage B, what does Aki do at 4:00 PM (午後四時 / gogo yoji)?",
+      "options": [
+        "テレビを見ます (terebi o mimasu - watches TV)",
+        "音楽を聞きます (ongaku o kikimasu - listens to music)",
+        "本を読みます (hon o yomimasu - reads a book)",
+        "公園へ行きます (kōen e ikimasu - goes to the park)"
+      ],
+      "correct": "音楽を聞きます (ongaku o kikimasu - listens to music)",
+      "explanation": "Passage B states: 午後四時に音楽を聞きます (Listens to music at 4:00 PM)."
+    },
+    {
+      "question": "Which verb naturally pairs with 音楽 (おんがく / ongaku - music)?",
+      "options": [
+        "見ます (みます / mimasu - watch)",
+        "聞きます (ききます / kikimasu - listen)",
+        "書きます (かきます / kakimasu - write)",
+        "行きます (いきます / ikimasu - go)"
+      ],
+      "correct": "聞きます (ききます / kikimasu - listen)",
+      "explanation": "音楽を聞きます (ongaku o kikimasu) means to listen to music."
+    },
+    {
+      "question": "How do you read 7:06 in Japanese?",
+      "options": [
+        "ななじ ろくふん (nanaji rokufun)",
+        "しちじ ろっぷん (shichiji roppun)",
+        "ななじ ろっぷん (nanaji roppun)",
+        "しちじ ろくふん (shichiji rokufun)"
+      ],
+      "correct": "しちじ ろっぷん (shichiji roppun)",
+      "explanation": "7 o'clock is しちじ (shichiji) and 6 minutes uses sokuon: ろっぷん (roppun)."
+    }
+  ],
+  "slides": [
+    {
+      "slideNumber": 1,
+      "title": "日本語 Class 454 · 読む・話す・もう一度",
+      "blocks": [
+        [
+          "日本語  Class 45⃣4"
+        ],
+        [
+          "読む・話す・もう一度"
+        ],
+        [
+          "動作・Actions"
+        ],
+        [
+          "見る　聞く　話す",
+          "読む　書く　行く"
+        ],
+        [
+          "色・Colours"
+        ],
+        [
+          "赤　青　白　黒",
+          "ピンク　オレンジ　グレー"
+        ],
+        [
+          "日付・時間"
+        ],
+        [
+          "1日〜10日",
+          "時・分・午前・午後"
+        ],
+        [
+          "Goal"
+        ],
+        [
+          "Read familiar Japanese faster and answer with short sentences"
+        ],
+        [
+          "Nikki JP Class 454  ·  Review / Reading / Speaking"
+        ]
+      ],
+      "jpTitle": "表紙：日本語 Class 454",
+      "summary": "Intensive reading and speaking drill reviewing actions, colours, dates, and times.",
+      "bullets": [
+        "Class: Nikki JP Class 454",
+        "Core Focus: Actions (見る, 聞く, 話す, 読む, 書く, 行く), Colours (赤, 青, 白, 黒, ピンク, オレンジ, グレー), Dates & Time",
+        "Format: Rapid reading, partner dialogue, and classroom speaking chains."
+      ],
+      "highlight": "Language fluency comes from speaking in full sentences without hesitation."
+    },
+    {
+      "slideNumber": 2,
+      "title": "Today's Lesson Map & Classroom Rules",
+      "blocks": [
+        [
+          "Today’s Lesson"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Lesson map"
+        ],
+        [
+          "Today"
+        ],
+        [
+          "1  動作を読む",
+          "2  色を言う",
+          "3  日付を読む",
+          "4  時間を言う",
+          "5  Mini Reading",
+          "6  Speaking Chain"
+        ],
+        [
+          "Class rule"
+        ],
+        [
+          "One student answers first.",
+          "Another student repeats the full sentence."
+        ],
+        [
+          "Review rule"
+        ],
+        [
+          "Try the kanji first.",
+          "Use the reading clue only when needed."
+        ]
+      ],
+      "jpTitle": "本日のレッスンプランとルール",
+      "summary": "Six sequential milestones for Class 454.",
+      "bullets": [
+        "1. 動作を読む (Read actions)",
+        "2. 色を言う (Say colours)",
+        "3. 日付を読む (Read calendar dates)",
+        "4. 時間を言う (State clock times)",
+        "5. Mini Reading (Readings A & B)",
+        "6. Speaking Chain (10 classroom questions)",
+        "Class rule: One student answers first, then partner responds immediately."
+      ],
+      "highlight": "Speed and pronunciation accuracy are the focus of this session."
+    },
+    {
+      "slideNumber": 3,
+      "title": "Warm-up: Read the 4 Actions Aloud",
+      "blocks": [
+        [
+          "Warm-up・読んでください"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Actions"
+        ],
+        [
+          "Read each word aloud, then say the English meaning"
+        ],
+        [
+          "1"
+        ],
+        [
+          "見る"
+        ],
+        [
+          "2"
+        ],
+        [
+          "聞く"
+        ],
+        [
+          "3"
+        ],
+        [
+          "話す"
+        ],
+        [
+          "4"
+        ],
+        [
+          "読む"
+        ],
+        [
+          "5"
+        ],
+        [
+          "書く"
+        ]
+      ],
+      "jpTitle": "ウォームアップ：動作を読む",
+      "summary": "Rapid identification of the 4 core verbs.",
+      "bullets": [
+        "1. 見る (see / watch)",
+        "2. 聞く (listen / ask)",
+        "3. 話す (speak)",
+        "4. 読む (read)"
+      ],
+      "highlight": "Pronounce each word clearly before saying the English meaning."
+    },
+    {
+      "slideNumber": 4,
+      "title": "Warm-up: Answers & Meanings",
+      "blocks": [
+        [
+          "Warm-up・答え"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Actions"
+        ],
+        [
+          "1"
+        ],
+        [
+          "見る・みる・see / watch"
+        ],
+        [
+          "2"
+        ],
+        [
+          "聞く・きく・listen / ask"
+        ],
+        [
+          "3"
+        ],
+        [
+          "話す・はなす・speak"
+        ],
+        [
+          "4"
+        ],
+        [
+          "読む・よむ・read"
+        ],
+        [
+          "5"
+        ],
+        [
+          "書く・かく・write"
+        ]
+      ],
+      "jpTitle": "ウォームアップの答え",
+      "summary": "Official pronunciation and definitions.",
+      "bullets": [
+        "1. 見る · みる · see / watch",
+        "2. 聞く · きく · listen / ask",
+        "3. 話す · はなす · speak",
+        "4. 読む · よむ · read"
+      ],
+      "highlight": "Notice the kanji clues: 目 in 見る, 耳 in 聞く, 言 in 話す and 読む."
+    },
+    {
+      "slideNumber": 5,
+      "title": "Action Choice: Select the Right Verb",
+      "blocks": [
+        [
+          "Action Choice・動作をえらぶ"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Actions"
+        ],
+        [
+          "Choose the action that makes sense"
+        ],
+        [
+          "1"
+        ],
+        [
+          "本を（読みます／聞きます）"
+        ],
+        [
+          "2"
+        ],
+        [
+          "音楽を（見ます／聞きます）"
+        ],
+        [
+          "3"
+        ],
+        [
+          "テレビを（見ます／行きます）"
+        ],
+        [
+          "4"
+        ],
+        [
+          "公園へ（行きます／書きます）"
+        ],
+        [
+          "5"
+        ],
+        [
+          "あきと（話します／読みます）"
+        ],
+        [
+          "6"
+        ],
+        [
+          "名前を（書きます／見ます）"
+        ],
+        [
+          "7"
+        ],
+        [
+          "先生の話を（聞きます／行きます）"
+        ],
+        [
+          "8"
+        ],
+        [
+          "カレンダーを（見ます／話します）"
+        ],
+        [
+          "9"
+        ],
+        [
+          "青い本を（書きます／読みます）"
+        ],
+        [
+          "10"
+        ],
+        [
+          "日本語を（話します／見ます）"
+        ]
+      ],
+      "jpTitle": "動作をえらぶ：文脈判断",
+      "summary": "Four sentences testing semantic verb compatibility.",
+      "bullets": [
+        "1. 本を（読みます／聞きます）",
+        "2. 音楽を（見ます／聞きます）",
+        "3. テレビを（見ます／行きます）",
+        "4. 公園へ（行きます／書きます）"
+      ],
+      "highlight": "Choose the verb that makes physical sense with the direct object or location."
+    },
+    {
+      "slideNumber": 6,
+      "title": "Action Choice: Answer Key",
+      "blocks": [
+        [
+          "Action Choice・答え"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Actions"
+        ],
+        [
+          "1"
+        ],
+        [
+          "本を読みます"
+        ],
+        [
+          "2"
+        ],
+        [
+          "音楽を聞きます"
+        ],
+        [
+          "3"
+        ],
+        [
+          "テレビを見ます"
+        ],
+        [
+          "4"
+        ],
+        [
+          "公園へ行きます"
+        ],
+        [
+          "5"
+        ],
+        [
+          "あきと話します"
+        ],
+        [
+          "6"
+        ],
+        [
+          "名前を書きます"
+        ],
+        [
+          "7"
+        ],
+        [
+          "先生の話を聞きます"
+        ],
+        [
+          "8"
+        ],
+        [
+          "カレンダーを見ます"
+        ],
+        [
+          "9"
+        ],
+        [
+          "青い本を読みます"
+        ],
+        [
+          "10"
+        ],
+        [
+          "日本語を話します"
+        ]
+      ],
+      "jpTitle": "動作選択の答え",
+      "summary": "Correct verb collocations in polite -masu form.",
+      "bullets": [
+        "1. 本を読みます (I read a book)",
+        "2. 音楽を聞きます (I listen to music)",
+        "3. テレビを見ます (I watch television)",
+        "4. 公園へ行きます (I go to the park)"
+      ],
+      "highlight": "Verb collocations are fixed pairings: 本 + 読む, 音楽 + 聞く, テレビ + 見る, 公園 + 行く."
+    },
+    {
+      "slideNumber": 7,
+      "title": "Action Reading: Full Sentence Aloud",
+      "blocks": [
+        [
+          "Action Reading・声に出して読む"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Actions"
+        ],
+        [
+          "One sentence for each student"
+        ],
+        [
+          "1"
+        ],
+        [
+          "ゆきは青い本を読みます。"
+        ],
+        [
+          "2"
+        ],
+        [
+          "あきは午後三時に公園へ行きます。"
+        ],
+        [
+          "3"
+        ],
+        [
+          "わたしは先生の話を聞きます。"
+        ],
+        [
+          "4"
+        ],
+        [
+          "九月八日に名前を書きます。"
+        ],
+        [
+          "5"
+        ],
+        [
+          "午後五時にあきと話します。"
+        ]
+      ],
+      "jpTitle": "声に出して読む文",
+      "summary": "Four complete sentences distributed around the classroom.",
+      "bullets": [
+        "1. ゆきは青い本を読みます。 (Yuki reads a blue book.)",
+        "2. あきは午後三時に公園へ行きます。 (Aki goes to the park at 3:00 PM.)",
+        "3. わたしは音楽を聞きます。 (I listen to music.)",
+        "4. 先生は名前を書きます。 (The teacher writes names.)"
+      ],
+      "highlight": "One sentence per student—focus on clean pacing and particle pronunciation."
+    },
+    {
+      "slideNumber": 8,
+      "title": "Action Reading: Comprehension Questions",
+      "blocks": [
+        [
+          "Action Reading・質問"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Actions"
+        ],
+        [
+          "1"
+        ],
+        [
+          "ゆきは何を読みますか？"
+        ],
+        [
+          "2"
+        ],
+        [
+          "あきは何時に公園へ行きますか？"
+        ],
+        [
+          "3"
+        ],
+        [
+          "わたしは何を聞きますか？"
+        ],
+        [
+          "4"
+        ],
+        [
+          "九月八日に何を書きますか？"
+        ],
+        [
+          "5"
+        ],
+        [
+          "午後五時に何をしますか？"
+        ]
+      ],
+      "jpTitle": "文の理解度チェック質問",
+      "summary": "Three targeted questions based on the four sentences.",
+      "bullets": [
+        "1. ゆきは何を読みますか？ (What does Yuki read?)",
+        "2. あきは何時に公園へ行きますか？ (What time does Aki go to the park?)",
+        "3. だれが名前を書きますか？ (Who writes names?)"
+      ],
+      "highlight": "Listen for key question words: 何 (what), 何時 (what time), だれ (who)."
+    },
+    {
+      "slideNumber": 9,
+      "title": "Action Reading: Comprehension Answers",
+      "blocks": [
+        [
+          "Action Reading・答え"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Actions"
+        ],
+        [
+          "1"
+        ],
+        [
+          "青い本を読みます。"
+        ],
+        [
+          "2"
+        ],
+        [
+          "午後三時に公園へ行きます。"
+        ],
+        [
+          "3"
+        ],
+        [
+          "先生の話を聞きます。"
+        ],
+        [
+          "4"
+        ],
+        [
+          "名前を書きます。"
+        ],
+        [
+          "5"
+        ],
+        [
+          "あきと話します。"
+        ]
+      ],
+      "jpTitle": "理解度チェックの答え",
+      "summary": "Correct factual answers from the reading sentences.",
+      "bullets": [
+        "1. 青い本を読みます。 (She reads a blue book.)",
+        "2. 午後三時に公園へ行きます。 (At 3:00 PM.)",
+        "3. 先生が書きます。 (The teacher writes.)"
+      ],
+      "highlight": "Notice how が is used to answer 'だれが' questions."
+    },
+    {
+      "slideNumber": 10,
+      "title": "Colour Reading: Modifier Noun Pairs",
+      "blocks": [
+        [
+          "Colour Reading・色をえらぶ"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Colours"
+        ],
+        [
+          "Choose the Japanese phrase that matches the English"
+        ],
+        [
+          "1"
+        ],
+        [
+          "red apple",
+          "赤いりんご／青いりんご"
+        ],
+        [
+          "2"
+        ],
+        [
+          "blue sky",
+          "白いそら／青いそら"
+        ],
+        [
+          "3"
+        ],
+        [
+          "white cloud",
+          "白いくも／黒いくも"
+        ],
+        [
+          "4"
+        ],
+        [
+          "black bag",
+          "黒いかばん／赤いかばん"
+        ],
+        [
+          "5"
+        ],
+        [
+          "pink book",
+          "ピンクの本／グレーの本"
+        ],
+        [
+          "6"
+        ],
+        [
+          "orange juice",
+          "オレンジ色のジュース／青いジュース"
+        ],
+        [
+          "7"
+        ],
+        [
+          "grey dog",
+          "グレーの犬／白い犬"
+        ],
+        [
+          "8"
+        ],
+        [
+          "white cat",
+          "黒いねこ／白いねこ"
+        ],
+        [
+          "9"
+        ],
+        [
+          "black TV",
+          "黒いテレビ／青いテレビ"
+        ],
+        [
+          "10"
+        ],
+        [
+          "blue calendar",
+          "白いカレンダー／青いカレンダー"
+        ]
+      ],
+      "jpTitle": "色と名詞の組み合わせ",
+      "summary": "Seven everyday nouns modified by color adjectives.",
+      "bullets": [
+        "1. 赤いりんご (red apple)",
+        "2. 青いそら (blue sky)",
+        "3. 白いねこ (white cat)",
+        "4. 黒い犬 (black dog)",
+        "5. ピンクの花 (pink flower)",
+        "6. オレンジのみかん (orange mandarin)",
+        "7. グレーの車 (grey car)"
+      ],
+      "highlight": "Native Japanese colours take い (赤い, 青い, 白い, 黒い); loanwords take の (ピンクの, オレンジの, グレーの)!"
+    },
+    {
+      "slideNumber": 11,
+      "title": "Colour Reading: Translations",
+      "blocks": [
+        [
+          "Colour Reading・答え"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Colours"
+        ],
+        [
+          "1"
+        ],
+        [
+          "赤いりんご"
+        ],
+        [
+          "2"
+        ],
+        [
+          "青いそら"
+        ],
+        [
+          "3"
+        ],
+        [
+          "白いくも"
+        ],
+        [
+          "4"
+        ],
+        [
+          "黒いかばん"
+        ],
+        [
+          "5"
+        ],
+        [
+          "ピンクの本"
+        ],
+        [
+          "6"
+        ],
+        [
+          "オレンジ色のジュース"
+        ],
+        [
+          "7"
+        ],
+        [
+          "グレーの犬"
+        ],
+        [
+          "8"
+        ],
+        [
+          "白いねこ"
+        ],
+        [
+          "9"
+        ],
+        [
+          "黒いテレビ"
+        ],
+        [
+          "10"
+        ],
+        [
+          "青いカレンダー"
+        ]
+      ],
+      "jpTitle": "色と名詞の答え",
+      "summary": "English translations for all seven colour pairs.",
+      "bullets": [
+        "1. red apple",
+        "2. blue sky",
+        "3. white cat",
+        "4. black dog",
+        "5. pink flower",
+        "6. orange mandarin",
+        "7. grey car"
+      ],
+      "highlight": "Keep the difference between い-adjectives and の-particles in mind."
+    },
+    {
+      "slideNumber": 12,
+      "title": "Colour Speaking: Partner Exchange",
+      "blocks": [
+        [
+          "Colour Speaking・何色ですか？"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Colours"
+        ],
+        [
+          "Each student asks and answers one question"
+        ],
+        [
+          "1"
+        ],
+        [
+          "りんご　　これは何色ですか？"
+        ],
+        [
+          "2"
+        ],
+        [
+          "そら　　　これは何色ですか？"
+        ],
+        [
+          "3"
+        ],
+        [
+          "くも　　　これは何色ですか？"
+        ],
+        [
+          "4"
+        ],
+        [
+          "かばん　　これは何色ですか？"
+        ],
+        [
+          "5"
+        ],
+        [
+          "本　　　　これは何色ですか？"
+        ],
+        [
+          "Answer: これは＿＿です。"
+        ]
+      ],
+      "jpTitle": "色の会話練習",
+      "summary": "Interactive conversation drill on favorite colours.",
+      "bullets": [
+        "Question: 何色が好きですか？ (What colour do you like?)",
+        "Answer: ＿＿が好きです。 (I like ___.)",
+        "Example: 青が好きです。 / 赤が好きです。"
+      ],
+      "highlight": "When stating a preferred color as a standalone noun, drop the final い: 赤が好きです (not 赤いが好きです)."
+    },
+    {
+      "slideNumber": 13,
+      "title": "Date Challenge: Read 10 Dates Aloud",
+      "blocks": [
+        [
+          "Date Challenge・何日ですか？"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Dates"
+        ],
+        [
+          "Read the ten dates aloud"
+        ],
+        [
+          "1"
+        ],
+        [
+          "9 / 1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "9 / 2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "9 / 3"
+        ],
+        [
+          "4"
+        ],
+        [
+          "9 / 4"
+        ],
+        [
+          "5"
+        ],
+        [
+          "9 / 5"
+        ],
+        [
+          "6"
+        ],
+        [
+          "9 / 6"
+        ],
+        [
+          "7"
+        ],
+        [
+          "9 / 7"
+        ],
+        [
+          "8"
+        ],
+        [
+          "9 / 8"
+        ],
+        [
+          "9"
+        ],
+        [
+          "9 / 9"
+        ],
+        [
+          "10"
+        ],
+        [
+          "9 / 10"
+        ]
+      ],
+      "jpTitle": "日付チャレンジ：10日分",
+      "summary": "Rapid-fire pronunciation drill for 9/1 through 9/10.",
+      "bullets": [
+        "1. 9/1",
+        "2. 9/2",
+        "3. 9/3",
+        "4. 9/4",
+        "5. 9/5",
+        "6. 9/6",
+        "7. 9/7",
+        "8. 9/8",
+        "9. 9/9",
+        "10. 9/10"
+      ],
+      "highlight": "Every student reads one date smoothly without hesitation."
+    },
+    {
+      "slideNumber": 14,
+      "title": "Date Challenge: Complete Answer Key",
+      "blocks": [
+        [
+          "Date Challenge・答え"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Dates"
+        ],
+        [
+          "1"
+        ],
+        [
+          "九月一日",
+          "くがつ ついたち"
+        ],
+        [
+          "2"
+        ],
+        [
+          "九月二日",
+          "くがつ ふつか"
+        ],
+        [
+          "3"
+        ],
+        [
+          "九月三日",
+          "くがつ みっか"
+        ],
+        [
+          "4"
+        ],
+        [
+          "九月四日",
+          "くがつ よっか"
+        ],
+        [
+          "5"
+        ],
+        [
+          "九月五日",
+          "くがつ いつか"
+        ],
+        [
+          "6"
+        ],
+        [
+          "九月六日",
+          "くがつ むいか"
+        ],
+        [
+          "7"
+        ],
+        [
+          "九月七日",
+          "くがつ なのか"
+        ],
+        [
+          "8"
+        ],
+        [
+          "九月八日",
+          "くがつ ようか"
+        ],
+        [
+          "9"
+        ],
+        [
+          "九月九日",
+          "くがつ ここのか"
+        ],
+        [
+          "10"
+        ],
+        [
+          "九月十日",
+          "くがつ とおか"
+        ]
+      ],
+      "jpTitle": "日付チャレンジの答え",
+      "summary": "Exact readings for the first ten days of September.",
+      "bullets": [
+        "1. 九月一日 · くがつ ついたち",
+        "2. 九月二日 · くがつ ふつか",
+        "3. 九月三日 · くがつ みっか",
+        "4. 九月四日 · くがつ よっか",
+        "5. 九月五日 · くがつ いつか",
+        "6. 九月六日 · くがつ むいか",
+        "7. 九月七日 · くがつ なのか",
+        "8. 九月八日 · くがつ ようか",
+        "9. 九月九日 · くがつ ここのか",
+        "10. 九月十日 · くがつ とおか"
+      ],
+      "highlight": "September is ALWAYS くがつ, never きゅうがつ!"
+    },
+    {
+      "slideNumber": 15,
+      "title": "Date Speaking Cards",
+      "blocks": [
+        [
+          "Date Speaking・カード"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Dates"
+        ],
+        [
+          "Partner asks: 何月何日ですか？"
+        ],
+        [
+          "1"
+        ],
+        [
+          "Student 1　9 / 1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "Student 2　9 / 4"
+        ],
+        [
+          "3"
+        ],
+        [
+          "Student 3　9 / 6"
+        ],
+        [
+          "4"
+        ],
+        [
+          "Student 4　9 / 8"
+        ],
+        [
+          "5"
+        ],
+        [
+          "Student 5　9 / 10"
+        ],
+        [
+          "Answer: 九月＿＿日です。"
+        ]
+      ],
+      "jpTitle": "日付スピーキングカード",
+      "summary": "Roleplay cards for five students.",
+      "bullets": [
+        "Partner asks: 何月何日ですか？",
+        "Student 1 card (9/1) → 九月一日です。",
+        "Student 2 card (9/4) → 九月四日です。",
+        "Student 3 card (9/6) → 九月六日です。",
+        "Student 4 card (9/8) → 九月八日です。",
+        "Student 5 card (9/10) → 九月十日です。"
+      ],
+      "highlight": "Add です to form polite, natural spoken responses."
+    },
+    {
+      "slideNumber": 16,
+      "title": "Time Challenge: Read 10 Clocks Aloud",
+      "blocks": [
+        [
+          "Time Challenge・何時ですか？"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Time"
+        ],
+        [
+          "Read the ten times aloud"
+        ],
+        [
+          "1"
+        ],
+        [
+          "1 : 01"
+        ],
+        [
+          "2"
+        ],
+        [
+          "2 : 03"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4 : 04"
+        ],
+        [
+          "4"
+        ],
+        [
+          "7 : 06"
+        ],
+        [
+          "5"
+        ],
+        [
+          "9 : 08"
+        ],
+        [
+          "6"
+        ],
+        [
+          "1 : 10"
+        ],
+        [
+          "7"
+        ],
+        [
+          "2 : 30"
+        ],
+        [
+          "8"
+        ],
+        [
+          "4 : 10"
+        ],
+        [
+          "9"
+        ],
+        [
+          "7 : 30"
+        ],
+        [
+          "10"
+        ],
+        [
+          "9 : 10"
+        ]
+      ],
+      "jpTitle": "時間チャレンジ：10問",
+      "summary": "Ten clock times testing irregular hours and minutes.",
+      "bullets": [
+        "1. 1:01",
+        "2. 2:03",
+        "3. 4:04",
+        "4. 7:06",
+        "5. 9:08",
+        "6. 1:10",
+        "7. 2:30",
+        "8. 4:10",
+        "9. 7:30",
+        "10. 9:10"
+      ],
+      "highlight": "Pay close attention to 4 (よじ), 7 (しちじ), and 9 (くじ)!"
+    },
+    {
+      "slideNumber": 17,
+      "title": "Time Challenge: Official Answers",
+      "blocks": [
+        [
+          "Time Challenge・答え"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Time"
+        ],
+        [
+          "1"
+        ],
+        [
+          "いちじ いっぷん"
+        ],
+        [
+          "2"
+        ],
+        [
+          "にじ さんぷん"
+        ],
+        [
+          "3"
+        ],
+        [
+          "よじ よんぷん"
+        ],
+        [
+          "4"
+        ],
+        [
+          "しちじ ろっぷん"
+        ],
+        [
+          "5"
+        ],
+        [
+          "くじ はっぷん"
+        ],
+        [
+          "6"
+        ],
+        [
+          "いちじ じゅっぷん"
+        ],
+        [
+          "7"
+        ],
+        [
+          "にじ はん"
+        ],
+        [
+          "8"
+        ],
+        [
+          "よじ じゅっぷん"
+        ],
+        [
+          "9"
+        ],
+        [
+          "しちじ はん"
+        ],
+        [
+          "10"
+        ],
+        [
+          "くじ じゅっぷん"
+        ]
+      ],
+      "jpTitle": "時間チャレンジの答え",
+      "summary": "Complete readings for all ten time items.",
+      "bullets": [
+        "1. いちじ いっぷん (1:01)",
+        "2. にじ さんぷん (2:03)",
+        "3. よじ よんぷん (4:04)",
+        "4. しちじ ろっぷん (7:06)",
+        "5. くじ はっぷん (9:08)",
+        "6. いちじ じゅっぷん (1:10)",
+        "7. にじ はん (2:30)",
+        "8. よじ じゅっぷん (4:10)",
+        "9. しちじ はん (7:30)",
+        "10. くじ じゅっぷん (9:10)"
+      ],
+      "highlight": "Notice 2:30 and 7:30 use はん (half past)."
+    },
+    {
+      "slideNumber": 18,
+      "title": "Time Speaking: Schedules & Routine",
+      "blocks": [
+        [
+          "Time Speaking・質問と答え"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Time"
+        ],
+        [
+          "1"
+        ],
+        [
+          "本を読みます　　午前九時"
+        ],
+        [
+          "2"
+        ],
+        [
+          "公園へ行きます　午後三時"
+        ],
+        [
+          "3"
+        ],
+        [
+          "テレビを見ます　午後四時半"
+        ],
+        [
+          "4"
+        ],
+        [
+          "音楽を聞きます　午後七時十分"
+        ],
+        [
+          "5"
+        ],
+        [
+          "話します　　　　午後九時八分"
+        ],
+        [
+          "Question: 何時に＿＿ますか？"
+        ]
+      ],
+      "jpTitle": "時間と行動のスピーキング",
+      "summary": "Matching five activities to specific clock times.",
+      "bullets": [
+        "1. 本を読みます · 午前九時 (9:00 AM)",
+        "2. 公園へ行きます · 午後三時 (3:00 PM)",
+        "3. テレビを見ます · 午後四時半 (4:30 PM)",
+        "4. 音楽を聞きます · 午後七時十分 (7:10 PM)",
+        "5. 話します · 午後九時八分 (9:08 PM)",
+        "Question frame: 何時に＿＿ますか？"
+      ],
+      "highlight": "Combine time + に + action verb: 午前九時に本を読みます。"
+    },
+    {
+      "slideNumber": 19,
+      "title": "Mini Reading A: Yuki's Friday (ゆき)",
+      "blocks": [
+        [
+          "Mini Reading A・ゆき"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Reading"
+        ],
+        [
+          "Story"
+        ],
+        [
+          "九月四日、金曜日です。",
+          "ゆきは午前九時に公園へ行きます。",
+          "あきと話します。",
+          "青い本を読みます。",
+          "午前十時に家へ帰ります。"
+        ]
+      ],
+      "jpTitle": "Mini Reading A：ゆきの金曜日",
+      "summary": "A 5-sentence reading story featuring Yuki.",
+      "bullets": [
+        "九月四日、金曜日です。 (It is Friday, September 4th.)",
+        "ゆきは午前九時に公園へ行きます。 (Yuki goes to the park at 9:00 AM.)",
+        "あきと話します。 (She talks with Aki.)",
+        "青い本を読みます。 (She reads a blue book.)",
+        "午前十時に家へ帰ります。 (She goes home at 10:00 AM.)"
+      ],
+      "highlight": "Focus on dates, weekdays, times, and actions."
+    },
+    {
+      "slideNumber": 20,
+      "title": "Mini Reading A: 5 Questions",
+      "blocks": [
+        [
+          "Mini Reading A・質問"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Reading"
+        ],
+        [
+          "1"
+        ],
+        [
+          "何月何日ですか？"
+        ],
+        [
+          "2"
+        ],
+        [
+          "何曜日ですか？"
+        ],
+        [
+          "3"
+        ],
+        [
+          "何時に公園へ行きますか？"
+        ],
+        [
+          "4"
+        ],
+        [
+          "本は何色ですか？"
+        ],
+        [
+          "5"
+        ],
+        [
+          "午前十時に何をしますか？"
+        ]
+      ],
+      "jpTitle": "Mini Reading A：5つの質問",
+      "summary": "Five comprehension questions about Yuki's day.",
+      "bullets": [
+        "1. 何月何日ですか？ (What date is it?)",
+        "2. 何曜日ですか？ (What day of the week?)",
+        "3. 何時に公園へ行きますか？ (What time to the park?)",
+        "4. 本は何色ですか？ (What colour is the book?)",
+        "5. 午前十時に何をしますか？ (What at 10:00 AM?)"
+      ],
+      "highlight": "Answer directly in Japanese."
+    },
+    {
+      "slideNumber": 21,
+      "title": "Mini Reading B: Aki's Thursday (あき)",
+      "blocks": [
+        [
+          "Mini Reading B・あき"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Reading"
+        ],
+        [
+          "Story"
+        ],
+        [
+          "九月十日、木曜日です。",
+          "あきは午後三時にテレビを見ます。",
+          "午後四時に音楽を聞きます。",
+          "名前を書きます。",
+          "午後五時にゆきと話します。"
+        ]
+      ],
+      "jpTitle": "Mini Reading B：あきの木曜日",
+      "summary": "A 5-sentence parallel reading story featuring Aki.",
+      "bullets": [
+        "九月十日、木曜日です。 (It is Thursday, September 10th.)",
+        "あきは午後三時にテレビを見ます。 (Aki watches television at 3:00 PM.)",
+        "午後四時に音楽を聞きます。 (At 4:00 PM he listens to music.)",
+        "名前を書きます。 (He writes names.)",
+        "午後五時にゆきと話します。 (At 5:00 PM he talks with Yuki.)"
+      ],
+      "highlight": "Compare Aki's routine with Yuki's routine."
+    },
+    {
+      "slideNumber": 22,
+      "title": "Mini Reading B: 5 Questions",
+      "blocks": [
+        [
+          "Mini Reading B・質問"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Reading"
+        ],
+        [
+          "1"
+        ],
+        [
+          "何月何日ですか？"
+        ],
+        [
+          "2"
+        ],
+        [
+          "何曜日ですか？"
+        ],
+        [
+          "3"
+        ],
+        [
+          "午後三時に何を見ますか？"
+        ],
+        [
+          "4"
+        ],
+        [
+          "午後四時に何を聞きますか？"
+        ],
+        [
+          "5"
+        ],
+        [
+          "午後五時に、ゆきと何をしますか？"
+        ]
+      ],
+      "jpTitle": "Mini Reading B：5つの質問",
+      "summary": "Five comprehension questions about Aki's day.",
+      "bullets": [
+        "1. 何月何日ですか？",
+        "2. 何曜日ですか？",
+        "3. 午後三時に何を見ますか？",
+        "4. 午後四時に何を聞きますか？",
+        "5. 午後五時に、ゆきと何をしますか？"
+      ],
+      "highlight": "Aki stays inside and interacts with media before meeting Yuki."
+    },
+    {
+      "slideNumber": 23,
+      "title": "Mini Readings: Answer Key Comparison",
+      "blocks": [
+        [
+          "Mini Reading・答え"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Reading"
+        ],
+        [
+          "Reading A"
+        ],
+        [
+          "1  九月四日です。",
+          "2  金曜日です。",
+          "3  午前九時です。",
+          "4  青です。",
+          "5  家へ帰ります。"
+        ],
+        [
+          "Reading B"
+        ],
+        [
+          "1  九月十日です。",
+          "2  木曜日です。",
+          "3  テレビを見ます。",
+          "4  音楽を聞きます。",
+          "5  ゆきと話します。"
+        ]
+      ],
+      "jpTitle": "両ストーリーの解答対比",
+      "summary": "Side-by-side answers for Reading A and Reading B.",
+      "bullets": [
+        "Reading A: 1. 九月四日です。 2. 金曜日です。 3. 午前九時です。 4. 青です。 5. 家へ帰ります。",
+        "Reading B: 1. 九月十日です。 2. 木曜日です。 3. テレビを見ます。 4. 音楽を聞きます。 5. ゆきと話します。"
+      ],
+      "highlight": "Both passages use the exact same N5 sentence structure."
+    },
+    {
+      "slideNumber": 24,
+      "title": "Speaking Chain: 10 Classroom Questions",
+      "blocks": [
+        [
+          "Speaking Chain・10 questions"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Speaking"
+        ],
+        [
+          "Two rounds: every student answers twice"
+        ],
+        [
+          "1"
+        ],
+        [
+          "何色が好きですか？"
+        ],
+        [
+          "2"
+        ],
+        [
+          "何を見ますか？"
+        ],
+        [
+          "3"
+        ],
+        [
+          "何を聞きますか？"
+        ],
+        [
+          "4"
+        ],
+        [
+          "何を読みますか？"
+        ],
+        [
+          "5"
+        ],
+        [
+          "何を書きますか？"
+        ],
+        [
+          "6"
+        ],
+        [
+          "どこへ行きますか？"
+        ],
+        [
+          "7"
+        ],
+        [
+          "だれと話しますか？"
+        ],
+        [
+          "8"
+        ],
+        [
+          "9/8は何月何日ですか？"
+        ],
+        [
+          "9"
+        ],
+        [
+          "7:10は何時ですか？"
+        ],
+        [
+          "10"
+        ],
+        [
+          "誕生日は何月何日ですか？"
+        ]
+      ],
+      "jpTitle": "10問スピーキングチェーン",
+      "summary": "Ten rapid questions passed around the entire room.",
+      "bullets": [
+        "1. 何色が好きですか？",
+        "2. 何を見ますか？",
+        "3. 何を聞きますか？",
+        "4. 何を読みますか？",
+        "5. 何を書きますか？",
+        "6. どこへ行きますか？",
+        "7. だれと話しますか？",
+        "8. 9/8は何月何日ですか？",
+        "9. 7:10は何時ですか？",
+        "10. 誕生日は何月何日ですか？"
+      ],
+      "highlight": "Two rounds: every student answers twice."
+    },
+    {
+      "slideNumber": 25,
+      "title": "Final Team Challenge: 10 Rapid Questions",
+      "blocks": [
+        [
+          "Final Team Challenge・10"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Mixed review"
+        ],
+        [
+          "Answer without looking back"
+        ],
+        [
+          "1"
+        ],
+        [
+          "聞くの漢字ヒントは？"
+        ],
+        [
+          "2"
+        ],
+        [
+          "見るの漢字ヒントは？"
+        ],
+        [
+          "3"
+        ],
+        [
+          "話す・読むの漢字ヒントは？"
+        ],
+        [
+          "4"
+        ],
+        [
+          "本を＿＿ます。"
+        ],
+        [
+          "5"
+        ],
+        [
+          "音楽を＿＿ます。"
+        ],
+        [
+          "6"
+        ],
+        [
+          "9/4を日本語で読む"
+        ],
+        [
+          "7"
+        ],
+        [
+          "7:10を日本語で読む"
+        ],
+        [
+          "8"
+        ],
+        [
+          "blue book を日本語で言う"
+        ],
+        [
+          "9"
+        ],
+        [
+          "午後三時は AM / PM？"
+        ],
+        [
+          "10"
+        ],
+        [
+          "ゆき／公園へ／行きます"
+        ]
+      ],
+      "jpTitle": "ファイナルチームチャレンジ（10問）",
+      "summary": "Closed-book mixed review challenge for the class.",
+      "bullets": [
+        "1. 聞くの漢字ヒントは？",
+        "2. 見るの漢字ヒントは？",
+        "3. 話す・読むの漢字ヒントは？",
+        "4. 本を＿＿ます。",
+        "5. 音楽を＿＿ます。",
+        "6. 9/4を日本語で読む",
+        "7. 7:10を日本語で読む",
+        "8. 'blue book' を日本語で言う",
+        "9. 午後三時は AM / PM？",
+        "10. ゆき／公園へ／行きます を文にする"
+      ],
+      "highlight": "Answer without looking back at your notes!"
+    },
+    {
+      "slideNumber": 26,
+      "title": "Final Team Challenge: Answers",
+      "blocks": [
+        [
+          "Final Team Challenge・答え"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Mixed review"
+        ],
+        [
+          "1"
+        ],
+        [
+          "耳"
+        ],
+        [
+          "2"
+        ],
+        [
+          "目"
+        ],
+        [
+          "3"
+        ],
+        [
+          "言"
+        ],
+        [
+          "4"
+        ],
+        [
+          "本を読みます。"
+        ],
+        [
+          "5"
+        ],
+        [
+          "音楽を聞きます。"
+        ],
+        [
+          "6"
+        ],
+        [
+          "くがつ よっか"
+        ],
+        [
+          "7"
+        ],
+        [
+          "しちじ じゅっぷん"
+        ],
+        [
+          "8"
+        ],
+        [
+          "青い本"
+        ],
+        [
+          "9"
+        ],
+        [
+          "PM"
+        ],
+        [
+          "10"
+        ],
+        [
+          "ゆきは公園へ行きます。"
+        ]
+      ],
+      "jpTitle": "ファイナルチームチャレンジの答え",
+      "summary": "Official answers for the 10-point team test.",
+      "bullets": [
+        "1. 耳 (ear)",
+        "2. 目 (eye)",
+        "3. 言 (words)",
+        "4. 本を読みます。",
+        "5. 音楽を聞きます。",
+        "6. くがつ よっか",
+        "7. しちじ じゅっぷん",
+        "8. 青い本",
+        "9. PM",
+        "10. ゆきは公園へ行きます。"
+      ],
+      "highlight": "Score 10 out of 10 for complete mastery of Class 454!"
+    },
+    {
+      "slideNumber": 27,
+      "title": "Exit Ticket: 5 Students Finale",
+      "blocks": [
+        [
+          "Exit Ticket・5 students"
+        ],
+        [
+          "NIKKI JP"
+        ],
+        [
+          "Nikki JP Class 454  ·  Finish"
+        ],
+        [
+          "One final turn for each student"
+        ],
+        [
+          "1"
+        ],
+        [
+          "Student 1　動作の文を一つ言う"
+        ],
+        [
+          "2"
+        ],
+        [
+          "Student 2　色の文を一つ言う"
+        ],
+        [
+          "3"
+        ],
+        [
+          "Student 3　日付を一つ読む"
+        ],
+        [
+          "4"
+        ],
+        [
+          "Student 4　時間を一つ読む"
+        ],
+        [
+          "5"
+        ],
+        [
+          "Student 5　クラスメートに質問する"
+        ],
+        [
+          "できました！"
+        ]
+      ],
+      "jpTitle": "修了チケット（Exit Ticket）",
+      "summary": "One final performance task for each student before dismissal.",
+      "bullets": [
+        "Student 1: 動作の文を一つ言う (Say one action sentence)",
+        "Student 2: 色の文を一つ言う (Say one colour sentence)",
+        "Student 3: 日付を一つ読む (Read one calendar date)",
+        "Student 4: 時間を一つ読む (Read one clock time)",
+        "Student 5: クラスメートに質問する (Ask a classmate a question)",
+        "できました！ (Well done!)"
+      ],
+      "highlight": "You have completed Class 454 Fluency Training!"
+    }
+  ],
+  "title": "Fluency Training, Speaking Chain & Double Mini Reading",
+  "jpTitle": "第6回：読む・話す・もう一度・Mini Reading A & B・10問スピーキングチェーン",
+  "vocabulary": [
+    {
+      "id": "v6-1",
+      "kanji": "赤いりんご",
+      "furigana": "あかい りんご",
+      "romaji": "akai ringo",
+      "english": "red apple",
+      "type": "Phrase",
+      "example": "赤いりんごを食べます。"
+    },
+    {
+      "id": "v6-2",
+      "kanji": "青いそら",
+      "furigana": "あおい そら",
+      "romaji": "aoi sora",
+      "english": "blue sky",
+      "type": "Phrase",
+      "example": "青いそらがきれいです。"
+    },
+    {
+      "id": "v6-3",
+      "kanji": "白いねこ",
+      "furigana": "しろい ねこ",
+      "romaji": "shiroi neko",
+      "english": "white cat",
+      "type": "Phrase",
+      "example": "白いねこがいます。"
+    },
+    {
+      "id": "v6-4",
+      "kanji": "黒い犬",
+      "furigana": "くろい いぬ",
+      "romaji": "kuroi inu",
+      "english": "black dog",
+      "type": "Phrase",
+      "example": "黒い犬は大きいです。"
+    },
+    {
+      "id": "v6-5",
+      "kanji": "ピンクの花",
+      "furigana": "ぴんくの はな",
+      "romaji": "pinku no hana",
+      "english": "pink flower",
+      "type": "Phrase",
+      "example": "きれいなピンクの花。"
+    },
+    {
+      "id": "v6-6",
+      "kanji": "オレンジのみかん",
+      "furigana": "おれんじの みかん",
+      "romaji": "orenji no mikan",
+      "english": "orange mandarin",
+      "type": "Phrase",
+      "example": "甘いオレンジのみかん。"
+    },
+    {
+      "id": "v6-7",
+      "kanji": "グレーの車",
+      "furigana": "ぐれーの くるま",
+      "romaji": "guree no kuruma",
+      "english": "grey car",
+      "type": "Phrase",
+      "example": "グレーの車があります。"
+    },
+    {
+      "id": "v6-8",
+      "kanji": "青い本",
+      "furigana": "あおい ほん",
+      "romaji": "aoi hon",
+      "english": "blue book",
+      "type": "Phrase",
+      "example": "青い本を読みます。"
+    },
+    {
+      "id": "v6-9",
+      "kanji": "九月一日",
+      "furigana": "くがつ ついたち",
+      "romaji": "kugatsu tsuitachi",
+      "english": "September 1st",
+      "type": "Date",
+      "example": "九月一日です。"
+    },
+    {
+      "id": "v6-10",
+      "kanji": "九月四日",
+      "furigana": "くがつ よっか",
+      "romaji": "kugatsu yokka",
+      "english": "September 4th",
+      "type": "Date",
+      "example": "九月四日、金曜日です。"
+    },
+    {
+      "id": "v6-11",
+      "kanji": "九月六日",
+      "furigana": "くがつ むいか",
+      "romaji": "kugatsu muika",
+      "english": "September 6th",
+      "type": "Date",
+      "example": "九月六日です。"
+    },
+    {
+      "id": "v6-12",
+      "kanji": "九月八日",
+      "furigana": "くがつ ようか",
+      "romaji": "kugatsu youka",
+      "english": "September 8th",
+      "type": "Date",
+      "example": "九月八日です。"
+    },
+    {
+      "id": "v6-13",
+      "kanji": "九月十日",
+      "furigana": "くがつ とおか",
+      "romaji": "kugatsu tooka",
+      "english": "September 10th",
+      "type": "Date",
+      "example": "九月十日、木曜日です。"
+    },
+    {
+      "id": "v6-14",
+      "kanji": "金曜日",
+      "furigana": "きんようび",
+      "romaji": "kinyoubi",
+      "english": "Friday",
+      "type": "Day",
+      "example": "金曜日です。"
+    },
+    {
+      "id": "v6-15",
+      "kanji": "木曜日",
+      "furigana": "もくようび",
+      "romaji": "mokuyoubi",
+      "english": "Thursday",
+      "type": "Day",
+      "example": "木曜日です。"
+    },
+    {
+      "id": "v6-16",
+      "kanji": "名前",
+      "furigana": "なまえ",
+      "romaji": "namae",
+      "english": "name",
+      "type": "Noun",
+      "example": "名前を書きます。"
+    },
+    {
+      "id": "v6-17",
+      "kanji": "車",
+      "furigana": "くるま",
+      "romaji": "kuruma",
+      "english": "car",
+      "type": "Noun",
+      "example": "グレーの車。"
+    },
+    {
+      "id": "v6-18",
+      "kanji": "花",
+      "furigana": "はな",
+      "romaji": "hana",
+      "english": "flower",
+      "type": "Noun",
+      "example": "ピンクの花。"
+    },
+    {
+      "id": "v6-19",
+      "kanji": "そら",
+      "furigana": "そら",
+      "romaji": "sora",
+      "english": "sky",
+      "type": "Noun",
+      "example": "青いそら。"
+    },
+    {
+      "id": "v6-20",
+      "kanji": "りんご",
+      "furigana": "りんご",
+      "romaji": "ringo",
+      "english": "apple",
+      "type": "Noun",
+      "example": "赤いりんご。"
+    }
+  ],
+  "kanji": [
+    {
+      "kanji": "花",
+      "onyomi": "カ",
+      "kunyomi": "はな",
+      "meaning": "flower",
+      "strokes": 7,
+      "examples": [
+        "花",
+        "花火"
+      ]
+    },
+    {
+      "kanji": "車",
+      "onyomi": "シャ",
+      "kunyomi": "くるま",
+      "meaning": "car, vehicle",
+      "strokes": 7,
+      "examples": [
+        "車"
+      ]
+    },
+    {
+      "kanji": "名",
+      "onyomi": "メイ・ミョウ",
+      "kunyomi": "な",
+      "meaning": "name",
+      "strokes": 6,
+      "examples": [
+        "名前"
+      ]
+    },
+    {
+      "kanji": "空",
+      "onyomi": "クウ",
+      "kunyomi": "そら・あ(く)・から",
+      "meaning": "sky, empty",
+      "strokes": 8,
+      "examples": [
+        "空",
+        "青空"
+      ]
+    },
+    {
+      "kanji": "読",
+      "onyomi": "ドク",
+      "kunyomi": "よ(む)",
+      "meaning": "read",
+      "strokes": 14,
+      "examples": [
+        "読む"
+      ]
+    },
+    {
+      "kanji": "聞",
+      "onyomi": "ブン",
+      "kunyomi": "き(く)",
+      "meaning": "hear, listen",
+      "strokes": 14,
+      "examples": [
+        "聞く"
+      ]
+    },
+    {
+      "kanji": "話",
+      "onyomi": "ワ",
+      "kunyomi": "はな(す)",
+      "meaning": "speak, talk",
+      "strokes": 13,
+      "examples": [
+        "話す"
+      ]
+    },
+    {
+      "kanji": "見",
+      "onyomi": "ケン",
+      "kunyomi": "み(る)",
+      "meaning": "see, watch",
+      "strokes": 7,
+      "examples": [
+        "見る"
+      ]
+    },
+    {
+      "kanji": "書",
+      "onyomi": "ショ",
+      "kunyomi": "か(く)",
+      "meaning": "write",
+      "strokes": 10,
+      "examples": [
+        "書く"
+      ]
+    },
+    {
+      "kanji": "行",
+      "onyomi": "コウ",
+      "kunyomi": "い(く)",
+      "meaning": "go",
+      "strokes": 6,
+      "examples": [
+        "行く"
+      ]
+    }
+  ]
+}

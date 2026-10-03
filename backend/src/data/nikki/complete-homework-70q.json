@@ -1,0 +1,1594 @@
+[
+  {
+    "category": "Kanji",
+    "description": "Kanji meanings, readings, weekdays, and action verbs.",
+    "questions": [
+      {
+        "id": "kanji-1",
+        "num": 1,
+        "question": "What does 犬 (いぬ / inu) mean?",
+        "options": [
+          {
+            "label": "A",
+            "text": "dog"
+          },
+          {
+            "label": "B",
+            "text": "cat"
+          },
+          {
+            "label": "C",
+            "text": "bird"
+          }
+        ],
+        "correct": "A",
+        "explanation": "犬 = dog",
+        "example": "dog"
+      },
+      {
+        "id": "kanji-2",
+        "num": 2,
+        "question": "How do you read 人?",
+        "options": [
+          {
+            "label": "A",
+            "text": "ひと (hito)"
+          },
+          {
+            "label": "B",
+            "text": "いぬ (inu)"
+          },
+          {
+            "label": "C",
+            "text": "ほん (hon)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "人 = ひと (person)",
+        "example": "ひと"
+      },
+      {
+        "id": "kanji-3",
+        "num": 3,
+        "question": "Which kanji means “big”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "人 (ひと / hito)"
+          },
+          {
+            "label": "B",
+            "text": "大 (おおきい / ookii)"
+          },
+          {
+            "label": "C",
+            "text": "太 (ふとい / futoi)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "大 = big",
+        "example": "大"
+      },
+      {
+        "id": "kanji-4",
+        "num": 4,
+        "question": "Which kanji means “sun / day”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "日 (ひ・にち / hi, nichi)"
+          },
+          {
+            "label": "B",
+            "text": "月 (つき・げつ / tsuki, getsu)"
+          },
+          {
+            "label": "C",
+            "text": "火 (ひ・か / hi, ka)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "日 = sun/day",
+        "example": "日"
+      },
+      {
+        "id": "kanji-5",
+        "num": 5,
+        "question": "Which kanji means “water”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "木 (き・もく / ki, moku)"
+          },
+          {
+            "label": "B",
+            "text": "金 (かね・きん / kane, kin)"
+          },
+          {
+            "label": "C",
+            "text": "水 (みず・すい / mizu, sui)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "水 = water",
+        "example": "水"
+      },
+      {
+        "id": "kanji-6",
+        "num": 6,
+        "question": "Which word means Monday?",
+        "options": [
+          {
+            "label": "A",
+            "text": "火曜日 (かようび / kayōbi)"
+          },
+          {
+            "label": "B",
+            "text": "月曜日 (げつようび / getsuyōbi)"
+          },
+          {
+            "label": "C",
+            "text": "日曜日 (にちようび / nichiyōbi)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "月曜日 = Monday",
+        "example": "月曜日"
+      },
+      {
+        "id": "kanji-7",
+        "num": 7,
+        "question": "How do you read 見る?",
+        "options": [
+          {
+            "label": "A",
+            "text": "みる (miru)"
+          },
+          {
+            "label": "B",
+            "text": "きく (kiku)"
+          },
+          {
+            "label": "C",
+            "text": "かく (kaku)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "見る = to see/watch",
+        "example": "みる"
+      },
+      {
+        "id": "kanji-8",
+        "num": 8,
+        "question": "Which word means “to listen / hear”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "話す (はなす / hanasu)"
+          },
+          {
+            "label": "B",
+            "text": "読む (よむ / yomu)"
+          },
+          {
+            "label": "C",
+            "text": "聞く (きく / kiku)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "聞く = to listen/hear",
+        "example": "聞く"
+      },
+      {
+        "id": "kanji-9",
+        "num": 9,
+        "question": "What does 学生 (がくせい / gakusei) mean?",
+        "options": [
+          {
+            "label": "A",
+            "text": "teacher"
+          },
+          {
+            "label": "B",
+            "text": "student"
+          },
+          {
+            "label": "C",
+            "text": "school"
+          }
+        ],
+        "correct": "B",
+        "explanation": "学生 = student",
+        "example": "student"
+      },
+      {
+        "id": "kanji-10",
+        "num": 10,
+        "question": "Which word means “to go”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "行く (いく / iku)"
+          },
+          {
+            "label": "B",
+            "text": "書く (かく / kaku)"
+          },
+          {
+            "label": "C",
+            "text": "話す (はなす / hanasu)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "行く = to go",
+        "example": "行く"
+      }
+    ],
+    "passages": {}
+  },
+  {
+    "category": "Kana & Vocabulary",
+    "description": "Katakana loanwords, colors, animals, and everyday words.",
+    "questions": [
+      {
+        "id": "kana-and-vocabulary-1",
+        "num": 1,
+        "question": "Which is “coffee” in katakana?",
+        "options": [
+          {
+            "label": "A",
+            "text": "コーヒー (kōhī / coffee)"
+          },
+          {
+            "label": "B",
+            "text": "ホテル (hoteru / hotel)"
+          },
+          {
+            "label": "C",
+            "text": "テレビ (terebi / TV)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "coffee = コーヒー",
+        "example": "コーヒー"
+      },
+      {
+        "id": "kana-and-vocabulary-2",
+        "num": 2,
+        "question": "Which is “television” in katakana?",
+        "options": [
+          {
+            "label": "A",
+            "text": "タクシー (takushī / taxi)"
+          },
+          {
+            "label": "B",
+            "text": "テレビ (terebi / TV)"
+          },
+          {
+            "label": "C",
+            "text": "コンピューター (konpyūtā / computer)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "television = テレビ",
+        "example": "テレビ"
+      },
+      {
+        "id": "kana-and-vocabulary-3",
+        "num": 3,
+        "question": "Which is “hotel” in katakana?",
+        "options": [
+          {
+            "label": "A",
+            "text": "ホテル (hoteru / hotel)"
+          },
+          {
+            "label": "B",
+            "text": "コーヒー (kōhī / coffee)"
+          },
+          {
+            "label": "C",
+            "text": "ピンク (pinku / pink)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "hotel = ホテル",
+        "example": "ホテル"
+      },
+      {
+        "id": "kana-and-vocabulary-4",
+        "num": 4,
+        "question": "Which is “taxi” in katakana?",
+        "options": [
+          {
+            "label": "A",
+            "text": "テレビ (terebi / TV)"
+          },
+          {
+            "label": "B",
+            "text": "タクシー (takushī / taxi)"
+          },
+          {
+            "label": "C",
+            "text": "ホテル (hoteru / hotel)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "taxi = タクシー",
+        "example": "タクシー"
+      },
+      {
+        "id": "kana-and-vocabulary-5",
+        "num": 5,
+        "question": "Which word means “blue”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "赤 (あか / aka - red)"
+          },
+          {
+            "label": "B",
+            "text": "白 (しろ / shiro - white)"
+          },
+          {
+            "label": "C",
+            "text": "青 (あお / ao - blue)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "青 = blue",
+        "example": "青"
+      },
+      {
+        "id": "kana-and-vocabulary-6",
+        "num": 6,
+        "question": "Which word means “black”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "黒 (くろ / kuro - black)"
+          },
+          {
+            "label": "B",
+            "text": "白 (しろ / shiro - white)"
+          },
+          {
+            "label": "C",
+            "text": "赤 (あか / aka - red)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "黒 = black",
+        "example": "黒"
+      },
+      {
+        "id": "kana-and-vocabulary-7",
+        "num": 7,
+        "question": "Which word means “white”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "青 (あお / ao - blue)"
+          },
+          {
+            "label": "B",
+            "text": "白 (しろ / shiro - white)"
+          },
+          {
+            "label": "C",
+            "text": "黒 (くろ / kuro - black)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "白 = white",
+        "example": "白"
+      },
+      {
+        "id": "kana-and-vocabulary-8",
+        "num": 8,
+        "question": "Which word means “cat”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "いぬ (inu)"
+          },
+          {
+            "label": "B",
+            "text": "ねこ (neko)"
+          },
+          {
+            "label": "C",
+            "text": "うし (ushi)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "ねこ = cat",
+        "example": "ねこ"
+      },
+      {
+        "id": "kana-and-vocabulary-9",
+        "num": 9,
+        "question": "Which word means “cow”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "うし (ushi)"
+          },
+          {
+            "label": "B",
+            "text": "とり (tori)"
+          },
+          {
+            "label": "C",
+            "text": "ねこ (neko)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "うし = cow",
+        "example": "うし"
+      },
+      {
+        "id": "kana-and-vocabulary-10",
+        "num": 10,
+        "question": "Which word means “music”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "なまえ (namae / name)"
+          },
+          {
+            "label": "B",
+            "text": "おんがく (ongaku / music)"
+          },
+          {
+            "label": "C",
+            "text": "かばん (kaban / bag)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "おんがく = music",
+        "example": "おんがく"
+      }
+    ],
+    "passages": {}
+  },
+  {
+    "category": "Numbers & Counters",
+    "description": "Numbers and counters for small and large animals.",
+    "questions": [
+      {
+        "id": "numbers-and-counters-1",
+        "num": 1,
+        "question": "What number is 二十八 (にじゅうはち / nijūhachi)?",
+        "options": [
+          {
+            "label": "A",
+            "text": "18"
+          },
+          {
+            "label": "B",
+            "text": "28"
+          },
+          {
+            "label": "C",
+            "text": "82"
+          }
+        ],
+        "correct": "B",
+        "explanation": "二十八 = 28",
+        "example": "28"
+      },
+      {
+        "id": "numbers-and-counters-2",
+        "num": 2,
+        "question": "What number is 五十四 (ごじゅうよん / gojūyon)?",
+        "options": [
+          {
+            "label": "A",
+            "text": "45"
+          },
+          {
+            "label": "B",
+            "text": "504"
+          },
+          {
+            "label": "C",
+            "text": "54"
+          }
+        ],
+        "correct": "C",
+        "explanation": "五十四 = 54",
+        "example": "54"
+      },
+      {
+        "id": "numbers-and-counters-3",
+        "num": 3,
+        "question": "How do you read 六百?",
+        "options": [
+          {
+            "label": "A",
+            "text": "ろくひゃく (rokuhyaku)"
+          },
+          {
+            "label": "B",
+            "text": "ろっぴゃく (roppyaku)"
+          },
+          {
+            "label": "C",
+            "text": "ろくびゃく (rokubyaku)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "六百 = ろっぴゃく",
+        "example": "ろっぴゃく"
+      },
+      {
+        "id": "numbers-and-counters-4",
+        "num": 4,
+        "question": "How do you read 八百?",
+        "options": [
+          {
+            "label": "A",
+            "text": "はっぴゃく (happyaku)"
+          },
+          {
+            "label": "B",
+            "text": "はちひゃく (hachihyaku)"
+          },
+          {
+            "label": "C",
+            "text": "はちびゃく (hachibyaku)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "八百 = はっぴゃく",
+        "example": "はっぴゃく"
+      },
+      {
+        "id": "numbers-and-counters-5",
+        "num": 5,
+        "question": "What number is 二千 (にせん / nisen)?",
+        "options": [
+          {
+            "label": "A",
+            "text": "200"
+          },
+          {
+            "label": "B",
+            "text": "2,000"
+          },
+          {
+            "label": "C",
+            "text": "20,000"
+          }
+        ],
+        "correct": "B",
+        "explanation": "二千 = 2,000",
+        "example": "2,000"
+      },
+      {
+        "id": "numbers-and-counters-6",
+        "num": 6,
+        "question": "What number is 九万三千十一 (きゅうまんさんぜんじゅういち / kyūman sanzen jūichi)?",
+        "options": [
+          {
+            "label": "A",
+            "text": "9,311"
+          },
+          {
+            "label": "B",
+            "text": "93,011"
+          },
+          {
+            "label": "C",
+            "text": "930,011"
+          }
+        ],
+        "correct": "B",
+        "explanation": "九万三千十一 = 93,011",
+        "example": "93,011"
+      },
+      {
+        "id": "numbers-and-counters-7",
+        "num": 7,
+        "question": "Which sentence means “There is one dog”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "犬が一匹います。(Inu ga ippiki imasu.)"
+          },
+          {
+            "label": "B",
+            "text": "犬が一頭います。(Inu ga ittou imasu.)"
+          },
+          {
+            "label": "C",
+            "text": "犬が三匹います。(Inu ga sanbiki imasu.)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Small animals use 匹",
+        "example": "犬が一匹います。"
+      },
+      {
+        "id": "numbers-and-counters-8",
+        "num": 8,
+        "question": "How do you read 一匹?",
+        "options": [
+          {
+            "label": "A",
+            "text": "いちひき (ichihiki)"
+          },
+          {
+            "label": "B",
+            "text": "いっぴき (ippiki)"
+          },
+          {
+            "label": "C",
+            "text": "いちぴき (ichipiki)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "一匹 = いっぴき",
+        "example": "いっぴき"
+      },
+      {
+        "id": "numbers-and-counters-9",
+        "num": 9,
+        "question": "Which means “three cats”?",
+        "options": [
+          {
+            "label": "A",
+            "text": "ねこが三匹います。(Neko ga sanbiki imasu.)"
+          },
+          {
+            "label": "B",
+            "text": "ねこが三頭います。(Neko ga santou imasu.)"
+          },
+          {
+            "label": "C",
+            "text": "ねこが三本います。(Neko ga sanbon imasu.)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Cats use 匹",
+        "example": "ねこが三匹います。"
+      },
+      {
+        "id": "numbers-and-counters-10",
+        "num": 10,
+        "question": "Which sentence correctly counts one cow?",
+        "options": [
+          {
+            "label": "A",
+            "text": "牛が一匹います。(Ushi ga ippiki imasu.)"
+          },
+          {
+            "label": "B",
+            "text": "牛が一本います。(Ushi ga ippon imasu.)"
+          },
+          {
+            "label": "C",
+            "text": "牛が一頭います。(Ushi ga ittou imasu.)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Large animals use 頭",
+        "example": "牛が一頭います。"
+      }
+    ],
+    "passages": {}
+  },
+  {
+    "category": "Dates & Time",
+    "description": "Days of the week, special date readings, and clock time.",
+    "questions": [
+      {
+        "id": "dates-and-time-1",
+        "num": 1,
+        "question": "How do you read 1日 (the first day of the month)?",
+        "options": [
+          {
+            "label": "A",
+            "text": "いちにち (ichinichi)"
+          },
+          {
+            "label": "B",
+            "text": "ついたち (tsuitachi)"
+          },
+          {
+            "label": "C",
+            "text": "いっぴ (ippi)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "1日 = ついたち",
+        "example": "ついたち"
+      },
+      {
+        "id": "dates-and-time-2",
+        "num": 2,
+        "question": "How do you read 4日?",
+        "options": [
+          {
+            "label": "A",
+            "text": "よっか (yokka)"
+          },
+          {
+            "label": "B",
+            "text": "よんにち (yonnichi)"
+          },
+          {
+            "label": "C",
+            "text": "しにち (shinichi)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "4日 = よっか",
+        "example": "よっか"
+      },
+      {
+        "id": "dates-and-time-3",
+        "num": 3,
+        "question": "How do you read 8日?",
+        "options": [
+          {
+            "label": "A",
+            "text": "はちにち (hachinichi)"
+          },
+          {
+            "label": "B",
+            "text": "ようか (yōka)"
+          },
+          {
+            "label": "C",
+            "text": "やっか (yakka)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "8日 = ようか",
+        "example": "ようか"
+      },
+      {
+        "id": "dates-and-time-4",
+        "num": 4,
+        "question": "How do you read 10日?",
+        "options": [
+          {
+            "label": "A",
+            "text": "じゅうにち (jūnichi)"
+          },
+          {
+            "label": "B",
+            "text": "とおか (tōka)"
+          },
+          {
+            "label": "C",
+            "text": "じゅっか (jukka)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "10日 = とおか",
+        "example": "とおか"
+      },
+      {
+        "id": "dates-and-time-5",
+        "num": 5,
+        "question": "Which word means Sunday?",
+        "options": [
+          {
+            "label": "A",
+            "text": "土曜日 (どようび / doyōbi)"
+          },
+          {
+            "label": "B",
+            "text": "月曜日 (げつようび / getsuyōbi)"
+          },
+          {
+            "label": "C",
+            "text": "日曜日 (にちようび / nichiyōbi)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "日曜日 = Sunday",
+        "example": "日曜日"
+      },
+      {
+        "id": "dates-and-time-6",
+        "num": 6,
+        "question": "How do you read 7時?",
+        "options": [
+          {
+            "label": "A",
+            "text": "ななじ (nanaji)"
+          },
+          {
+            "label": "B",
+            "text": "しちじ (shichiji)"
+          },
+          {
+            "label": "C",
+            "text": "ななとき (nanatoki)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "7時 = しちじ",
+        "example": "しちじ"
+      },
+      {
+        "id": "dates-and-time-7",
+        "num": 7,
+        "question": "How do you read 9時?",
+        "options": [
+          {
+            "label": "A",
+            "text": "きゅうじ (kyūji)"
+          },
+          {
+            "label": "B",
+            "text": "くじ (kuji)"
+          },
+          {
+            "label": "C",
+            "text": "ここのじ (kokonoji)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "9時 = くじ",
+        "example": "くじ"
+      },
+      {
+        "id": "dates-and-time-8",
+        "num": 8,
+        "question": "Which is 4:10?",
+        "options": [
+          {
+            "label": "A",
+            "text": "四時十分 (よじじゅっぷん / yoji juppun)"
+          },
+          {
+            "label": "B",
+            "text": "十時四分 (じゅうじよんぷん / jūji yonpun)"
+          },
+          {
+            "label": "C",
+            "text": "四日十時 (よっかじゅうじ / yokka jūji)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "4:10 = 四時十分",
+        "example": "四時十分"
+      },
+      {
+        "id": "dates-and-time-9",
+        "num": 9,
+        "question": "Which word means a.m.?",
+        "options": [
+          {
+            "label": "A",
+            "text": "午後 (ごご / gogo - p.m.)"
+          },
+          {
+            "label": "B",
+            "text": "午前 (ごぜん / gozen - a.m.)"
+          },
+          {
+            "label": "C",
+            "text": "時間 (じかん / jikan - time)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "午前 = a.m.",
+        "example": "午前"
+      },
+      {
+        "id": "dates-and-time-10",
+        "num": 10,
+        "question": "Which is September 8?",
+        "options": [
+          {
+            "label": "A",
+            "text": "八月九日 (はちがつくにち / hachigatsu kokonoka)"
+          },
+          {
+            "label": "B",
+            "text": "九月八日 (くがつようか / kugatsu yōka)"
+          },
+          {
+            "label": "C",
+            "text": "九日八月 (kokonoka hachigatsu)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "September 8 = 九月八日",
+        "example": "九月八日"
+      }
+    ],
+    "passages": {}
+  },
+  {
+    "category": "Particles",
+    "description": "Choose the correct particle: の・が・を・に・で.",
+    "questions": [
+      {
+        "id": "particles-1",
+        "num": 1,
+        "question": "これは ゆき ___ 本です。(Kore wa Yuki ___ hon desu.)",
+        "options": [
+          {
+            "label": "A",
+            "text": "が (ga)"
+          },
+          {
+            "label": "B",
+            "text": "の (no)"
+          },
+          {
+            "label": "C",
+            "text": "を (o / wo)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "ゆきの本 = Yuki's book",
+        "example": "の"
+      },
+      {
+        "id": "particles-2",
+        "num": 2,
+        "question": "あきは 日本語 ___ 先生です。(Aki wa Nihongo ___ sensei desu.)",
+        "options": [
+          {
+            "label": "A",
+            "text": "の (no)"
+          },
+          {
+            "label": "B",
+            "text": "に (ni)"
+          },
+          {
+            "label": "C",
+            "text": "で (de)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "日本語の先生 = Japanese teacher",
+        "example": "の"
+      },
+      {
+        "id": "particles-3",
+        "num": 3,
+        "question": "わたしは 犬 ___ 好きです。(Watashi wa inu ___ suki desu.)",
+        "options": [
+          {
+            "label": "A",
+            "text": "を (o / wo)"
+          },
+          {
+            "label": "B",
+            "text": "が (ga)"
+          },
+          {
+            "label": "C",
+            "text": "に (ni)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "好き takes が",
+        "example": "が"
+      },
+      {
+        "id": "particles-4",
+        "num": 4,
+        "question": "公園に 犬 ___ います。(Kōen ni inu ___ imasu.)",
+        "options": [
+          {
+            "label": "A",
+            "text": "で (de)"
+          },
+          {
+            "label": "B",
+            "text": "を (o / wo)"
+          },
+          {
+            "label": "C",
+            "text": "が (ga)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "The existing subject takes が",
+        "example": "が"
+      },
+      {
+        "id": "particles-5",
+        "num": 5,
+        "question": "本 ___ 読みます。(Hon ___ yomimasu.)",
+        "options": [
+          {
+            "label": "A",
+            "text": "を (o / wo)"
+          },
+          {
+            "label": "B",
+            "text": "に (ni)"
+          },
+          {
+            "label": "C",
+            "text": "の (no)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The object takes を",
+        "example": "を"
+      },
+      {
+        "id": "particles-6",
+        "num": 6,
+        "question": "音楽 ___ 聞きます。(Ongaku ___ kikimasu.)",
+        "options": [
+          {
+            "label": "A",
+            "text": "で (de)"
+          },
+          {
+            "label": "B",
+            "text": "を (o / wo)"
+          },
+          {
+            "label": "C",
+            "text": "が (ga)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The object takes を",
+        "example": "を"
+      },
+      {
+        "id": "particles-7",
+        "num": 7,
+        "question": "午前九時 ___ 公園へ行きます。(Gozen kuji ___ kōen e ikimasu.)",
+        "options": [
+          {
+            "label": "A",
+            "text": "に (ni)"
+          },
+          {
+            "label": "B",
+            "text": "で (de)"
+          },
+          {
+            "label": "C",
+            "text": "の (no)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "A specific time takes に",
+        "example": "に"
+      },
+      {
+        "id": "particles-8",
+        "num": 8,
+        "question": "九月四日 ___ 学校へ行きます。(Kugatsu yokka ___ gakkō e ikimasu.)",
+        "options": [
+          {
+            "label": "A",
+            "text": "を (o / wo)"
+          },
+          {
+            "label": "B",
+            "text": "が (ga)"
+          },
+          {
+            "label": "C",
+            "text": "に (ni)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "A specific date takes に",
+        "example": "に"
+      },
+      {
+        "id": "particles-9",
+        "num": 9,
+        "question": "家 ___ テレビを見ます。(Ie ___ terebi o mimasu.)",
+        "options": [
+          {
+            "label": "A",
+            "text": "に (ni)"
+          },
+          {
+            "label": "B",
+            "text": "で (de)"
+          },
+          {
+            "label": "C",
+            "text": "を (o / wo)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The place of an action takes で",
+        "example": "で"
+      },
+      {
+        "id": "particles-10",
+        "num": 10,
+        "question": "公園 ___ あきと話します。(Kōen ___ Aki to hanashimasu.)",
+        "options": [
+          {
+            "label": "A",
+            "text": "の (no)"
+          },
+          {
+            "label": "B",
+            "text": "が (ga)"
+          },
+          {
+            "label": "C",
+            "text": "で (de)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "The place of an action takes で",
+        "example": "で"
+      }
+    ],
+    "passages": {}
+  },
+  {
+    "category": "Grammar & Sentences",
+    "description": "Choose the most natural and correctly ordered sentence.",
+    "questions": [
+      {
+        "id": "grammar-and-sentences-1",
+        "num": 1,
+        "question": "I read a book at home.",
+        "options": [
+          {
+            "label": "A",
+            "text": "家で本を読みます。(Ie de hon o yomimasu.)"
+          },
+          {
+            "label": "B",
+            "text": "家に本が読みます。(Ie ni hon ga yomimasu.)"
+          },
+          {
+            "label": "C",
+            "text": "家を本で読みます。(Ie o hon de yomimasu.)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Place で + object を + verb",
+        "example": "家で本を読みます。"
+      },
+      {
+        "id": "grammar-and-sentences-2",
+        "num": 2,
+        "question": "Yuki watches TV at 3 p.m.",
+        "options": [
+          {
+            "label": "A",
+            "text": "ゆきは午後三時でテレビが見ます。(Yuki wa gogo sanji de terebi ga mimasu.)"
+          },
+          {
+            "label": "B",
+            "text": "ゆきは午後三時にテレビを見ます。(Yuki wa gogo sanji ni terebi o mimasu.)"
+          },
+          {
+            "label": "C",
+            "text": "ゆきの午後三時をテレビに見ます。(Yuki no gogo sanji o terebi ni mimasu.)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Time に + object を + 見ます",
+        "example": "ゆきは午後三時にテレビを見ます。"
+      },
+      {
+        "id": "grammar-and-sentences-3",
+        "num": 3,
+        "question": "Aki listens to music in the park.",
+        "options": [
+          {
+            "label": "A",
+            "text": "あきは公園で音楽を聞きます。(Aki wa kōen de ongaku o kikimasu.)"
+          },
+          {
+            "label": "B",
+            "text": "あきは公園に音楽が聞きます。(Aki wa kōen ni ongaku ga kikimasu.)"
+          },
+          {
+            "label": "C",
+            "text": "あきの公園を音楽で聞きます。(Aki no kōen o ongaku de kikimasu.)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Place で + object を + 聞きます",
+        "example": "あきは公園で音楽を聞きます。"
+      },
+      {
+        "id": "grammar-and-sentences-4",
+        "num": 4,
+        "question": "I write my name in Japanese.",
+        "options": [
+          {
+            "label": "A",
+            "text": "日本語に名前が書きます。(Nihongo ni namae ga kakimasu.)"
+          },
+          {
+            "label": "B",
+            "text": "日本語で名前を書きます。(Nihongo de namae o kakimasu.)"
+          },
+          {
+            "label": "C",
+            "text": "日本語を名前に書きます。(Nihongo o namae ni kakimasu.)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Language/method で + object を",
+        "example": "日本語で名前を書きます。"
+      },
+      {
+        "id": "grammar-and-sentences-5",
+        "num": 5,
+        "question": "There is one cat in the park.",
+        "options": [
+          {
+            "label": "A",
+            "text": "公園でねこを一匹います。(Kōen de neko o ippiki imasu.)"
+          },
+          {
+            "label": "B",
+            "text": "公園にねこが一匹います。(Kōen ni neko ga ippiki imasu.)"
+          },
+          {
+            "label": "C",
+            "text": "公園のねこで一匹います。(Kōen no neko de ippiki imasu.)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Location に + subject が + います",
+        "example": "公園にねこが一匹います。"
+      },
+      {
+        "id": "grammar-and-sentences-6",
+        "num": 6,
+        "question": "This is Yuki's blue bag.",
+        "options": [
+          {
+            "label": "A",
+            "text": "これはゆきが青いかばんです。(Kore wa Yuki ga aoi kaban desu.)"
+          },
+          {
+            "label": "B",
+            "text": "これはゆきを青いかばんです。(Kore wa Yuki o aoi kaban desu.)"
+          },
+          {
+            "label": "C",
+            "text": "これはゆきの青いかばんです。(Kore wa Yuki no aoi kaban desu.)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Owner の + description + noun",
+        "example": "これはゆきの青いかばんです。"
+      },
+      {
+        "id": "grammar-and-sentences-7",
+        "num": 7,
+        "question": "On Sunday, I go to school.",
+        "options": [
+          {
+            "label": "A",
+            "text": "日曜日に学校へ行きます。(Nichiyōbi ni gakkō e ikimasu.)"
+          },
+          {
+            "label": "B",
+            "text": "日曜日で学校を行きます。(Nichiyōbi de gakkō o ikimasu.)"
+          },
+          {
+            "label": "C",
+            "text": "日曜日の学校が行きます。(Nichiyōbi no gakkō ga ikimasu.)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Day/time に + destination へ",
+        "example": "日曜日に学校へ行きます。"
+      },
+      {
+        "id": "grammar-and-sentences-8",
+        "num": 8,
+        "question": "I talk with Aki at home.",
+        "options": [
+          {
+            "label": "A",
+            "text": "家にあきが話します。(Ie ni Aki ga hanashimasu.)"
+          },
+          {
+            "label": "B",
+            "text": "家であきと話します。(Ie de Aki to hanashimasu.)"
+          },
+          {
+            "label": "C",
+            "text": "家をあきに話します。(Ie o Aki ni hanashimasu.)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Place で + person と + 話します",
+        "example": "家であきと話します。"
+      },
+      {
+        "id": "grammar-and-sentences-9",
+        "num": 9,
+        "question": "I read a white book at 9 a.m.",
+        "options": [
+          {
+            "label": "A",
+            "text": "午前九時に白い本を読みます。(Gozen kuji ni shiroi hon o yomimasu.)"
+          },
+          {
+            "label": "B",
+            "text": "午前九時で白い本が読みます。(Gozen kuji de shiroi hon ga yomimasu.)"
+          },
+          {
+            "label": "C",
+            "text": "午前九時の白い本に読みます。(Gozen kuji no shiroi hon ni yomimasu.)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Time に + object を + 読みます",
+        "example": "午前九時に白い本を読みます。"
+      },
+      {
+        "id": "grammar-and-sentences-10",
+        "num": 10,
+        "question": "There are three dogs.",
+        "options": [
+          {
+            "label": "A",
+            "text": "犬を三頭見ます。(Inu o santou mimasu.)"
+          },
+          {
+            "label": "B",
+            "text": "犬が三匹います。(Inu ga sanbiki imasu.)"
+          },
+          {
+            "label": "C",
+            "text": "犬で三本います。(Inu de sanbon imasu.)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Subject が + counter + います",
+        "example": "犬が三匹います。"
+      }
+    ],
+    "passages": {}
+  },
+  {
+    "category": "Reading",
+    "description": "Read both passages, then answer five questions for each.",
+    "questions": [
+      {
+        "id": "reading-1",
+        "num": 1,
+        "question": "[A] What is the date?",
+        "options": [
+          {
+            "label": "A",
+            "text": "九月四日 (くがつよっか / kugatsu yokka - Sep 4)"
+          },
+          {
+            "label": "B",
+            "text": "九月十日 (くがつとおか / kugatsu tōka - Sep 10)"
+          },
+          {
+            "label": "C",
+            "text": "四月九日 (しがつここのか / shigatsu kokonoka - Apr 9)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The passage says 九月四日",
+        "example": "九月四日"
+      },
+      {
+        "id": "reading-2",
+        "num": 2,
+        "question": "[A] What day is it?",
+        "options": [
+          {
+            "label": "A",
+            "text": "木曜日 (もくようび / mokuyōbi - Thursday)"
+          },
+          {
+            "label": "B",
+            "text": "金曜日 (きんようび / kinyōbi - Friday)"
+          },
+          {
+            "label": "C",
+            "text": "日曜日 (にちようび / nichiyōbi)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The passage says 金曜日",
+        "example": "金曜日"
+      },
+      {
+        "id": "reading-3",
+        "num": 3,
+        "question": "[A] When does Yuki go to the park?",
+        "options": [
+          {
+            "label": "A",
+            "text": "午前九時 (ごぜんくじ / gozen kuji - 9:00 AM)"
+          },
+          {
+            "label": "B",
+            "text": "午前十時 (ごぜんじゅうじ / gozen jūji - 10:00 AM)"
+          },
+          {
+            "label": "C",
+            "text": "午後九時 (ごごくじ / gogo kuji - 9:00 PM)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Yuki goes at 午前九時",
+        "example": "午前九時"
+      },
+      {
+        "id": "reading-4",
+        "num": 4,
+        "question": "[A] Who does Yuki talk with?",
+        "options": [
+          {
+            "label": "A",
+            "text": "ゆき (Yuki)"
+          },
+          {
+            "label": "B",
+            "text": "先生 (せんせい / sensei - teacher)"
+          },
+          {
+            "label": "C",
+            "text": "あき (Aki)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Yuki talks with Aki",
+        "example": "あき"
+      },
+      {
+        "id": "reading-5",
+        "num": 5,
+        "question": "[A] What color is the book?",
+        "options": [
+          {
+            "label": "A",
+            "text": "白 (しろ / shiro - white)"
+          },
+          {
+            "label": "B",
+            "text": "青 (あお / ao - blue)"
+          },
+          {
+            "label": "C",
+            "text": "黒 (くろ / kuro - black)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The book is blue",
+        "example": "青"
+      },
+      {
+        "id": "reading-6",
+        "num": 6,
+        "question": "[B] What is the date?",
+        "options": [
+          {
+            "label": "A",
+            "text": "九月十日 (くがつとおか / kugatsu tōka - Sep 10)"
+          },
+          {
+            "label": "B",
+            "text": "十月九日 (じゅうがつここのか / jūgatsu kokonoka - Oct 9)"
+          },
+          {
+            "label": "C",
+            "text": "九月四日 (くがつよっか / kugatsu yokka - Sep 4)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "The passage says 九月十日",
+        "example": "九月十日"
+      },
+      {
+        "id": "reading-7",
+        "num": 7,
+        "question": "[B] What day is it?",
+        "options": [
+          {
+            "label": "A",
+            "text": "金曜日 (きんようび / kinyōbi - Friday)"
+          },
+          {
+            "label": "B",
+            "text": "木曜日 (もくようび / mokuyōbi - Thursday)"
+          },
+          {
+            "label": "C",
+            "text": "火曜日 (かようび / kayōbi)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The passage says 木曜日",
+        "example": "木曜日"
+      },
+      {
+        "id": "reading-8",
+        "num": 8,
+        "question": "[B] Where does Aki watch TV?",
+        "options": [
+          {
+            "label": "A",
+            "text": "公園 (こうえん / kōen - park)"
+          },
+          {
+            "label": "B",
+            "text": "学校 (がっこう / gakkō - school)"
+          },
+          {
+            "label": "C",
+            "text": "家 (いえ / ie - home)"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Aki watches TV at home",
+        "example": "家"
+      },
+      {
+        "id": "reading-9",
+        "num": 9,
+        "question": "[B] What does Aki do at 4 p.m.?",
+        "options": [
+          {
+            "label": "A",
+            "text": "音楽を聞きます。(Ongaku o kikimasu. - Listens to music)"
+          },
+          {
+            "label": "B",
+            "text": "テレビを見ます。(Terebi o mimasu. - Watches TV)"
+          },
+          {
+            "label": "C",
+            "text": "名前を書きます。(Namae o kakimasu. - Writes name)"
+          }
+        ],
+        "correct": "A",
+        "explanation": "At 4 p.m. Aki listens to music",
+        "example": "音楽を聞きます。"
+      },
+      {
+        "id": "reading-10",
+        "num": 10,
+        "question": "[B] Who does Aki talk with at 5 p.m.?",
+        "options": [
+          {
+            "label": "A",
+            "text": "先生 (せんせい / sensei - teacher)"
+          },
+          {
+            "label": "B",
+            "text": "ゆき (Yuki)"
+          },
+          {
+            "label": "C",
+            "text": "あき (Aki)"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Aki talks with Yuki",
+        "example": "ゆき"
+      }
+    ],
+    "passages": {
+      "Passage A": "九月四日は金曜日です。ゆきは午前九時に公園へ行きます。公園であきと話します。それから、青い本を読みます。午前十時に家へ帰ります。",
+      "Passage B": "九月十日は木曜日です。あきは午後三時に家でテレビを見ます。午後四時に音楽を聞きます。白いかばんに名前を書きます。午後五時にゆきと話します。"
+    }
+  }
+]

@@ -1,0 +1,1313 @@
+{
+  "id": "day-2",
+  "dayNumber": 2,
+  "classCode": "Class 414",
+  "theme": "Theme: The Dog (犬), Native Breeds, Counters & Big Numbers",
+  "japaneseTheme": "動物・助数詞とスライド読解 (Dōbutsu, josūshi to suraido dokkai)",
+  "subtitle": "Class 414: Dogs (犬), small animal counters (一匹〜十匹) vs big animals (一頭), kanji evolution, and big numbers up to 10,000",
+  "description": "Everything taught in Nikki's Class 414: The kanji 犬 and its look-alikes (人, 大, 犬, 太), small animal counter 匹 vs big animal counter 頭, counting dogs 1 to 10 with natural sound shifts, 10 practice sentences, Dog Day & Cat Day goroawase, and reading multi-digit numbers.",
+  "badge": "Class 414 · Native Dogs & Counters",
+  "goals": [
+    "Learn the kanji 犬 (いぬ / inu - dog) and similar kanji: 人 (ひと / hito), 大 (おおきい / ookii), 犬 (いぬ / inu), 太 (ふとい / futoi)",
+    "Know Japan has 6 native dog breeds, Shiba Inu (柴犬 / shiba inu), bark onomatopoeia ワンワン (wan wan), and Dog Fashion",
+    "Know National Dog Day (Nov 1st: 11/1 = ワンワンワン / wan-wan-wan) and Cat Day (Feb 22nd: 2/22 = ニャンニャンニャン / nyan-nyan-nyan)",
+    "Distinguish animal counters: 匹 (hiki - small animals: 犬 [inu], ねこ [neko], とり [tori]) vs 頭 (tō - large animals: うし [ushi], うま [uma])",
+    "Master counting 1 to 10 with 匹 (いっぴき / ippiki, にひき / nihiki, さんびき / sanbiki, etc.) and sound shifts",
+    "Read the 10 Class 414 reading sentences with complete Romaji and comprehension",
+    "Read multi-digit numbers: 二十八 (nijūhachi - 28), 五十四 (gojūyon - 54), 百十 (hyakujū - 110), 六百 (roppyaku - 600), 七百 (nanahyaku - 700), 二千 (nisen - 2,000), 八千 (hassen - 8,000), 一万 (ichiman - 10,000), 七万七百七十七 (70,777), 九万三千十一 (93,011)"
+  ],
+  "keyHighlights": [
+    "Kanji comparison from slide: 人 (ひと / hito - Person) -> 大 (おおきい / ookii - Big) -> 犬 (いぬ / inu · ケン / ken - Dog) -> 太 (ふとい / futoi - Thick)",
+    "Dog counter rules from slide: Small Animal = 一匹 (いっぴき / ippiki), Big Animal = 一頭 (いっとう / ittou). Dogs use 一匹!",
+    "Slide 8 animal sorting: うし (ushi) -> 一頭 (ittou), ねこ (neko) -> 一匹 (ippiki), うま (uma) -> 一頭 (ittou), とり (tori) -> 一匹 (ippiki)",
+    "National Dog Day is Nov 1st (11/1, 1 is \"ワン (wan)\") and Cat Day is Feb 22nd (2/22, cats say \"ニャ (nya)\")",
+    "Numbers from slide: 28 (二十八 / nijūhachi), 54 (五十四 / gojūyon), 700 (七百 / nanahyaku), 110 (百十 / hyakujū), 2,000 (二千 / nisen), 10,000 (一万 / ichiman), 93,011 (九万三千十一 / kyūman sanzen jūichi)"
+  ],
+  "kanjiList": [
+    {
+      "kanji": "犬",
+      "meaning": "dog",
+      "onyomi": "ケン (ken)",
+      "kunyomi": "いぬ (inu)",
+      "strokes": 4,
+      "radical": "犬",
+      "radicalClue": "Core element: 犬",
+      "examples": [
+        {
+          "word": "犬",
+          "reading": "いぬ (inu)",
+          "meaning": "dog",
+          "romaji": "inu"
+        },
+        {
+          "word": "柴犬",
+          "reading": "しばいぬ (shiba inu)",
+          "meaning": "Shiba Inu dog",
+          "romaji": "shiba inu"
+        },
+        {
+          "word": "愛犬",
+          "reading": "あいけん (aiken)",
+          "meaning": "pet dog",
+          "romaji": "aiken"
+        },
+        {
+          "word": "子犬",
+          "reading": "こいぬ (koinu)",
+          "meaning": "puppy",
+          "romaji": "koinu"
+        }
+      ]
+    },
+    {
+      "kanji": "人",
+      "meaning": "person",
+      "onyomi": "ジン・ニン (jin / nin)",
+      "kunyomi": "ひと (hito)",
+      "strokes": 2,
+      "radical": "人",
+      "radicalClue": "Core element: 人",
+      "examples": [
+        {
+          "word": "人",
+          "reading": "ひと (hito)",
+          "meaning": "person",
+          "romaji": "hito"
+        },
+        {
+          "word": "日本人",
+          "reading": "にほんじん (nihonjin)",
+          "meaning": "Japanese person",
+          "romaji": "nihonjin"
+        },
+        {
+          "word": "あの人",
+          "reading": "あのひと (ano hito)",
+          "meaning": "that person",
+          "romaji": "ano hito"
+        }
+      ]
+    },
+    {
+      "kanji": "大",
+      "meaning": "big, large",
+      "onyomi": "ダイ・タイ (dai / tai)",
+      "kunyomi": "おお(きい) (oo(kii))",
+      "strokes": 3,
+      "radical": "大",
+      "radicalClue": "Core element: 大",
+      "examples": [
+        {
+          "word": "大きい",
+          "reading": "おおきい (ookii)",
+          "meaning": "big / large",
+          "romaji": "ookii"
+        },
+        {
+          "word": "大学",
+          "reading": "だいがく (daigaku)",
+          "meaning": "university",
+          "romaji": "daigaku"
+        }
+      ]
+    },
+    {
+      "kanji": "太",
+      "meaning": "thick, fat",
+      "onyomi": "タイ・タ (tai / ta)",
+      "kunyomi": "ふと(い) (futo(i))",
+      "strokes": 4,
+      "radical": "太",
+      "radicalClue": "Core element: 太",
+      "examples": [
+        {
+          "word": "太い",
+          "reading": "ふとい (futoi)",
+          "meaning": "thick / fat",
+          "romaji": "futoi"
+        },
+        {
+          "word": "太陽",
+          "reading": "たいよう (taiyou)",
+          "meaning": "sun",
+          "romaji": "taiyou"
+        }
+      ]
+    },
+    {
+      "kanji": "匹",
+      "meaning": "small animal counter",
+      "onyomi": "ヒツ (hitsu)",
+      "kunyomi": "ひき (hiki)",
+      "strokes": 4,
+      "radical": "匹",
+      "radicalClue": "Core element: 匹",
+      "examples": [
+        {
+          "word": "一匹",
+          "reading": "いっぴき (ippiki)",
+          "meaning": "one small animal",
+          "romaji": "ippiki"
+        },
+        {
+          "word": "二匹",
+          "reading": "にひき (nihiki)",
+          "meaning": "two small animals",
+          "romaji": "nihiki"
+        },
+        {
+          "word": "三匹",
+          "reading": "さんびき (sanbiki)",
+          "meaning": "three small animals",
+          "romaji": "sanbiki"
+        }
+      ]
+    },
+    {
+      "kanji": "頭",
+      "meaning": "head, big animal counter",
+      "onyomi": "トウ・ズ (tou / zu)",
+      "kunyomi": "あたま・かしら (atama / kashira)",
+      "strokes": 16,
+      "radical": "頭",
+      "radicalClue": "Core element: 頭",
+      "examples": [
+        {
+          "word": "一頭",
+          "reading": "いっとう (ittou)",
+          "meaning": "one large animal",
+          "romaji": "ittou"
+        },
+        {
+          "word": "頭",
+          "reading": "あたま (atama)",
+          "meaning": "head",
+          "romaji": "atama"
+        }
+      ]
+    }
+  ],
+  "vocabularyList": [
+    {
+      "japanese": "犬",
+      "reading": "いぬ (inu)",
+      "english": "dog",
+      "category": "Noun",
+      "notes": "この犬はかわいい。",
+      "romaji": "inu"
+    },
+    {
+      "japanese": "柴犬",
+      "reading": "しばいぬ (shibainu)",
+      "english": "Shiba dog",
+      "category": "Noun",
+      "notes": "柴犬は日本の犬です。",
+      "romaji": "shibainu"
+    },
+    {
+      "japanese": "愛犬",
+      "reading": "あいけん (aiken)",
+      "english": "pet dog",
+      "category": "Noun",
+      "notes": "わたしの愛犬。",
+      "romaji": "aiken"
+    },
+    {
+      "japanese": "子犬",
+      "reading": "こいぬ (koinu)",
+      "english": "puppy",
+      "category": "Noun",
+      "notes": "子犬が走る。",
+      "romaji": "koinu"
+    },
+    {
+      "japanese": "ワンワン",
+      "reading": "わんわん (wanwan)",
+      "english": "woof woof (bark)",
+      "category": "Onomatopoeia",
+      "notes": "犬はワンワンといいます。",
+      "romaji": "wanwan"
+    },
+    {
+      "japanese": "犬の日",
+      "reading": "いぬのひ (inunohi)",
+      "english": "Day of the Dog (11/1)",
+      "category": "Culture",
+      "notes": "11月1日は犬の日です。",
+      "romaji": "inunohi"
+    },
+    {
+      "japanese": "猫の日",
+      "reading": "ねこのひ (nekonohi)",
+      "english": "Day of the Cat (2/22)",
+      "category": "Culture",
+      "notes": "2月22日は猫の日です。",
+      "romaji": "nekonohi"
+    },
+    {
+      "japanese": "ねこ",
+      "reading": "ねこ (neko)",
+      "english": "cat",
+      "category": "Noun",
+      "notes": "わたしはねこがすきです。",
+      "romaji": "neko"
+    },
+    {
+      "japanese": "うし",
+      "reading": "うし (ushi)",
+      "english": "cow",
+      "category": "Noun",
+      "notes": "うしが一頭います。",
+      "romaji": "ushi"
+    },
+    {
+      "japanese": "うま",
+      "reading": "うま (uma)",
+      "english": "horse",
+      "category": "Noun",
+      "notes": "うまが一頭います。",
+      "romaji": "uma"
+    },
+    {
+      "japanese": "とり",
+      "reading": "とり (tori)",
+      "english": "bird",
+      "category": "Noun",
+      "notes": "とりが一匹います。",
+      "romaji": "tori"
+    },
+    {
+      "japanese": "一匹",
+      "reading": "いっぴき (ippiki)",
+      "english": "one (small animal)",
+      "category": "Counter",
+      "notes": "ねこが一匹います。",
+      "romaji": "ippiki"
+    },
+    {
+      "japanese": "二匹",
+      "reading": "にひき (nihiki)",
+      "english": "two (small animals)",
+      "category": "Counter",
+      "notes": "犬が二匹います。",
+      "romaji": "nihiki"
+    },
+    {
+      "japanese": "三匹",
+      "reading": "さんびき (sanbiki)",
+      "english": "three (small animals)",
+      "category": "Counter",
+      "notes": "犬が三匹います。",
+      "romaji": "sanbiki"
+    },
+    {
+      "japanese": "四匹",
+      "reading": "よんひき (yonhiki)",
+      "english": "four (small animals)",
+      "category": "Counter",
+      "notes": "大きい犬が四匹います。",
+      "romaji": "yonhiki"
+    },
+    {
+      "japanese": "一頭",
+      "reading": "いっとう (ittou)",
+      "english": "one (large animal)",
+      "category": "Counter",
+      "notes": "うしが一頭います。",
+      "romaji": "ittou"
+    },
+    {
+      "japanese": "二十八",
+      "reading": "にじゅうはち (nijuuhachi)",
+      "english": "28",
+      "category": "Number",
+      "notes": "二十八人。",
+      "romaji": "nijuuhachi"
+    },
+    {
+      "japanese": "五十四",
+      "reading": "ごじゅうよん (gojuuyon)",
+      "english": "54",
+      "category": "Number",
+      "notes": "五十四円。",
+      "romaji": "gojuuyon"
+    },
+    {
+      "japanese": "七百",
+      "reading": "ななひゃく (nanahyaku)",
+      "english": "700",
+      "category": "Number",
+      "notes": "七百匹。",
+      "romaji": "nanahyaku"
+    },
+    {
+      "japanese": "百十",
+      "reading": "ひゃくじゅう (hyakujuu)",
+      "english": "110",
+      "category": "Number",
+      "notes": "百十円。",
+      "romaji": "hyakujuu"
+    },
+    {
+      "japanese": "二千",
+      "reading": "にせん (nisen)",
+      "english": "2,000",
+      "category": "Number",
+      "notes": "二千円。",
+      "romaji": "nisen"
+    },
+    {
+      "japanese": "一万",
+      "reading": "いちまん (ichiman)",
+      "english": "10,000",
+      "category": "Number",
+      "notes": "一万円。",
+      "romaji": "ichiman"
+    },
+    {
+      "japanese": "九万三千十一",
+      "reading": "きゅうまんさんぜんじゅういち (kyuumansanzenjuuichi)",
+      "english": "93,011",
+      "category": "Number",
+      "notes": "九万三千十一。",
+      "romaji": "kyuumansanzenjuuichi"
+    },
+    {
+      "japanese": "七万七百七十七",
+      "reading": "ななまんななひゃくななじゅうなな (nanamannanahyakunanajuunana)",
+      "english": "70,777",
+      "category": "Number",
+      "notes": "七万七百七十七。",
+      "romaji": "nanamannanahyakunanajuunana"
+    },
+    {
+      "japanese": "六百",
+      "reading": "ろっぴゃく (roppyaku)",
+      "english": "600",
+      "category": "Number",
+      "notes": "六百円。",
+      "romaji": "roppyaku"
+    },
+    {
+      "japanese": "八千",
+      "reading": "はっせん (hassen)",
+      "english": "8,000",
+      "category": "Number",
+      "notes": "八千円。",
+      "romaji": "hassen"
+    }
+  ],
+  "grammarNotes": [
+    {
+      "title": "Counting Rules: Small Animal (一匹) vs Big Animal (一頭)",
+      "structure": "Small Animal: 一匹（いっぴき） | Big Animal: 一頭（いっとう）",
+      "explanation": "From Slide 6 & 8: Dogs, cats, and birds use 匹 (ひき). Cows and horses use 頭 (とう).",
+      "examples": [
+        {
+          "japanese": "うし → 一頭",
+          "reading": "ushi -> ittou",
+          "english": "Cow -> 1 big animal",
+          "romaji": "ushi -> ittou"
+        },
+        {
+          "japanese": "ねこ → 一匹",
+          "reading": "neko -> ippiki",
+          "english": "Cat -> 1 small animal",
+          "romaji": "neko -> ippiki"
+        },
+        {
+          "japanese": "うま → 一頭",
+          "reading": "uma -> ittou",
+          "english": "Horse -> 1 big animal",
+          "romaji": "uma -> ittou"
+        },
+        {
+          "japanese": "とり → 一匹",
+          "reading": "tori -> ippiki",
+          "english": "Bird -> 1 small animal",
+          "romaji": "tori -> ippiki"
+        }
+      ]
+    },
+    {
+      "title": "Different ways to read 「 匹 」: ひき vs ぴき / びき",
+      "structure": "ひき (Normal/base) | ぴき/びき (natural shift)",
+      "explanation": "From Slide 7: 1匹(いっぴき), 2匹(にひき), 3匹(さんびき), 4匹(よんひき), 5匹(ごひき), 6匹(ろっぴき), 7匹(ななひき), 8匹(はっぴき), 9匹(きゅうひき), 10匹(じゅっぴき).",
+      "examples": [
+        {
+          "japanese": "犬が二匹います",
+          "reading": "inu ga nihiki imasu",
+          "english": "There are 2 dogs (Slide 9)",
+          "romaji": "inu ga nihiki imasu"
+        },
+        {
+          "japanese": "ねこが一匹います",
+          "reading": "neko ga ippiki imasu",
+          "english": "There is 1 cat (Slide 9)",
+          "romaji": "neko ga ippiki imasu"
+        },
+        {
+          "japanese": "大きい犬が四匹います",
+          "reading": "ookii inu ga yonhiki imasu",
+          "english": "There are 4 big dogs (Slide 9)",
+          "romaji": "ookii inu ga yonhiki imasu"
+        }
+      ]
+    }
+  ],
+  "readingPassages": [
+    {
+      "title": "Reading time (Slide 9 - All 10 Sentences from Nikki's Slide)",
+      "text": "1. この 犬は かわいい\n2. あなたは 犬が すきですか？\n3. わたしは ねこが すきです\n4. 犬が 二匹 います\n5. ねこが 一匹 います\n6. 犬は「ワンワン」といいます\n7. 大きい 犬が います\n8. 大きい 犬が 四匹 います\n9. あの人の ねこは かわいい\n10. あの人の 大きい 犬は こわい",
+      "translation": "1. This Dog is Cute\n2. Do you like Dogs？\n3. I like cats\n4. There are 2 dogs\n5. There is 1 cat\n6. Dogs say “Woof woof”\n7. There is a Big Dog\n8. There are 4 Big Dogs\n9. That persons Cat is Cute\n10. That persons Big Dog is Scary",
+      "romaji": "1. Kono inu wa kawaii\n2. Anata wa inu ga suki desu ka?\n3. Watashi wa neko ga suki desu\n4. Inu ga nihiki imasu\n5. Neko ga ippiki imasu\n6. Inu wa \"wan wan\" to iimasu\n7. Ookii inu ga imasu\n8. Ookii inu ga yonhiki imasu\n9. Ano hito no neko wa kawaii\n10. Ano hito no ookii inu wa kowai",
+      "questions": [
+        {
+          "q": "犬は何匹いますか？ (Inu wa nanbiki imasu ka? / How many dogs are there?)",
+          "a": "二匹 (にひき / nihiki) います。"
+        },
+        {
+          "q": "ねこは何匹いますか？ (Neko wa nanbiki imasu ka? / How many cats are there?)",
+          "a": "一匹 (いっぴき / ippiki) います。"
+        },
+        {
+          "q": "犬はなんと言いますか？ (Inu wa nan to iimasu ka? / What do dogs say?)",
+          "a": "「ワンワン (wan wan)」と言います。"
+        }
+      ]
+    }
+  ],
+  "practiceQuiz": [
+    {
+      "question": "Which counting rule is used for Dogs (犬 / inu)? (From Slide 6)",
+      "options": [
+        "一匹 (いっぴき / ippiki)",
+        "一頭 (いっとう / ittou)",
+        "一個 (いっこ / ikko)",
+        "一人 (ひとり / hitori)"
+      ],
+      "correct": "一匹 (いっぴき / ippiki)",
+      "explanation": "Slide 6 explicitly asks \"Which one is Dog?\" Answer: 一匹 (いっぴき / ippiki) for small-to-medium animals."
+    },
+    {
+      "question": "From Slide 8, which animals use 一頭 (いっとう / ittou)?",
+      "options": [
+        "うし (ushi) and うま (uma)",
+        "ねこ (neko) and とり (tori)",
+        "いぬ (inu) and ねこ (neko)",
+        "とり (tori) and うし (ushi)"
+      ],
+      "correct": "うし (ushi) and うま (uma)",
+      "explanation": "Slide 8: うし (cows) and うま (horses) are large animals and use 一頭 (いっとう / ittou), while ねこ and とり use 一匹 (いっぴき / ippiki)."
+    },
+    {
+      "question": "How is 3 dogs read? (From Slide 7)",
+      "options": [
+        "三匹 (さんびき / sanbiki)",
+        "三匹 (さんぴき / sanpiki)",
+        "三匹 (さんひき / sanhiki)",
+        "三頭 (さんとう / santou)"
+      ],
+      "correct": "三匹 (さんびき / sanbiki)",
+      "explanation": "Slide 7 shows the natural euphonic shift for 3: 三匹 (さんびき / sanbiki) with dakuten."
+    },
+    {
+      "question": "When is 犬の日 (Day of the Dog / Inu no Hi) celebrated according to Slide 3 & 10?",
+      "options": [
+        "November 1st (11/1)",
+        "February 22nd (2/22)",
+        "August 1st",
+        "December 1st"
+      ],
+      "correct": "November 1st (11/1)",
+      "explanation": "Slide 10: \"The Day of the Dog is November 1st. One is 「ワン (wan)」 in Japanese (11/1: wan-wan-wan)\"."
+    },
+    {
+      "question": "When is 猫の日 (Day of the Cat / Neko no Hi) according to Slide 10?",
+      "options": [
+        "February 22nd (2/22)",
+        "November 1st (11/1)",
+        "March 3rd",
+        "May 5th"
+      ],
+      "correct": "February 22nd (2/22)",
+      "explanation": "Slide 10: \"Cats say 「ニャ (nya)」 in Japanese (2/22: nya-nya-nya)\"."
+    },
+    {
+      "question": "What number is 二十八 (にじゅうはち / nijūhachi) from Slide 11?",
+      "options": [
+        "28",
+        "18",
+        "82",
+        "208"
+      ],
+      "correct": "28",
+      "explanation": "二十八 (ni-jū-hachi) is 20 + 8 = 28."
+    }
+  ],
+  "slides": [
+    {
+      "slideNumber": 1,
+      "title": "日本語 Class 414",
+      "category": "Title Slide",
+      "subtitle": "Update: Levelled Kana, Numbers, Kanji · By: Nikki (ニッキ)",
+      "summary": "Nikki JP Class 414 welcome and topic overview.",
+      "bullets": [
+        "日本語 Class 414",
+        "Update: Levelled Kana, Numbers, Kanji",
+        "By: Nikki (ニッキ)"
+      ],
+      "highlight": "Class 414 focuses on Kana, Numbers, and Kanji around the theme of Dogs and Counters.",
+      "blocks": [
+        [
+          "に    ほん    ご                                                   .日本語 Class 4１⃣4"
+        ],
+        [
+          "Update: Levelled Kana, Numbers, Kanji"
+        ],
+        [
+          "By: Nikki",
+          "ニッキ"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 2,
+      "title": "Todays Lecture",
+      "category": "Roadmap",
+      "subtitle": "Numbers, Hiragana, Katakana",
+      "summary": "Core topics of today's lecture.",
+      "bullets": [
+        "数字 (Numbers / すうじ)",
+        "ひらがな (Hiragana)",
+        "カタカナ (Katakana)"
+      ],
+      "highlight": "Connecting numbers and phonetic scripts through the lecture.",
+      "blocks": [
+        [
+          "Todays Lecture"
+        ],
+        [
+          "数字",
+          "ひらがな",
+          "カタカナ"
+        ],
+        [
+          "Numbers",
+          "Hiragana",
+          "Katakana"
+        ],
+        [
+          "すう じ"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 3,
+      "title": "Todays Theme: 犬・いぬ・dog",
+      "category": "Theme",
+      "subtitle": "Native dog breeds, onomatopoeia, and pet culture",
+      "summary": "Introduction to the Dog theme in Japan.",
+      "bullets": [
+        "ワンワン (wan wan) · dog barking sound",
+        "犬の日 (いぬのひ / Inu no Hi) · Nov 1st (11/1: wan-wan-wan)",
+        "柴犬 (しばいぬ / shiba inu) · Shiba dog (Japan's national dog breed)",
+        "In Japan, dogs wear shirts, hats, shoes & ride baby strollers!"
+      ],
+      "highlight": "Japan has 6 native dog breeds, and Shiba Inu (柴犬) is the featured native dog!",
+      "blocks": [
+        [
+          "Todays Theme 犬・いぬ・dog"
+        ],
+        [
+          "Japan has 6 Native Dog Breeds",
+          "ワンワン・wan wan",
+          "犬の日・いぬのひ Nov 1st",
+          "Dog Fashion is common"
+        ],
+        [
+          "しば いぬ柴犬・Shiba dog"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 4,
+      "title": "Kanji for いぬ: 犬",
+      "category": "Kanji",
+      "subtitle": "Stroke order rules applied to 犬",
+      "summary": "Practicing the 4 strokes of 犬 and calligraphy laws.",
+      "bullets": [
+        "Kanji for いぬ: 犬",
+        "Top → bottom",
+        "Left → right",
+        "Horizontal before vertical",
+        "Outside → inside",
+        "Top/left components before bottom/right components",
+        "Note: Such ワンワン, Much いぬ"
+      ],
+      "highlight": "Follow universal stroke order: Horizontal before vertical, and the dot comes last!",
+      "blocks": [
+        [
+          "Kanji for いぬ"
+        ],
+        [
+          "犬"
+        ],
+        [
+          "Top → bottom",
+          "Left → right",
+          "Horizontal before vertical",
+          "Outside → inside",
+          "Top/left components before bottom/right components"
+        ],
+        [
+          "Such ワンワン",
+          "Much いぬ"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 5,
+      "title": "Similar Kanjis: 人 → 大 → 犬 → 太",
+      "category": "Kanji Comparison",
+      "subtitle": "Kunyomi and Onyomi examples",
+      "summary": "Comparing 4 similar characters and learning their readings.",
+      "bullets": [
+        "人: ひと (hito) · Person",
+        "大: おお(きい) (ookii) · Big",
+        "犬: いぬ (inu) / ケン (ken) · Dog",
+        "太: ふと(い) (futoi) · Thick",
+        "Kunyomi / Onyomi for 犬: いぬ (inu) / ケン (ken)",
+        "  • ちいさい犬 (chiisai inu) · small dog",
+        "  • 愛犬 (あいけん / aiken) · beloved dog"
+      ],
+      "highlight": "Notice where the dot is: On the shoulder = 犬 (dog). Between the legs = 太 (thick).",
+      "blocks": [
+        [
+          "Similar Kanjis"
+        ],
+        [
+          "人 ひと・Person",
+          "大 おお（きい）・Big",
+          "犬 いぬ/ケン・Dog",
+          "太 ふと（い）・Thick"
+        ],
+        [
+          "Kunyomi / Onyomi: いぬ / ケン"
+        ],
+        [
+          "Example: ちいさい犬 ・ small dog",
+          "愛犬（あいけん） ・ beloved dog"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 6,
+      "title": "Counting Dogs・犬を数える (Rules)",
+      "category": "Counters",
+      "subtitle": "Small Animal vs Big Animal rule",
+      "summary": "Distinguishing small and large animal counters.",
+      "bullets": [
+        "Counting rule for Dogs: Which one is Dog?",
+        "  • Small Animal: 一匹 (いっぴき / ippiki)",
+        "  • Big Animal: 一頭 (いっとう / ittou)",
+        "Answer: 一匹 (いっぴき / ippiki)"
+      ],
+      "highlight": "Dogs are counted with 一匹 (いっぴき), NOT 一頭!",
+      "blocks": [
+        [
+          "いぬ かぞCounting Dogs・犬を数える"
+        ],
+        [
+          "Counting Rules:",
+          "Small Animal: 一匹（いっぴき）",
+          "Big Animal: 一頭（いっとう）"
+        ],
+        [
+          "Which one is Dog? Answer: 一匹"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 7,
+      "title": "Counting Dogs・犬を数える (1 to 10)",
+      "category": "Counters",
+      "subtitle": "Readings of 匹: ひき vs ぴき / びき",
+      "summary": "Mastering the 1 to 10 counting of dogs with 匹.",
+      "bullets": [
+        "1 Dog: 一匹 (いっぴき / ippiki) [natural shift to ぴき (piki)]",
+        "2 Dogs: 二匹 (にひき / nihiki)",
+        "3 Dogs: 三匹 (さんびき / sanbiki) [natural shift to びき (biki)]",
+        "4 Dogs: 四匹 (よんひき / yonhiki)",
+        "5 Dogs: 五匹 (ごひき / gohiki)",
+        "6 Dogs: 六匹 (ろっぴき / roppiki) [natural shift to ぴき (piki)]",
+        "7 Dogs: 七匹 (ななひき / nanahiki)",
+        "8 Dogs: 八匹 (はっぴき / happiki) [natural shift to ぴき (piki)]",
+        "9 Dogs: 九匹 (きゅうひき / kyūhiki)",
+        "10 Dogs: 十匹 (じゅっぴき / juppiki) [natural shift to ぴき (piki)]",
+        "Different ways to read 「 匹 」: ひき (hiki / base), ぴき (piki) / びき (biki) (natural euphonic shifts)"
+      ],
+      "highlight": "Phonetic shift summary: 1, 6, 8, 10 shift to ぴき (piki). 3 shifts to びき (biki). Others use ひき (hiki).",
+      "blocks": [
+        [
+          "いぬ かぞCounting Dogs・犬を数える"
+        ],
+        [
+          "1 Dog: 一匹（いっぴき）",
+          "2 Dog: 二匹（にひき）",
+          "3 Dog: 三匹（さんびき）",
+          "4 Dog: 四匹（よんひき）",
+          "5 Dog: 五匹（ごひき）",
+          "6 Dog: 六匹（ろっぴき）",
+          "7 Dog: 七匹（ななひき）",
+          "8 Dog: 八匹（はっぴき）",
+          "9 Dog: 九匹（きゅうひき）",
+          "10 Dog: 十匹（じゅっぴき）"
+        ],
+        [
+          "Different ways to read 「 匹 」: ひき (Normal/base), ぴき/びき (natural shift)"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 8,
+      "title": "一匹 or 一頭 (Sorting Animals)",
+      "category": "Practice",
+      "subtitle": "Classifying the 4 animals from Nikki's slide",
+      "summary": "Testing which animal takes 一匹 vs 一頭.",
+      "bullets": [
+        "うし (ushi / Cow) → 一頭 (いっとう / ittou)",
+        "ねこ (neko / Cat) → 一匹 (いっぴき / ippiki)",
+        "うま (uma / Horse) → 一頭 (いっとう / ittou)",
+        "とり (tori / Bird) → 一匹 (いっぴき / ippiki)"
+      ],
+      "highlight": "From Nikki's slide: うし and うま use 一頭; ねこ and とり use 一匹.",
+      "blocks": [
+        [
+          "いっ ぴき 　いっ とう一匹 or 一頭"
+        ],
+        [
+          "うし → 一頭"
+        ],
+        [
+          "ねこ → 一匹"
+        ],
+        [
+          "うま → 一頭"
+        ],
+        [
+          "とり → 一匹"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 9,
+      "title": "Reading time (10 Sentences)",
+      "category": "Reading",
+      "subtitle": "All 10 authentic sentences from Nikki's slide",
+      "summary": "Practicing reading aloud the 10 sentences with English translations.",
+      "bullets": [
+        "1. この 犬は かわいい (Kono inu wa kawaii) — This Dog is Cute",
+        "2. あなたは 犬が すきですか？ (Anata wa inu ga suki desu ka?) — Do you like Dogs？",
+        "3. わたしは ねこが すきです (Watashi wa neko ga suki desu) — I like cats",
+        "4. 犬が 二匹 います (Inu ga nihiki imasu) — There are 2 dogs",
+        "5. ねこが 一匹 います (Neko ga ippiki imasu) — There is 1 cat",
+        "6. 犬は「ワンワン」といいます (Inu wa \"wan wan\" to iimasu) — Dogs say “Woof woof”",
+        "7. 大きい 犬が います (Ookii inu ga imasu) — There is a Big Dog",
+        "8. 大きい 犬が 四匹 います (Ookii inu ga yonhiki imasu) — There are 4 Big Dogs",
+        "9. あの人の ねこは かわいい (Ano hito no neko wa kawaii) — That person's Cat is Cute",
+        "10. あの人の 大きい 犬は こわい (Ano hito no ookii inu wa kowai) — That person's Big Dog is Scary"
+      ],
+      "highlight": "These 10 sentences combine adjectives (かわいい, こわい, 大きい), counters (一匹, 二匹, 四匹), and existence verb います.",
+      "blocks": [
+        [
+          "Reading time"
+        ],
+        [
+          "この　犬は　かわいい",
+          "あなたは　犬が　すきですか？",
+          "わたしは　ねこが　すきです",
+          "犬が　二匹　います",
+          "ねこが　一匹　います",
+          "犬は「ワンワン」といいます",
+          "大きい　犬が　います",
+          "大きい　犬が　四匹　います",
+          "あの人の　ねこは　かわいい",
+          "あの人の　大きい　犬は　こわい"
+        ],
+        [
+          "This Dog is Cute",
+          "Do you like Dogs？",
+          "I like cats",
+          "There are 2 dogs",
+          "There is 1 cat",
+          "Dogs say “Woof woof”",
+          "There is a Big Dog",
+          "There are 4 Big Dogs",
+          "That persons Cat is Cute",
+          "That persons Big Dog is Scary"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 10,
+      "title": "犬の日・いぬのひ",
+      "category": "Culture",
+      "subtitle": "Day of the Dog & Day of the Cat",
+      "summary": "Cultural wordplay for pet celebration dates.",
+      "bullets": [
+        "The Day of the Dog is November 1st (犬の日 / いぬのひ / Inu no Hi)",
+        "“One” is 「ワン (wan)」 in Japanese: 11/1 (ワンワンワン / wan-wan-wan)",
+        "When is 猫の日 (ねこのひ / Neko no Hi - Day of the Cat)?",
+        "Cats say 「ニャ (nya)」 in Japanese: 2/22 (ニャンニャンニャン / nyan-nyan-nyan) = February 22nd"
+      ],
+      "highlight": "11/1 sounds like ワン (1) and 2/22 sounds like ニャ (2)!",
+      "blocks": [
+        [
+          "犬の日・いぬのひ"
+        ],
+        [
+          "The Day of the Dog is November 1st"
+        ],
+        [
+          "“One” is 「ワン」in Japanese 1/11"
+        ],
+        [
+          "When is 猫の日・ねこのひ （Day of the Cat）？"
+        ],
+        [
+          "Cats say「ニャ」in Japanese 2/2"
+        ],
+        [
+          "(Not public holiday)"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 11,
+      "title": "Numbers",
+      "category": "Numbers",
+      "subtitle": "The 10 multi-digit numbers from Nikki's slide",
+      "summary": "Reading 2-digit, 3-digit, 4-digit, and 5-digit numbers.",
+      "bullets": [
+        "二十八 (28 - にじゅうはち / nijūhachi)",
+        "五十四 (54 - ごじゅうよん / gojūyon)",
+        "七百 (700 - ななひゃく / nanahyaku)",
+        "百十 (110 - ひゃくじゅう / hyakujū)",
+        "二千 (2,000 - にせん / nisen)",
+        "一万 (10,000 - いちまん / ichiman)",
+        "九万三千十一 (93,011 - きゅうまんさんぜんじゅういち / kyūman sanzen jūichi)",
+        "七万七百七十七 (70,777 - ななまんななひゃくななじゅうなな / nanamanna nahyakunanajūnana)",
+        "六百 (600 - ろっぴゃく / roppyaku)",
+        "八千 (8,000 - はっせん / hassen)"
+      ],
+      "highlight": "Spot the irregular sound changes: 600 is ろっぴゃく, 8,000 is はっせん, and 10,000 is 一万 (いちまん).",
+      "blocks": [
+        [
+          "Numbers"
+        ],
+        [
+          "二十八",
+          "五十四",
+          "七百",
+          "百十",
+          "二千"
+        ],
+        [
+          "一万",
+          "九万三千十一",
+          "七万七百七十七",
+          "六百",
+          "八千"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 12,
+      "title": "Download homework stuff",
+      "category": "Homework",
+      "subtitle": "Course material download reminder",
+      "summary": "Download class files and worksheets.",
+      "bullets": [
+        "Download homework stuff from class portal"
+      ],
+      "highlight": "Make sure you have your homework materials downloaded.",
+      "blocks": [
+        [
+          "Download homework stuff"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 13,
+      "title": "宿題・Homework (N5 Lessons)",
+      "category": "Homework",
+      "subtitle": "Complete following N5 Lessons",
+      "summary": "Lesson checklist from Nikki's slide.",
+      "bullets": [
+        "Complete following N5 Lessons:",
+        "  • Lesson 1",
+        "  • Lesson 2",
+        "  • Lesson 3",
+        "  • Lesson 4",
+        "  • Lesson 5"
+      ],
+      "highlight": "Focus on Lessons 1 through 5.",
+      "blocks": [
+        [
+          "しゅく    だい 宿  題・Homework"
+        ],
+        [
+          "Complete following N5 Lessons"
+        ],
+        [
+          "Lesson 1",
+          "Lesson 2",
+          "Lesson 3",
+          "Lesson 4",
+          "Lesson 5"
+        ]
+      ]
+    },
+    {
+      "slideNumber": 14,
+      "title": "宿題・Homework (Personalized Work)",
+      "category": "Homework",
+      "subtitle": "Customized 25 questions quiz",
+      "summary": "Personalized quiz instructions from Nikki's slide.",
+      "bullets": [
+        "Personalized work",
+        "Choose Practice",
+        "Quiz scope: Customized",
+        "Kana type selection: Choose your own preferences (Hiragana or Katakana, Basic only or include Dakuon, Handakuon, Youon)",
+        "25 Questions"
+      ],
+      "highlight": "25 Questions in personalized practice mode!",
+      "blocks": [
+        [
+          "しゅく    だい 宿  題・Homework"
+        ],
+        [
+          "Personalized work"
+        ],
+        [
+          "Choose Practice",
+          "Quiz scope: Customized",
+          "Kana type selection:",
+          "- Choose your own preferences",
+          "Hiragana or Katakana",
+          "Basic only or include Dakuon, Handakuon, Youon",
+          "25 Questions"
+        ]
+      ]
+    }
+  ],
+  "vocabulary": [
+    {
+      "id": "v2-1",
+      "kanji": "犬",
+      "furigana": "いぬ",
+      "romaji": "inu",
+      "english": "dog",
+      "type": "Noun",
+      "example": "この犬はかわいい。"
+    },
+    {
+      "id": "v2-2",
+      "kanji": "柴犬",
+      "furigana": "しばいぬ",
+      "romaji": "shibainu",
+      "english": "Shiba dog",
+      "type": "Noun",
+      "example": "柴犬は日本の犬です。"
+    },
+    {
+      "id": "v2-3",
+      "kanji": "愛犬",
+      "furigana": "あいけん",
+      "romaji": "aiken",
+      "english": "pet dog",
+      "type": "Noun",
+      "example": "わたしの愛犬。"
+    },
+    {
+      "id": "v2-4",
+      "kanji": "子犬",
+      "furigana": "こいぬ",
+      "romaji": "koinu",
+      "english": "puppy",
+      "type": "Noun",
+      "example": "子犬が走る。"
+    },
+    {
+      "id": "v2-5",
+      "kanji": "ワンワン",
+      "furigana": "わんわん",
+      "romaji": "wan wan",
+      "english": "woof woof (bark)",
+      "type": "Onomatopoeia",
+      "example": "犬はワンワンといいます。"
+    },
+    {
+      "id": "v2-6",
+      "kanji": "犬の日",
+      "furigana": "いぬのひ",
+      "romaji": "inu no hi",
+      "english": "Day of the Dog (11/1)",
+      "type": "Culture",
+      "example": "11月1日は犬の日です。"
+    },
+    {
+      "id": "v2-7",
+      "kanji": "猫の日",
+      "furigana": "ねこのひ",
+      "romaji": "neko no hi",
+      "english": "Day of the Cat (2/22)",
+      "type": "Culture",
+      "example": "2月22日は猫の日です。"
+    },
+    {
+      "id": "v2-8",
+      "kanji": "ねこ",
+      "furigana": "ねこ",
+      "romaji": "neko",
+      "english": "cat",
+      "type": "Noun",
+      "example": "わたしはねこがすきです。"
+    },
+    {
+      "id": "v2-9",
+      "kanji": "うし",
+      "furigana": "うし",
+      "romaji": "ushi",
+      "english": "cow",
+      "type": "Noun",
+      "example": "うしが一頭います。"
+    },
+    {
+      "id": "v2-10",
+      "kanji": "うま",
+      "furigana": "うま",
+      "romaji": "uma",
+      "english": "horse",
+      "type": "Noun",
+      "example": "うまが一頭います。"
+    },
+    {
+      "id": "v2-11",
+      "kanji": "とり",
+      "furigana": "とり",
+      "romaji": "tori",
+      "english": "bird",
+      "type": "Noun",
+      "example": "とりが一匹います。"
+    },
+    {
+      "id": "v2-12",
+      "kanji": "一匹",
+      "furigana": "いっぴき",
+      "romaji": "ippiki",
+      "english": "one (small animal)",
+      "type": "Counter",
+      "example": "ねこが一匹います。"
+    },
+    {
+      "id": "v2-13",
+      "kanji": "二匹",
+      "furigana": "にひき",
+      "romaji": "nihiki",
+      "english": "two (small animals)",
+      "type": "Counter",
+      "example": "犬が二匹います。"
+    },
+    {
+      "id": "v2-14",
+      "kanji": "三匹",
+      "furigana": "さんびき",
+      "romaji": "sanbiki",
+      "english": "three (small animals)",
+      "type": "Counter",
+      "example": "犬が三匹います。"
+    },
+    {
+      "id": "v2-15",
+      "kanji": "四匹",
+      "furigana": "よんひき",
+      "romaji": "yonhiki",
+      "english": "four (small animals)",
+      "type": "Counter",
+      "example": "大きい犬が四匹います。"
+    },
+    {
+      "id": "v2-16",
+      "kanji": "一頭",
+      "furigana": "いっとう",
+      "romaji": "ittou",
+      "english": "one (large animal)",
+      "type": "Counter",
+      "example": "うしが一頭います。"
+    },
+    {
+      "id": "v2-17",
+      "kanji": "二十八",
+      "furigana": "にじゅうはち",
+      "romaji": "nijuuhachi",
+      "english": "28",
+      "type": "Number",
+      "example": "二十八人。"
+    },
+    {
+      "id": "v2-18",
+      "kanji": "五十四",
+      "furigana": "ごじゅうよん",
+      "romaji": "gojuuyon",
+      "english": "54",
+      "type": "Number",
+      "example": "五十四円。"
+    },
+    {
+      "id": "v2-19",
+      "kanji": "七百",
+      "furigana": "ななひゃく",
+      "romaji": "nanahyaku",
+      "english": "700",
+      "type": "Number",
+      "example": "七百匹。"
+    },
+    {
+      "id": "v2-20",
+      "kanji": "百十",
+      "furigana": "ひゃくじゅう",
+      "romaji": "hyakujuu",
+      "english": "110",
+      "type": "Number",
+      "example": "百十円。"
+    },
+    {
+      "id": "v2-21",
+      "kanji": "二千",
+      "furigana": "にせん",
+      "romaji": "nisen",
+      "english": "2,000",
+      "type": "Number",
+      "example": "二千円。"
+    },
+    {
+      "id": "v2-22",
+      "kanji": "一万",
+      "furigana": "いちまん",
+      "romaji": "ichiman",
+      "english": "10,000",
+      "type": "Number",
+      "example": "一万円。"
+    },
+    {
+      "id": "v2-23",
+      "kanji": "九万三千十一",
+      "furigana": "きゅうまんさんぜんじゅういち",
+      "romaji": "kyuumansanzenjuuichi",
+      "english": "93,011",
+      "type": "Number",
+      "example": "九万三千十一。"
+    },
+    {
+      "id": "v2-24",
+      "kanji": "七万七百七十七",
+      "furigana": "ななまんななひゃくななじゅうなな",
+      "romaji": "nanamannanahyakunanajuunana",
+      "english": "70,777",
+      "type": "Number",
+      "example": "七万七百七十七。"
+    },
+    {
+      "id": "v2-25",
+      "kanji": "六百",
+      "furigana": "ろっぴゃく",
+      "romaji": "roppyaku",
+      "english": "600",
+      "type": "Number",
+      "example": "六百円。"
+    },
+    {
+      "id": "v2-26",
+      "kanji": "八千",
+      "furigana": "はっせん",
+      "romaji": "hassen",
+      "english": "8,000",
+      "type": "Number",
+      "example": "八千円。"
+    }
+  ],
+  "kanji": [
+    {
+      "kanji": "犬",
+      "onyomi": "ケン",
+      "kunyomi": "いぬ",
+      "meaning": "dog",
+      "strokes": 4,
+      "examples": [
+        "犬",
+        "柴犬",
+        "愛犬",
+        "子犬"
+      ]
+    },
+    {
+      "kanji": "人",
+      "onyomi": "ジン・ニン",
+      "kunyomi": "ひと",
+      "meaning": "person",
+      "strokes": 2,
+      "examples": [
+        "人",
+        "日本人",
+        "あの人"
+      ]
+    },
+    {
+      "kanji": "大",
+      "onyomi": "ダイ・タイ",
+      "kunyomi": "おお(きい)",
+      "meaning": "big, large",
+      "strokes": 3,
+      "examples": [
+        "大きい",
+        "大学"
+      ]
+    },
+    {
+      "kanji": "太",
+      "onyomi": "タイ・タ",
+      "kunyomi": "ふと(い)",
+      "meaning": "thick, fat",
+      "strokes": 4,
+      "examples": [
+        "太い",
+        "太陽"
+      ]
+    },
+    {
+      "kanji": "匹",
+      "onyomi": "ヒツ",
+      "kunyomi": "ひき",
+      "meaning": "small animal counter",
+      "strokes": 4,
+      "examples": [
+        "一匹",
+        "二匹",
+        "三匹"
+      ]
+    },
+    {
+      "kanji": "頭",
+      "onyomi": "トウ・ズ",
+      "kunyomi": "あたま・かしら",
+      "meaning": "head, big animal counter",
+      "strokes": 16,
+      "examples": [
+        "一頭",
+        "頭"
+      ]
+    }
+  ]
+}
