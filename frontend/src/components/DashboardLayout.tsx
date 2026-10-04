@@ -18,7 +18,8 @@ import {
   Home,
   ChevronDown,
   Sparkles,
-  Zap
+  Zap,
+  Mic
 } from 'lucide-react';
 import audio from '../utils/audio';
 import { UserProfile } from '../services/api';
@@ -97,6 +98,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
   const navItems: { id: string; label: string; icon: any; badge?: number | string }[] = [
     { id: 'overview', label: 'Overview', icon: LayoutGrid },
+    { id: 'speaking', label: 'Speaking', icon: Mic },
     { id: 'nikki', label: 'Nikki', icon: Sparkles },
     { id: 'courses', label: 'Courses', icon: GraduationCap },
     { id: 'lessons', label: 'Lessons', icon: BookOpen },

@@ -16,6 +16,7 @@ import { SearchModal } from './components/SearchModal';
 import { AuthModal } from './components/AuthModal';
 import { AuthPage } from './components/AuthPage';
 import { NikkiLearningsView } from './components/NikkiLearningsView';
+import { SpeakingView } from './components/SpeakingView';
 import { api, UserProfile, checkServerHealth } from './services/api';
 import audio from './utils/audio';
 import { Mail, ShieldCheck, LogOut, UserPlus } from 'lucide-react';
@@ -377,6 +378,16 @@ export function App() {
               onGainXp={(xp) => handleGainXp(xp, undefined, 20)}
               leaderboardList={leaderboardList}
             />
+          )}
+
+          {activeTab === 'speaking' && (
+            <div className="space-y-8 animate-fade-in">
+              <SpeakingView
+                theme={theme}
+                showFurigana={showFurigana}
+                onGainXp={(xp) => handleGainXp(xp, undefined, 20)}
+              />
+            </div>
           )}
 
           {activeTab === 'nikki' && (

@@ -90,6 +90,13 @@ export const AniLearnHome: React.FC<AniLearnHomeProps> = ({
             Quizzes
           </button>
           <button 
+            onClick={() => { audio.playClick(); onEnterApp('speaking'); }}
+            className="px-4 py-1.5 rounded-full hover:text-[#FF5E3A] transition cursor-pointer flex items-center gap-1.5"
+          >
+            <span>Speaking</span>
+            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-orange-500/20 text-[#FF5E3A] font-bold">New</span>
+          </button>
+          <button 
             onClick={() => { audio.playClick(); onEnterApp('nikki'); }}
             className="px-4 py-1.5 rounded-full hover:text-[#FF5E3A] transition cursor-pointer flex items-center gap-1.5"
           >

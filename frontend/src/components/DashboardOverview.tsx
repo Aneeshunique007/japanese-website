@@ -4,7 +4,8 @@ import {
   Clock, 
   BookOpen, 
   Layers,
-  Sparkles
+  Sparkles,
+  Mic
 } from 'lucide-react';
 import audio from '../utils/audio';
 import { api, UserProfile } from '../services/api';
@@ -311,6 +312,46 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
           <div className="flex items-center gap-3 shrink-0 pt-1 sm:pt-0">
             <span className="text-xs font-bold text-[#FF5E3A] group-hover:translate-x-1 transition-transform flex items-center gap-1">
               <span>Explore Nikki Learnings</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* JAPANESE SPEAKING PRACTICE SPOTLIGHT */}
+      <div 
+        onClick={() => {
+          audio.playClick();
+          onNavigate('speaking');
+        }}
+        className={`p-4 sm:p-6 rounded-2xl sm:rounded-3xl border transition cursor-pointer group relative overflow-hidden ${
+          theme === 'dark'
+            ? 'bg-gradient-to-r from-emerald-950/30 via-[#17171C] to-[#121217] border-emerald-500/30 hover:border-emerald-500/60'
+            : 'bg-gradient-to-r from-emerald-50/80 via-white to-teal-50/50 border-emerald-200 hover:border-emerald-300 shadow-sm'
+        }`}
+      >
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2">
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500 text-white flex items-center gap-1">
+                <Mic className="w-3 h-3 animate-pulse" />
+                <span>AI Voice Lab</span>
+              </span>
+              <span className="text-xs font-bold font-jp text-emerald-500">
+                発音練習 · Speaking Practice
+              </span>
+            </div>
+            <h3 className="text-base sm:text-lg font-black font-heading text-slate-900 dark:text-white group-hover:text-emerald-500 transition">
+              Particle Speaking Mastery & Self-Intro Builder
+            </h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xl">
+              Speak 50 sentences per particle (Easy to Hard), get instant voice recognition feedback, and practice your personalized self-introduction (Adami Innovations & Aneesh).
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0 pt-1 sm:pt-0">
+            <span className="text-xs font-bold text-emerald-500 group-hover:translate-x-1 transition-transform flex items-center gap-1">
+              <span>Start Speaking</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </span>
           </div>
