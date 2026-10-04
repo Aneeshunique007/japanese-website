@@ -28,40 +28,30 @@ import {
   SelfIntroSentence
 } from '../data/speakingParticlesData';
 
+import {
+  type SpeakingSession,
+  LEGACY_INTRO_KEY,
+  LEGACY_PARTICLES_KEY,
+  introKeyFor,
+  particlesKeyFor,
+  introProgressKeyFor,
+  getCurrentUserId,
+  loadJson,
+  saveJson,
+  loadSession,
+  saveSession,
+  readUserScoped,
+  findNextUnmastered,
+  resolveResumeIndex,
+  nextUnmasteredAfter,
+  markParticleMastered,
+  markIntroMastered
+} from '../utils/speakingProgress';
+
 interface SpeakingViewProps {
   theme: 'dark' | 'light';
   showFurigana?: boolean;
   onGainXp?: (amount: number) => void;
-}
-
-// Resolve the currently logged-in user's id so speaking data is stored per profile
-function getCurrentUserId(): string {
-  try {
-    const raw = localStorage.getItem('anilearn_auth_user');
-    if (raw) {
-      const u = JSON.parse(raw);
-      if (u && u.id) return String(u.id);
-    }
-  } catch {}
-  return 'guest';
-}
-
-const LEGACY_INTRO_KEY = 'anilearn_self_intro_profile';
-const LEGACY_PARTICLES_KEY = 'anilearn_speaking_particles_progress';
-const introKeyFor = (uid: string) => `${LEGACY_INTRO_KEY}_${uid}`;
-const particlesKeyFor = (uid: string) => `${LEGACY_PARTICLES_KEY}_${uid}`;
-
-// Read per-user value, migrating the old global key once if present
-function readUserScoped(userKey: string, legacyKey: string): string | null {
-  const scoped = localStorage.getItem(userKey);
-  if (scoped) return scoped;
-  const legacy = localStorage.getItem(legacyKey);
-  if (legacy) {
-    localStorage.setItem(userKey, legacy);
-    localStorage.removeItem(legacyKey);
-    return legacy;
-  }
-  return null;
 }
 
 // Helper to normalize Japanese text for speech recognition comparison
@@ -113,12 +103,13 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
   theme,
   onGainXp
 }) => {
-  const [activeMode, setActiveMode] = useState<'particles' | 'self-intro'>('particles');
+  const [userId] = useState<string>(() => getCurrentUserId());
+  const [initialSession] = useState<Partial<SpeakingSession>>(() => loadSession());
+  const [activeMode, setActiveMode] = useState<'particles' | 'self-intro'>(
+    initialSession.activeMode === 'self-intro' ? 'self-intro' : 'particles'
+  );
 
   // Particle practice state
-  const [selectedParticleId, setSelectedParticleId] = useState<string>('wa');
-  const [sentenceIndex, setSentenceIndex] = useState<number>(0);
-  const [userId] = useState<string>(() => getCurrentUserId());
   const [completedSentences, setCompletedSentences] = useState<Record<string, number[]>>(() => {
     try {
       const saved = readUserScoped(particlesKeyFor(getCurrentUserId()), LEGACY_PARTICLES_KEY);
@@ -127,6 +118,23 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
       return {};
     }
   });
+  const [selectedParticleId, setSelectedParticleId] = useState<string>(() => {
+    const id = initialSession.selectedParticleId;
+    return id && SPEAKING_PARTICLES_DATA.some((p) => p.id === id) ? id : 'wa';
+  });
+  // Resume on the saved sentence, or the first one not yet mastered
+  const [sentenceIndex, setSentenceIndex] = useState<number>(() => {
+    const pid = initialSession.selectedParticleId && SPEAKING_PARTICLES_DATA.some((p) => p.id === initialSession.selectedParticleId)
+      ? initialSession.selectedParticleId
+      : 'wa';
+    const particle = SPEAKING_PARTICLES_DATA.find((p) => p.id === pid) || SPEAKING_PARTICLES_DATA[0];
+    const done = loadJson<Record<string, number[]>>(particlesKeyFor(getCurrentUserId()), {})[particle.id] || [];
+    return resolveResumeIndex(particle.sentences, initialSession.sentenceIndex, (s) => done.includes(s.id));
+  });
+  // Self-intro sentences spoken correctly (keyed by Japanese text so edited answers reset naturally)
+  const [completedIntro, setCompletedIntro] = useState<string[]>(() =>
+    loadJson<string[]>(introProgressKeyFor(getCurrentUserId()), [])
+  );
 
   // Speech Recognition state
   const [isListening, setIsListening] = useState<boolean>(false);
@@ -153,10 +161,22 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
       return false;
     }
   });
-  const [selfIntroIndex, setSelfIntroIndex] = useState<number>(0);
+  const [selfIntroIndex, setSelfIntroIndex] = useState<number>(() => {
+    const sentences = generateSelfIntroSentences(
+      { ...DEFAULT_SELF_INTRO_PROFILE, ...loadJson<Partial<SelfIntroProfile>>(introKeyFor(getCurrentUserId()), {}) }
+    );
+    const done = loadJson<string[]>(introProgressKeyFor(getCurrentUserId()), []);
+    return resolveResumeIndex(sentences, initialSession.selfIntroIndex, (s) => done.includes(s.japanese));
+  });
   const [copiedIntro, setCopiedIntro] = useState<boolean>(false);
 
   const recognitionRef = useRef<any>(null);
+
+  // Live refs so delayed callbacks (auto-advance after success) see the latest progress
+  const completedSentencesRef = useRef(completedSentences);
+  completedSentencesRef.current = completedSentences;
+  const completedIntroRef = useRef(completedIntro);
+  completedIntroRef.current = completedIntro;
 
   // Active particle and sentence
   const currentParticle: ParticleSpeakingLesson =
@@ -168,14 +188,21 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
   const introSentences: SelfIntroSentence[] = generateSelfIntroSentences(selfIntroProfile);
   const currentIntroSentence: SelfIntroSentence = introSentences[selfIntroIndex] || introSentences[0];
 
-  // Initialize Speech Recognition
+  // Persist where the user is so they resume here after logging back in
+  useEffect(() => {
+    saveSession(userId, { activeMode, selectedParticleId, sentenceIndex, selfIntroIndex });
+  }, [userId, activeMode, selectedParticleId, sentenceIndex, selfIntroIndex]);
+
+  // Track whether the user manually stopped the mic on the current sentence
+  const userStoppedRef = useRef<boolean>(false);
+
+  // Initialize Speech Recognition once
   useEffect(() => {
     const SpeechRec = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SpeechRec) {
       setSpeechSupported(false);
       return;
     }
-
     try {
       const recognizer = new SpeechRec();
       recognizer.continuous = false;
@@ -195,7 +222,6 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
           transcript += event.results[i][0].transcript;
         }
         setSpokenTranscript(transcript);
-
         if (event.results[0].isFinal) {
           evaluateSpokenSpeech(transcript);
         }
@@ -215,15 +241,36 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
       console.warn('Could not initialize Speech Recognition:', e);
       setSpeechSupported(false);
     }
-
     return () => {
-      if (recognitionRef.current) {
-        try {
-          recognitionRef.current.abort();
-        } catch {}
-      }
+      try { recognitionRef.current?.abort(); } catch {}
     };
-  }, [activeMode, selectedParticleId, sentenceIndex, selfIntroIndex]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Auto-start mic whenever the sentence changes (unless user stopped it manually)
+  useEffect(() => {
+    if (!speechSupported || !recognitionRef.current || (activeMode === 'self-intro' && isEditingProfile)) return;
+    userStoppedRef.current = false;
+    // Small delay to let the browser finish any in-progress recognition session
+    const t = setTimeout(() => {
+      if (userStoppedRef.current) return;
+      try {
+        recognitionRef.current.start();
+      } catch {
+        try { recognitionRef.current.stop(); } catch {}
+        setTimeout(() => {
+          if (!userStoppedRef.current) {
+            try { recognitionRef.current.start(); } catch {}
+          }
+        }, 300);
+      }
+    }, 400);
+    return () => {
+      clearTimeout(t);
+      try { recognitionRef.current?.abort(); } catch {}
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeMode, selectedParticleId, sentenceIndex, selfIntroIndex, isEditingProfile]);
 
   // Evaluate speech against the current target sentence
   const evaluateSpokenSpeech = (transcript: string) => {
@@ -243,25 +290,57 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
 
       if (activeMode === 'particles') {
         saveParticleProgress(currentParticle.id, currentSentence.id);
+      } else {
+        saveIntroProgress(currentIntroSentence.japanese);
       }
-
-      // Automatically advance after a moment
-      setTimeout(() => {
-        handleNextSentence();
-      }, 1500);
+      // Stay on this sentence — the learner moves on by pressing Next
     }
   };
 
   const saveParticleProgress = (particleId: string, sId: number) => {
-    setCompletedSentences((prev) => {
-      const existing = prev[particleId] || [];
-      if (!existing.includes(sId)) {
-        const next = { ...prev, [particleId]: [...existing, sId] };
-        localStorage.setItem(particlesKeyFor(userId), JSON.stringify(next));
-        return next;
+    const prev = completedSentencesRef.current;
+    const next = markParticleMastered(prev, particleId, sId);
+    if (next === prev) return;
+    completedSentencesRef.current = next;
+    saveJson(particlesKeyFor(userId), next);
+    setCompletedSentences(next);
+  };
+
+  const saveIntroProgress = (japanese: string) => {
+    const prev = completedIntroRef.current;
+    const next = markIntroMastered(prev, japanese);
+    if (next === prev) return;
+    completedIntroRef.current = next;
+    saveJson(introProgressKeyFor(userId), next);
+    setCompletedIntro(next);
+  };
+
+  const advanceToNextUnmastered = () => {
+    audio.playClick();
+    // Stop any in-progress recognition; the auto-start effect fires fresh on the new sentence
+    userStoppedRef.current = false;
+    try { recognitionRef.current?.abort(); } catch {}
+    setSpokenTranscript('');
+    setSpeechScore(null);
+    setIsSuccessFeedback(false);
+
+    if (activeMode === 'particles') {
+      const done = completedSentencesRef.current[currentParticle.id] || [];
+      const next = nextUnmasteredAfter(currentParticle.sentences, sentenceIndex, (s) => done.includes(s.id));
+      if (next === -1) {
+        confetti({ particleCount: 120, spread: 100 });
+      } else {
+        setSentenceIndex(next);
       }
-      return prev;
-    });
+    } else {
+      const done = completedIntroRef.current;
+      const next = nextUnmasteredAfter(introSentences, selfIntroIndex, (s) => done.includes(s.japanese));
+      if (next === -1) {
+        confetti({ particleCount: 120, spread: 100 });
+      } else {
+        setSelfIntroIndex(next);
+      }
+    }
   };
 
   const handleStartSpeaking = () => {
@@ -270,6 +349,7 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
       return;
     }
     audio.playClick();
+    userStoppedRef.current = false;
     setSpeechScore(null);
     setIsSuccessFeedback(false);
     setSpokenTranscript('');
@@ -284,6 +364,8 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
   };
 
   const handleStopSpeaking = () => {
+    // Mark as user-stopped so the auto-start won't restart it on this sentence
+    userStoppedRef.current = true;
     if (recognitionRef.current && isListening) {
       recognitionRef.current.stop();
     }
@@ -432,7 +514,11 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
                     onClick={() => {
                       audio.playClick();
                       setSelectedParticleId(p.id);
-                      setSentenceIndex(0);
+                      {
+                        const done = completedSentences[p.id] || [];
+                        const first = findNextUnmastered(p.sentences, 0, (s) => done.includes(s.id));
+                        setSentenceIndex(first === -1 ? 0 : first);
+                      }
                       setSpokenTranscript('');
                       setSpeechScore(null);
                     }}
@@ -641,7 +727,7 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
                 {/* 3. Manual Pass / Next Sentence */}
                 <button
                   type="button"
-                  onClick={handleNextSentence}
+                  onClick={advanceToNextUnmastered}
                   className="px-4 py-3 rounded-2xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-600 dark:text-emerald-400 text-xs font-bold font-mono transition cursor-pointer border border-emerald-500/30 flex items-center gap-2"
                 >
                   <span>Pass & Next</span>
@@ -1113,7 +1199,7 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
 
                 <button
                   type="button"
-                  onClick={handleNextSentence}
+                  onClick={advanceToNextUnmastered}
                   className="px-4 py-3 rounded-2xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-600 dark:text-emerald-400 text-xs font-bold font-mono transition cursor-pointer border border-emerald-500/30 flex items-center gap-2"
                 >
                   <span>Next Sentence</span>
@@ -1144,10 +1230,12 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
                       className={`px-3 py-1 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
                         idx === selfIntroIndex
                           ? 'bg-[#FF5E3A] text-white shadow-xs'
+                          : completedIntro.includes(s.japanese)
+                          ? 'bg-emerald-100 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
                           : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white'
                       }`}
                     >
-                      Step {idx + 1}
+                      {completedIntro.includes(s.japanese) ? '✓ ' : ''}Step {idx + 1}
                     </button>
                   ))}
                 </div>

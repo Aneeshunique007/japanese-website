@@ -1,253 +1,391 @@
-/**
- * Comprehensive Test Suite for AniLearn Frontend-Only Architecture
- * Validates 100% data integrity, features, and zero-backend independence.
- */
+// Test suite for the Speaking practice features.
+// Run with: npm test   (→ npx tsx src/test.ts)
+//
+// Covers:
+//  - Per-user persistence of self-intro answers, particle progress, intro progress & session position
+//  - Migration of legacy (global) keys to the first user who opens the page
+//  - Resume logic: land on the first unmastered sentence after logging back in
+//  - "Next" skips sentences already spoken correctly
+//  - Self-intro sentence generation & completion keying
 
-import fs from 'fs';
-import path from 'path';
-import { api, checkServerHealth } from './services/api';
-import { dataStore } from './services/dataStore';
-
-// Mock fetch for dailySentenceBatches when running in Node.js
-if (typeof globalThis.fetch === 'function') {
-  const originalFetch = globalThis.fetch;
-  globalThis.fetch = async (url: any, init?: any) => {
-    if (typeof url === 'string' && url.startsWith('/data/dailySentenceBatches/')) {
-      const publicPath = path.resolve(process.cwd(), 'public' + url);
-      if (fs.existsSync(publicPath)) {
-        const content = fs.readFileSync(publicPath, 'utf-8');
-        return new Response(content, { status: 200, headers: { 'Content-Type': 'application/json' } });
-      }
-    }
-    return originalFetch(url, init);
-  };
+// ---------------------------------------------------------------------------
+// Minimal in-memory localStorage polyfill for Node
+// ---------------------------------------------------------------------------
+class MemoryStorage {
+  private store = new Map<string, string>();
+  get length() { return this.store.size; }
+  clear() { this.store.clear(); }
+  getItem(k: string) { return this.store.has(k) ? this.store.get(k)! : null; }
+  setItem(k: string, v: string) { this.store.set(k, String(v)); }
+  removeItem(k: string) { this.store.delete(k); }
+  key(i: number) { return Array.from(this.store.keys())[i] ?? null; }
 }
+(globalThis as any).localStorage = new MemoryStorage();
 
+import {
+  LEGACY_INTRO_KEY,
+  LEGACY_PARTICLES_KEY,
+  introKeyFor,
+  particlesKeyFor,
+  introProgressKeyFor,
+  sessionKeyFor,
+  getCurrentUserId,
+  loadJson,
+  saveJson,
+  loadSession,
+  saveSession,
+  readUserScoped,
+  findNextUnmastered,
+  resolveResumeIndex,
+  nextUnmasteredAfter,
+  markParticleMastered,
+  markIntroMastered,
+  ParticleProgress
+} from './utils/speakingProgress';
+import {
+  SPEAKING_PARTICLES_DATA,
+  DEFAULT_SELF_INTRO_PROFILE,
+  generateSelfIntroSentences
+} from './data/speakingParticlesData';
+
+// ---------------------------------------------------------------------------
+// Tiny test runner
+// ---------------------------------------------------------------------------
 let passed = 0;
 let failed = 0;
+const failures: string[] = [];
 
-function assert(condition: boolean, testName: string, extraInfo = '') {
-  if (condition) {
+function test(name: string, fn: () => void) {
+  localStorage.clear();
+  try {
+    fn();
     passed++;
-    console.log(`  ✅ PASS: ${testName} ${extraInfo ? `(${extraInfo})` : ''}`);
-  } else {
+    console.log(`  \u2705 ${name}`);
+  } catch (e: any) {
     failed++;
-    console.error(`  ❌ FAIL: ${testName} ${extraInfo ? `(${extraInfo})` : ''}`);
+    failures.push(`${name}: ${e?.message ?? e}`);
+    console.log(`  \u274C ${name}\n     \u2192 ${e?.message ?? e}`);
   }
 }
 
-async function runTestSuite() {
-  console.log('\n==========================================================');
-  console.log('🌸 ANIILEARN FULL FRONTEND SYSTEM & DATA INTEGRITY TEST 🌸');
-  console.log('==========================================================\n');
-
-  // TEST 1: SERVERLESS HEALTH CHECK
-  console.log('▶ [1/15] Serverless Health Check');
-  const healthy = await checkServerHealth();
-  assert(healthy === true, 'Serverless health check returns true');
-
-  // TEST 2: AUTHENTICATION & USER PROFILE IN LOCALSTORAGE
-  console.log('\n▶ [2/15] User Profile & LocalStorage State');
-  const regRes = await api.register({
-    name: 'Tanaka Ken',
-    email: 'tanaka@test.jp',
-    targetLevel: 'N4',
-    avatar: '🦊'
-  });
-  assert(regRes.success === true && !!regRes.user.id, 'Register new user', `User ID: ${regRes.user?.id}`);
-
-  const user = regRes.user;
-  const loginRes = await api.login({ email: 'tanaka@test.jp' });
-  assert(loginRes.success === true && loginRes.user.email === 'tanaka@test.jp', 'Login with email');
-
-  const profileRes = await api.updateProfile({
-    userId: user.id,
-    name: 'Master Tanaka',
-    title: 'Samurai Scholar'
-  });
-  assert(profileRes.user.name === 'Master Tanaka' && profileRes.user.title === 'Samurai Scholar', 'Update Profile info');
-
-  const progressRes = await api.updateProgress({
-    userId: user.id,
-    xpGained: 250,
-    lessonId: 'lesson-n5-1-1',
-    studyMinutesGained: 30
-  });
-  assert(progressRes.user.xp >= 350 && progressRes.user.completedLessons.includes('lesson-n5-1-1'), 'Update Progress (XP & Lessons)');
-
-  // TEST 3: COURSES & LESSON HIERARCHY
-  console.log('\n▶ [3/15] Courses & Lesson Navigation');
-  const coursesRes = await api.getCourses();
-  assert(coursesRes.courses.length === 5, '5 JLPT Courses present (N5 to N1)', `Count: ${coursesRes.courses.length}`);
-
-  const courseDetail = await api.getCourseById('course-n5');
-  assert(courseDetail.success === true && courseDetail.course.modules.length > 0, 'Course N5 modules loaded');
-
-  const lessonDetail = await api.getLessonById('lesson-n5-1-1');
-  assert(lessonDetail.success === true && !!lessonDetail.course && !!lessonDetail.lesson, 'Lesson detail fetched with course context');
-
-  // TEST 4: CURRICULUM UNITS & REVIEWS
-  console.log('\n▶ [4/15] Curriculum & Drill Synthesis');
-  const curriculumRes = await api.getCurriculum();
-  assert(curriculumRes.units.length === 25, '25 Curriculum units loaded', `Units: ${curriculumRes.units.length}`);
-  const sampleLesson = curriculumRes.units[0].lessons[0];
-  assert(!!sampleLesson && !!sampleLesson.title, 'Curriculum lessons structured correctly');
-
-  // TEST 5: KANJI DICTIONARY (100% COUNT VERIFICATION)
-  console.log('\n▶ [5/15] Kanji Dictionary (100% Data Integrity)');
-  const kanjiAll = await api.getKanji();
-  assert(kanjiAll.total === 318, 'Total Kanji count is exactly 318', `Total: ${kanjiAll.total}`);
-
-  const kanjiN5 = await api.getKanji('N5');
-  assert(kanjiN5.total === 110, 'JLPT N5 Kanji count is exactly 110', `Count: ${kanjiN5.total}`);
-
-  const kanjiN4 = await api.getKanji('N4');
-  assert(kanjiN4.total === 208, 'JLPT N4 Kanji count is exactly 208', `Count: ${kanjiN4.total}`);
-
-  const kanjiSearch = await api.getKanji(undefined, '日');
-  assert(kanjiSearch.kanji.some((k: any) => k.char === '日'), 'Kanji search by character ("日")');
-
-  // TEST 6: VOCABULARY (WORDS) (100% COUNT VERIFICATION)
-  console.log('\n▶ [6/15] Vocabulary (Words) (100% Data Integrity)');
-  const wordsAll = await api.getWords();
-  assert(wordsAll.total === 1488, 'Total Vocabulary count is exactly 1,488', `Total: ${wordsAll.total}`);
-
-  const wordsN5 = await api.getWords({ jlpt: 'N5' });
-  assert(wordsN5.words.length === 805, 'JLPT N5 Words count is exactly 805', `Count: ${wordsN5.words.length}`);
-
-  const wordsN4 = await api.getWords({ jlpt: 'N4' });
-  assert(wordsN4.words.length === 683, 'JLPT N4 Words count is exactly 683', `Count: ${wordsN4.words.length}`);
-
-  const wordsSearch = await api.getWords({ search: 'taberu' });
-  assert(wordsSearch.words.length > 0 && wordsSearch.words.some((w: any) => w.reading.includes('たべる') || w.word.includes('食')), 'Vocab search ("taberu")');
-
-  // TEST 7: KANA (HIRAGANA & KATAKANA)
-  console.log('\n▶ [7/15] Kana Syllabary');
-  const hiraBasic = await api.getKana('Hiragana', 'basic');
-  assert(hiraBasic.kana.length === 46, 'Hiragana Basic characters: 46', `Count: ${hiraBasic.kana.length}`);
-
-  const kataBasic = await api.getKana('Katakana', 'basic');
-  assert(kataBasic.kana.length === 46, 'Katakana Basic characters: 46', `Count: ${kataBasic.kana.length}`);
-
-  const hiraDakuten = await api.getKana('Hiragana', 'dakuten');
-  assert(hiraDakuten.kana.length === 25, 'Hiragana Dakuten characters: 25', `Count: ${hiraDakuten.kana.length}`);
-
-  // TEST 8: GRAMMAR LIBRARY (100% COUNT VERIFICATION)
-  console.log('\n▶ [8/15] Grammar Library (100% Data Integrity)');
-  const grammarAll = await api.getGrammar();
-  assert(grammarAll.total === 215, 'Total Grammar Rules count is exactly 215', `Total: ${grammarAll.total}`);
-
-  const grammarN5 = await api.getGrammar('N5');
-  assert(grammarN5.grammar.length > 50, 'N5 Grammar rules present', `Count: ${grammarN5.grammar.length}`);
-
-  const grammarSearch = await api.getGrammar(undefined, 'kara');
-  assert(grammarSearch.grammar.length > 0, 'Grammar pattern search ("kara")');
-
-  // TEST 9: ANIME & SITUATIONAL DIALOGUES
-  console.log('\n▶ [9/15] Dialogues & Anime Scenarios');
-  const dialogues = await api.getDialogues();
-  assert(dialogues.dialogues.length === 13, 'Total Anime Dialogues: 13', `Count: ${dialogues.dialogues.length}`);
-  assert(dialogues.categories.length > 0, 'Dialogue categories available');
-
-  const dialogueItem = await api.getDialogueById(dialogues.dialogues[0].id);
-  assert(dialogueItem.success === true && !!dialogueItem.dialogue?.title, 'Single dialogue fetched by ID');
-
-  // TEST 10: JLPT MOCK PRACTICE EXAMS
-  console.log('\n▶ [10/15] JLPT Mock Exam');
-  const examAll = await api.getExam();
-  assert(examAll.total === 60, 'Total Practice Exam questions: 60', `Count: ${examAll.total}`);
-
-  const examN5 = await api.getExam('n5');
-  assert(examN5.questions.length > 0, 'N5 Exam questions filtered');
-
-  // TEST 11: GLOBAL UNIFIED SEARCH
-  console.log('\n▶ [11/15] Global Unified Search');
-  const searchResults = await api.search('water');
-  assert(searchResults.success === true && searchResults.results.length > 0, 'Global search returns results across models');
-
-  // TEST 12: DYNAMIC LEADERBOARD
-  console.log('\n▶ [12/15] Dynamic Leaderboard Engine');
-  const leaderboard = await api.getLeaderboard(user.id);
-  assert(leaderboard.leaderboard.length >= 8, 'Leaderboard contains peers and current user', `Count: ${leaderboard.leaderboard.length}`);
-  const currentUserEntry = leaderboard.leaderboard.find((u: any) => u.isCurrent);
-  assert(!!currentUserEntry && currentUserEntry.rank > 0, 'Current user dynamically placed with rank', `Rank: ${currentUserEntry?.rank}, XP: ${currentUserEntry?.xp}`);
-
-  // TEST 13: STUDY SCHEDULE & PROGRESS PERSISTENCE
-  console.log('\n▶ [13/15] Study Schedule & Learned Items');
-  const scheduleRes = await api.getSchedule(user.id);
-  assert(scheduleRes.success === true && scheduleRes.schedule.targetDays === 60, 'Initial study schedule created');
-
-  const saveSchedRes = await api.saveSchedule({
-    userId: user.id,
-    targetDays: 90,
-    currentDay: 2
-  });
-  assert(saveSchedRes.schedule.targetDays === 90 && saveSchedRes.schedule.currentDay === 2, 'Study schedule saved to local storage');
-
-  const resetSchedRes = await api.resetSchedule(user.id);
-  assert(resetSchedRes.schedule.currentDay === 1, 'Schedule reset to Day 1');
-
-  await api.saveProgress({
-    userId: user.id,
-    learnedKana: ['あ', 'い', 'う'],
-    learnedKanji: ['日', '月'],
-    learnedWords: ['w1', 'w2']
-  });
-  const progressCheck = await api.getProgress(user.id);
-  assert(progressCheck.learnedKana.length === 3 && progressCheck.learnedKanji.length === 2, 'Learned items saved and retrieved');
-
-  // TEST 14: NIKKI LEARNINGS (CLASSES 404-464 & HOMEWORK)
-  console.log('\n▶ [14/15] Nikki Japanese Classes & Homework');
-  const nikkiData = await api.getNikkiData();
-  assert(nikkiData.days.length === 7, '7 Nikki Study Days (Classes 404 to 464)', `Days: ${nikkiData.days.length}`);
-  assert(nikkiData.homework.length === 7, '7 Nikki Homework Categories', `Categories: ${nikkiData.homework.length}`);
-  assert(nikkiData.qna424.length > 0, 'Class 424 Q&A items available');
-
-  const nikkiDay = await api.getNikkiDay('day-1');
-  assert(nikkiDay.success === true && nikkiDay.day?.classCode === 'Class 404', 'Single Nikki class details loaded (Class 404)');
-
-  // TEST 15: DAILY SENTENCE BATCHES (ALL 15 BATCHES & 3,000 QUESTIONS)
-  console.log('\n▶ [15/15] Daily Sentence Batches (3,000 Sentences)');
-  const allDays = await api.getAllDailySentenceDays();
-  assert(allDays.days.length === 60, '60 Study Days registered', `Days: ${allDays.days.length}`);
-
-  // Test Day 1 from Batch 1
-  const day1Sentences = await api.getDailySentences(1, 10);
-  assert(day1Sentences.questions.length === 10 && day1Sentences.questions[0].day === 1, 'Batch 1 (Day 1) loaded correctly');
-
-  // Test Day 25 from Batch 7
-  const day25Sentences = await api.getDailySentences(25, 5);
-  assert(day25Sentences.questions.length === 5 && day25Sentences.questions[0].day === 25, 'Batch 7 (Day 25) loaded correctly');
-
-  // Test Day 60 from Batch 15
-  const day60Sentences = await api.getDailySentences(60, 5);
-  assert(day60Sentences.questions.length === 5 && day60Sentences.questions[0].day === 60, 'Batch 15 (Day 60) loaded correctly');
-
-  // BONUS: DATA STORE SYNCHRONOUS ACCESS
-  console.log('\n▶ [BONUS] In-Memory DataStore Instant Availability');
-  assert(dataStore.wordsN5.length === 805, 'dataStore.wordsN5 available synchronously (805 words)');
-  assert(dataStore.wordsN4.length === 683, 'dataStore.wordsN4 available synchronously (683 words)');
-  assert(dataStore.kanjiN5.length === 110, 'dataStore.kanjiN5 available synchronously (110 kanji)');
-  assert(dataStore.kanjiN4.length === 208, 'dataStore.kanjiN4 available synchronously (208 kanji)');
-  assert(dataStore.allWords.length === 1488, 'dataStore.allWords unified count matches 1,488');
-  assert(dataStore.allKanji.length === 318, 'dataStore.allKanji unified count matches 318');
-
-  // SUMMARY
-  console.log('\n==========================================================');
-  console.log(`🎉 TEST SUMMARY: ${passed} PASSED, ${failed} FAILED`);
-  console.log('==========================================================');
-
-  if (failed === 0) {
-    console.log('✨ 100% DATA AND SYSTEM INTEGRITY CONFIRMED!');
-    console.log('✨ Zero backend dependencies. 100% ready for Vercel!');
-    process.exit(0);
-  } else {
-    console.error(`💥 ${failed} tests failed. Please review the output.`);
-    process.exit(1);
-  }
+function section(title: string) {
+  console.log(`\n\u25B6 ${title}`);
 }
 
-runTestSuite().catch(err => {
-  console.error('Fatal test error:', err);
-  process.exit(1);
+function assertEqual<T>(actual: T, expected: T, msg = '') {
+  const a = JSON.stringify(actual);
+  const b = JSON.stringify(expected);
+  if (a !== b) throw new Error(`${msg} expected ${b}, got ${a}`);
+}
+
+function assert(cond: unknown, msg: string) {
+  if (!cond) throw new Error(msg);
+}
+
+function login(id: string) {
+  localStorage.setItem('anilearn_auth_user', JSON.stringify({ id, name: id }));
+}
+function logout() {
+  // Mirrors App.handleLogout — only the auth user is removed
+  localStorage.removeItem('anilearn_auth_user');
+}
+
+// ---------------------------------------------------------------------------
+// 1. User identity & key scoping
+// ---------------------------------------------------------------------------
+section('User identity & per-user keys');
+
+test('falls back to "guest" when nobody is logged in', () => {
+  assertEqual(getCurrentUserId(), 'guest');
 });
+
+test('reads the logged-in user id', () => {
+  login('user_42');
+  assertEqual(getCurrentUserId(), 'user_42');
+});
+
+test('handles corrupt auth JSON gracefully', () => {
+  localStorage.setItem('anilearn_auth_user', '{not json');
+  assertEqual(getCurrentUserId(), 'guest');
+});
+
+test('keys are unique per user', () => {
+  assert(introKeyFor('a') !== introKeyFor('b'), 'intro keys collide');
+  assert(particlesKeyFor('a') !== particlesKeyFor('b'), 'particle keys collide');
+  assert(introProgressKeyFor('a') !== introProgressKeyFor('b'), 'intro progress keys collide');
+  assert(sessionKeyFor('a') !== sessionKeyFor('b'), 'session keys collide');
+});
+
+// ---------------------------------------------------------------------------
+// 2. Persistence survives logout → login
+// ---------------------------------------------------------------------------
+section('Persistence across logout / login');
+
+test('self-intro answers survive logout and login', () => {
+  login('alice');
+  const profile = { ...DEFAULT_SELF_INTRO_PROFILE, name: 'Alice', nameKatakana: 'アリス' };
+  saveJson(introKeyFor(getCurrentUserId()), profile);
+  logout();
+  login('alice');
+  const restored = loadJson<any>(introKeyFor(getCurrentUserId()), null);
+  assertEqual(restored?.name, 'Alice');
+  assertEqual(restored?.nameKatakana, 'アリス');
+});
+
+test('another user does NOT see Alice\'s answers', () => {
+  login('alice');
+  saveJson(introKeyFor('alice'), { ...DEFAULT_SELF_INTRO_PROFILE, name: 'Alice' });
+  logout();
+  login('bob');
+  assertEqual(loadJson(introKeyFor(getCurrentUserId()), null), null);
+});
+
+test('particle progress survives logout and login', () => {
+  login('alice');
+  let progress: ParticleProgress = {};
+  progress = markParticleMastered(progress, 'wa', 1);
+  progress = markParticleMastered(progress, 'wa', 2);
+  saveJson(particlesKeyFor('alice'), progress);
+  logout();
+  login('alice');
+  assertEqual(loadJson<ParticleProgress>(particlesKeyFor(getCurrentUserId()), {}), { wa: [1, 2] });
+});
+
+test('session position (tab, particle, sentence, step) survives logout and login', () => {
+  login('alice');
+  saveSession('alice', { activeMode: 'self-intro', selectedParticleId: 'ga', sentenceIndex: 7, selfIntroIndex: 3 });
+  logout();
+  login('alice');
+  assertEqual(loadSession(), { activeMode: 'self-intro', selectedParticleId: 'ga', sentenceIndex: 7, selfIntroIndex: 3 });
+});
+
+test('loadSession returns {} for a brand new user', () => {
+  login('newbie');
+  assertEqual(loadSession(), {});
+});
+
+test('questionnaire auto-open rule: open only when no saved answers', () => {
+  login('carol');
+  const shouldOpenFirstTime = !localStorage.getItem(introKeyFor(getCurrentUserId()));
+  saveJson(introKeyFor('carol'), DEFAULT_SELF_INTRO_PROFILE);
+  const shouldOpenAfterSave = !localStorage.getItem(introKeyFor(getCurrentUserId()));
+  assertEqual(shouldOpenFirstTime, true, 'first visit:');
+  assertEqual(shouldOpenAfterSave, false, 'after save:');
+});
+
+// ---------------------------------------------------------------------------
+// 3. Legacy key migration
+// ---------------------------------------------------------------------------
+section('Legacy global-key migration');
+
+test('migrates legacy global value to the user key and removes the legacy key', () => {
+  localStorage.setItem(LEGACY_PARTICLES_KEY, JSON.stringify({ wa: [1] }));
+  const v = readUserScoped(particlesKeyFor('dave'), LEGACY_PARTICLES_KEY);
+  assertEqual(JSON.parse(v!), { wa: [1] });
+  assertEqual(localStorage.getItem(LEGACY_PARTICLES_KEY), null, 'legacy key not removed:');
+  assertEqual(JSON.parse(localStorage.getItem(particlesKeyFor('dave'))!), { wa: [1] });
+});
+
+test('prefers the user-scoped value over a legacy value', () => {
+  localStorage.setItem(LEGACY_INTRO_KEY, JSON.stringify({ name: 'Old' }));
+  localStorage.setItem(introKeyFor('erin'), JSON.stringify({ name: 'Erin' }));
+  const v = readUserScoped(introKeyFor('erin'), LEGACY_INTRO_KEY);
+  assertEqual(JSON.parse(v!).name, 'Erin');
+});
+
+test('legacy data is migrated only once (second user gets nothing)', () => {
+  localStorage.setItem(LEGACY_INTRO_KEY, JSON.stringify({ name: 'Old' }));
+  readUserScoped(introKeyFor('first'), LEGACY_INTRO_KEY);
+  assertEqual(readUserScoped(introKeyFor('second'), LEGACY_INTRO_KEY), null);
+});
+
+test('returns null when there is no data at all', () => {
+  assertEqual(readUserScoped(introKeyFor('x'), LEGACY_INTRO_KEY), null);
+});
+
+// ---------------------------------------------------------------------------
+// 4. Mark-mastered helpers
+// ---------------------------------------------------------------------------
+section('Mark mastered');
+
+test('markParticleMastered adds a sentence id', () => {
+  assertEqual(markParticleMastered({}, 'wa', 5), { wa: [5] });
+});
+
+test('markParticleMastered is idempotent & returns same reference', () => {
+  const p = { wa: [5] };
+  assert(markParticleMastered(p, 'wa', 5) === p, 'expected same reference for duplicate');
+});
+
+test('markParticleMastered does not mutate the input', () => {
+  const p: ParticleProgress = { wa: [1] };
+  markParticleMastered(p, 'wa', 2);
+  assertEqual(p, { wa: [1] });
+});
+
+test('markIntroMastered adds and is idempotent', () => {
+  const a = markIntroMastered([], '初めまして。');
+  assertEqual(a, ['初めまして。']);
+  assert(markIntroMastered(a, '初めまして。') === a, 'expected same reference for duplicate');
+});
+
+// ---------------------------------------------------------------------------
+// 5. Resume & "Next" navigation
+// ---------------------------------------------------------------------------
+section('Resume after login & Next skips mastered');
+
+const items = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
+const doneBy = (ids: number[]) => (s: { id: number }) => ids.includes(s.id);
+
+test('findNextUnmastered finds first unmastered from start', () => {
+  assertEqual(findNextUnmastered(items, 0, doneBy([1, 2])), 2);
+});
+
+test('findNextUnmastered wraps around', () => {
+  assertEqual(findNextUnmastered(items, 3, doneBy([4, 5])), 0);
+});
+
+test('findNextUnmastered returns -1 when all mastered / empty list', () => {
+  assertEqual(findNextUnmastered(items, 0, doneBy([1, 2, 3, 4, 5])), -1);
+  assertEqual(findNextUnmastered([], 0, () => false), -1);
+});
+
+test('resume: brand-new user starts at sentence 1', () => {
+  assertEqual(resolveResumeIndex(items, undefined, doneBy([])), 0);
+});
+
+test('resume: correctly-answered sentences are NOT asked again (the reported bug)', () => {
+  // User mastered 1,2,3 and logged out while on sentence index 0
+  assertEqual(resolveResumeIndex(items, 0, doneBy([1, 2, 3])), 3);
+});
+
+test('resume: stays on saved sentence if it is still unmastered', () => {
+  assertEqual(resolveResumeIndex(items, 2, doneBy([1])), 2);
+});
+
+test('resume: clamps out-of-range saved index', () => {
+  assertEqual(resolveResumeIndex(items, 99, doneBy([])), 4);
+  assertEqual(resolveResumeIndex(items, -5, doneBy([])), 0);
+});
+
+test('resume: everything mastered → stays on saved index (review mode)', () => {
+  assertEqual(resolveResumeIndex(items, 2, doneBy([1, 2, 3, 4, 5])), 2);
+});
+
+test('Next skips mastered sentences', () => {
+  // On index 0, sentences 2 & 3 mastered → jump to index 3 (id 4)
+  assertEqual(nextUnmasteredAfter(items, 0, doneBy([2, 3])), 3);
+});
+
+test('Next wraps to earlier unmastered sentence', () => {
+  assertEqual(nextUnmasteredAfter(items, 4, doneBy([1, 3, 4, 5])), 1);
+});
+
+test('Next returns -1 when every sentence is mastered (celebration)', () => {
+  assertEqual(nextUnmasteredAfter(items, 2, doneBy([1, 2, 3, 4, 5])), -1);
+});
+
+test('end-to-end: answer correctly, logout, login → resume past mastered', () => {
+  login('frank');
+  const particle = SPEAKING_PARTICLES_DATA[0];
+  let progress: ParticleProgress = {};
+  // Answer first 3 sentences correctly
+  for (const s of particle.sentences.slice(0, 3)) {
+    progress = markParticleMastered(progress, particle.id, s.id);
+  }
+  saveJson(particlesKeyFor('frank'), progress);
+  saveSession('frank', { activeMode: 'particles', selectedParticleId: particle.id, sentenceIndex: 2, selfIntroIndex: 0 });
+  logout();
+
+  login('frank');
+  const session = loadSession();
+  const done = loadJson<ParticleProgress>(particlesKeyFor(getCurrentUserId()), {})[particle.id] || [];
+  const idx = resolveResumeIndex(particle.sentences, session.sentenceIndex, (s) => done.includes(s.id));
+  assertEqual(idx, 3, 'should resume at 4th sentence:');
+});
+
+// ---------------------------------------------------------------------------
+// 6. Data integrity & self-intro generation
+// ---------------------------------------------------------------------------
+section('Speaking data & self-intro generator');
+
+test('every particle has sentences with unique numeric ids', () => {
+  for (const p of SPEAKING_PARTICLES_DATA) {
+    assert(p.sentences.length > 0, `${p.id} has no sentences`);
+    const ids = p.sentences.map((s) => s.id);
+    assertEqual(new Set(ids).size, ids.length, `${p.id} duplicate ids:`);
+  }
+});
+
+test('particle ids are unique', () => {
+  const ids = SPEAKING_PARTICLES_DATA.map((p) => p.id);
+  assertEqual(new Set(ids).size, ids.length);
+});
+
+test('default "wa" particle exists (initial selection)', () => {
+  assert(SPEAKING_PARTICLES_DATA.some((p) => p.id === 'wa'), '"wa" particle missing');
+});
+
+test('generator produces sentences from the default profile', () => {
+  const s = generateSelfIntroSentences(DEFAULT_SELF_INTRO_PROFILE);
+  assert(s.length >= 10, `expected many sentences, got ${s.length}`);
+  for (const x of s) {
+    assert(x.japanese && x.romaji && x.english, `sentence ${x.id} missing fields`);
+  }
+});
+
+test('generator personalises with the user name', () => {
+  const s = generateSelfIntroSentences({ ...DEFAULT_SELF_INTRO_PROFILE, name: 'Taro', nameKatakana: 'タロウ' });
+  assert(s[0].japanese.includes('タロウ'), 'greeting does not include katakana name');
+  assert(s[0].english.includes('Taro'), 'english does not include name');
+});
+
+test('generator skips optional sections left blank', () => {
+  const full = generateSelfIntroSentences(DEFAULT_SELF_INTRO_PROFILE);
+  const noAge = generateSelfIntroSentences({ ...DEFAULT_SELF_INTRO_PROFILE, age: '', hometown: '' });
+  assertEqual(noAge.length, full.length - 2, 'blank age+hometown should drop 2 sentences:');
+  assert(!noAge.some((x) => x.topic.includes('Age')), 'age sentence still present');
+});
+
+test('self-intro Japanese text is unique (used as completion key)', () => {
+  const s = generateSelfIntroSentences(DEFAULT_SELF_INTRO_PROFILE);
+  const texts = s.map((x) => x.japanese);
+  assertEqual(new Set(texts).size, texts.length);
+});
+
+test('editing an answer resets only that sentence\'s mastered state', () => {
+  const before = generateSelfIntroSentences(DEFAULT_SELF_INTRO_PROFILE);
+  const done = before.map((x) => x.japanese); // all mastered
+  const after = generateSelfIntroSentences({ ...DEFAULT_SELF_INTRO_PROFILE, age: '30' });
+  const unmastered = after.filter((x) => !done.includes(x.japanese));
+  assertEqual(unmastered.length, 1, 'only the age sentence should be unmastered:');
+  assert(unmastered[0].japanese.includes('30'), 'unmastered sentence is not the edited one');
+});
+
+test('self-intro resume skips mastered steps after login', () => {
+  login('gina');
+  const sentences = generateSelfIntroSentences(DEFAULT_SELF_INTRO_PROFILE);
+  let done: string[] = [];
+  done = markIntroMastered(done, sentences[0].japanese);
+  done = markIntroMastered(done, sentences[1].japanese);
+  saveJson(introProgressKeyFor('gina'), done);
+  saveSession('gina', { activeMode: 'self-intro', selectedParticleId: 'wa', sentenceIndex: 0, selfIntroIndex: 0 });
+  logout();
+
+  login('gina');
+  const restored = loadJson<string[]>(introProgressKeyFor(getCurrentUserId()), []);
+  const idx = resolveResumeIndex(sentences, loadSession().selfIntroIndex, (s) => restored.includes(s.japanese));
+  assertEqual(idx, 2);
+});
+
+// ---------------------------------------------------------------------------
+// Summary
+// ---------------------------------------------------------------------------
+console.log(`\n${'-'.repeat(50)}`);
+console.log(`Passed: ${passed}   Failed: ${failed}`);
+if (failed) {
+  console.log('\nFailures:');
+  failures.forEach((f) => console.log(`  - ${f}`));
+  process.exit(1);
+}
+console.log('All speaking feature tests passed \u2728');
