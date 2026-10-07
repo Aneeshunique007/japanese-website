@@ -181,8 +181,8 @@ export const StudyScheduleBar: React.FC<StudyScheduleBarProps> = ({
 
   const isQuizOfTheDayDone = learnedStore.isQuizOfTheDayCompleted(currentDay);
 
-  const isAllKanaCompleted = learnedStore.isAllKanaCompleted();
-  const learnedKanaCount = learnedStore.getLearnedKanaList().length;
+  const isAllKanaCompleted = learnedStore.isAllKanaCompleted() || studyScheduleStore.isKanaMastered();
+  const learnedKanaCount = isAllKanaCompleted ? 164 : learnedStore.getLearnedKanaList().length;
 
   const hiraganaFraction = targets.hiragana.length > 0 ? Math.min(1, completedHiraganaCount / targets.hiragana.length) : 1;
   const katakanaFraction = targets.katakana.length > 0 ? Math.min(1, completedKatakanaCount / targets.katakana.length) : 1;
@@ -811,6 +811,7 @@ export const StudyScheduleBar: React.FC<StudyScheduleBarProps> = ({
                   onClick={() => {
                     audio.playSuccess();
                     learnedStore.markAllKanaLearned();
+                    studyScheduleStore.setSkipKana(true);
                   }}
                   className="text-[10px] font-bold text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition cursor-pointer underline decoration-dotted"
                 >
@@ -1582,6 +1583,7 @@ export const StudyScheduleBar: React.FC<StudyScheduleBarProps> = ({
                 onClick={() => {
                   audio.playSuccess();
                   learnedStore.markAllKanaLearned();
+                  studyScheduleStore.setSkipKana(true);
                 }}
                 className="text-[11px] font-bold text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition cursor-pointer underline decoration-dotted"
                 title="Mark all 164 Kana as learned if you already know them"

@@ -23,7 +23,11 @@ export function getCurrentUserId(): string {
     const raw = localStorage.getItem('anilearn_auth_user');
     if (raw) {
       const u = JSON.parse(raw);
-      if (u && u.id) return String(u.id);
+      const candidate = u && (u.id ?? u._id);
+      if (candidate !== undefined && candidate !== null) {
+        const trimmed = String(candidate).trim();
+        if (trimmed) return trimmed;
+      }
     }
   } catch {}
   return 'guest';
@@ -52,16 +56,39 @@ export function saveSession(uid: string, session: SpeakingSession): void {
   saveJson(sessionKeyFor(uid), session);
 }
 
-// Read per-user value, migrating the old global key once if present
-export function readUserScoped(userKey: string, legacyKey: string): string | null {
+// Read per-user value, migrating the old global key once if present.
+// Automatically parses JSON and validates with isValid if provided.
+export function readUserScoped<T = any>(
+  userKey: string,
+  legacyKey: string,
+  isValid?: (val: T) => boolean
+): T | string | null {
   try {
-    const scoped = localStorage.getItem(userKey);
-    if (scoped) return scoped;
-    const legacy = localStorage.getItem(legacyKey);
-    if (legacy) {
-      localStorage.setItem(userKey, legacy);
-      localStorage.removeItem(legacyKey);
-      return legacy;
+    const scopedRaw = localStorage.getItem(userKey);
+    if (scopedRaw) {
+      try {
+        const parsed = JSON.parse(scopedRaw) as T;
+        if (!isValid || isValid(parsed)) return parsed;
+        return null;
+      } catch {
+        if (!isValid) return scopedRaw;
+        return null;
+      }
+    }
+    const legacyRaw = localStorage.getItem(legacyKey);
+    if (legacyRaw) {
+      try {
+        const parsed = JSON.parse(legacyRaw) as T;
+        if (!isValid || isValid(parsed)) {
+          localStorage.setItem(userKey, legacyRaw);
+          localStorage.removeItem(legacyKey);
+          return parsed;
+        }
+        return null;
+      } catch {
+        // malformed legacy JSON
+        return null;
+      }
     }
   } catch {}
   return null;
@@ -105,5 +132,7 @@ export function markParticleMastered(progress: ParticleProgress, particleId: str
 }
 
 export function markIntroMastered(done: string[], japanese: string): string[] {
-  return done.includes(japanese) ? done : [...done, japanese];
+  if (!japanese || !japanese.trim()) return done;
+  const trimmed = japanese.trim();
+  return done.includes(trimmed) ? done : [...done, trimmed];
 }

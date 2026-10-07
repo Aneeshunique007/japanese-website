@@ -181,6 +181,13 @@ class StudyScheduleStore {
       setInterval(() => {
         this.checkDailyRollover();
       }, 10 * 60 * 1000);
+
+      window.addEventListener('anilearn_learned_update', (e: any) => {
+        if (!e.detail?.key || e.detail?.key === 'anilearn_learned_kana') {
+          this.recomputeMappings();
+          this.notify();
+        }
+      });
     }
   }
 
@@ -265,6 +272,7 @@ class StudyScheduleStore {
 
   private recomputeMappings() {
     const days = this.targetDays === 'ALL' ? 60 : this.targetDays;
+    const isMastered = this.isKanaMastered();
 
     // CUSTOM DAILY PACE MODE
     if (this.customPace.enabled) {
@@ -272,17 +280,27 @@ class StudyScheduleStore {
       this.kanaDayMap.clear();
       const hiraganaList = getOrderedHiragana();
       const katakanaList = getOrderedKatakana();
-      const hPace = Math.max(1, this.customPace.hiraganaPerDay || this.customPace.kanaPerDay || 10);
-      const kPace = Math.max(1, this.customPace.katakanaPerDay || this.customPace.kanaPerDay || 10);
 
-      hiraganaList.forEach((item, index) => {
-        const day = Math.floor(index / hPace) + 1;
-        this.kanaDayMap.set(item.char, day);
-      });
-      katakanaList.forEach((item, index) => {
-        const day = Math.floor(index / kPace) + 1;
-        this.kanaDayMap.set(item.char, day);
-      });
+      if (isMastered) {
+        hiraganaList.forEach((item) => {
+          this.kanaDayMap.set(item.char, 1);
+        });
+        katakanaList.forEach((item) => {
+          this.kanaDayMap.set(item.char, 1);
+        });
+      } else {
+        const hPace = Math.max(1, this.customPace.hiraganaPerDay || this.customPace.kanaPerDay || 10);
+        const kPace = Math.max(1, this.customPace.katakanaPerDay || this.customPace.kanaPerDay || 10);
+
+        hiraganaList.forEach((item, index) => {
+          const day = Math.floor(index / hPace) + 1;
+          this.kanaDayMap.set(item.char, day);
+        });
+        katakanaList.forEach((item, index) => {
+          const day = Math.floor(index / kPace) + 1;
+          this.kanaDayMap.set(item.char, day);
+        });
+      }
 
       // Option A: 2-Phase Sequential Curriculum
       // Phase 1 (Days 1 to kanaOffset): Focused Kana Boot Camp
@@ -328,15 +346,25 @@ class StudyScheduleStore {
     this.kanaDayMap.clear();
     const hiraganaList = getOrderedHiragana();
     const katakanaList = getOrderedKatakana();
-    const kanaSpan = Math.min(days, days === 60 ? 20 : days === 90 ? 25 : 30);
-    hiraganaList.forEach((item, index) => {
-      const day = Math.min(kanaSpan, Math.floor((index / hiraganaList.length) * kanaSpan) + 1);
-      this.kanaDayMap.set(item.char, day);
-    });
-    katakanaList.forEach((item, index) => {
-      const day = Math.min(kanaSpan, Math.floor((index / katakanaList.length) * kanaSpan) + 1);
-      this.kanaDayMap.set(item.char, day);
-    });
+
+    if (isMastered) {
+      hiraganaList.forEach((item) => {
+        this.kanaDayMap.set(item.char, 1);
+      });
+      katakanaList.forEach((item) => {
+        this.kanaDayMap.set(item.char, 1);
+      });
+    } else {
+      const kanaSpan = Math.min(days, days === 60 ? 20 : days === 90 ? 25 : 30);
+      hiraganaList.forEach((item, index) => {
+        const day = Math.min(kanaSpan, Math.floor((index / hiraganaList.length) * kanaSpan) + 1);
+        this.kanaDayMap.set(item.char, day);
+      });
+      katakanaList.forEach((item, index) => {
+        const day = Math.min(kanaSpan, Math.floor((index / katakanaList.length) * kanaSpan) + 1);
+        this.kanaDayMap.set(item.char, day);
+      });
+    }
 
     // 2. Kanji: 110 items distributed across schedule
     const kanjiList = dataStore.kanjiN5;
@@ -383,7 +411,7 @@ class StudyScheduleStore {
 
   async syncFromMongoDB() {
     try {
-      const userStr = localStorage.getItem('anilearn_auth_user');
+      const userStr = typeof localStorage !== 'undefined' ? localStorage.getItem('anilearn_auth_user') : null;
       const userId = userStr ? (JSON.parse(userStr).id || JSON.parse(userStr)._id) : 'default_user';
       const res = await api.getSchedule(userId);
       if (res && res.success && res.schedule) {
@@ -417,16 +445,18 @@ class StudyScheduleStore {
         this.autoAdvance = s.autoAdvance !== undefined ? s.autoAdvance : this.autoAdvance;
         this.saveToStorage();
         this.recomputeMappings();
-        window.dispatchEvent(new CustomEvent(SCHEDULE_EVENT, {
-          detail: {
-            targetDays: this.getTargetDays(),
-            currentDay: this.currentDay,
-            customPace: this.customPace,
-            isCustom: this.customPace.enabled,
-            startDate: this.startDate,
-            autoAdvance: this.autoAdvance
-          }
-        }));
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent(SCHEDULE_EVENT, {
+            detail: {
+              targetDays: this.getTargetDays(),
+              currentDay: this.currentDay,
+              customPace: this.customPace,
+              isCustom: this.customPace.enabled,
+              startDate: this.startDate,
+              autoAdvance: this.autoAdvance
+            }
+          }));
+        }
       }
     } catch (err) {
       console.warn('Could not sync study schedule from MongoDB:', err);
@@ -435,7 +465,7 @@ class StudyScheduleStore {
 
   private syncToMongoDB() {
     try {
-      const userStr = localStorage.getItem('anilearn_auth_user');
+      const userStr = typeof localStorage !== 'undefined' ? localStorage.getItem('anilearn_auth_user') : null;
       const userId = userStr ? (JSON.parse(userStr).id || JSON.parse(userStr)._id) : 'default_user';
       const activeDays = this.getTargetDays();
       api.saveSchedule({
@@ -454,22 +484,28 @@ class StudyScheduleStore {
       const activeTargetDays = this.getTargetDays();
       this.saveToStorage();
       this.syncToMongoDB();
-      window.dispatchEvent(new CustomEvent(SCHEDULE_EVENT, {
-        detail: {
-          targetDays: activeTargetDays,
-          currentDay: this.currentDay,
-          customPace: this.customPace,
-          isCustom: this.customPace.enabled,
-          startDate: this.startDate,
-          autoAdvance: this.autoAdvance
-        }
-      }));
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent(SCHEDULE_EVENT, {
+          detail: {
+            targetDays: activeTargetDays,
+            currentDay: this.currentDay,
+            customPace: this.customPace,
+            isCustom: this.customPace.enabled,
+            startDate: this.startDate,
+            autoAdvance: this.autoAdvance
+          }
+        }));
+      }
     } catch (e) {
       console.error('Failed to notify schedule store:', e);
     }
   }
 
   // --- Getters & Setters ---
+  isKanaMastered(): boolean {
+    return Boolean(this.customPace.skipKana || learnedStore.isAllKanaCompleted());
+  }
+
   getTargetDays(): ScheduleDuration {
     if (this.targetDays === 'ALL') return 'ALL';
     if (this.customPace.enabled) {
@@ -483,6 +519,7 @@ class StudyScheduleStore {
   }
 
   getKanaDaysNeeded(customKanaPace?: number): number {
+    if (this.isKanaMastered()) return 0;
     const hPace = customKanaPace || (this.customPace.enabled ? (this.customPace.hiraganaPerDay || this.customPace.kanaPerDay || 10) : 10);
     const kPace = customKanaPace || (this.customPace.enabled ? (this.customPace.katakanaPerDay || this.customPace.kanaPerDay || 10) : 10);
     const hDays = Math.ceil(82 / Math.max(1, hPace));
@@ -492,7 +529,7 @@ class StudyScheduleStore {
 
   getKanaOffset(): number {
     if (!this.customPace.enabled) return 0;
-    if (this.customPace.skipKana) return 0;
+    if (this.isKanaMastered()) return 0;
     const hPace = Math.max(1, this.customPace.hiraganaPerDay || this.customPace.kanaPerDay || 10);
     const kPace = Math.max(1, this.customPace.katakanaPerDay || this.customPace.kanaPerDay || 10);
     const hDays = Math.ceil(82 / hPace);
@@ -508,11 +545,13 @@ class StudyScheduleStore {
   }
 
   getHiraganaDaysNeeded(pace?: number): number {
+    if (this.isKanaMastered()) return 0;
     const p = pace || (this.customPace.enabled ? (this.customPace.hiraganaPerDay || this.customPace.kanaPerDay || 10) : 10);
     return Math.ceil(82 / Math.max(1, p));
   }
 
   getKatakanaDaysNeeded(pace?: number): number {
+    if (this.isKanaMastered()) return 0;
     const p = pace || (this.customPace.enabled ? (this.customPace.katakanaPerDay || this.customPace.kanaPerDay || 10) : 10);
     return Math.ceil(82 / Math.max(1, p));
   }
@@ -718,12 +757,13 @@ class StudyScheduleStore {
   }
 
   getPaceEstimates(pace: CustomDailyPace = this.customPace) {
+    const isKanaDone = Boolean(pace.skipKana || learnedStore.isAllKanaCompleted());
     const hPace = Math.max(1, pace.hiraganaPerDay || pace.kanaPerDay || 10);
     const kPace = Math.max(1, pace.katakanaPerDay || pace.kanaPerDay || 10);
-    const hiraganaDays = Math.ceil(82 / hPace);
-    const katakanaDays = Math.ceil(82 / kPace);
-    const kanaDays = Math.max(hiraganaDays, katakanaDays);
-    const kanaOffset = pace.skipKana ? 0 : kanaDays;
+    const hiraganaDays = isKanaDone ? 0 : Math.ceil(82 / hPace);
+    const katakanaDays = isKanaDone ? 0 : Math.ceil(82 / kPace);
+    const kanaDays = isKanaDone ? 0 : Math.max(hiraganaDays, katakanaDays);
+    const kanaOffset = isKanaDone ? 0 : kanaDays;
 
     const kanjiDays = Math.ceil(110 / Math.max(1, pace.kanjiPerDay));
     const wordsDays = kanaOffset + Math.ceil(805 / Math.max(1, pace.wordsPerDay));
@@ -743,6 +783,23 @@ class StudyScheduleStore {
       totalDaysNeeded,
       kanaOffset
     };
+  }
+
+  setSkipKana(skip: boolean = true) {
+    this.customPace = {
+      ...this.customPace,
+      skipKana: skip,
+      enabled: skip ? true : this.customPace.enabled,
+    };
+    if (skip) {
+      learnedStore.markAllKanaLearned();
+    }
+    if (this.customPace.enabled) {
+      this.targetDays = this.getPaceEstimates(this.customPace).totalDaysNeeded;
+    }
+    this.saveToStorage();
+    this.recomputeMappings();
+    this.notify();
   }
 
   setCustomPace(newPace: Partial<CustomDailyPace>) {
@@ -786,14 +843,17 @@ class StudyScheduleStore {
 
   // Kana
   getKanaDay(char: string): number {
+    if (this.isKanaMastered() || learnedStore.isKanaLearned(char)) return 1;
     this.ensureMappings();
     return this.kanaDayMap.get(char) || 1;
   }
   isKanaUnlocked(char: string): boolean {
     if (this.targetDays === 'ALL') return true;
+    if (this.isKanaMastered() || learnedStore.isKanaLearned(char)) return true;
     return this.getKanaDay(char) <= this.currentDay;
   }
   isKanaToday(char: string): boolean {
+    if (this.isKanaMastered()) return false;
     return this.getKanaDay(char) === this.currentDay;
   }
 
@@ -910,8 +970,9 @@ class StudyScheduleStore {
     const kanjiList = dataStore.kanjiN5;
     const wordList = dataStore.wordsN5;
 
-    const targetHiragana = hiraganaList.filter(k => this.getKanaDay(k.char) === day);
-    const targetKatakana = katakanaList.filter(k => this.getKanaDay(k.char) === day);
+    const isMastered = this.isKanaMastered();
+    const targetHiragana = isMastered ? [] : hiraganaList.filter(k => this.getKanaDay(k.char) === day);
+    const targetKatakana = isMastered ? [] : katakanaList.filter(k => this.getKanaDay(k.char) === day);
     const targetKanji = kanjiList.filter((k: any) => this.getKanjiDay(k.char) === day);
     const targetWords = wordList.filter((w: any) => this.getWordDay(w.id || w._id || w.word) === day);
     const targetLessonId = N5_LESSON_IDS.find(id => this.getLessonDay(id) === day);
@@ -971,7 +1032,8 @@ class StudyScheduleStore {
       };
     }
 
-    const unlockedKanaCount = allKanaOrdered.filter(k => this.getKanaDay(k.char) <= day).length;
+    const isMastered = this.isKanaMastered();
+    const unlockedKanaCount = isMastered ? allKanaOrdered.length : allKanaOrdered.filter(k => this.getKanaDay(k.char) <= day).length;
     const unlockedKanjiCount = kanjiList.filter((k: any) => this.getKanjiDay(k.char) <= day).length;
     const unlockedWordsCount = wordList.filter((w: any) => this.getWordDay(w.id || w._id || w.word) <= day).length;
     const unlockedLessonsCount = N5_LESSON_IDS.filter(id => this.getLessonDay(id) <= day).length;

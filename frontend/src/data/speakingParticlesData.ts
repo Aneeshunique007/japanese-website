@@ -538,6 +538,11 @@ export interface SelfIntroSentence {
 
 export function generateSelfIntroSentences(profile: SelfIntroProfile): SelfIntroSentence[] {
   const p = { ...DEFAULT_SELF_INTRO_PROFILE, ...profile };
+  if (profile.name && profile.name !== DEFAULT_SELF_INTRO_PROFILE.name) {
+    if (!profile.nameKatakana || profile.nameKatakana === DEFAULT_SELF_INTRO_PROFILE.nameKatakana) {
+      p.nameKatakana = profile.name;
+    }
+  }
   const sentences: SelfIntroSentence[] = [];
   let id = 1;
 

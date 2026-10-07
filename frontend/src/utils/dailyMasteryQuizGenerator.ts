@@ -79,9 +79,9 @@ export function getLearningStatus(day: number): LearningStatus {
   const learnedKanjiSet = new Set(learnedStore.getLearnedKanjiList());
   const learnedWordSet = new Set(learnedStore.getLearnedWordsList());
 
-  const kanaAssigned = (targets.kana || []).map((k: any) => k.char);
-  const kanjiAssigned = (targets.kanji || []).map((kj: any) => kj.character || kj.kanji || '');
-  const wordsAssigned = (targets.words || []).map((w: any) => String(w.id || w.word || ''));
+  const kanaAssigned = (targets.kana || []).map((k: any) => k.char || k.character || '');
+  const kanjiAssigned = (targets.kanji || []).map((kj: any) => kj.char || kj.character || kj.kanji || '');
+  const wordsAssigned = (targets.words || []).map((w: any) => String(w.id || w._id || w.word || ''));
 
   const hasLearnedKana = kanaAssigned.some((c: string) => learnedKanaSet.has(c));
   const hasLearnedKanji = kanjiAssigned.some((c: string) => learnedKanjiSet.has(c));

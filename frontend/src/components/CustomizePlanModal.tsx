@@ -345,7 +345,7 @@ export const CustomizePlanModal: React.FC<CustomizePlanModalProps> = ({
                   onClick={() => {
                     audio.playSuccess();
                     learnedStore.markAllKanaLearned();
-                    studyScheduleStore.setCustomPace({ skipKana: true });
+                    studyScheduleStore.setSkipKana(true);
                     onToast?.('All 164 Kana marked learned! Full curriculum starts on Day 1 🎉');
                     onClose();
                   }}

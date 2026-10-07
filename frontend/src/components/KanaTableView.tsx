@@ -9,7 +9,8 @@ import {
   ChevronRight,
   Sliders,
   X,
-  ArrowLeft
+  ArrowLeft,
+  RotateCcw
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { getKanaDetails, KanaDetailsData } from '../data/kanaWords';
@@ -296,7 +297,8 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
   const subText = theme === 'dark' ? 'text-slate-400' : 'text-slate-500';
 
   const handleKanaClick = (char: string, romaji: string, scriptOverride?: 'Hiragana' | 'Katakana') => {
-    const isUnlocked = studyScheduleStore.isKanaUnlocked(char);
+    const isMastered = studyScheduleStore.isKanaMastered() || learnedKana.size >= 164;
+    const isUnlocked = isMastered || learnedKana.has(char) || studyScheduleStore.isKanaUnlocked(char);
     if (!isUnlocked) {
       audio.playError();
       setLockedKanaModalItem({
@@ -768,6 +770,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
 
       {/* JLPT N5 Study Schedule Banner & Day Controls */}
       {(() => {
+        const isKanaMastered = studyScheduleStore.isKanaMastered() || (learnedKana.size >= 164);
         const scriptPace = activeScript === 'katakana'
           ? (customPace.katakanaPerDay || customPace.kanaPerDay || 10)
           : (activeScript === 'hiragana'
@@ -793,20 +796,32 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
             theme === 'dark' ? 'bg-[#17171C] border-slate-800' : 'bg-white border-slate-200/80 shadow-xs'
           }`}>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-orange-500/10 text-[#FF5E3A] flex items-center justify-center shrink-0">
-                  <Calendar className="w-5 h-5" />
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                  isKanaMastered ? 'bg-emerald-500/15 text-emerald-500' : 'bg-orange-500/10 text-[#FF5E3A]'
+                }`}>
+                  {isKanaMastered ? <Check className="w-5 h-5 stroke-[3]" /> : <Calendar className="w-5 h-5" />}
                 </div>
                 <div>
                   <div className="flex items-center gap-2 flex-wrap">
                     <h3 className="text-sm font-black text-slate-900 dark:text-white font-heading">
-                      {isCustomActive ? `Custom ${scriptName} Pace` : `JLPT N5 ${scriptName} Schedule`}: Day {scheduleCurrentDay} of {effectiveTargetDays}
+                      {isKanaMastered
+                        ? `🌸⚡ All 164 Kana Mastered (${scriptName} Complete)`
+                        : isCustomActive
+                        ? `Custom ${scriptName} Pace: Day ${scheduleCurrentDay} of ${effectiveTargetDays}`
+                        : `JLPT N5 ${scriptName} Schedule: Day ${scheduleCurrentDay} of ${effectiveTargetDays}`}
                     </h3>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-orange-500/15 text-[#FF5E3A]">
-                      {isCustomActive
+                    <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${
+                      isKanaMastered
+                        ? 'bg-emerald-500/15 text-emerald-500'
+                        : 'bg-orange-500/15 text-[#FF5E3A]'
+                    }`}>
+                      {isKanaMastered
+                        ? '100% Unlocked · Core N5 Ready'
+                        : isCustomActive
                         ? `${scriptPace} ${scriptName} / day · ${scriptDaysNeeded} days total`
                         : `${todayTargetCount} ${scriptName} on Day ${scheduleCurrentDay}`}
                     </span>
-                    {todayTargetKana.length > 0 && (
+                    {!isKanaMastered && todayTargetKana.length > 0 && (
                       <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${
                         todayLearnedKanaCount >= todayTargetKana.length
                           ? 'bg-emerald-500/15 text-emerald-500'
@@ -817,7 +832,9 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                     )}
                   </div>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    {isCustomActive
+                    {isKanaMastered
+                      ? `All Hiragana & Katakana are mastered and unlocked! Core JLPT N5 Kanji, Words, and Lessons are active.`
+                      : isCustomActive
                       ? `Learning ${scriptPace} ${scriptName} daily. Day 1–${scheduleCurrentDay} unlocked. Kanji is also studied alongside from Day 1.`
                       : `Day-by-day ${scriptName} unlocked. Advance days or adjust your daily pace anytime.`}
                   </p>
@@ -825,6 +842,42 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
               </div>
 
               <div className="flex items-center gap-2 flex-wrap self-stretch sm:self-auto justify-between sm:justify-end overflow-x-auto no-scrollbar touch-pan-x">
+                {/* One-click Know All / Reset Button */}
+                {isKanaMastered ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      audio.playClick();
+                      learnedStore.resetAllKanaLearned();
+                      studyScheduleStore.setSkipKana(false);
+                    }}
+                    className="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-amber-500/50 text-slate-400 hover:text-amber-500 text-xs font-bold font-mono transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
+                    title="Reset Kana progress to practice from scratch"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>Reset Kana</span>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      audio.playSuccess();
+                      learnedStore.markAllKanaLearned();
+                      studyScheduleStore.setSkipKana(true);
+                      confetti({
+                        particleCount: 60,
+                        spread: 70,
+                        origin: { y: 0.7 }
+                      });
+                    }}
+                    className="px-3 py-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold font-mono transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
+                    title="Mark all 164 Hiragana & Katakana as learned"
+                  >
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    <span>I Know All Kana</span>
+                  </button>
+                )}
+
                 {/* Customize Pace Button */}
                 <button
                   type="button"
@@ -1065,12 +1118,13 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
           {/* 5-Column Grid Cards Grouped By Row */}
           <div className="space-y-6">
             {gridSlotsByRow.map(({ rowDef, slots }) => {
+              const isKanaMastered = studyScheduleStore.isKanaMastered() || learnedKana.size >= 164;
               const hasVisibleRealItem = slots.some(slot => {
                 if (!slot.item) return false;
                 const char = slot.item.char;
                 const isToday = studyScheduleStore.isKanaToday(char);
-                const isUnlocked = studyScheduleStore.isKanaUnlocked(char);
-                if (scheduleFilter === 'TODAY' && !isToday) return false;
+                const isUnlocked = isKanaMastered || learnedKana.has(char) || studyScheduleStore.isKanaUnlocked(char);
+                if (scheduleFilter === 'TODAY' && !isToday && !isKanaMastered) return false;
                 if (scheduleFilter === 'UNLOCKED' && !isUnlocked) return false;
                 return true;
               });
@@ -1135,11 +1189,12 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                       const isSingleLearned = activeScript === 'katakana' ? isKataLearned : isHiraLearned;
                       const isLearned = activeScript === 'both' ? isBothLearned : isSingleLearned;
 
+                      const isKanaMastered = studyScheduleStore.isKanaMastered() || learnedKana.size >= 164;
                       const dayNumber = studyScheduleStore.getKanaDay(item.char);
-                      const isUnlocked = studyScheduleStore.isKanaUnlocked(item.char);
+                      const isUnlocked = isKanaMastered || isLearned || studyScheduleStore.isKanaUnlocked(item.char);
                       const isToday = studyScheduleStore.isKanaToday(item.char);
 
-                      if (scheduleFilter === 'TODAY' && !isToday) return null;
+                      if (scheduleFilter === 'TODAY' && !isToday && !isKanaMastered) return null;
                       if (scheduleFilter === 'UNLOCKED' && !isUnlocked) return null;
 
                       return (
@@ -1206,11 +1261,13 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                                   </button>
                                 )}
                                 <span className={`px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded text-[8px] sm:text-[9px] font-mono font-black ${
-                                  isToday 
+                                  isLearned || isKanaMastered
+                                    ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
+                                    : isToday 
                                     ? 'bg-[#FF5E3A] text-white' 
                                     : 'bg-orange-500/10 text-[#FF5E3A]'
                                 }`}>
-                                  D{dayNumber}
+                                  {isLearned || isKanaMastered ? '✓' : `D${dayNumber}`}
                                 </span>
                               </div>
                             )}
@@ -1329,11 +1386,12 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
               const isKataLearned = kItem ? learnedKana.has(kItem.char) : false;
               const isLearned = activeScript === 'both' ? (isHiraLearned && isKataLearned) : (activeScript === 'katakana' ? isKataLearned : isHiraLearned);
 
+              const isKanaMastered = studyScheduleStore.isKanaMastered() || learnedKana.size >= 164;
               const dayNumber = studyScheduleStore.getKanaDay(item.char);
-              const isUnlocked = studyScheduleStore.isKanaUnlocked(item.char);
+              const isUnlocked = isKanaMastered || isLearned || studyScheduleStore.isKanaUnlocked(item.char);
               const isToday = studyScheduleStore.isKanaToday(item.char);
 
-              if (scheduleFilter === 'TODAY' && !isToday) return null;
+              if (scheduleFilter === 'TODAY' && !isToday && !isKanaMastered) return null;
               if (scheduleFilter === 'UNLOCKED' && !isUnlocked) return null;
 
               return (
@@ -1368,11 +1426,13 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                           <Check className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 stroke-[3]" />
                         </button>
                         <span className={`px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded text-[8px] sm:text-[9px] font-mono font-black ${
-                          isToday 
+                          isLearned || isKanaMastered
+                            ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
+                            : isToday 
                             ? 'bg-[#FF5E3A] text-white' 
                             : 'bg-orange-500/10 text-[#FF5E3A]'
                         }`}>
-                          D{dayNumber}
+                          {isLearned || isKanaMastered ? '✓' : `D${dayNumber}`}
                         </span>
                       </div>
                     )}

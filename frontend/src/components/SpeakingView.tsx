@@ -113,7 +113,8 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
   const [completedSentences, setCompletedSentences] = useState<Record<string, number[]>>(() => {
     try {
       const saved = readUserScoped(particlesKeyFor(getCurrentUserId()), LEGACY_PARTICLES_KEY);
-      return saved ? JSON.parse(saved) : {};
+      if (!saved) return {};
+      return typeof saved === 'string' ? JSON.parse(saved) : (saved as Record<string, number[]>);
     } catch {
       return {};
     }
@@ -148,7 +149,9 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
   const [selfIntroProfile, setSelfIntroProfile] = useState<SelfIntroProfile>(() => {
     try {
       const saved = readUserScoped(introKeyFor(getCurrentUserId()), LEGACY_INTRO_KEY);
-      return saved ? { ...DEFAULT_SELF_INTRO_PROFILE, ...JSON.parse(saved) } : DEFAULT_SELF_INTRO_PROFILE;
+      if (!saved) return DEFAULT_SELF_INTRO_PROFILE;
+      const parsed = typeof saved === 'string' ? JSON.parse(saved) : saved;
+      return { ...DEFAULT_SELF_INTRO_PROFILE, ...parsed };
     } catch {
       return DEFAULT_SELF_INTRO_PROFILE;
     }
