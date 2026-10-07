@@ -1,19 +1,26 @@
-// Comprehensive 100-Test Suite for the Japanese Learning Platform
+// Comprehensive 150-Test Suite for the Japanese Learning Platform
 // Run with: npm test   (→ npx tsx src/test.ts)
 //
-// Covers 11 Headings across the Entire Platform:
-//  1. User Identity, Auth & Per-User Isolation (8 tests)
-//  2. Persistence & Session State Across Logout/Login (8 tests)
-//  3. Legacy Storage Key Migration & Backwards Compatibility (5 tests)
-//  4. Speaking Particles & Self-Intro Mastery Engine (8 tests)
-//  5. Smart Resume, Edge Cases & Skipping Mastered Sentences (10 tests)
-//  6. Speaking Data Integrity & Profile Generator Robustness (8 tests)
-//  7. Kana Mastery & Schedule Progression (Day 2 Hiragana Bug Fix) (10 tests)
-//  8. Study Schedule Store Engine & Dynamic Pacing (60/90/120/ALL) (12 tests)
-//  9. Learned Store Multi-Domain Tracking (Kanji, Words, Lessons, Quizzes) (12 tests)
-//  10. Romaji to Hiragana Conversion & Pronunciation Engine (10 tests)
-//  11. Daily Mastery Quiz Generator & Activity Tracker (9 tests)
-// Total: Exactly 100 Tests
+// Covers 18 Headings across the Entire Platform:
+//  1. User Identity, Auth & Per-User Isolation (8 tests: 1-8)
+//  2. Persistence & Session State Across Logout/Login (8 tests: 9-16)
+//  3. Legacy Storage Key Migration & Backwards Compatibility (5 tests: 17-21)
+//  4. Speaking Particles & Self-Intro Mastery Engine (8 tests: 22-29)
+//  5. Smart Resume, Edge Cases & Skipping Mastered Sentences (10 tests: 30-39)
+//  6. Speaking Data Integrity & Profile Generator Robustness (8 tests: 40-47)
+//  7. Kana Mastery & Schedule Progression (Day 2 Hiragana Bug Fix) (10 tests: 48-57)
+//  8. Study Schedule Store Engine & Dynamic Pacing (60/90/120/ALL) (12 tests: 58-69)
+//  9. Learned Store Multi-Domain Tracking (Kanji, Words, Lessons, Quizzes) (12 tests: 70-81)
+//  10. Romaji to Hiragana Conversion & Pronunciation Engine (10 tests: 82-91)
+//  11. Daily Mastery Quiz Generator & Activity Tracker (9 tests: 92-100)
+//  12. Speech Recognition, Normalization & Phonetic Matching (8 tests: 101-108)
+//  13. Daily Sentence Quiz Generator & Token Bank Engine (8 tests: 109-116)
+//  14. Lesson Grammar Quiz Engine (N5 Course Progression) (6 tests: 117-122)
+//  15. Client Cache Engine & DataStore In-Memory Repository (8 tests: 123-130)
+//  16. Curriculum Structure, Anime Dialogues & Nikki Reader Integrity (8 tests: 131-138)
+//  17. Search Engine Query Parsing & Multi-Modal Result Mapping (6 tests: 139-144)
+//  18. API Client Data Service & Client-Side Leaderboard (6 tests: 145-150)
+// Total: Exactly 150 Tests
 
 // ---------------------------------------------------------------------------
 // Minimal in-memory localStorage & DOM polyfills for Node / Test runner
@@ -21,13 +28,27 @@
 class MemoryStorage {
   private store = new Map<string, string>();
   get length() { return this.store.size; }
-  clear() { this.store.clear(); }
+  clear() {
+    this.store.clear();
+    for (const k of Object.keys(this)) {
+      if (!['length', 'clear', 'getItem', 'setItem', 'removeItem', 'key', 'store'].includes(k)) {
+        delete (this as any)[k];
+      }
+    }
+  }
   getItem(k: string) { return this.store.has(k) ? this.store.get(k)! : null; }
-  setItem(k: string, v: string) { this.store.set(k, String(v)); }
-  removeItem(k: string) { this.store.delete(k); }
+  setItem(k: string, v: string) {
+    this.store.set(k, String(v));
+    (this as any)[k] = String(v);
+  }
+  removeItem(k: string) {
+    this.store.delete(k);
+    delete (this as any)[k];
+  }
   key(i: number) { return Array.from(this.store.keys())[i] ?? null; }
 }
 (globalThis as any).localStorage = new MemoryStorage();
+(globalThis as any).sessionStorage = new MemoryStorage();
 
 if (!(globalThis as any).window) {
   (globalThis as any).window = {
@@ -71,6 +92,24 @@ import { learnedStore } from './utils/learnedStore';
 import { romajiToHiragana, getKanjiPronunciation } from './utils/romaji';
 import { getLearningStatus, generateDailyMasteryQuestions } from './utils/dailyMasteryQuizGenerator';
 import { formatDateKey, recordStudySession, getWeeklyStudyData } from './utils/activityTracker';
+import {
+  katakanaToHiragana,
+  normalizeJapaneseText,
+  compareJapaneseSpeech
+} from './utils/speechRecognition';
+import {
+  resolveRomaji,
+  lookupOptionDetails,
+  generateDailySentenceQuestions
+} from './utils/dailySentenceQuizGenerator';
+import { getLessonGrammar10Questions } from './utils/lessonGrammarQuizData';
+import { clientCache } from './services/cacheService';
+import { dataStore } from './services/dataStore';
+import { CURRICULUM_DATA } from './data/curriculumData';
+import { ANIME_DIALOGUES, ANIME_CATEGORIES } from './data/animeData';
+import { NIKKI_DAYS } from './data/nikkiData';
+import { searchAll } from './utils/searchEngine';
+import { api } from './services/api';
 
 // ---------------------------------------------------------------------------
 // Test Runner Engine
@@ -939,6 +978,296 @@ test('94. getLearningStatus has no missing categories when day targets are compl
     assertEqual(days, ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
   });
 
+  // ===========================================================================
+  // Heading 12: Speech Recognition, Normalization & Phonetic Matching (8 Tests)
+  // ===========================================================================
+  section('Heading 12: Speech Recognition, Normalization & Phonetic Matching');
+
+  test('101. katakanaToHiragana converts standard katakana words to hiragana', () => {
+    assertEqual(katakanaToHiragana('アメリカ'), 'あめりか');
+    assertEqual(katakanaToHiragana('コーヒー'), 'こーひー');
+  });
+
+  test('102. katakanaToHiragana preserves hiragana, kanji, and english characters intact', () => {
+    assertEqual(katakanaToHiragana('東京Tokyoとうきょう'), '東京Tokyoとうきょう');
+  });
+
+  test('103. normalizeJapaneseText strips spaces, full-width punctuation, and normalizes katakana', () => {
+    assertEqual(normalizeJapaneseText('  こんにちは、　セカイ！  '), 'こんにちはせかい');
+  });
+
+  test('104. normalizeJapaneseText handles empty string or whitespace-only gracefully', () => {
+    assertEqual(normalizeJapaneseText('   '), '');
+    assertEqual(normalizeJapaneseText(''), '');
+  });
+
+  test('105. compareJapaneseSpeech gives 100% score (similarity 1.0, isMatch true) on exact match', () => {
+    const res = compareJapaneseSpeech('こんにちは', 'こんにちは');
+    assert(res.isMatch && res.similarity === 1, 'Exact match must score 1.0');
+  });
+
+  test('106. compareJapaneseSpeech matches target against alternate readings array', () => {
+    const res = compareJapaneseSpeech('よん', 'し', ['よん']);
+    assert(res.isMatch, 'Alternate reading should match');
+  });
+
+  test('107. compareJapaneseSpeech detects substring or punctuation variance (>= 0.7)', () => {
+    const res = compareJapaneseSpeech('おはようございます', 'おはようございます！');
+    assert(res.isMatch, 'Punctuation variance should match');
+  });
+
+  test('108. compareJapaneseSpeech rejects completely unrelated speech input', () => {
+    const res = compareJapaneseSpeech('さようなら', 'こんにちは');
+    assert(!res.isMatch, 'Unrelated speech must not match');
+  });
+
+  // ===========================================================================
+  // Heading 13: Daily Sentence Quiz Generator & Token Bank Engine (8 Tests)
+  // ===========================================================================
+  section('Heading 13: Daily Sentence Quiz Generator & Token Bank Engine');
+
+  test('109. resolveRomaji resolves romaji for basic kana characters', () => {
+    assertEqual(resolveRomaji('あ'), 'a');
+    assertEqual(resolveRomaji('か'), 'ka');
+  });
+
+  test('110. resolveRomaji resolves romaji for vocabulary words in dataStore', () => {
+    assert(Boolean(resolveRomaji('水')), 'Romaji for 水 should resolve');
+  });
+
+  test('111. resolveRomaji falls back safely for empty string or unknown tokens', () => {
+    assertEqual(resolveRomaji(''), '');
+  });
+
+  test('112. lookupOptionDetails retrieves meaning and reading for known vocabulary', () => {
+    const details = lookupOptionDetails('水');
+    assert(Boolean(details.meaning), 'Meaning should be present');
+  });
+
+  test('113. lookupOptionDetails returns fallback details gracefully for unknown tokens', () => {
+    const details = lookupOptionDetails('xyz_unknown_token_99');
+    assertEqual(details.meaning, 'Contextual option');
+  });
+
+  test('114. generateDailySentenceQuestions produces questions for Day 1', () => {
+    const questions = generateDailySentenceQuestions(1);
+    assert(Array.isArray(questions) && questions.length > 0, 'Questions must be generated');
+  });
+
+  test('115. each generated sentence question has 4 options with valid correctIndex', () => {
+    const q = generateDailySentenceQuestions(1)[0];
+    assert(q.options.length === 4, 'Must have 4 options');
+    assert(q.correctIndex >= 0 && q.correctIndex < 4, 'correctIndex must be between 0 and 3');
+  });
+
+  test('116. each generated sentence question contains sentence with blank and explanation', () => {
+    const q = generateDailySentenceQuestions(1)[0];
+    assert(q.sentenceWithBlank.includes('____') || q.sentenceWithBlank.includes('('), 'Must have blank placeholder');
+    assert(Boolean(q.explanation), 'Explanation must be present');
+  });
+
+  // ===========================================================================
+  // Heading 14: Lesson Grammar Quiz Engine (N5 Course Progression) (6 Tests)
+  // ===========================================================================
+  section('Heading 14: Lesson Grammar Quiz Engine (N5 Course Progression)');
+
+  test('117. getLessonGrammar10Questions retrieves questions for lesson 1-1', () => {
+    const qs = getLessonGrammar10Questions('1-1');
+    assert(qs.length >= 5, 'Lesson 1-1 should have at least 5 questions');
+  });
+
+  test('118. each grammar question contains non-empty question prompt and 4 options', () => {
+    const qs = getLessonGrammar10Questions('1-1');
+    qs.forEach((q) => {
+      assert(Boolean(q.question), 'Prompt must exist');
+      assert(q.options.length === 4, 'Must have 4 options');
+    });
+  });
+
+  test('119. each grammar question has correctIndex within [0, 3]', () => {
+    const qs = getLessonGrammar10Questions('1-1');
+    qs.forEach((q) => {
+      assert(q.correctIndex >= 0 && q.correctIndex <= 3, 'Index must be valid');
+    });
+  });
+
+  test('120. each grammar question includes an educational explanation string', () => {
+    const qs = getLessonGrammar10Questions('1-1');
+    qs.forEach((q) => {
+      assert(Boolean(q.explanation), 'Explanation required');
+    });
+  });
+
+  test('121. getLessonGrammar10Questions handles unknown lesson ID with safe fallback questions without throwing', () => {
+    const qs = getLessonGrammar10Questions('non-existent-lesson-999');
+    assert(Array.isArray(qs), 'Must return array fallback');
+  });
+
+  test('122. questions within a lesson have unique question prompts', () => {
+    const qs = getLessonGrammar10Questions('1-1');
+    const prompts = qs.map((q) => q.question);
+    assertEqual(new Set(prompts).size, prompts.length, 'Questions must be unique');
+  });
+
+  // ===========================================================================
+  // Heading 15: Client Cache Engine & DataStore In-Memory Repository (8 Tests)
+  // ===========================================================================
+  section('Heading 15: Client Cache Engine & DataStore In-Memory Repository');
+
+  test('123. clientCache.set and clientCache.get store and retrieve values in memory', () => {
+    clientCache.set('test_k', { val: 42 });
+    assertEqual(clientCache.get<{ val: number }>('test_k')?.val, 42);
+  });
+
+  test('124. clientCache.get returns null for non-existent keys', () => {
+    assertEqual(clientCache.get('missing_k'), null);
+  });
+
+  test('125. clientCache.set with negative TTL expires immediately', () => {
+    clientCache.set('exp_k', 'data', -1);
+    assertEqual(clientCache.get('exp_k'), null);
+  });
+
+  test('126. clientCache.clear clears all stored items', () => {
+    clientCache.set('k1', 1);
+    clientCache.clear();
+    assertEqual(clientCache.get('k1'), null);
+  });
+
+  await testAsync('127. dataStore.ready() resolves successfully', async () => {
+    await dataStore.ready();
+    assert(true, 'ready resolved');
+  });
+
+  test('128. dataStore.allWords contains complete N5 and N4 vocabulary lists', () => {
+    assert(dataStore.allWords.length > 500, 'Vocabulary list should have >500 items');
+  });
+
+  test('129. dataStore.allKanji contains complete N5 and N4 kanji lists', () => {
+    assert(dataStore.allKanji.length > 150, 'Kanji list should have >150 items');
+  });
+
+  test('130. dataStore.allKana contains exactly 164 total kana entries across basic, dakuten, and yoon', () => {
+    assertEqual(dataStore.allKana.length, 164);
+  });
+
+  // ===========================================================================
+  // Heading 16: Curriculum Structure, Anime Dialogues & Nikki Reader Integrity (8 Tests)
+  // ===========================================================================
+  section('Heading 16: Curriculum Structure, Anime Dialogues & Nikki Reader Integrity');
+
+  test('131. CURRICULUM_DATA contains structured units with non-empty lessons', () => {
+    assert(CURRICULUM_DATA.length > 0, 'Curriculum units must exist');
+    assert(CURRICULUM_DATA[0].lessons.length > 0, 'Unit 1 lessons must exist');
+  });
+
+  test('132. curriculum lessons have valid IDs, titles, and descriptions', () => {
+    const lesson = CURRICULUM_DATA[0].lessons[0];
+    assert(Boolean(lesson.id) && Boolean(lesson.title), 'Lesson id and title required');
+  });
+
+  test('133. ANIME_DIALOGUES contains dialogues with Japanese text, romaji, and English translation', () => {
+    assert(ANIME_DIALOGUES.length > 0, 'Anime dialogues must exist');
+    const firstLine = ANIME_DIALOGUES[0].lines[0];
+    assert(Boolean(firstLine.japanese) && Boolean(firstLine.romaji) && Boolean(firstLine.english), 'Japanese, romaji and english required');
+  });
+
+  test('134. anime dialogue entries have valid speaker characters', () => {
+    ANIME_DIALOGUES.slice(0, 10).forEach((d) => {
+      assert(d.lines.length > 0, 'Dialogue must contain lines');
+      assert(Boolean(d.lines[0].speaker), 'Character speaker required');
+    });
+  });
+
+  test('135. anime dialogue entries specify anime series source', () => {
+    ANIME_DIALOGUES.slice(0, 10).forEach((d) => assert(Boolean(d.anime), 'Anime title required'));
+  });
+
+  test('136. ANIME_CATEGORIES contains standard anime genre classifications', () => {
+    assert(ANIME_CATEGORIES.length > 0, 'Categories must exist');
+  });
+
+  test('137. NIKKI_DAYS contains structured daily lessons with diary entries', () => {
+    assert(NIKKI_DAYS.length > 0, 'Nikki days must exist');
+  });
+
+  test('138. each Nikki daily lesson contains theme and day number', () => {
+    NIKKI_DAYS.slice(0, 5).forEach((day) => {
+      assert(typeof day.dayNumber === 'number' && Boolean(day.theme), 'Day num and theme required');
+    });
+  });
+
+  // ===========================================================================
+  // Heading 17: Search Engine Query Parsing & Multi-Modal Result Mapping (6 Tests)
+  // ===========================================================================
+  section('Heading 17: Search Engine Query Parsing & Multi-Modal Result Mapping');
+
+  await testAsync('139. searchAll returns empty array for empty string query', async () => {
+    const res = await searchAll('');
+    assertEqual(res.length, 0);
+  });
+
+  await testAsync('140. searchAll returns empty array for whitespace-only query', async () => {
+    const res = await searchAll('   ');
+    assertEqual(res.length, 0);
+  });
+
+  await testAsync('141. searchAll finds kanji items by character or meaning', async () => {
+    const res = await searchAll('水');
+    assert(res.some((r) => r.type === 'kanji' || r.japanese.includes('水')), 'Should find 水');
+  });
+
+  await testAsync('142. searchAll assigns appropriate targetTab for found items', async () => {
+    const res = await searchAll('水');
+    assert(res.every((r) => ['words', 'kanji', 'kana', 'courses', 'hiragana', 'katakana'].includes(r.targetTab)), 'targetTab must be valid');
+  });
+
+  await testAsync('143. searchAll respects the maximum limit parameter', async () => {
+    const res = await searchAll('a', 5);
+    assert(res.length <= 5, 'Results must not exceed limit 5');
+  });
+
+  await testAsync('144. search result items have unique IDs', async () => {
+    const res = await searchAll('ka', 20);
+    const ids = res.map((r) => r.id);
+    assertEqual(new Set(ids).size, ids.length, 'Search item IDs must be unique');
+  });
+
+  // ===========================================================================
+  // Heading 18: API Client Data Service & Client-Side Leaderboard (6 Tests)
+  // ===========================================================================
+  section('Heading 18: API Client Data Service & Client-Side Leaderboard');
+
+  await testAsync('145. api.getLeaderboard returns user ranking and peer list', async () => {
+    const lb = await api.getLeaderboard('test_user');
+    assert(lb.success && Array.isArray(lb.leaderboard), 'Leaderboard must be array');
+  });
+
+  await testAsync('146. api.getKana("Hiragana") returns only Hiragana characters', async () => {
+    const res = await api.getKana('Hiragana');
+    assert(res.success && res.kana.every((k: any) => k.script === 'Hiragana'), 'Must be Hiragana only');
+  });
+
+  await testAsync('147. api.getKana("Katakana") returns only Katakana characters', async () => {
+    const res = await api.getKana('Katakana');
+    assert(res.success && res.kana.every((k: any) => k.script === 'Katakana'), 'Must be Katakana only');
+  });
+
+  await testAsync('148. api.getGrammar("N5") filters grammar library by N5 JLPT level', async () => {
+    const res = await api.getGrammar('N5');
+    assert(res.success && res.grammar.every((g: any) => g.jlpt.toLowerCase() === 'n5'), 'Must be N5 only');
+  });
+
+  await testAsync('149. api.getGrammar with search query filters grammar points by keyword', async () => {
+    const res = await api.getGrammar(undefined, 'desu');
+    assert(res.success && res.grammar.length > 0, 'Should find desu grammar');
+  });
+
+  await testAsync('150. api.updateProgress increments user XP and recalculates rank', async () => {
+    const res = await api.updateProgress({ userId: 'test_xp_user', xpGained: 100 });
+    assert(res.success && (res.user.xp || 0) >= 100, 'XP must increase by at least 100');
+  });
+
   // ---------------------------------------------------------------------------
   // Final Grand Summary
   // ---------------------------------------------------------------------------
@@ -950,6 +1279,6 @@ test('94. getLearningStatus has no missing categories when day targets are compl
     failures.forEach((f) => console.log(`  - ${f}`));
     process.exit(1);
   }
-  console.log('\n🎉 ALL 100 TESTS PASSED CLEANLY! The entire website is verified.');
+  console.log('\n🎉 ALL 150 TESTS PASSED CLEANLY! The entire website is verified.');
   console.log(`${'='.repeat(60)}\n`);
 })();

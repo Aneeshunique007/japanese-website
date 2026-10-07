@@ -455,23 +455,54 @@ export const api = {
   // 10. Global Search
   async search(query: string) {
     const q = (query || '').toLowerCase().trim();
-    if (!q) return { success: true, results: [] };
+    if (!q) return { success: true, results: [], words: [], kanji: [], kana: [], grammar: [] };
 
-    const kanjiMatches = ALL_JLPT_KANJI_DATABASE.filter(k =>
+    const matchedWords = ALL_JLPT_WORDS_DATABASE.filter(w =>
+      (w.word && w.word.toLowerCase().includes(q)) ||
+      (w.reading && w.reading.toLowerCase().includes(q)) ||
+      (w.romaji && w.romaji.toLowerCase().includes(q)) ||
+      (w.meaning && w.meaning.toLowerCase().includes(q))
+    );
+
+    const matchedKanji = ALL_JLPT_KANJI_DATABASE.filter(k =>
       k.char.includes(q) || (k.meaning && k.meaning.toLowerCase().includes(q))
-    ).map(k => ({ type: 'kanji', title: `${k.char} (${k.meaning})`, url: `/kanji?search=${k.char}` }));
+    );
 
-    const grammarMatches = GRAMMAR_LIBRARY.filter(g =>
+    const allKanaList = [
+      ...HIRAGANA_DATA.basic, ...HIRAGANA_DATA.dakuten, ...HIRAGANA_DATA.yoon,
+      ...KATAKANA_DATA.basic, ...KATAKANA_DATA.dakuten, ...KATAKANA_DATA.yoon
+    ];
+    const matchedKana = allKanaList.filter(kn =>
+      kn.char.includes(q) || (kn.romaji && kn.romaji.toLowerCase().includes(q))
+    );
+
+    const matchedGrammar = GRAMMAR_LIBRARY.filter(g =>
       g.title.toLowerCase().includes(q) || (g.meaning && g.meaning.toLowerCase().includes(q))
-    ).map(g => ({ type: 'grammar', title: `${g.title} - ${g.meaning}`, url: `/grammar` }));
+    );
 
     const dialogueMatches = DIALOGUES.filter(d =>
       d.title.toLowerCase().includes(q)
     ).map(d => ({ type: 'dialogue', title: d.title, url: `/dialogues` }));
 
+    const kanjiMatches = matchedKanji.map(k => ({
+      type: 'kanji',
+      title: `${k.char} (${k.meaning})`,
+      url: `/kanji?search=${k.char}`
+    }));
+
+    const grammarMatches = matchedGrammar.map(g => ({
+      type: 'grammar',
+      title: `${g.title} - ${g.meaning}`,
+      url: `/grammar`
+    }));
+
     return {
       success: true,
-      results: [...kanjiMatches, ...grammarMatches, ...dialogueMatches]
+      results: [...kanjiMatches, ...grammarMatches, ...dialogueMatches],
+      words: matchedWords,
+      kanji: matchedKanji,
+      kana: matchedKana,
+      grammar: matchedGrammar
     };
   },
 
