@@ -64,7 +64,6 @@ if (!(globalThis as any).document) {
 
 import {
   LEGACY_INTRO_KEY,
-  LEGACY_PARTICLES_KEY,
   introKeyFor,
   particlesKeyFor,
   introProgressKeyFor,
