@@ -312,8 +312,9 @@ export const WordQuizModal: React.FC<WordQuizModalProps> = ({
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                 <div>
                   {selectedOption !== currentQ?.meaning && (
-                    <span className="text-[11px] font-bold text-amber-500 dark:text-amber-400 block text-center sm:text-left">
-                      🔄 This word will repeat at the end until answered correctly!
+                    <span className="text-[11px] font-bold text-amber-500 dark:text-amber-400 flex items-center gap-1.5 text-center sm:text-left">
+                      <RotateCcw className="w-3.5 h-3.5 shrink-0" />
+                      <span>This word will repeat at the end until answered correctly!</span>
                     </span>
                   )}
                 </div>

@@ -9,7 +9,8 @@ import {
   Sparkles,
   BookOpen,
   Trophy,
-  ArrowLeft
+  ArrowLeft,
+  AlertCircle
 } from 'lucide-react';
 import { api, UserProfile } from '../services/api';
 import audio from '../utils/audio';
@@ -241,7 +242,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
           {/* Error Message */}
           {errorMsg && (
             <div className="mb-3 sm:mb-4 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-500 text-xs font-semibold flex items-center gap-2 animate-shake">
-              <span>⚠️</span>
+              <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{errorMsg}</span>
             </div>
           )}

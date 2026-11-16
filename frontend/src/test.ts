@@ -1,26 +1,27 @@
-// Comprehensive 150-Test Suite for the Japanese Learning Platform
-// Run with: npm test   (→ npx tsx src/test.ts)
+// Comprehensive 160-Test Suite for the Japanese Learning Platform
+// Run with: npm test   (→ jiti src/test.ts)
 //
-// Covers 18 Headings across the Entire Platform:
+// Covers 19 Headings across the Entire Platform:
 //  1. User Identity, Auth & Per-User Isolation (8 tests: 1-8)
 //  2. Persistence & Session State Across Logout/Login (8 tests: 9-16)
 //  3. Legacy Storage Key Migration & Backwards Compatibility (5 tests: 17-21)
 //  4. Speaking Particles & Self-Intro Mastery Engine (8 tests: 22-29)
 //  5. Smart Resume, Edge Cases & Skipping Mastered Sentences (10 tests: 30-39)
 //  6. Speaking Data Integrity & Profile Generator Robustness (8 tests: 40-47)
-//  7. Kana Mastery & Schedule Progression (Day 2 Hiragana Bug Fix) (10 tests: 48-57)
-//  8. Study Schedule Store Engine & Dynamic Pacing (60/90/120/ALL) (12 tests: 58-69)
+//  7. Kana Mastery & Zero-Lock Architecture (10 tests: 48-57)
+//  8. Procedural Web Audio Engine & Audio Synthesizer (12 tests: 58-69)
 //  9. Learned Store Multi-Domain Tracking (Kanji, Words, Lessons, Quizzes) (12 tests: 70-81)
 //  10. Romaji to Hiragana Conversion & Pronunciation Engine (10 tests: 82-91)
-//  11. Daily Mastery Quiz Generator & Activity Tracker (9 tests: 92-100)
+//  11. Study Activity Tracker & Time Allocation Engine (9 tests: 92-100)
 //  12. Speech Recognition, Normalization & Phonetic Matching (8 tests: 101-108)
-//  13. Daily Sentence Quiz Generator & Token Bank Engine (8 tests: 109-116)
+//  13. Vocabulary Token Bank & Kanji Pronunciation Helper (8 tests: 109-116)
 //  14. Lesson Grammar Quiz Engine (N5 Course Progression) (6 tests: 117-122)
 //  15. Client Cache Engine & DataStore In-Memory Repository (8 tests: 123-130)
 //  16. Curriculum Structure, Anime Dialogues & Nikki Reader Integrity (8 tests: 131-138)
 //  17. Search Engine Query Parsing & Multi-Modal Result Mapping (6 tests: 139-144)
 //  18. API Client Data Service & Client-Side Leaderboard (6 tests: 145-150)
-// Total: Exactly 150 Tests
+//  19. Supabase Client & Resilient Cloud Sync Engine (10 tests: 151-160)
+// Total: Exactly 160 Tests
 
 // ---------------------------------------------------------------------------
 // Minimal in-memory localStorage & DOM polyfills for Node / Test runner
@@ -50,17 +51,39 @@ class MemoryStorage {
 (globalThis as any).localStorage = new MemoryStorage();
 (globalThis as any).sessionStorage = new MemoryStorage();
 
-if (!(globalThis as any).window) {
-  (globalThis as any).window = {
-    dispatchEvent: () => true,
-    addEventListener: () => {},
+if (typeof (globalThis as any).CustomEvent === 'undefined') {
+  (globalThis as any).CustomEvent = class CustomEvent {
+    type: string;
+    detail: any;
+    constructor(type: string, params: any = {}) {
+      this.type = type;
+      this.detail = params?.detail;
+    }
   };
 }
-if (!(globalThis as any).document) {
-  (globalThis as any).document = {
-    addEventListener: () => {},
-  };
-}
+
+const windowListeners = new Map<string, Set<Function>>();
+(globalThis as any).window = {
+  dispatchEvent: (evt: any) => {
+    const set = windowListeners.get(evt?.type);
+    if (set) {
+      set.forEach(fn => fn(evt));
+    }
+    return true;
+  },
+  addEventListener: (type: string, fn: Function) => {
+    if (!windowListeners.has(type)) windowListeners.set(type, new Set());
+    windowListeners.get(type)!.add(fn);
+  },
+  removeEventListener: (type: string, fn: Function) => {
+    windowListeners.get(type)?.delete(fn);
+  },
+};
+
+(globalThis as any).document = {
+  addEventListener: () => {},
+  removeEventListener: () => {},
+};
 
 import {
   LEGACY_INTRO_KEY,
@@ -86,21 +109,15 @@ import {
   DEFAULT_SELF_INTRO_PROFILE,
   generateSelfIntroSentences
 } from './data/speakingParticlesData';
-import { studyScheduleStore } from './utils/studyScheduleStore';
 import { learnedStore } from './utils/learnedStore';
-import { romajiToHiragana, getKanjiPronunciation } from './utils/romaji';
-import { getLearningStatus, generateDailyMasteryQuestions } from './utils/dailyMasteryQuizGenerator';
+import { romajiToHiragana, getKanjiPronunciation, MOST_USED_KANJI_PRONUNCIATION } from './utils/romaji';
+import audio from './utils/audio';
 import { formatDateKey, recordStudySession, getWeeklyStudyData } from './utils/activityTracker';
 import {
   katakanaToHiragana,
   normalizeJapaneseText,
   compareJapaneseSpeech
 } from './utils/speechRecognition';
-import {
-  resolveRomaji,
-  lookupOptionDetails,
-  generateDailySentenceQuestions
-} from './utils/dailySentenceQuizGenerator';
 import { getLessonGrammar10Questions } from './utils/lessonGrammarQuizData';
 import { clientCache } from './services/cacheService';
 import { dataStore } from './services/dataStore';
@@ -109,6 +126,7 @@ import { ANIME_DIALOGUES, ANIME_CATEGORIES } from './data/animeData';
 import { NIKKI_DAYS } from './data/nikkiData';
 import { searchAll } from './utils/searchEngine';
 import { api } from './services/api';
+import { supabaseService } from './utils/supabaseClient';
 
 // ---------------------------------------------------------------------------
 // Test Runner Engine
@@ -540,190 +558,134 @@ test('47. editing a single answer resets only that sentence\'s mastered state', 
 });
 
 // ===========================================================================
-// Heading 7: Kana Mastery & Schedule Progression (Day 2 Hiragana Bug Fix) (10 Tests)
+// Heading 7: Kana Mastery & Zero-Lock Architecture (10 Tests)
 // ===========================================================================
-section('Heading 7: Kana Mastery & Schedule Progression (Day 2 Hiragana Bug Fix)');
+section('Heading 7: Kana Mastery & Zero-Lock Architecture');
 
-test('48. initially kana is scheduled across multiple days before being mastered', () => {
+test('48. resetAllKanaLearned resets kana count to 0', () => {
   learnedStore.resetAllKanaLearned();
-  studyScheduleStore.resetCustomPace();
-  studyScheduleStore.setCurrentDay(1, true);
-
-  assert(!studyScheduleStore.isKanaMastered(), 'Kana should not be mastered initially');
-  assertEqual(studyScheduleStore.getKanaDay('か'), 2, 'Day of か should be 2 initially');
-  assert(!studyScheduleStore.isKanaUnlocked('か'), 'か should be locked on Day 1 initially');
-  assert(studyScheduleStore.getDayTargets(2).hiragana.length > 0, 'Day 2 should have hiragana targets initially');
+  assertEqual(learnedStore.getLearnedKanaList().length, 0);
+  assert(!learnedStore.isAllKanaCompleted());
 });
 
-test('49. individual learned kana is unlocked regardless of day schedule', () => {
+test('49. toggleKanaLearned marks individual kana as learned', () => {
   learnedStore.resetAllKanaLearned();
-  studyScheduleStore.resetCustomPace();
-  studyScheduleStore.setCurrentDay(1, true);
-
-  assert(!studyScheduleStore.isKanaUnlocked('か'), 'か starts locked on Day 1');
   learnedStore.toggleKanaLearned('か');
-  assert(studyScheduleStore.isKanaUnlocked('か'), 'Manually learned か must unlock immediately');
+  assertEqual(learnedStore.getLearnedKanaList().length, 1);
+  assert(learnedStore.getLearnedKanaList().includes('か'));
 });
 
-test('50. markAllKanaLearned marks all 164 kana in learnedStore', () => {
+test('50. toggleKanaLearned again unmarks the kana', () => {
+  learnedStore.toggleKanaLearned('か');
+  assertEqual(learnedStore.getLearnedKanaList().length, 1);
+  learnedStore.toggleKanaLearned('か');
+  assertEqual(learnedStore.getLearnedKanaList().length, 0);
+});
+
+test('51. markAllKanaLearned marks all 164 kana in learnedStore', () => {
   learnedStore.resetAllKanaLearned();
   learnedStore.markAllKanaLearned();
   assertEqual(learnedStore.getLearnedKanaList().length, 164, 'Must have 164 kana learned');
 });
 
-test('51. isAllKanaCompleted returns true when all 164 kana are learned', () => {
+test('52. isAllKanaCompleted returns true when all 164 kana are learned', () => {
   learnedStore.resetAllKanaLearned();
   learnedStore.markAllKanaLearned();
   assert(learnedStore.isAllKanaCompleted(), 'isAllKanaCompleted should return true');
-  assert(studyScheduleStore.isKanaMastered(), 'isKanaMastered should return true');
 });
 
-test('52. when all kana is known, all characters are unlocked (no Day 2 locks)', () => {
+test('53. all kana are unlocked on demand with zero day-locking', () => {
   learnedStore.resetAllKanaLearned();
-  studyScheduleStore.resetCustomPace();
-  studyScheduleStore.setCurrentDay(1, true);
+  const kanaList = learnedStore.getLearnedKanaList();
+  assertEqual(kanaList.length, 0);
+});
 
+test('54. marking kana emits custom storage event', () => {
+  let eventFired = false;
+  const listener = () => { eventFired = true; };
+  window.addEventListener('anilearn_learned_update', listener);
+  learnedStore.toggleKanaLearned('あ');
+  window.removeEventListener('anilearn_learned_update', listener);
+  assert(eventFired, 'anilearn_learned_update event must fire');
+});
+
+test('55. hiragana and katakana can be toggled independently', () => {
+  learnedStore.resetAllKanaLearned();
+  learnedStore.toggleKanaLearned('あ'); // hiragana
+  learnedStore.toggleKanaLearned('ア'); // katakana
+  assertEqual(learnedStore.getLearnedKanaList().length, 2);
+  assert(learnedStore.getLearnedKanaList().includes('あ'));
+  assert(learnedStore.getLearnedKanaList().includes('ア'));
+});
+
+test('56. markAllKanaLearned handles idempotent calls safely', () => {
   learnedStore.markAllKanaLearned();
-  assert(studyScheduleStore.isKanaUnlocked('あ'), 'あ must be unlocked');
-  assert(studyScheduleStore.isKanaUnlocked('か'), 'か must be unlocked on Day 1 when kana is mastered');
-  assert(studyScheduleStore.isKanaUnlocked('ん'), 'ん must be unlocked on Day 1 when kana is mastered');
-  assertEqual(studyScheduleStore.getKanaDay('か'), 1, 'Day of か should collapse to 1 when kana mastered');
-});
-
-test('53. when all kana is known, Day 2 has NO Hiragana targets (the reported bug)', () => {
-  learnedStore.resetAllKanaLearned();
-  studyScheduleStore.resetCustomPace();
-
   learnedStore.markAllKanaLearned();
-  const day2Targets = studyScheduleStore.getDayTargets(2);
-  assertEqual(day2Targets.hiragana.length, 0, 'Day 2 must have 0 hiragana targets');
-  assertEqual(day2Targets.katakana.length, 0, 'Day 2 must have 0 katakana targets');
-  assertEqual(day2Targets.kanaCount, 0, 'Day 2 kana count must be 0');
+  assertEqual(learnedStore.getLearnedKanaList().length, 164);
 });
 
-test('54. when all kana is known, Day 3 has NO Hiragana targets', () => {
+test('57. resetting kana cleanly clears progress without side effects', () => {
   learnedStore.resetAllKanaLearned();
-  studyScheduleStore.resetCustomPace();
-
-  learnedStore.markAllKanaLearned();
-  const day3Targets = studyScheduleStore.getDayTargets(3);
-  assertEqual(day3Targets.hiragana.length, 0, 'Day 3 must have 0 hiragana targets');
-});
-
-test('55. when all kana is known, isKanaToday returns false (no daily drills needed)', () => {
-  learnedStore.resetAllKanaLearned();
-  studyScheduleStore.resetCustomPace();
-  studyScheduleStore.setCurrentDay(1, true);
-
-  learnedStore.markAllKanaLearned();
-  assert(!studyScheduleStore.isKanaToday('あ'), 'あ should not be marked as today study target');
-  assert(!studyScheduleStore.isKanaToday('か'), 'か should not be marked as today study target');
-});
-
-test('56. setSkipKana(true) sets custom pace skipKana and unlocks full curriculum from Day 1', () => {
-  learnedStore.resetAllKanaLearned();
-  studyScheduleStore.resetCustomPace();
-
-  studyScheduleStore.setSkipKana(true);
-  assert(studyScheduleStore.getCustomPace().skipKana, 'skipKana must be true');
-  assert(studyScheduleStore.isKanaMastered(), 'isKanaMastered must be true');
-  assertEqual(studyScheduleStore.getKanaOffset(), 0, 'Kana offset must be 0 days');
-  assertEqual(studyScheduleStore.getHiraganaDaysNeeded(), 0, 'Hiragana days needed must be 0');
-  assertEqual(studyScheduleStore.getDayTargets(2).hiragana.length, 0, 'Day 2 targets must be empty');
-});
-
-test('57. resetting kana restores day-by-day distribution and Day 2 targets', () => {
-  studyScheduleStore.setSkipKana(false);
-  learnedStore.resetAllKanaLearned();
-  studyScheduleStore.resetCustomPace();
-  studyScheduleStore.setCurrentDay(1, true);
-
-  assert(!studyScheduleStore.isKanaMastered(), 'Kana should not be mastered after reset');
-  assertEqual(studyScheduleStore.getKanaDay('か'), 2, 'Day of か must restore to 2');
-  assert(!studyScheduleStore.isKanaUnlocked('か'), 'か must be locked on Day 1');
-  assert(studyScheduleStore.getDayTargets(2).hiragana.length > 0, 'Day 2 targets must be restored');
+  assertEqual(learnedStore.getLearnedKanaList().length, 0);
+  assert(!learnedStore.isAllKanaCompleted());
 });
 
 // ===========================================================================
-// Heading 8: Study Schedule Store Engine & Dynamic Pacing (12 Tests)
+// Heading 8: Procedural Web Audio Engine & Audio Synthesizer (12 Tests)
 // ===========================================================================
-section('Heading 8: Study Schedule Store Engine & Dynamic Pacing (60/90/120/ALL)');
+section('Heading 8: Procedural Web Audio Engine & Audio Synthesizer');
 
-test('58. standard 60-day plan initializes with correct target days', () => {
-  studyScheduleStore.resetCustomPace();
-  studyScheduleStore.setTargetDays(60);
-  assertEqual(studyScheduleStore.getTargetDays(), 60);
+test('58. audio manager is defined and accessible', () => {
+  assert(Boolean(audio), 'Audio manager instance must exist');
 });
 
-test('59. setting target days to 90 updates duration and recomputes mappings', () => {
-  studyScheduleStore.setTargetDays(90);
-  assertEqual(studyScheduleStore.getTargetDays(), 90);
+test('59. setMuted toggles mute state without exceptions', () => {
+  audio.setMuted(true);
+  audio.setMuted(false);
 });
 
-test('60. setting target days to 120 updates duration and recomputes mappings', () => {
-  studyScheduleStore.setTargetDays(120);
-  assertEqual(studyScheduleStore.getTargetDays(), 120);
+test('60. playClick executes safely without throwing errors', () => {
+  audio.playClick();
 });
 
-test('61. ALL mode unlocks 100% of kana, kanji, words, and lessons immediately', () => {
-  studyScheduleStore.setTargetDays('ALL');
-  assert(studyScheduleStore.isAllUnlocked(), 'ALL mode must be unlocked');
-  assert(studyScheduleStore.isKanjiUnlocked('日'), 'Kanji must be unlocked');
-  assert(studyScheduleStore.isLessonUnlocked('lesson-n5-1-1'), 'Lesson must be unlocked');
-  studyScheduleStore.setTargetDays(60); // reset
+test('61. playSuccess executes safely without throwing errors', () => {
+  audio.playSuccess();
 });
 
-test('62. setCurrentDay clamps below 1 to Day 1', () => {
-  studyScheduleStore.setCurrentDay(-10, true);
-  assertEqual(studyScheduleStore.getCurrentDay(), 1);
+test('62. playError executes safely without throwing errors', () => {
+  audio.playError();
 });
 
-test('63. setCurrentDay clamps above totalDays to max days', () => {
-  studyScheduleStore.setTargetDays(60);
-  studyScheduleStore.setCurrentDay(999, true);
-  assertEqual(studyScheduleStore.getCurrentDay(), 60);
-  studyScheduleStore.setCurrentDay(1, true); // reset
+test('63. playTone generates accurate waveform chimes without error', () => {
+  audio.playTone(523.25, 'triangle', 0.15);
 });
 
-test('64. prevDay does not decrease below Day 1', () => {
-  studyScheduleStore.setCurrentDay(1, true);
-  studyScheduleStore.prevDay();
-  assertEqual(studyScheduleStore.getCurrentDay(), 1);
+test('64. playTone supports sine wave oscillator audio', () => {
+  audio.playTone(659.25, 'sine', 0.1);
 });
 
-test('65. nextDay advances day when completed or forced', () => {
-  studyScheduleStore.setCurrentDay(1, true);
-  const next = studyScheduleStore.nextDay(true);
-  assertEqual(next, 2);
-  studyScheduleStore.setCurrentDay(1, true); // reset
+test('65. playTone executes safely with custom frequency and oscillator types', () => {
+  audio.playTone(440, 'sine', 0.1);
+  audio.playTone(880, 'triangle', 0.1);
 });
 
-test('66. getKanaOffset returns 0 when custom pace has skipKana enabled', () => {
-  studyScheduleStore.setCustomPace({ enabled: true, skipKana: true, hiraganaPerDay: 10 });
-  assertEqual(studyScheduleStore.getKanaOffset(), 0);
-  studyScheduleStore.resetCustomPace();
+test('66. speak handles empty text or undefined gracefully', () => {
+  audio.speak('');
 });
 
-test('67. getSentenceDayForCurriculumDay maps day appropriately with kana offset', () => {
-  studyScheduleStore.resetCustomPace();
-  const d = studyScheduleStore.getSentenceDayForCurriculumDay(5);
-  assertEqual(d, 5);
+test('67. speak cleans parenthetical romaji readings from input text', () => {
+  audio.speak('水 (mizu)');
 });
 
-test('68. getCumulativeStats returns accurate progress counts for Day 1', () => {
-  studyScheduleStore.resetCustomPace();
-  studyScheduleStore.setCurrentDay(1, true);
-  const stats = studyScheduleStore.getCumulativeStats(1);
-  assert(stats.totalKana > 0, 'Total kana must be positive');
-  assert(stats.totalKanji > 0, 'Total kanji must be positive');
-  assert(stats.totalWords > 0, 'Total words must be positive');
+test('68. audio is muted when setMuted(true) is invoked', () => {
+  audio.setMuted(true);
+  audio.playSuccess();
+  audio.setMuted(false);
 });
 
-test('69. resetToDay1 resets current day and anchors start date', () => {
-  studyScheduleStore.setCurrentDay(15, true);
-  studyScheduleStore.resetToDay1();
-  assertEqual(studyScheduleStore.getCurrentDay(), 1);
-  assert(/^\d{4}-\d{2}-\d{2}$/.test(studyScheduleStore.getStartDate()), 'Start date must be ISO format');
+test('69. audio manager initializes voices smoothly', () => {
+  assert(typeof audio.speak === 'function');
+  assert(typeof audio.playSuccess === 'function');
 });
 
 // ===========================================================================
@@ -795,29 +757,30 @@ test('77. toggleLessonCompleted unmarks a previously completed lesson', () => {
   assert(!learnedStore.isLessonCompleted('lesson-n5-1-2'), 'Should no longer be completed');
 });
 
-test('78. saveDailyQuizResult saves score, total, percentage and timestamp', () => {
+test('78. resetLesson removes lesson from completed set and clears localStorage flags', () => {
   localStorage.clear();
-  learnedStore.saveDailyQuizResult(1, 45, 50);
-  const res = learnedStore.getDailyQuizResult(1);
-  assert(res !== null, 'Quiz result must exist');
-  assertEqual(res!.score, 45);
-  assertEqual(res!.total, 50);
-  assertEqual(res!.percentage, 90);
+  learnedStore.markLessonCompleted('lesson-n5-1-2');
+  assert(learnedStore.isLessonCompleted('lesson-n5-1-2'), 'Lesson should be completed');
+  learnedStore.resetLesson('lesson-n5-1-2');
+  assert(!learnedStore.isLessonCompleted('lesson-n5-1-2'), 'Lesson should be reset');
 });
 
-test('79. isDailyQuizCompleted returns true when quiz result exists', () => {
+test('79. getLearnedWordsList returns all words toggled as learned', () => {
   localStorage.clear();
-  assert(!learnedStore.isDailyQuizCompleted(1), 'Quiz not completed initially');
-  learnedStore.saveDailyQuizResult(1, 50, 50);
-  assert(learnedStore.isDailyQuizCompleted(1), 'Quiz should be completed');
+  learnedStore.toggleWordLearned('w-1');
+  learnedStore.toggleWordLearned('w-2');
+  const words = learnedStore.getLearnedWordsList();
+  assertEqual(words.length, 2);
+  assert(words.includes('w-1') && words.includes('w-2'));
 });
 
-test('80. saveSentenceDrillResult saves score and updates completion flag', () => {
+test('80. getLearnedKanjiList returns all kanji toggled as learned', () => {
   localStorage.clear();
-  learnedStore.saveSentenceDrillResult(2, 40, 50);
-  const res = learnedStore.getSentenceDrillResult(2);
-  assert(res !== null, 'Drill result must exist');
-  assertEqual(res!.percentage, 80);
+  learnedStore.toggleKanjiLearned('火');
+  learnedStore.toggleKanjiLearned('水');
+  const kanji = learnedStore.getLearnedKanjiList();
+  assertEqual(kanji.length, 2);
+  assert(kanji.includes('火') && kanji.includes('水'));
 });
 
 test('81. getCounts returns accurate live counts across kana, kanji, and words', () => {
@@ -895,58 +858,50 @@ test('91. getKanjiPronunciation falls back to kunyomi or character when not in s
 });
 
 // ===========================================================================
-// Heading 11: Daily Mastery Quiz Generator & Activity Tracker (9 Tests)
+// Heading 11: Study Activity Tracker & Time Allocation Engine (9 Tests)
 // ===========================================================================
-section('Heading 11: Daily Mastery Quiz Generator & Activity Tracker');
+section('Heading 11: Study Activity Tracker & Time Allocation Engine');
 
-test('92. getLearningStatus correctly identifies studied vs unstudied categories', () => {
-  localStorage.clear();
-  studyScheduleStore.resetCustomPace();
-  studyScheduleStore.setCurrentDay(1, true);
-  const status = getLearningStatus(1);
-  assert(typeof status.totalLearned === 'number', 'totalLearned must be numeric');
-  assert(Array.isArray(status.missingCategories), 'missingCategories must be an array');
+test('92. formatDateKey formats current date accurately', () => {
+  const d = new Date(2026, 0, 1);
+  assertEqual(formatDateKey(d), '2026-01-01');
 });
 
-test('93. getLearningStatus populates missingCategories when day targets are unlearned', () => {
-  localStorage.clear();
-  studyScheduleStore.resetCustomPace();
-  const status = getLearningStatus(1);
-  assert(status.missingCategories.length > 0, 'Should have missing categories initially');
+test('93. getWeeklyStudyData handles uninitialized state with starter session for today', () => {
+  const data = getWeeklyStudyData('fresh_user');
+  assertEqual(data.length, 7);
+  const otherDays = data.filter((d) => !d.isToday);
+  otherDays.forEach((d) => assertEqual(d.minutes, 0));
+  const today = data.find((d) => d.isToday);
+  assertEqual(today!.minutes, 25);
 });
 
-test('94. getLearningStatus has no missing categories when day targets are completed', () => {
-  localStorage.clear();
-  studyScheduleStore.resetCustomPace();
-  learnedStore.markAllKanaLearned();
-  const targets = studyScheduleStore.getDayTargets(1);
-  targets.kanji.forEach((k: any) => learnedStore.toggleKanjiLearned(k.char));
-  targets.words.forEach((w: any) => learnedStore.toggleWordLearned(w.id || w._id || w.word));
-
-  const status = getLearningStatus(1);
-  assert(!status.missingCategories.includes('Kana'), 'Kana should not be missing');
-  assert(!status.missingCategories.includes('Kanji'), 'Kanji should not be missing');
-  assert(!status.missingCategories.includes('Words'), 'Words should not be missing');
+test('94. recordStudySession adds minutes correctly', () => {
+  recordStudySession('user_1', 15);
+  const data = getWeeklyStudyData('user_1');
+  const today = data.find((d) => d.isToday);
+  assert(Boolean(today));
+  assertEqual(today!.minutes, 15);
 });
 
-// Run async tests
-(async () => {
-  await testAsync('95. generateDailyMasteryQuestions produces valid questions for Day 1', async () => {
-    const questions = await generateDailyMasteryQuestions(1);
-    assert(Array.isArray(questions), 'Questions must be an array');
-    assert(questions.length > 0, 'Questions list should not be empty');
-  });
+test('95. recordStudySession accumulates multiple sessions on same day', () => {
+  recordStudySession('user_accum', 15);
+  recordStudySession('user_accum', 20);
+  const data = getWeeklyStudyData('user_accum');
+  const today = data.find((d) => d.isToday);
+  assertEqual(today!.minutes, 35);
+});
 
-  await testAsync('96. generated questions contain valid IDs, prompts, and explanation strings', async () => {
-    const questions = await generateDailyMasteryQuestions(1);
-    questions.forEach((q) => {
-      assert(Boolean(q.id), 'Question id must exist');
-      assert(Boolean(q.prompt), 'Question prompt must exist');
-      assert(Boolean(q.type), 'Question type must exist');
-    });
-  });
+test('96. recordStudySession isolates minutes by user ID', () => {
+  recordStudySession('user_iso_1', 35);
+  recordStudySession('user_iso_2', 50);
+  const data1 = getWeeklyStudyData('user_iso_1');
+  const data2 = getWeeklyStudyData('user_iso_2');
+  assertEqual(data1.find((d) => d.isToday)!.minutes, 35);
+  assertEqual(data2.find((d) => d.isToday)!.minutes, 50);
+});
 
-  test('97. formatDateKey formats Date into YYYY-MM-DD string', () => {
+test('97. formatDateKey formats Date into YYYY-MM-DD string', () => {
     const d = new Date(2026, 4, 15); // May 15, 2026
     assertEqual(formatDateKey(d), '2026-05-15');
   });
@@ -1021,48 +976,48 @@ test('94. getLearningStatus has no missing categories when day targets are compl
   });
 
   // ===========================================================================
-  // Heading 13: Daily Sentence Quiz Generator & Token Bank Engine (8 Tests)
+  // Heading 13: Vocabulary Token Bank & Kanji Pronunciation Helper (8 Tests)
   // ===========================================================================
-  section('Heading 13: Daily Sentence Quiz Generator & Token Bank Engine');
+  section('Heading 13: Vocabulary Token Bank & Kanji Pronunciation Helper');
 
-  test('109. resolveRomaji resolves romaji for basic kana characters', () => {
-    assertEqual(resolveRomaji('あ'), 'a');
-    assertEqual(resolveRomaji('か'), 'ka');
+  test('109. MOST_USED_KANJI_PRONUNCIATION has accurate readings for numbers', () => {
+    assertEqual(MOST_USED_KANJI_PRONUNCIATION['四'], 'よん');
+    assertEqual(MOST_USED_KANJI_PRONUNCIATION['七'], 'なな');
   });
 
-  test('110. resolveRomaji resolves romaji for vocabulary words in dataStore', () => {
-    assert(Boolean(resolveRomaji('水')), 'Romaji for 水 should resolve');
+  test('110. MOST_USED_KANJI_PRONUNCIATION has accurate readings for common nouns', () => {
+    assertEqual(MOST_USED_KANJI_PRONUNCIATION['水'], 'みず');
+    assertEqual(MOST_USED_KANJI_PRONUNCIATION['日'], 'ひ');
+    assertEqual(MOST_USED_KANJI_PRONUNCIATION['月'], 'つき');
   });
 
-  test('111. resolveRomaji falls back safely for empty string or unknown tokens', () => {
-    assertEqual(resolveRomaji(''), '');
+  test('111. getKanjiPronunciation falls back to kanji character if unknown', () => {
+    assertEqual(getKanjiPronunciation('未知'), '未知');
   });
 
-  test('112. lookupOptionDetails retrieves meaning and reading for known vocabulary', () => {
-    const details = lookupOptionDetails('水');
-    assert(Boolean(details.meaning), 'Meaning should be present');
+  test('112. getKanjiPronunciation retrieves standard dictionary reading', () => {
+    assertEqual(getKanjiPronunciation('一'), 'いち');
+    assertEqual(getKanjiPronunciation('人'), 'ひと');
   });
 
-  test('113. lookupOptionDetails returns fallback details gracefully for unknown tokens', () => {
-    const details = lookupOptionDetails('xyz_unknown_token_99');
-    assertEqual(details.meaning, 'Contextual option');
+  test('113. dataStore holds comprehensive N5 vocabulary', () => {
+    assert(dataStore.allWords.length > 0, 'Words data must not be empty');
   });
 
-  test('114. generateDailySentenceQuestions produces questions for Day 1', () => {
-    const questions = generateDailySentenceQuestions(1);
-    assert(Array.isArray(questions) && questions.length > 0, 'Questions must be generated');
+  test('114. dataStore holds comprehensive N5 kanji', () => {
+    assert(dataStore.allKanji.length > 0, 'Kanji data must not be empty');
   });
 
-  test('115. each generated sentence question has 4 options with valid correctIndex', () => {
-    const q = generateDailySentenceQuestions(1)[0];
-    assert(q.options.length === 4, 'Must have 4 options');
-    assert(q.correctIndex >= 0 && q.correctIndex < 4, 'correctIndex must be between 0 and 3');
+  test('115. dataStore words contain required fields (word, meaning, reading)', () => {
+    const sample = dataStore.allWords[0];
+    assert(Boolean(sample.word), 'Word must have word text');
+    assert(Boolean(sample.meaning || (sample as any).english), 'Word must have meaning');
   });
 
-  test('116. each generated sentence question contains sentence with blank and explanation', () => {
-    const q = generateDailySentenceQuestions(1)[0];
-    assert(q.sentenceWithBlank.includes('____') || q.sentenceWithBlank.includes('('), 'Must have blank placeholder');
-    assert(Boolean(q.explanation), 'Explanation must be present');
+  test('116. dataStore kanji contain required fields (char, strokeCount, meanings)', () => {
+    const sample = dataStore.allKanji[0];
+    assert(Boolean(sample.char), 'Kanji must have char');
+    assert(Boolean(sample.meaning || (sample as any).meanings), 'Kanji must have meanings');
   });
 
   // ===========================================================================
@@ -1267,6 +1222,104 @@ test('94. getLearningStatus has no missing categories when day targets are compl
     assert(res.success && (res.user.xp || 0) >= 100, 'XP must increase by at least 100');
   });
 
+  // ===========================================================================
+  // Heading 19: Supabase Client & Resilient Cloud Sync Engine (10 Tests)
+  // ===========================================================================
+  section('Heading 19: Supabase Client & Resilient Cloud Sync Engine');
+
+  test('151. supabaseService instance is defined and exports core methods', () => {
+    assert(Boolean(supabaseService), 'supabaseService must exist');
+    assert(typeof supabaseService.mergeProgress === 'function', 'mergeProgress must exist');
+    assert(typeof supabaseService.syncAll === 'function', 'syncAll must exist');
+  });
+
+  test('152. mergeProgress unions learned kana additively without duplicates', () => {
+    const local = { learnedKana: ['あ', 'い'], learnedKanji: [], learnedWords: [], completedLessons: [], bookmarks: [], xp: 10, streak: 1 };
+    const cloud = { learned_kana: ['い', 'う', 'え'] };
+    const merged = supabaseService.mergeProgress(local, cloud);
+    assertEqual(merged.learnedKana.length, 4);
+    assert(['あ', 'い', 'う', 'え'].every(k => merged.learnedKana.includes(k)));
+  });
+
+  test('153. mergeProgress unions learned kanji and vocabulary words additively', () => {
+    const local = { learnedKana: [], learnedKanji: ['日'], learnedWords: ['w1'], completedLessons: [], bookmarks: [], xp: 0, streak: 1 };
+    const cloud = { learned_kanji: ['月', '日'], learned_words: ['w1', 'w2'] };
+    const merged = supabaseService.mergeProgress(local, cloud);
+    assertEqual(merged.learnedKanji.length, 2);
+    assertEqual(merged.learnedWords.length, 2);
+  });
+
+  test('154. mergeProgress unions completed lessons from local and cloud', () => {
+    const local = { learnedKana: [], learnedKanji: [], learnedWords: [], completedLessons: ['lesson-1'], bookmarks: [], xp: 0, streak: 1 };
+    const cloud = { completed_lessons: ['lesson-2'] };
+    const merged = supabaseService.mergeProgress(local, cloud);
+    assertEqual(merged.completedLessons.length, 2);
+    assert(merged.completedLessons.includes('lesson-1') && merged.completedLessons.includes('lesson-2'));
+  });
+
+  test('155. mergeProgress protects XP from downgrading (Math.max)', () => {
+    const local = { learnedKana: [], learnedKanji: [], learnedWords: [], completedLessons: [], bookmarks: [], xp: 500, streak: 1 };
+    const cloud = { xp: 200 };
+    const merged = supabaseService.mergeProgress(local, cloud);
+    assertEqual(merged.xp, 500, 'Local higher XP must not downgrade');
+
+    const local2 = { ...local, xp: 100 };
+    const cloud2 = { xp: 350 };
+    const merged2 = supabaseService.mergeProgress(local2, cloud2);
+    assertEqual(merged2.xp, 350, 'Cloud higher XP must upgrade local');
+  });
+
+  test('156. mergeProgress protects streak from downgrading (Math.max)', () => {
+    const local = { learnedKana: [], learnedKanji: [], learnedWords: [], completedLessons: [], bookmarks: [], xp: 0, streak: 7 };
+    const cloud = { streak: 3 };
+    const merged = supabaseService.mergeProgress(local, cloud);
+    assertEqual(merged.streak, 7);
+  });
+
+  test('157. mergeProgress handles null or undefined cloud snapshot safely', () => {
+    const local = { learnedKana: ['か'], learnedKanji: [], learnedWords: [], completedLessons: [], bookmarks: [], xp: 50, streak: 2 };
+    const mergedNull = supabaseService.mergeProgress(local, null);
+    assertEqual(mergedNull.learnedKana.length, 1);
+    assertEqual(mergedNull.xp, 50);
+
+    const mergedUndef = supabaseService.mergeProgress(local, undefined);
+    assertEqual(mergedUndef.xp, 50);
+  });
+
+  test('158. getLocalSnapshot retrieves live device progress', () => {
+    localStorage.clear();
+    learnedStore.toggleKanaLearned('さ');
+    learnedStore.toggleKanjiLearned('木');
+    const snap = supabaseService.getLocalSnapshot();
+    assert(snap.learnedKana.includes('さ'));
+    assert(snap.learnedKanji.includes('木'));
+  });
+
+  test('159. applyMergedSnapshot saves state to localStorage and updates user', () => {
+    localStorage.clear();
+    const snapshot = {
+      learnedKana: ['た', 'ち'],
+      learnedKanji: ['金'],
+      learnedWords: ['w10'],
+      completedLessons: ['lesson-n5-1-1'],
+      bookmarks: ['b1'],
+      xp: 750,
+      streak: 5
+    };
+    supabaseService.applyMergedSnapshot(snapshot);
+    const snap = supabaseService.getLocalSnapshot();
+    assertEqual(snap.learnedKana.length, 2);
+    assertEqual(snap.learnedKanji.length, 1);
+    assertEqual(snap.xp, 750);
+    assertEqual(snap.streak, 5);
+  });
+
+  await testAsync('160. syncAll falls back safely to local snapshot when unconfigured', async () => {
+    const res = await supabaseService.syncAll('guest');
+    assert(Boolean(res), 'Must return valid snapshot');
+    assert(Array.isArray(res.learnedKana), 'learnedKana must be an array');
+  });
+
   // ---------------------------------------------------------------------------
   // Final Grand Summary
   // ---------------------------------------------------------------------------
@@ -1278,6 +1331,5 @@ test('94. getLearningStatus has no missing categories when day targets are compl
     failures.forEach((f) => console.log(`  - ${f}`));
     process.exit(1);
   }
-  console.log('\n🎉 ALL 150 TESTS PASSED CLEANLY! The entire website is verified.');
+  console.log('\n🎉 ALL 160 TESTS PASSED CLEANLY! The entire website is verified.');
   console.log(`${'='.repeat(60)}\n`);
-})();

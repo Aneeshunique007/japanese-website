@@ -19,13 +19,13 @@ import {
   ChevronDown,
   Sparkles,
   Zap,
-  Mic
+  Mic,
+  User
 } from 'lucide-react';
 import audio from '../utils/audio';
 import { UserProfile } from '../services/api';
 import { searchAll } from '../utils/searchEngine';
-import { DailyMasteryDrillModal } from './DailyMasteryDrillModal';
-import { studyScheduleStore } from '../utils/studyScheduleStore';
+
 
 interface DashboardLayoutProps {
   activeTab: string;
@@ -59,7 +59,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-  const [showDrillModal, setShowDrillModal] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const navDropdownRef = useRef<HTMLDivElement>(null);
 
   // Top Search Bar State
   const [searchQuery, setSearchQuery] = useState('');
@@ -85,6 +86,9 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       if (userDropdownRef.current && !userDropdownRef.current.contains(e.target as Node)) {
         setUserDropdownOpen(false);
       }
+      if (navDropdownRef.current && !navDropdownRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
@@ -96,18 +100,77 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   const rawAvatar = currentUser?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80';
   const isImageAvatar = Boolean(rawAvatar && (rawAvatar.startsWith('http://') || rawAvatar.startsWith('https://') || rawAvatar.startsWith('/')));
 
-  const navItems: { id: string; label: string; icon: any; badge?: number | string }[] = [
-    { id: 'overview', label: 'Overview', icon: LayoutGrid },
-    { id: 'speaking', label: 'Speaking', icon: Mic },
-    { id: 'nikki', label: 'Nikki', icon: Sparkles },
-    { id: 'courses', label: 'Courses', icon: GraduationCap },
-    { id: 'lessons', label: 'Lessons', icon: BookOpen },
-    { id: 'quizzes', label: 'Quizzes', icon: Puzzle },
-    { id: 'hiragana', label: 'Hiragana', icon: Languages },
-    { id: 'katakana', label: 'Katakana', icon: Zap },
-    { id: 'kanji', label: 'Kanji', icon: BookMarked },
-    { id: 'words', label: 'Words', icon: BookA },
+  // Modern Dropdown Hubs for Desktop Navigation
+  const navHubs = [
+    {
+      id: 'alphabet',
+      title: 'Alphabet & Words',
+      activeItemIds: ['hiragana', 'katakana', 'kanji', 'words'],
+      items: [
+        { id: 'hiragana', label: 'Hiragana', japanese: 'ひらがな', description: 'Basic phonetic syllabary (Start Here)', icon: Languages },
+        { id: 'katakana', label: 'Katakana', japanese: 'カタカナ', description: 'Phonetic script for foreign loanwords', icon: Zap },
+        { id: 'kanji', label: 'Kanji', japanese: '漢字', description: 'Curated thematic decks & stroke order', icon: BookMarked },
+        { id: 'words', label: 'Vocabulary', japanese: '語彙', description: 'Interactive flashcards & core JLPT words', icon: BookA }
+      ]
+    },
+    {
+      id: 'curriculum',
+      title: 'Curriculum & Stories',
+      activeItemIds: ['courses', 'lessons', 'nikki'],
+      items: [
+        { id: 'courses', label: 'Course Tracks', japanese: 'コース', description: 'Official JLPT N5 to N1 progression roadmap', icon: GraduationCap },
+        { id: 'lessons', label: 'Master Lessons', japanese: 'レッスン', description: 'Structured grammar & syllabary modules', icon: BookOpen },
+        { id: 'nikki', label: 'Nikki Diary', japanese: '日記', description: 'Story reading comprehension & homework', icon: Sparkles }
+      ]
+    },
+    {
+      id: 'practice',
+      title: 'Practice & Voice',
+      activeItemIds: ['speaking', 'quizzes'],
+      items: [
+        { id: 'speaking', label: 'Speaking Studio', japanese: '発話練習', description: 'Survival phrases & AI voice recognition', icon: Mic },
+        { id: 'quizzes', label: 'Quizzes & Puzzles', japanese: 'クイズ', description: 'Sentence builders, listening & matching drills', icon: Puzzle }
+      ]
+    }
   ];
+
+  const navGroups: {
+    category: string;
+    items: { id: string; label: string; icon: any; badge?: string; isPrimaryStarter?: boolean }[];
+  }[] = [
+    {
+      category: 'Dashboard',
+      items: [
+        { id: 'overview', label: 'Overview', icon: LayoutGrid }
+      ]
+    },
+    {
+      category: 'Alphabet & Words',
+      items: [
+        { id: 'hiragana', label: 'Hiragana', icon: Languages },
+        { id: 'katakana', label: 'Katakana', icon: Zap },
+        { id: 'kanji', label: 'Kanji', icon: BookMarked },
+        { id: 'words', label: 'Words', icon: BookA }
+      ]
+    },
+    {
+      category: 'Lessons & Stories',
+      items: [
+        { id: 'courses', label: 'Courses', icon: GraduationCap },
+        { id: 'lessons', label: 'Lessons', icon: BookOpen },
+        { id: 'nikki', label: 'Nikki Diary', icon: Sparkles }
+      ]
+    },
+    {
+      category: 'Interactive Practice',
+      items: [
+        { id: 'speaking', label: 'Speaking', icon: Mic },
+        { id: 'quizzes', label: 'Quizzes', icon: Puzzle }
+      ]
+    }
+  ];
+
+  const allNavItems = navGroups.flatMap(g => g.items);
 
   return (
     <div className={`min-h-screen flex flex-col font-sans transition-colors relative overflow-x-hidden selection:bg-[#FF5E3A] selection:text-white ${
@@ -140,42 +203,112 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
             </span>
           </div>
 
-          {/* Center: Navigation Pill Bar matching Homepage (Desktop XL) */}
-          <nav className={`hidden xl:flex items-center p-1.5 rounded-full border text-xs font-semibold shadow-xs ${
-            theme === 'dark' ? 'bg-[#17171C]/90 border-slate-800 text-slate-300' : 'bg-white/90 border-slate-200/80 text-slate-600'
+          {/* Center: Sleek Executive Navigation Bar (Desktop XL) */}
+          <nav ref={navDropdownRef} className={`hidden xl:flex items-center p-1 rounded-full border text-xs font-semibold shadow-xs gap-1 ${
+            theme === 'dark' ? 'bg-[#17171C]/90 border-slate-800' : 'bg-white/90 border-slate-200/80 shadow-2xs'
           }`}>
+            {/* Overview Button */}
             <button 
               onClick={() => {
                 audio.playClick();
-                onBackToHome();
+                setOpenDropdown(null);
+                onSelectTab('overview');
               }}
-              className="px-3.5 py-1.5 rounded-full hover:text-[#FF5E3A] transition cursor-pointer flex items-center gap-1.5"
+              className={`px-3.5 py-1.5 rounded-full transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+                activeTab === 'overview'
+                  ? 'bg-[#FF5E3A] text-white shadow-sm shadow-orange-500/25 font-bold'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-[#FF5E3A] hover:bg-orange-500/10'
+              }`}
             >
-              <Home className="w-3.5 h-3.5" />
-              <span>Home</span>
+              <LayoutGrid className="w-3.5 h-3.5" />
+              <span>Overview</span>
             </button>
-            {navItems.map((item) => {
-              const isActive = activeTab === item.id;
+
+            {/* Dropdown Hubs */}
+            {navHubs.map((hub) => {
+              const isChildActive = hub.activeItemIds.includes(activeTab);
+              const isOpen = openDropdown === hub.id;
+              const activeChild = hub.items.find(i => i.id === activeTab);
+
               return (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    audio.playClick();
-                    onSelectTab(item.id);
-                  }}
-                  className={`px-3.5 py-1.5 rounded-full transition cursor-pointer flex items-center gap-1.5 ${
-                    isActive
-                      ? 'bg-[#1A1A1F] text-white dark:bg-white dark:text-[#1A1A1F] font-bold shadow-xs'
-                      : 'hover:text-[#FF5E3A]'
-                  }`}
+                <div 
+                  key={hub.id} 
+                  className="relative"
+                  onMouseEnter={() => setOpenDropdown(hub.id)}
+                  onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <span>{item.label}</span>
-                  {item.badge && (
-                    <span className="min-w-[16px] px-1.5 h-4 rounded-full bg-[#FF5E3A] text-white text-[9px] font-bold flex items-center justify-center">
-                      {item.badge}
-                    </span>
+                  <button
+                    onClick={() => setOpenDropdown(isOpen ? null : hub.id)}
+                    className={`px-3.5 py-1.5 rounded-full transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+                      isChildActive
+                        ? 'bg-[#FF5E3A] text-white shadow-sm shadow-orange-500/25 font-bold'
+                        : isOpen
+                        ? 'bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white'
+                        : 'text-slate-600 dark:text-slate-300 hover:text-[#FF5E3A] hover:bg-orange-500/10'
+                    }`}
+                  >
+                    <span>{hub.title}</span>
+                    {isChildActive && activeChild && (
+                      <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-black/20 font-mono text-white/90">
+                        {activeChild.label}
+                      </span>
+                    )}
+                    <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {/* Dropdown Menu Panel */}
+                  {isOpen && (
+                    <div className={`absolute left-0 top-full mt-1.5 w-72 rounded-2xl border p-2 shadow-2xl backdrop-blur-md z-50 animate-fade-in ${
+                      theme === 'dark' 
+                        ? 'bg-[#17171C]/95 border-slate-800 text-white shadow-black/80' 
+                        : 'bg-white/95 border-slate-200 text-slate-900 shadow-xl'
+                    }`}>
+                      <div className="space-y-1">
+                        {hub.items.map((item) => {
+                          const Icon = item.icon;
+                          const isSelected = activeTab === item.id;
+
+                          return (
+                            <div
+                              key={item.id}
+                              onClick={() => {
+                                audio.playClick();
+                                onSelectTab(item.id);
+                                setOpenDropdown(null);
+                              }}
+                              className={`p-2.5 rounded-xl cursor-pointer transition flex items-start gap-3 group ${
+                                isSelected
+                                  ? 'bg-orange-500/15 border border-orange-500/30 text-[#FF5E3A]'
+                                  : 'hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                              }`}
+                            >
+                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition ${
+                                isSelected
+                                  ? 'bg-[#FF5E3A] text-white shadow-xs'
+                                  : 'bg-slate-100 dark:bg-slate-800 text-slate-500 group-hover:text-[#FF5E3A] group-hover:bg-orange-500/10'
+                              }`}>
+                                <Icon className="w-4 h-4" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center justify-between">
+                                  <span className={`text-xs font-bold ${isSelected ? 'text-[#FF5E3A]' : ''}`}>
+                                    {item.label}
+                                  </span>
+                                  <span className="text-[10px] font-jp text-slate-400 font-medium">
+                                    {item.japanese}
+                                  </span>
+                                </div>
+                                <p className="text-[10px] text-slate-400 line-clamp-1 mt-0.5">
+                                  {item.description}
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
                   )}
-                </button>
+                </div>
               );
             })}
           </nav>
@@ -344,11 +477,11 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                 className="flex items-center gap-1 cursor-pointer select-none p-0.5 sm:p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                 title="Account Menu"
               >
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden ring-2 ring-[#FF5E3A] flex items-center justify-center bg-orange-500/10 text-sm shrink-0">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden ring-2 ring-[#FF5E3A] flex items-center justify-center bg-orange-500/10 text-xs font-bold text-[#FF5E3A] shrink-0">
                   {isImageAvatar ? (
                     <img className="w-full h-full object-cover" src={rawAvatar} alt={userName} />
                   ) : (
-                    <span>{rawAvatar || '⛩️'}</span>
+                    <span>{userName ? userName.charAt(0).toUpperCase() : <User className="w-3.5 h-3.5" />}</span>
                   )}
                 </div>
                 <ChevronDown className="w-3.5 h-3.5 text-slate-400 hidden sm:block" />
@@ -443,18 +576,18 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         </div>
 
         {/* Secondary Horizontal Scrollable Pill Bar on Tablet & Mobile */}
-        <div className="xl:hidden w-full border-t border-slate-200/80 dark:border-slate-800 bg-white/50 dark:bg-[#121217]/50 backdrop-blur-xs px-2.5 sm:px-4 py-1.5 sm:py-2 overflow-x-auto no-scrollbar flex items-center gap-1.5 touch-pan-x">
+        <div className="xl:hidden w-full border-t border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-[#121217]/70 backdrop-blur-md px-3 sm:px-4 py-2 overflow-x-auto no-scrollbar flex items-center gap-1.5 touch-pan-x">
           <button 
             onClick={() => {
               audio.playClick();
               onBackToHome();
             }}
-            className="px-2.5 sm:px-3 py-1 rounded-full text-xs font-semibold text-slate-500 hover:text-[#FF5E3A] shrink-0 transition flex items-center gap-1 cursor-pointer"
+            className="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-500 hover:text-[#FF5E3A] hover:bg-orange-500/10 shrink-0 transition flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
           >
-            <Home className="w-3 h-3" />
+            <Home className="w-3.5 h-3.5" />
             <span>Home</span>
           </button>
-          {navItems.map((item) => {
+          {allNavItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
               <button
@@ -463,13 +596,13 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                   audio.playClick();
                   onSelectTab(item.id);
                 }}
-                className={`px-2.5 sm:px-3 py-1 rounded-full text-xs transition shrink-0 cursor-pointer ${
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition shrink-0 cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
                   isActive
-                    ? 'bg-[#1A1A1F] text-white dark:bg-white dark:text-[#1A1A1F] font-bold shadow-xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-[#FF5E3A]'
+                    ? 'bg-[#FF5E3A] text-white font-bold shadow-sm shadow-orange-500/25'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-[#FF5E3A] hover:bg-orange-500/10'
                 }`}
               >
-                {item.label}
+                <span>{item.label}</span>
               </button>
             );
           })}
@@ -504,11 +637,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
             </button>
           </div>
 
-          {/* Navigation Links in Mobile Menu */}
-          <div className="py-4 space-y-1">
-            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">
-              Navigation
-            </div>
+          {/* Categorized Navigation Links in Mobile Menu */}
+          <div className="py-4 space-y-4">
             <button
               onClick={() => {
                 audio.playClick();
@@ -520,35 +650,47 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
               <Home className="w-4 h-4 text-slate-400" />
               <span>AniLearn Home</span>
             </button>
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = activeTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    audio.playClick();
-                    onSelectTab(item.id);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
-                    isActive
-                      ? 'bg-[#FF5E3A]/15 text-[#FF5E3A] font-extrabold'
-                      : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300'
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <Icon className={`w-4 h-4 ${isActive ? 'text-[#FF5E3A]' : 'text-slate-400'}`} />
-                    <span>{item.label}</span>
-                  </div>
-                  {item.badge && (
-                    <span className="min-w-[18px] px-1.5 h-4.5 rounded-full bg-[#FF5E3A] text-white text-[9px] font-bold flex items-center justify-center">
-                      {item.badge}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+
+            {navGroups.map((group) => (
+              <div key={group.category} className="space-y-1">
+                <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 pt-1">
+                  {group.category}
+                </div>
+                {group.items.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = activeTab === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        audio.playClick();
+                        onSelectTab(item.id);
+                        setMobileMenuOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
+                        isActive
+                          ? 'bg-[#FF5E3A]/15 text-[#FF5E3A] font-extrabold'
+                          : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Icon className={`w-4 h-4 ${isActive ? 'text-[#FF5E3A]' : 'text-slate-400'}`} />
+                        <span>{item.label}</span>
+                      </div>
+                      {item.badge && (
+                        <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${
+                          item.isPrimaryStarter
+                            ? 'bg-[#FF5E3A] text-white animate-pulse'
+                            : 'bg-orange-500/20 text-[#FF5E3A]'
+                        }`}>
+                          {item.badge}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            ))}
           </div>
 
           {/* Mobile Furigana Toggle */}
@@ -573,11 +715,11 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         {/* Bottom User Area */}
         <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-2">
           <div className="flex items-center gap-2.5 px-3 py-2">
-            <div className="w-8 h-8 rounded-full overflow-hidden ring-2 ring-[#FF5E3A] flex items-center justify-center bg-orange-500/10 text-sm shrink-0">
+            <div className="w-8 h-8 rounded-full overflow-hidden ring-2 ring-[#FF5E3A] flex items-center justify-center bg-orange-500/10 text-xs font-bold text-[#FF5E3A] shrink-0">
               {isImageAvatar ? (
                 <img className="w-full h-full object-cover" src={rawAvatar} alt={userName} />
               ) : (
-                <span>{rawAvatar || '⛩️'}</span>
+                <span>{userName ? userName.charAt(0).toUpperCase() : <User className="w-4 h-4" />}</span>
               )}
             </div>
             <div className="min-w-0">
@@ -606,16 +748,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         {children}
       </main>
 
-      {/* Global Practice Drill Modal */}
-      {showDrillModal && (
-        <DailyMasteryDrillModal
-          isOpen={showDrillModal}
-          day={studyScheduleStore.getCurrentDay()}
-          theme={theme}
-          onClose={() => setShowDrillModal(false)}
-          onGainXp={_xp => { /* xp handled by parent if needed */ }}
-        />
-      )}
+
     </div>
   );
 };

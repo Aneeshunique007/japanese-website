@@ -39,7 +39,6 @@ export interface UserProfile {
 
 const AUTH_USER_KEY = 'anilearn_auth_user';
 const USERS_LIST_KEY = 'anilearn_users_db';
-const SCHEDULE_KEY_PREFIX = 'anilearn_schedule_';
 const PROGRESS_KEY_PREFIX = 'anilearn_progress_';
 
 const memoryStore: Record<string, string> = {};
@@ -67,7 +66,7 @@ const DEFAULT_USER: UserProfile = {
   id: 'user_default',
   name: 'Kenji Sato',
   email: 'learner@example.com',
-  avatar: '⛩️',
+  avatar: 'K',
   targetLevel: 'N5',
   title: 'Novice Samurai',
   xp: 1450,
@@ -147,7 +146,7 @@ export const api = {
       id,
       name: data.name || 'Learner',
       email: data.email || 'learner@example.com',
-      avatar: data.avatar || '⛩️',
+      avatar: data.avatar || (data.name ? data.name.charAt(0).toUpperCase() : 'L'),
       targetLevel: data.targetLevel || 'N5',
       title: 'Novice Samurai',
       xp: 100,
@@ -510,13 +509,13 @@ export const api = {
   async getLeaderboard(userId?: string) {
     const current = getLocalUser(userId);
     const mockPeers = [
-      { id: 'p1', name: 'Aoi Tanaka', avatar: '🌸', xp: 4200, streak: 18, targetLevel: 'N4', title: 'Kanji Master' },
-      { id: 'p2', name: 'Ren Takahashi', avatar: '⚡', xp: 3850, streak: 14, targetLevel: 'N5', title: 'Grammar Sage' },
-      { id: 'p3', name: 'Yuki Watanabe', avatar: '🦊', xp: 3100, streak: 12, targetLevel: 'N5', title: 'Vocab Ninja' },
-      { id: 'p4', name: 'Daiki Ito', avatar: '🐉', xp: 2600, streak: 9, targetLevel: 'N5', title: 'Kana Champion' },
-      { id: 'p5', name: 'Mei Nakamura', avatar: '🍵', xp: 1900, streak: 7, targetLevel: 'N5', title: 'Dialect Explorer' },
-      { id: 'p6', name: 'Sora Kobayashi', avatar: '🎏', xp: 1200, streak: 4, targetLevel: 'N5', title: 'Rookie Samurai' },
-      { id: 'p7', name: 'Hana Kato', avatar: '🍙', xp: 850, streak: 3, targetLevel: 'N5', title: 'Apprentice' },
+      { id: 'p1', name: 'Aoi Tanaka', avatar: 'A', xp: 4200, streak: 18, targetLevel: 'N4', title: 'Kanji Master' },
+      { id: 'p2', name: 'Ren Takahashi', avatar: 'R', xp: 3850, streak: 14, targetLevel: 'N5', title: 'Grammar Sage' },
+      { id: 'p3', name: 'Yuki Watanabe', avatar: 'Y', xp: 3100, streak: 12, targetLevel: 'N5', title: 'Vocab Ninja' },
+      { id: 'p4', name: 'Daiki Ito', avatar: 'D', xp: 2600, streak: 9, targetLevel: 'N5', title: 'Kana Champion' },
+      { id: 'p5', name: 'Mei Nakamura', avatar: 'M', xp: 1900, streak: 7, targetLevel: 'N5', title: 'Dialect Explorer' },
+      { id: 'p6', name: 'Sora Kobayashi', avatar: 'S', xp: 1200, streak: 4, targetLevel: 'N5', title: 'Rookie Samurai' },
+      { id: 'p7', name: 'Hana Kato', avatar: 'H', xp: 850, streak: 3, targetLevel: 'N5', title: 'Apprentice' },
     ];
 
     // Combine current user with peers
@@ -530,7 +529,7 @@ export const api = {
       xp: u.xp,
       streak: u.streak,
       rank: idx + 1,
-      badge: idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `${idx + 1}th`,
+      badge: `#${idx + 1}`,
       isCurrent: u.id === current.id || (userId ? u.id === userId : false),
     }));
 
@@ -541,93 +540,7 @@ export const api = {
     };
   },
 
-  // 12. Study Schedule (Stored persistently in browser localStorage)
-  async getSchedule(userId?: string) {
-    const key = SCHEDULE_KEY_PREFIX + (userId || 'default_user');
-    try {
-      const stored = safeGetItem(key);
-      if (stored) {
-        return { success: true, schedule: JSON.parse(stored) };
-      }
-    } catch {}
-
-    const todayStr = new Date().toISOString().slice(0, 10);
-    const defaultSchedule = {
-      userId: userId || 'default_user',
-      targetDays: 60,
-      currentDay: 1,
-      startDate: todayStr,
-      lastActiveDate: todayStr,
-      autoAdvance: true,
-      customPace: {
-        enabled: false,
-        hiraganaPerDay: 10,
-        katakanaPerDay: 10,
-        kanaPerDay: 10,
-        kanjiPerDay: 2,
-        wordsPerDay: 14,
-        lessonIntervalDays: 3,
-        sentencesPerDay: 50,
-        quizzesPerDay: 2,
-        skipKana: false,
-      },
-      learnedKana: [],
-      learnedKanji: [],
-      learnedWords: [],
-    };
-    try {
-      safeSetItem(key, JSON.stringify(defaultSchedule));
-    } catch {}
-    return { success: true, schedule: defaultSchedule };
-  },
-
-  async saveSchedule(data: {
-    userId?: string;
-    targetDays?: number | string;
-    currentDay?: number;
-    customPace?: any;
-    autoAdvance?: boolean;
-    startDate?: string;
-  }) {
-    const key = SCHEDULE_KEY_PREFIX + (data.userId || 'default_user');
-    let schedule: any = {};
-    try {
-      const stored = safeGetItem(key);
-      if (stored) schedule = JSON.parse(stored);
-    } catch {}
-
-    const updated = {
-      ...schedule,
-      ...data,
-      lastActiveDate: new Date().toISOString().slice(0, 10),
-    };
-
-    try {
-      safeSetItem(key, JSON.stringify(updated));
-    } catch {}
-    return { success: true, schedule: updated };
-  },
-
-  async resetSchedule(userId?: string) {
-    const key = SCHEDULE_KEY_PREFIX + (userId || 'default_user');
-    const todayStr = new Date().toISOString().slice(0, 10);
-    let schedule: any = {};
-    try {
-      const stored = safeGetItem(key);
-      if (stored) schedule = JSON.parse(stored);
-    } catch {}
-
-    schedule.currentDay = 1;
-    schedule.startDate = todayStr;
-    schedule.lastActiveDate = todayStr;
-
-    try {
-      safeSetItem(key, JSON.stringify(schedule));
-    } catch {}
-    return { success: true, schedule, message: 'Schedule reset to Day 1' };
-  },
-
-  // 13. Progress (Stored persistently in browser localStorage)
+  // 12. Progress (Stored persistently in browser localStorage)
   async getProgress(userId?: string) {
     const key = PROGRESS_KEY_PREFIX + (userId || 'default_user');
     try {

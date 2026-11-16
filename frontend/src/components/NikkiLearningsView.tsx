@@ -16,7 +16,9 @@ import {
   X, 
   RotateCcw, 
   Info, 
-  Flame
+  Flame,
+  Lightbulb,
+  Languages
 } from 'lucide-react';
 import { 
   NIKKI_DAYS, 
@@ -564,7 +566,7 @@ export const NikkiLearningsView: React.FC<NikkiLearningsViewProps> = ({
                                 ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' 
                                 : 'bg-rose-500/10 text-rose-500 border border-rose-500/20'
                             }`}>
-                              {isCorrect ? '✓ Correct (+5 XP)' : '✕ Review'}
+                              {isCorrect ? 'Correct (+5 XP)' : 'Review'}
                             </span>
                           )}
                         </div>
@@ -675,7 +677,7 @@ export const NikkiLearningsView: React.FC<NikkiLearningsViewProps> = ({
                     <h4 className="font-extrabold text-sm">{item.question}</h4>
                     {qna424Submitted && (
                       <span className={`text-xs font-bold ${isCorrect ? 'text-emerald-500' : 'text-rose-500'}`}>
-                        {isCorrect ? '✓ Correct' : '✕ Try Again'}
+                        {isCorrect ? 'Correct' : 'Try Again'}
                       </span>
                     )}
                   </div>
@@ -705,9 +707,10 @@ export const NikkiLearningsView: React.FC<NikkiLearningsViewProps> = ({
                   </div>
 
                   {qna424Submitted && (
-                    <p className="text-xs text-slate-400 pt-1 border-t border-slate-200 dark:border-slate-800">
-                      💡 {item.explanation}
-                    </p>
+                    <div className="flex items-start gap-1.5 text-xs text-slate-400 pt-1 border-t border-slate-200 dark:border-slate-800">
+                      <Lightbulb className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
+                      <span>{item.explanation}</span>
+                    </div>
                   )}
                 </div>
               );
@@ -895,8 +898,9 @@ export const NikkiLearningsView: React.FC<NikkiLearningsViewProps> = ({
 
                 <div className="space-y-3">
                   {currentDay.keyHighlights.map((hl, idx) => (
-                    <div key={idx} className="p-3.5 rounded-2xl bg-orange-500/5 border border-orange-500/20 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      💡 {hl}
+                    <div key={idx} className="p-3.5 rounded-2xl bg-orange-500/5 border border-orange-500/20 text-xs text-slate-600 dark:text-slate-300 leading-relaxed flex items-start gap-1.5">
+                      <Lightbulb className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
+                      <span>{hl}</span>
                     </div>
                   ))}
                 </div>
@@ -954,8 +958,9 @@ export const NikkiLearningsView: React.FC<NikkiLearningsViewProps> = ({
 
                     {/* Radical Clue */}
                     {k.radicalClue && (
-                      <div className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed bg-orange-500/5 border border-orange-500/10 p-2.5 rounded-xl">
-                        💡 <strong className="text-slate-700 dark:text-slate-200">Memory Hint:</strong> {k.radicalClue}
+                      <div className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed bg-orange-500/5 border border-orange-500/10 p-2.5 rounded-xl flex items-start gap-1.5">
+                        <Lightbulb className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
+                        <span><strong className="text-slate-700 dark:text-slate-200">Memory Hint:</strong> {k.radicalClue}</span>
                       </div>
                     )}
 
@@ -1199,8 +1204,9 @@ export const NikkiLearningsView: React.FC<NikkiLearningsViewProps> = ({
                         {/* Highlighted Romaji Pronunciation */}
                         {rp.romaji && showRom && (
                           <div className="pt-3 border-t border-orange-500/20 bg-orange-500/10 p-4 rounded-xl border border-orange-500/30">
-                            <span className="text-[10px] uppercase font-bold tracking-wider text-[#FF5E3A] block mb-1">
-                              🔤 Romaji Pronunciation Guide:
+                            <span className="text-[10px] uppercase font-bold tracking-wider text-[#FF5E3A] flex items-center gap-1.5 mb-1">
+                              <BookOpen className="w-3.5 h-3.5" />
+                              <span>Romaji Pronunciation Guide:</span>
                             </span>
                             <p className="text-xs sm:text-sm font-mono text-orange-600 dark:text-orange-300 font-semibold leading-relaxed whitespace-pre-line">
                               {rp.romaji}
@@ -1211,8 +1217,9 @@ export const NikkiLearningsView: React.FC<NikkiLearningsViewProps> = ({
                         {/* English Translation */}
                         {showTrans && (
                           <div className="pt-3 border-t border-orange-500/20 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic whitespace-pre-line">
-                            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-1 not-italic">
-                              📖 English Translation:
+                            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 flex items-center gap-1.5 mb-1 not-italic">
+                              <Languages className="w-3.5 h-3.5" />
+                              <span>English Translation:</span>
                             </span>
                             {rp.translation}
                           </div>
@@ -1287,7 +1294,7 @@ export const NikkiLearningsView: React.FC<NikkiLearningsViewProps> = ({
                         <span className="font-extrabold text-xs text-[#FF5E3A]">Q{qIdx + 1}</span>
                         {isSubmitted && (
                           <span className={`text-xs font-bold ${isCorrect ? 'text-emerald-500' : 'text-rose-500'}`}>
-                            {isCorrect ? '✓ Correct' : '✕ Review'}
+                            {isCorrect ? 'Correct' : 'Review'}
                           </span>
                         )}
                       </div>
@@ -1327,9 +1334,10 @@ export const NikkiLearningsView: React.FC<NikkiLearningsViewProps> = ({
                       </div>
 
                       {isSubmitted && (
-                        <p className="text-xs text-slate-400 pt-1 border-t border-slate-200 dark:border-slate-800">
-                          💡 {q.explanation}
-                        </p>
+                        <div className="flex items-start gap-1.5 text-xs text-slate-400 pt-1 border-t border-slate-200 dark:border-slate-800">
+                          <Lightbulb className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
+                          <span>{q.explanation}</span>
+                        </div>
                       )}
                     </div>
                   );

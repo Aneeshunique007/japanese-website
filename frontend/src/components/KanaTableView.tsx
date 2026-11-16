@@ -4,22 +4,25 @@ import {
   Volume2,
   Check,
   Lock,
-  Calendar,
-  ChevronLeft,
-  ChevronRight,
-  Sliders,
   X,
   ArrowLeft,
-  RotateCcw
+  RotateCcw,
+  ChevronLeft,
+  ChevronRight,
+  Lightbulb,
+  ArrowRight,
+  Languages,
+  Zap,
+  Layers,
+  BookOpen,
+  Award
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { getKanaDetails, KanaDetailsData } from '../data/kanaWords';
 import { dataStore } from '../services/dataStore';
 import { KanaDetailModal } from './KanaDetailModal';
 import { KanaQuizModal } from './KanaQuizModal';
-import { CustomizePlanModal } from './CustomizePlanModal';
 import { learnedStore } from '../utils/learnedStore';
-import { studyScheduleStore, SCHEDULE_EVENT, ScheduleDuration } from '../utils/studyScheduleStore';
 import audio from '../utils/audio';
 
 interface KanaTableViewProps {
@@ -70,15 +73,9 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
 }) => {
   const [activeScript, setActiveScript] = useState<'hiragana' | 'katakana' | 'both'>(forcedScript || initialScript);
   const [activeGroup, setActiveGroup] = useState<'progressive' | 'basic' | 'dakuten' | 'yoon'>('progressive');
-  const [scheduleFilter, setScheduleFilter] = useState<'ALL' | 'TODAY' | 'UNLOCKED'>('ALL');
+  const [viewMode, setViewMode] = useState<'row' | 'table'>('row');
+  const [selectedRowIndex, setSelectedRowIndex] = useState<number>(0);
   const [learnedKana, setLearnedKana] = useState<Set<string>>(() => new Set(learnedStore.getLearnedKanaList()));
-  const [scheduleTargetDays, setScheduleTargetDays] = useState<ScheduleDuration>(() => studyScheduleStore.getTargetDays());
-  const [scheduleCurrentDay, setScheduleCurrentDay] = useState<number>(() => studyScheduleStore.getCurrentDay());
-  const [isCustomActive, setIsCustomActive] = useState<boolean>(() => studyScheduleStore.isCustomEnabled());
-  const [customPace, setCustomPace] = useState(() => studyScheduleStore.getCustomPace());
-  const [showCustomizeModal, setShowCustomizeModal] = useState<boolean>(false);
-  const [, setScheduleTick] = useState(0);
-  const [lockedKanaModalItem, setLockedKanaModalItem] = useState<{ char: string; day: number; romaji: string } | null>(null);
   const [selectedRomajiPopup, setSelectedRomajiPopup] = useState<string | null>(null);
   const [showRomajiPage, setShowRomajiPage] = useState<boolean>(false);
 
@@ -200,19 +197,10 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
     const handleLearnedUpdate = () => {
       setLearnedKana(new Set(learnedStore.getLearnedKanaList()));
     };
-    const handleScheduleUpdate = () => {
-      setScheduleTargetDays(studyScheduleStore.getTargetDays());
-      setScheduleCurrentDay(studyScheduleStore.getCurrentDay());
-      setIsCustomActive(studyScheduleStore.isCustomEnabled());
-      setCustomPace(studyScheduleStore.getCustomPace());
-      setScheduleTick(t => t + 1);
-    };
 
     window.addEventListener('anilearn_learned_update', handleLearnedUpdate);
-    window.addEventListener(SCHEDULE_EVENT, handleScheduleUpdate);
     return () => {
       window.removeEventListener('anilearn_learned_update', handleLearnedUpdate);
-      window.removeEventListener(SCHEDULE_EVENT, handleScheduleUpdate);
     };
   }, []);
 
@@ -297,17 +285,6 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
   const subText = theme === 'dark' ? 'text-slate-400' : 'text-slate-500';
 
   const handleKanaClick = (char: string, romaji: string, scriptOverride?: 'Hiragana' | 'Katakana') => {
-    const isMastered = studyScheduleStore.isKanaMastered() || learnedKana.size >= 164;
-    const isUnlocked = isMastered || learnedKana.has(char) || studyScheduleStore.isKanaUnlocked(char);
-    if (!isUnlocked) {
-      audio.playError();
-      setLockedKanaModalItem({
-        char,
-        romaji,
-        day: studyScheduleStore.getKanaDay(char)
-      });
-      return;
-    }
     audio.playClick();
     const script = scriptOverride || (activeScript === 'katakana' ? 'Katakana' : 'Hiragana');
     const details = getKanaDetails(char, romaji, script);
@@ -411,15 +388,15 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
           {/* Modal Body: Always Two Columns Side-by-Side (grid-cols-2 on Mobile & Desktop) */}
           <div className="overflow-y-auto p-2.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
             <div className="grid grid-cols-2 gap-2 xs:gap-3 sm:gap-4 md:gap-5">
-              {/* 🌸 Hiragana Side (Always Left) */}
+              {/* Hiragana Side (Always Left) */}
               <div className={`rounded-2xl p-2.5 xs:p-3 sm:p-4 md:p-5 border relative overflow-hidden flex flex-col justify-between space-y-2.5 sm:space-y-4 ${
                 theme === 'dark' 
                   ? 'bg-[#121217] border-orange-500/20' 
                   : 'bg-orange-50/70 border-orange-200/80 shadow-xs'
               }`}>
                 <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1">
-                  <span className="px-1.5 xs:px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-[9px] xs:text-[10px] sm:text-xs font-black uppercase tracking-wider bg-orange-500/15 text-[#FF5E3A] border border-orange-500/30 flex items-center gap-1 w-fit">
-                    <span>🌸</span>
+                  <span className="px-1.5 xs:px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-[9px] xs:text-[10px] sm:text-xs font-black uppercase tracking-wider bg-orange-500/15 text-[#FF5E3A] border border-orange-500/30 flex items-center gap-1.5 w-fit">
+                    <Languages className="w-3 h-3" />
                     <span className="hidden xs:inline">HIRAGANA</span>
                     <span className="xs:hidden">HIRA</span>
                   </span>
@@ -478,15 +455,15 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                 </div>
               </div>
 
-              {/* ⚡ Katakana Side (Always Right) */}
+              {/* Katakana Side (Always Right) */}
               <div className={`rounded-2xl p-2.5 xs:p-3 sm:p-4 md:p-5 border relative overflow-hidden flex flex-col justify-between space-y-2.5 sm:space-y-4 ${
                 theme === 'dark' 
                   ? 'bg-[#121217] border-purple-500/20' 
                   : 'bg-purple-50/70 border-purple-200/80 shadow-xs'
               }`}>
                 <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1">
-                  <span className="px-1.5 xs:px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-[9px] xs:text-[10px] sm:text-xs font-black uppercase tracking-wider bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30 flex items-center gap-1 w-fit">
-                    <span>⚡</span>
+                  <span className="px-1.5 xs:px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-[9px] xs:text-[10px] sm:text-xs font-black uppercase tracking-wider bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30 flex items-center gap-1.5 w-fit">
+                    <Zap className="w-3 h-3" />
                     <span className="hidden xs:inline">KATAKANA</span>
                     <span className="xs:hidden">KATA</span>
                   </span>
@@ -599,7 +576,10 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
             <div className="h-4 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-black uppercase tracking-widest text-[#FF5E3A] font-mono">🔤 Romaji Syllabary</span>
+                <span className="text-xs font-black uppercase tracking-widest text-[#FF5E3A] font-mono flex items-center gap-1.5">
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>Romaji Syllabary</span>
+                </span>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500/10 text-[#FF5E3A] border border-orange-500/20">
                   Click any letter to open popup
                 </span>
@@ -768,205 +748,74 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
         </div>
       </div>
 
-      {/* JLPT N5 Study Schedule Banner & Day Controls */}
-      {(() => {
-        const isKanaMastered = studyScheduleStore.isKanaMastered() || (learnedKana.size >= 164);
-        const scriptPace = activeScript === 'katakana'
-          ? (customPace.katakanaPerDay || customPace.kanaPerDay || 10)
-          : (activeScript === 'hiragana'
-              ? (customPace.hiraganaPerDay || customPace.kanaPerDay || 10)
-              : (customPace.kanaPerDay || 10));
-        const scriptDaysNeeded = activeScript === 'katakana'
-          ? studyScheduleStore.getKatakanaDaysNeeded(scriptPace)
-          : (activeScript === 'hiragana'
-              ? studyScheduleStore.getHiraganaDaysNeeded(scriptPace)
-              : studyScheduleStore.getKanaDaysNeeded(scriptPace));
-        const effectiveTargetDays = isCustomActive ? scriptDaysNeeded : (scheduleTargetDays === 'ALL' ? 60 : scheduleTargetDays);
-        const currentDayTargets = studyScheduleStore.getDayTargets(scheduleCurrentDay);
-        const todayTargetKana = activeScript === 'katakana' 
-          ? currentDayTargets.katakana 
-          : (activeScript === 'hiragana' ? currentDayTargets.hiragana : currentDayTargets.kana);
-        const todayTargetCount = activeScript === 'katakana'
-          ? currentDayTargets.katakanaCount
-          : (activeScript === 'hiragana' ? currentDayTargets.hiraganaCount : currentDayTargets.kanaCount);
-        const todayLearnedKanaCount = todayTargetKana.filter(k => learnedKana.has(k.char)).length;
-
-        return (
-          <div className={`p-4 sm:p-5 rounded-2xl border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${
-            theme === 'dark' ? 'bg-[#17171C] border-slate-800' : 'bg-white border-slate-200/80 shadow-xs'
+      {/* Quick Actions & Mastered Status Bar */}
+      <div className={`p-4 sm:p-5 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+        theme === 'dark' ? 'bg-[#17171C] border-slate-800' : 'bg-white border-slate-200/80 shadow-xs'
+      }`}>
+        <div className="flex items-center gap-3">
+          <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+            learnedKana.size >= 164 ? 'bg-emerald-500/15 text-emerald-500' : 'bg-orange-500/10 text-[#FF5E3A]'
           }`}>
-              <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
-                  isKanaMastered ? 'bg-emerald-500/15 text-emerald-500' : 'bg-orange-500/10 text-[#FF5E3A]'
-                }`}>
-                  {isKanaMastered ? <Check className="w-5 h-5 stroke-[3]" /> : <Calendar className="w-5 h-5" />}
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="text-sm font-black text-slate-900 dark:text-white font-heading">
-                      {isKanaMastered
-                        ? `🌸⚡ All 164 Kana Mastered (${scriptName} Complete)`
-                        : isCustomActive
-                        ? `Custom ${scriptName} Pace: Day ${scheduleCurrentDay} of ${effectiveTargetDays}`
-                        : `JLPT N5 ${scriptName} Schedule: Day ${scheduleCurrentDay} of ${effectiveTargetDays}`}
-                    </h3>
-                    <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${
-                      isKanaMastered
-                        ? 'bg-emerald-500/15 text-emerald-500'
-                        : 'bg-orange-500/15 text-[#FF5E3A]'
-                    }`}>
-                      {isKanaMastered
-                        ? '100% Unlocked · Core N5 Ready'
-                        : isCustomActive
-                        ? `${scriptPace} ${scriptName} / day · ${scriptDaysNeeded} days total`
-                        : `${todayTargetCount} ${scriptName} on Day ${scheduleCurrentDay}`}
-                    </span>
-                    {!isKanaMastered && todayTargetKana.length > 0 && (
-                      <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${
-                        todayLearnedKanaCount >= todayTargetKana.length
-                          ? 'bg-emerald-500/15 text-emerald-500'
-                          : 'bg-amber-500/15 text-amber-500'
-                      }`}>
-                        Today: {todayLearnedKanaCount}/{todayTargetKana.length} Learned
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    {isKanaMastered
-                      ? `All Hiragana & Katakana are mastered and unlocked! Core JLPT N5 Kanji, Words, and Lessons are active.`
-                      : isCustomActive
-                      ? `Learning ${scriptPace} ${scriptName} daily. Day 1–${scheduleCurrentDay} unlocked. Kanji is also studied alongside from Day 1.`
-                      : `Day-by-day ${scriptName} unlocked. Advance days or adjust your daily pace anytime.`}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 flex-wrap self-stretch sm:self-auto justify-between sm:justify-end overflow-x-auto no-scrollbar touch-pan-x">
-                {/* One-click Know All / Reset Button */}
-                {isKanaMastered ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      audio.playClick();
-                      learnedStore.resetAllKanaLearned();
-                      studyScheduleStore.setSkipKana(false);
-                    }}
-                    className="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-amber-500/50 text-slate-400 hover:text-amber-500 text-xs font-bold font-mono transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                    title="Reset Kana progress to practice from scratch"
-                  >
-                    <RotateCcw className="w-3.5 h-3.5" />
-                    <span>Reset Kana</span>
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      audio.playSuccess();
-                      learnedStore.markAllKanaLearned();
-                      studyScheduleStore.setSkipKana(true);
-                      confetti({
-                        particleCount: 60,
-                        spread: 70,
-                        origin: { y: 0.7 }
-                      });
-                    }}
-                    className="px-3 py-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold font-mono transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                    title="Mark all 164 Hiragana & Katakana as learned"
-                  >
-                    <Check className="w-3.5 h-3.5 stroke-[3]" />
-                    <span>I Know All Kana</span>
-                  </button>
-                )}
-
-                {/* Customize Pace Button */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    audio.playClick();
-                    setShowCustomizeModal(true);
-                  }}
-                  className="px-3 py-1.5 rounded-xl border border-orange-500/30 bg-orange-500/10 hover:bg-orange-500/20 text-[#FF5E3A] text-xs font-bold font-mono transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                  title="Customize daily Kana pace and target days"
-                >
-                  <Sliders className="w-3.5 h-3.5" />
-                  <span>Customize Pace</span>
-                </button>
-
-                {/* Day Stepper */}
-                <div className="flex items-center gap-1.5 px-2 py-1 rounded-xl bg-slate-100 dark:bg-slate-800">
-                  <button
-                    onClick={() => {
-                      audio.playClick();
-                      studyScheduleStore.prevDay();
-                    }}
-                    disabled={scheduleCurrentDay <= 1}
-                    className="p-1 rounded-lg hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
-                    title="Previous Day"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <span className="font-mono text-xs font-black text-[#FF5E3A] px-1">
-                    Day {scheduleCurrentDay}
-                  </span>
-                  <button
-                    onClick={() => {
-                      audio.playClick();
-                      studyScheduleStore.nextDay();
-                    }}
-                    disabled={scheduleCurrentDay >= (typeof effectiveTargetDays === 'number' ? effectiveTargetDays : 60)}
-                    className="p-1 rounded-lg hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
-                    title="Next Day"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-
-                {/* Schedule Filter Pills */}
-                <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-800">
-                  <button
-                    onClick={() => {
-                      audio.playClick();
-                      setScheduleFilter('ALL');
-                    }}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
-                      scheduleFilter === 'ALL'
-                        ? 'bg-[#FF5E3A] text-white shadow-2xs'
-                        : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
-                    }`}
-                  >
-                    All ({scriptTotalCount})
-                  </button>
-                  <button
-                    onClick={() => {
-                      audio.playClick();
-                      setScheduleFilter('TODAY');
-                    }}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1 ${
-                      scheduleFilter === 'TODAY'
-                        ? 'bg-[#FF5E3A] text-white shadow-2xs'
-                        : 'text-slate-500 hover:text-[#FF5E3A]'
-                    }`}
-                  >
-                    <span>Today (Day {scheduleCurrentDay})</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      audio.playClick();
-                      setScheduleFilter('UNLOCKED');
-                    }}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
-                      scheduleFilter === 'UNLOCKED'
-                        ? 'bg-[#FF5E3A] text-white shadow-2xs'
-                        : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
-                    }`}
-                  >
-                    Unlocked (1–{scheduleCurrentDay})
-                  </button>
-                </div>
-              </div>
+            {learnedKana.size >= 164 ? <Check className="w-5 h-5 stroke-[3]" /> : <Volume2 className="w-5 h-5" />}
+          </div>
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <h3 className="text-sm font-black text-slate-900 dark:text-white font-heading">
+                {learnedKana.size >= 164
+                  ? `All 164 Kana Mastered (${scriptName} Complete)`
+                  : `${scriptName} Practice (${scriptLearnedCount}/${scriptTotalCount} Learned)`}
+              </h3>
+              <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${
+                learnedKana.size >= 164
+                  ? 'bg-emerald-500/15 text-emerald-500'
+                  : 'bg-orange-500/15 text-[#FF5E3A]'
+              }`}>
+                {learnedKana.size >= 164
+                  ? '100% Mastered · Core N5 Ready'
+                  : `${Math.round((scriptLearnedCount / scriptTotalCount) * 100)}% Complete`}
+              </span>
             </div>
-        );
-      })()}
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              Click any character to practice stroke orders, sound audio, and see native vocabulary words.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 self-stretch sm:self-auto justify-end">
+          {learnedKana.size >= 164 ? (
+            <button
+              type="button"
+              onClick={() => {
+                audio.playClick();
+                learnedStore.resetAllKanaLearned();
+              }}
+              className="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-amber-500/50 text-slate-400 hover:text-amber-500 text-xs font-bold font-mono transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
+              title="Reset Kana progress to practice from scratch"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Reset Kana</span>
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                audio.playSuccess();
+                learnedStore.markAllKanaLearned();
+                confetti({
+                  particleCount: 60,
+                  spread: 70,
+                  origin: { y: 0.7 }
+                });
+              }}
+              className="px-3 py-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold font-mono transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
+              title="Mark all 164 Hiragana & Katakana as learned"
+            >
+              <Check className="w-3.5 h-3.5 stroke-[3]" />
+              <span>I Know All Kana</span>
+            </button>
+          )}
+        </div>
+      </div>
 
       {/* Script & Category Switcher */}
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -986,7 +835,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                   : 'text-slate-500 hover:text-[#FF5E3A]'
               }`}
             >
-              <span>🌸</span>
+              <Languages className="w-3.5 h-3.5" />
               <span>Hiragana (ひらがな)</span>
             </button>
             <button
@@ -1000,7 +849,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                   : 'text-slate-500 hover:text-[#FF5E3A]'
               }`}
             >
-              <span>⚡</span>
+              <Zap className="w-3.5 h-3.5" />
               <span>Katakana (カタカナ)</span>
             </button>
             <button
@@ -1014,7 +863,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                   : 'text-slate-500 hover:text-[#FF5E3A]'
               }`}
             >
-              <span>🌸⚡</span>
+              <Layers className="w-3.5 h-3.5" />
               <span>Both (Parallel)</span>
             </button>
           </div>
@@ -1025,7 +874,8 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                 ? 'bg-pink-500/10 border-pink-500/30 text-pink-500'
                 : 'bg-orange-500/10 border-orange-500/30 text-[#FF5E3A]'
             }`}>
-              <span>{forcedScript === 'katakana' ? '⚡ Katakana Page' : '🌸 Hiragana Page'}</span>
+              {forcedScript === 'katakana' ? <Zap className="w-3.5 h-3.5" /> : <Languages className="w-3.5 h-3.5" />}
+              <span>{forcedScript === 'katakana' ? 'Katakana Page' : 'Hiragana Page'}</span>
             </span>
             {onNavigateTab && (
               <button
@@ -1037,7 +887,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                 className="px-3.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-[#FF5E3A] text-xs font-bold transition flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:text-[#FF5E3A] cursor-pointer shadow-2xs"
                 title={`Switch to ${forcedScript === 'hiragana' ? 'Katakana' : 'Hiragana'} page`}
               >
-                <span>{forcedScript === 'hiragana' ? '⚡ Go to Katakana' : '🌸 Go to Hiragana'}</span>
+                <span>{forcedScript === 'hiragana' ? 'Go to Katakana' : 'Go to Hiragana'}</span>
                 <span>→</span>
               </button>
             )}
@@ -1050,7 +900,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
               className="px-3.5 py-1.5 rounded-xl border border-orange-400/40 dark:border-orange-500/30 bg-orange-500/10 hover:bg-orange-500/20 text-[#FF5E3A] text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-2xs hover:scale-[1.02] active:scale-[0.98]"
               title="Open full Romaji page to view all sounds and compare Hiragana & Katakana"
             >
-              <span>🔤</span>
+              <BookOpen className="w-3.5 h-3.5" />
               <span>All Romaji Sounds (a, i, u, e, o...)</span>
             </button>
           </div>
@@ -1080,10 +930,355 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
             </button>
           ))}
         </div>
+
+        {/* View Mode Toggle: Row-by-Row vs Full Table */}
+        <div className={`p-1 rounded-2xl border flex items-center gap-1 ${
+          theme === 'dark' ? 'bg-slate-900 border-slate-800' : 'bg-orange-50/80 border-orange-200/80'
+        }`}>
+          <button
+            type="button"
+            onClick={() => {
+              audio.playClick();
+              setViewMode('row');
+            }}
+            className={`px-3 py-1.5 rounded-xl text-xs font-black transition cursor-pointer flex items-center gap-1.5 ${
+              viewMode === 'row'
+                ? 'bg-[#FF5E3A] text-white shadow-xs'
+                : 'text-slate-500 hover:text-[#FF5E3A]'
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>Row-by-Row</span>
+            <span className="px-1.5 py-0.2 rounded-full text-[9px] bg-white/20 text-white font-bold hidden sm:inline">Beginner</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              audio.playClick();
+              setViewMode('table');
+            }}
+            className={`px-3 py-1.5 rounded-xl text-xs font-black transition cursor-pointer flex items-center gap-1.5 ${
+              viewMode === 'table'
+                ? 'bg-[#FF5E3A] text-white shadow-xs'
+                : 'text-slate-500 hover:text-[#FF5E3A]'
+            }`}
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Full Table</span>
+          </button>
+        </div>
       </div>
 
-      {/* Vowel Column Headers (for 5-column Gojūon: Basic & Dakuten) */}
-      {activeGroup !== 'yoon' ? (
+      {viewMode === 'row' ? (
+        /* ========================================================================= */
+        /* BEGINNER STEP-BY-STEP ROW LEARNING STUDIO                                 */
+        /* ========================================================================= */
+        (() => {
+          const rowsList = activeGroup === 'basic' ? BASIC_ONLY_ROWS : (activeGroup === 'dakuten' ? DAKUTEN_ONLY_ROWS : PROGRESSIVE_ROWS);
+          const safeRowIndex = Math.min(selectedRowIndex, Math.max(0, rowsList.length - 1));
+          const curRow = rowsList[safeRowIndex] || rowsList[0];
+
+          // Compute slots for current row
+          const slots = curRow.romaji.map((romaji) => {
+            if (!romaji) return null;
+            const hira = hiraganaMap.get(romaji.toLowerCase());
+            const kata = katakanaMap.get(romaji.toLowerCase());
+            const item = activeScript === 'katakana' ? (kata || hira) : (hira || kata);
+            if (!item) return null;
+            const details = getKanaDetails(item.char, romaji, (item.script as 'Hiragana' | 'Katakana') || (activeScript === 'katakana' ? 'Katakana' : 'Hiragana'));
+            const isLearned = learnedKana.has(item.char);
+            return {
+              item,
+              hira,
+              kata,
+              romaji,
+              details,
+              isLearned
+            };
+          }).filter((s): s is NonNullable<typeof s> => s !== null);
+
+          const learnedCountInRow = slots.filter(s => s.isLearned).length;
+          const isRowFullyLearned = slots.length > 0 && learnedCountInRow === slots.length;
+
+          return (
+            <div className="space-y-5 animate-fade-in">
+              {/* 1. Horizontal Row Selector Carousel */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-black uppercase tracking-wider text-slate-400">
+                    Select a 5-Character Row to Study ({safeRowIndex + 1}/{rowsList.length})
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      disabled={safeRowIndex === 0}
+                      onClick={() => {
+                        audio.playClick();
+                        setSelectedRowIndex(prev => Math.max(0, prev - 1));
+                      }}
+                      className="p-1.5 rounded-xl border border-slate-200 dark:border-slate-800 disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#FF5E3A] text-slate-600 dark:text-slate-300 transition cursor-pointer"
+                      title="Previous Row"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      disabled={safeRowIndex === rowsList.length - 1}
+                      onClick={() => {
+                        audio.playClick();
+                        setSelectedRowIndex(prev => Math.min(rowsList.length - 1, prev + 1));
+                      }}
+                      className="p-1.5 rounded-xl border border-slate-200 dark:border-slate-800 disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#FF5E3A] text-slate-600 dark:text-slate-300 transition cursor-pointer"
+                      title="Next Row"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 overflow-x-auto no-scrollbar touch-pan-x py-1">
+                  {rowsList.map((rDef, idx) => {
+                    const isSelected = idx === safeRowIndex;
+                    // Count learned in this rowDef
+                    const rChars = rDef.romaji
+                      .filter(Boolean)
+                      .map(r => {
+                        const h = hiraganaMap.get(r!.toLowerCase());
+                        const k = katakanaMap.get(r!.toLowerCase());
+                        return activeScript === 'katakana' ? k?.char : h?.char;
+                      })
+                      .filter(Boolean) as string[];
+                    const rLearned = rChars.filter(c => learnedKana.has(c)).length;
+                    const isDone = rChars.length > 0 && rLearned === rChars.length;
+
+                    return (
+                      <button
+                        key={rDef.id}
+                        type="button"
+                        onClick={() => {
+                          audio.playClick();
+                          setSelectedRowIndex(idx);
+                        }}
+                        className={`px-3 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer flex items-center gap-2 border ${
+                          isSelected
+                            ? 'bg-[#FF5E3A] border-[#FF5E3A] text-white shadow-md shadow-orange-500/25 ring-2 ring-orange-400/40'
+                            : isDone
+                            ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400 hover:border-emerald-500'
+                            : theme === 'dark'
+                            ? 'bg-[#17171C] border-slate-800 text-slate-300 hover:border-slate-700'
+                            : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300 shadow-2xs'
+                        }`}
+                      >
+                        <span>{rDef.name}</span>
+                        {isDone ? (
+                          <span className={`w-4 h-4 rounded-full flex items-center justify-center ${
+                            isSelected ? 'bg-white text-[#FF5E3A]' : 'bg-emerald-500 text-white'
+                          }`}>
+                            <Check className="w-2.5 h-2.5" />
+                          </span>
+                        ) : (
+                          <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
+                            isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'
+                          }`}>
+                            {rLearned}/{rChars.length}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* 2. Row Summary Header Card */}
+              <div className={`p-4 sm:p-5 rounded-2xl sm:rounded-3xl border ${cardBg} flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs`}>
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-[#FF5E3A]/15 text-[#FF5E3A] border border-orange-500/25 font-mono">
+                      Row {safeRowIndex + 1}
+                    </span>
+                    <h2 className="text-base sm:text-lg font-black font-heading text-slate-900 dark:text-white">
+                      {curRow.name}
+                    </h2>
+                    {isRowFullyLearned && (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                        <Check className="w-3 h-3 text-emerald-500" />
+                        <span>Row Mastered</span>
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Listen to each pronunciation, use the memory hint, and check the box when you can recognize the character.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const rowChars = slots.map(s => s.item.char);
+                      if (rowChars.length > 0) {
+                        setKanaQuizTargetChar(rowChars[0]);
+                        setKanaQuizModalOpen(true);
+                      }
+                    }}
+                    className="px-3.5 py-2 rounded-xl border border-orange-500/30 bg-orange-500/10 hover:bg-orange-500/20 text-[#FF5E3A] text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                  >
+                    <Play className="w-3.5 h-3.5 fill-current" />
+                    <span>Practice Row Quiz</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* 3. The 5 Big Character Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4">
+                {slots.map((slot) => {
+                  const char = slot.item.char;
+                  const romaji = slot.romaji;
+                  const mnemonic = slot.details.mnemonic;
+                  const word = slot.details.words[0];
+
+                  return (
+                    <div
+                      key={char}
+                      onClick={() => handleKanaClick(char, romaji)}
+                      className={`p-4 sm:p-5 rounded-2xl sm:rounded-3xl border transition-all cursor-pointer relative group flex flex-col justify-between hover:shadow-lg hover:-translate-y-0.5 ${
+                        slot.isLearned
+                          ? 'border-emerald-500/40 bg-emerald-500/5 shadow-xs'
+                          : cardBg
+                      }`}
+                    >
+                      {/* Top Bar: Romaji tag + Audio speakers */}
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="px-2 py-0.5 rounded-lg bg-orange-500/10 border border-orange-500/20 font-mono font-black text-xs text-[#FF5E3A]">
+                          /{romaji}/
+                        </span>
+
+                        <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              audio.speak(char, 0.9);
+                            }}
+                            className="p-1.5 rounded-lg hover:bg-orange-500/15 text-slate-400 hover:text-[#FF5E3A] transition cursor-pointer"
+                            title={`Listen to "${char}" (Normal Speed)`}
+                          >
+                            <Volume2 className="w-4 h-4" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              audio.speak(char, 0.65);
+                            }}
+                            className="px-1.5 py-0.5 rounded-lg text-[10px] font-mono font-bold hover:bg-orange-500/15 text-slate-400 hover:text-[#FF5E3A] transition cursor-pointer border border-slate-200 dark:border-slate-800"
+                            title={`Listen to "${char}" (Slow 0.7x Speed)`}
+                          >
+                            0.7x
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Giant Character Center */}
+                      <div className="py-4 text-center">
+                        <div className="text-5xl sm:text-6xl font-black font-jp tracking-tight text-slate-900 dark:text-white group-hover:text-[#FF5E3A] transition-colors">
+                          {char}
+                        </div>
+                        {activeScript === 'both' && slot.kata && (
+                          <div className="text-sm font-jp font-bold text-slate-400 mt-1">
+                            Katakana: <span className="text-[#FF5E3A] font-black">{slot.kata.char}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Memory Mnemonic Box */}
+                      <div className="p-2.5 rounded-xl bg-amber-500/10 dark:bg-amber-500/5 border border-amber-500/20 text-left space-y-1 mb-3">
+                        <div className="flex items-center gap-1 text-[10px] font-black uppercase text-amber-600 dark:text-amber-400">
+                          <Lightbulb className="w-3 h-3 text-amber-500 shrink-0" />
+                          <span>Memory Hint</span>
+                        </div>
+                        <p className="text-[11px] text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
+                          {mnemonic}
+                        </p>
+                      </div>
+
+                      {/* Example Word */}
+                      {word && (
+                        <div 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            audio.speak(word.furigana, 0.9);
+                          }}
+                          className="p-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800/80 text-left flex items-center justify-between gap-1 mb-3 hover:border-orange-400/60 transition group/word"
+                          title="Click to hear example word"
+                        >
+                          <div className="min-w-0">
+                            <div className="text-xs font-black font-jp text-slate-900 dark:text-white group-hover/word:text-[#FF5E3A] transition truncate">
+                              {word.word} <span className="text-[10px] font-normal text-slate-400">({word.furigana})</span>
+                            </div>
+                            <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
+                              {word.english}
+                            </div>
+                          </div>
+                          <Volume2 className="w-3.5 h-3.5 text-slate-400 group-hover/word:text-[#FF5E3A] shrink-0" />
+                        </div>
+                      )}
+
+                      {/* Bottom Toggle Learned Button */}
+                      <div onClick={(e) => e.stopPropagation()}>
+                        <button
+                          type="button"
+                          onClick={(e) => handleQuickToggleLearned(e, char)}
+                          className={`w-full py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs ${
+                            slot.isLearned
+                              ? 'bg-emerald-500 text-white hover:bg-emerald-600 shadow-emerald-500/20'
+                              : 'border border-slate-200 dark:border-slate-800 hover:border-[#FF5E3A] hover:bg-orange-500/10 text-slate-600 dark:text-slate-300 hover:text-[#FF5E3A]'
+                          }`}
+                        >
+                          <Check className={`w-3.5 h-3.5 stroke-[3] ${slot.isLearned ? 'text-white' : 'text-slate-400'}`} />
+                          <span>{slot.isLearned ? 'Learned' : 'Mark Learned (+10 XP)'}</span>
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* 4. Row Mastery Celebration & Next Row Banner */}
+              {isRowFullyLearned && safeRowIndex < rowsList.length - 1 && (
+                <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-500/15 via-teal-500/10 to-orange-500/15 border border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fade-in shadow-xs">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center shadow-sm shrink-0">
+                      <Award className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white">
+                        Row Complete! Mastered all characters in {curRow.name}.
+                      </h4>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                        Ready to level up your reading skills? Move on to {rowsList[safeRowIndex + 1].name}!
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      audio.playSuccess();
+                      setSelectedRowIndex(prev => prev + 1);
+                      window.scrollTo({ top: 180, behavior: 'smooth' });
+                    }}
+                    className="px-4 py-2.5 rounded-xl bg-[#FF5E3A] hover:bg-[#e04f2c] text-white font-extrabold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer shadow-md shadow-orange-500/20 active:scale-98 shrink-0"
+                  >
+                    <span>Next: {rowsList[safeRowIndex + 1].name}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+            </div>
+          );
+        })()
+      ) : (
+        activeGroup !== 'yoon' ? (
+        /* Vowel Column Headers (for 5-column Gojūon: Basic & Dakuten) */
         <div className="space-y-6">
           <div className="grid grid-cols-5 gap-1.5 sm:gap-2.5 md:gap-3.5 sticky top-2 z-20 backdrop-blur-md bg-white/80 dark:bg-[#0E0E12]/80 py-1.5 sm:py-2 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 px-1 shadow-2xs">
             {[
@@ -1118,19 +1313,8 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
           {/* 5-Column Grid Cards Grouped By Row */}
           <div className="space-y-6">
             {gridSlotsByRow.map(({ rowDef, slots }) => {
-              const isKanaMastered = studyScheduleStore.isKanaMastered() || learnedKana.size >= 164;
-              const hasVisibleRealItem = slots.some(slot => {
-                if (!slot.item) return false;
-                const char = slot.item.char;
-                const isToday = studyScheduleStore.isKanaToday(char);
-                const isUnlocked = isKanaMastered || learnedKana.has(char) || studyScheduleStore.isKanaUnlocked(char);
-                if (scheduleFilter === 'TODAY' && !isToday && !isKanaMastered) return false;
-                if (scheduleFilter === 'UNLOCKED' && !isUnlocked) return false;
-                return true;
-              });
-
               const hasAnyRealItem = slots.some(s => s.item !== null);
-              if (hasAnyRealItem && !hasVisibleRealItem) return null;
+              if (!hasAnyRealItem) return null;
 
               return (
                 <div key={rowDef.id} className="space-y-2">
@@ -1189,88 +1373,67 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                       const isSingleLearned = activeScript === 'katakana' ? isKataLearned : isHiraLearned;
                       const isLearned = activeScript === 'both' ? isBothLearned : isSingleLearned;
 
-                      const isKanaMastered = studyScheduleStore.isKanaMastered() || learnedKana.size >= 164;
-                      const dayNumber = studyScheduleStore.getKanaDay(item.char);
-                      const isUnlocked = isKanaMastered || isLearned || studyScheduleStore.isKanaUnlocked(item.char);
-                      const isToday = studyScheduleStore.isKanaToday(item.char);
-
-                      if (scheduleFilter === 'TODAY' && !isToday && !isKanaMastered) return null;
-                      if (scheduleFilter === 'UNLOCKED' && !isUnlocked) return null;
-
                       return (
                         <div
                           key={slot.key}
                           onClick={() => handleKanaClick(item.char, item.romaji)}
                           className={`p-1.5 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl border cursor-pointer transition-all duration-200 flex flex-col items-center justify-between text-center group relative overflow-hidden min-h-[85px] sm:min-h-[115px] md:min-h-[135px] ${
-                            !isUnlocked
-                              ? 'border-slate-200/60 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30 opacity-70 hover:opacity-100 hover:border-amber-500/60 shadow-2xs'
-                              : isLearned
+                            isLearned
                               ? 'border-emerald-500/90 bg-emerald-50/80 dark:bg-emerald-950/30 text-emerald-950 dark:text-emerald-100 shadow-sm shadow-emerald-500/20 ring-1 ring-emerald-500/30'
                               : `${cardBg} hover:border-[#FF5E3A] shadow-xs hover:shadow-lg`
                           }`}
                         >
-                          {/* Top Bar: Quick Mark / Day Badge + Stroke Count + Speaker */}
+                          {/* Top Bar: Quick Mark / Stroke Count + Speaker */}
                           <div className="w-full flex items-center justify-between absolute top-1 sm:top-2 px-1 sm:px-2.5 z-10">
-                            {!isUnlocked ? (
-                              <span className="flex items-center gap-0.5 px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded text-[8px] sm:text-[9px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-400 border border-slate-200 dark:border-slate-700" title={`Unlocks on Day ${dayNumber}`}>
-                                <Lock className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-amber-500" />
-                                <span>D{dayNumber}</span>
-                              </span>
-                            ) : (
-                              <div className="flex items-center gap-0.5 sm:gap-1">
-                                {activeScript === 'both' ? (
-                                  <div className="flex items-center gap-0.5">
-                                    {hiraItem && (
-                                      <button
-                                        onClick={(e) => handleQuickToggleLearned(e, hiraItem.char)}
-                                        className={`px-1 py-0.2 rounded text-[7px] sm:text-[8px] font-mono font-bold transition cursor-pointer ${
-                                          isHiraLearned
-                                            ? 'bg-emerald-500 text-white shadow-2xs'
-                                            : 'bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-emerald-500'
-                                        }`}
-                                        title={`Hiragana ${hiraItem.char}: ${isHiraLearned ? 'Learned' : 'Click to mark learned'}`}
-                                      >
-                                        🌸{isHiraLearned ? '✓' : '+'}
-                                      </button>
-                                    )}
-                                    {kataItem && (
-                                      <button
-                                        onClick={(e) => handleQuickToggleLearned(e, kataItem.char)}
-                                        className={`px-1 py-0.2 rounded text-[7px] sm:text-[8px] font-mono font-bold transition cursor-pointer ${
-                                          isKataLearned
-                                            ? 'bg-pink-500 text-white shadow-2xs'
-                                            : 'bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-pink-500'
-                                        }`}
-                                        title={`Katakana ${kataItem.char}: ${isKataLearned ? 'Learned' : 'Click to mark learned'}`}
-                                      >
-                                        ⚡{isKataLearned ? '✓' : ''}
-                                      </button>
-                                    )}
-                                  </div>
-                                ) : (
-                                  <button
-                                    onClick={(e) => handleQuickToggleLearned(e, item.char)}
-                                    className={`p-0.5 sm:p-1 rounded-md transition cursor-pointer ${
-                                      isLearned
-                                        ? 'bg-emerald-500 text-white shadow-xs'
-                                        : 'opacity-0 group-hover:opacity-100 bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/50'
-                                    }`}
-                                    title={isLearned ? 'Marked as Learned (Click to unmark)' : 'Click to mark as learned (+10 XP)'}
-                                  >
-                                    <Check className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 stroke-[3]" />
-                                  </button>
-                                )}
-                                <span className={`px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded text-[8px] sm:text-[9px] font-mono font-black ${
-                                  isLearned || isKanaMastered
-                                    ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
-                                    : isToday 
-                                    ? 'bg-[#FF5E3A] text-white' 
-                                    : 'bg-orange-500/10 text-[#FF5E3A]'
-                                }`}>
-                                  {isLearned || isKanaMastered ? '✓' : `D${dayNumber}`}
+                            <div className="flex items-center gap-0.5 sm:gap-1">
+                              {activeScript === 'both' ? (
+                                <div className="flex items-center gap-0.5">
+                                  {hiraItem && (
+                                    <button
+                                      onClick={(e) => handleQuickToggleLearned(e, hiraItem.char)}
+                                      className={`px-1 py-0.2 rounded text-[7px] sm:text-[8px] font-mono font-bold transition cursor-pointer ${
+                                        isHiraLearned
+                                          ? 'bg-emerald-500 text-white shadow-2xs'
+                                          : 'bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-emerald-500'
+                                      }`}
+                                      title={`Hiragana ${hiraItem.char}: ${isHiraLearned ? 'Learned' : 'Click to mark learned'}`}
+                                    >
+                                      <span className="flex items-center gap-0.5">H {isHiraLearned && <Check className="w-2 h-2 inline" />}</span>
+                                    </button>
+                                  )}
+                                  {kataItem && (
+                                    <button
+                                      onClick={(e) => handleQuickToggleLearned(e, kataItem.char)}
+                                      className={`px-1 py-0.2 rounded text-[7px] sm:text-[8px] font-mono font-bold transition cursor-pointer ${
+                                        isKataLearned
+                                          ? 'bg-pink-500 text-white shadow-2xs'
+                                          : 'bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-pink-500'
+                                      }`}
+                                      title={`Katakana ${kataItem.char}: ${isKataLearned ? 'Learned' : 'Click to mark learned'}`}
+                                    >
+                                      <span className="flex items-center gap-0.5">K {isKataLearned && <Check className="w-2 h-2 inline" />}</span>
+                                    </button>
+                                  )}
+                                </div>
+                              ) : (
+                                <button
+                                  onClick={(e) => handleQuickToggleLearned(e, item.char)}
+                                  className={`p-0.5 sm:p-1 rounded-md transition cursor-pointer ${
+                                    isLearned
+                                      ? 'bg-emerald-500 text-white shadow-xs'
+                                      : 'opacity-0 group-hover:opacity-100 bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/50'
+                                  }`}
+                                  title={isLearned ? 'Marked as Learned (Click to unmark)' : 'Click to mark as learned (+10 XP)'}
+                                >
+                                  <Check className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 stroke-[3]" />
+                                </button>
+                              )}
+                              {isLearned && (
+                                <span className="px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded text-[8px] sm:text-[9px] font-mono font-black bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center">
+                                  <Check className="w-2.5 h-2.5" />
                                 </span>
-                              </div>
-                            )}
+                              )}
+                            </div>
 
                             <div className="flex items-center gap-1">
                               {activeScript !== 'both' && item.strokeCount ? (
@@ -1304,7 +1467,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                                 }`}>
                                   {hiraItem?.char || '—'}
                                 </span>
-                                <span className="text-[7px] sm:text-[9px] font-mono font-bold text-slate-400">🌸 Hira</span>
+                                <span className="text-[7px] sm:text-[9px] font-mono font-bold text-slate-400">Hira</span>
                               </div>
                               <div className="h-5 sm:h-7 w-px bg-slate-200 dark:bg-slate-700" />
                               <div className="flex flex-col items-center">
@@ -1313,7 +1476,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                                 }`}>
                                   {kataItem?.char || '—'}
                                 </span>
-                                <span className="text-[7px] sm:text-[9px] font-mono font-bold text-slate-400">⚡ Kata</span>
+                                <span className="text-[7px] sm:text-[9px] font-mono font-bold text-slate-400">Kata</span>
                               </div>
                             </div>
                           ) : (
@@ -1334,8 +1497,8 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                               {item.romaji}
                             </span>
                             {isLearned && (
-                              <span className="text-[8px] sm:text-[9px] font-black px-1 rounded bg-emerald-500 text-white leading-tight shrink-0">
-                                ✓
+                              <span className="p-0.5 rounded bg-emerald-500 text-white leading-tight shrink-0 flex items-center">
+                                <Check className="w-2.5 h-2.5" />
                               </span>
                             )}
                           </div>
@@ -1386,56 +1549,35 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
               const isKataLearned = kItem ? learnedKana.has(kItem.char) : false;
               const isLearned = activeScript === 'both' ? (isHiraLearned && isKataLearned) : (activeScript === 'katakana' ? isKataLearned : isHiraLearned);
 
-              const isKanaMastered = studyScheduleStore.isKanaMastered() || learnedKana.size >= 164;
-              const dayNumber = studyScheduleStore.getKanaDay(item.char);
-              const isUnlocked = isKanaMastered || isLearned || studyScheduleStore.isKanaUnlocked(item.char);
-              const isToday = studyScheduleStore.isKanaToday(item.char);
-
-              if (scheduleFilter === 'TODAY' && !isToday && !isKanaMastered) return null;
-              if (scheduleFilter === 'UNLOCKED' && !isUnlocked) return null;
-
               return (
                 <div
                   key={idx}
                   onClick={() => handleKanaClick(item.char, item.romaji)}
                   className={`p-2 sm:p-4 rounded-xl sm:rounded-2xl border cursor-pointer transition-all duration-200 flex flex-col items-center justify-between text-center group relative overflow-hidden min-h-[85px] sm:min-h-[115px] md:min-h-[135px] ${
-                    !isUnlocked
-                      ? 'border-slate-200/60 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30 opacity-70 hover:opacity-100 hover:border-amber-500/60 shadow-2xs'
-                      : isLearned
+                    isLearned
                       ? 'border-emerald-500/90 bg-emerald-50/80 dark:bg-emerald-950/30 text-emerald-950 dark:text-emerald-100 shadow-sm shadow-emerald-500/20 ring-1 ring-emerald-500/30'
                       : `${cardBg} hover:border-[#FF5E3A] shadow-xs hover:shadow-lg`
                   }`}
                 >
                   <div className="w-full flex items-center justify-between absolute top-1 sm:top-2 px-1.5 sm:px-2.5 z-10">
-                    {!isUnlocked ? (
-                      <span className="flex items-center gap-0.5 px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded text-[8px] sm:text-[9px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-400 border border-slate-200 dark:border-slate-700" title={`Unlocks on Day ${dayNumber}`}>
-                        <Lock className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-amber-500" />
-                        <span>D{dayNumber}</span>
-                      </span>
-                    ) : (
-                      <div className="flex items-center gap-1">
-                        <button
-                          onClick={(e) => handleQuickToggleLearned(e, item.char)}
-                          className={`p-0.5 sm:p-1 rounded-md transition cursor-pointer ${
-                            isLearned
-                              ? 'bg-emerald-500 text-white shadow-xs'
-                              : 'opacity-0 group-hover:opacity-100 bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/50'
-                          }`}
-                          title={isLearned ? 'Marked as Learned (Click to unmark)' : 'Click to mark as learned (+10 XP)'}
-                        >
-                          <Check className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 stroke-[3]" />
-                        </button>
-                        <span className={`px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded text-[8px] sm:text-[9px] font-mono font-black ${
-                          isLearned || isKanaMastered
-                            ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
-                            : isToday 
-                            ? 'bg-[#FF5E3A] text-white' 
-                            : 'bg-orange-500/10 text-[#FF5E3A]'
-                        }`}>
-                          {isLearned || isKanaMastered ? '✓' : `D${dayNumber}`}
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={(e) => handleQuickToggleLearned(e, item.char)}
+                        className={`p-0.5 sm:p-1 rounded-md transition cursor-pointer ${
+                          isLearned
+                            ? 'bg-emerald-500 text-white shadow-xs'
+                            : 'opacity-0 group-hover:opacity-100 bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/50'
+                        }`}
+                        title={isLearned ? 'Marked as Learned (Click to unmark)' : 'Click to mark as learned (+10 XP)'}
+                      >
+                        <Check className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 stroke-[3]" />
+                      </button>
+                      {isLearned && (
+                        <span className="px-1 sm:px-1.5 py-0.2 sm:py-0.5 rounded text-[8px] sm:text-[9px] font-mono font-black bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center">
+                          <Check className="w-2.5 h-2.5" />
                         </span>
-                      </div>
-                    )}
+                      )}
+                    </div>
 
                     <div className="flex items-center gap-1">
                       <button
@@ -1480,8 +1622,8 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
                       {item.romaji}
                     </span>
                     {isLearned && (
-                      <span className="text-[8px] sm:text-[9px] font-black px-1 rounded bg-emerald-500 text-white leading-tight">
-                        ✓
+                      <span className="p-0.5 rounded bg-emerald-500 text-white leading-tight flex items-center">
+                        <Check className="w-2.5 h-2.5" />
                       </span>
                     )}
                   </div>
@@ -1500,6 +1642,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
             })}
           </div>
         </div>
+        )
       )}
 
       {/* 1. Kana Detail Modal */}
@@ -1525,57 +1668,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
         }}
       />
 
-      {/* 3. Locked Kana Schedule Prompt Modal */}
-      {lockedKanaModalItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
-          <div className={`w-full max-w-sm p-6 rounded-3xl border shadow-2xl space-y-4 ${cardBg}`}>
-            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto">
-              <Lock className="w-6 h-6" />
-            </div>
-            <div className="text-center space-y-1">
-              <span className="text-4xl font-black font-jp block my-2 text-slate-700 dark:text-slate-300">
-                {lockedKanaModalItem.char}
-              </span>
-              <h3 className="text-base font-black font-heading">
-                Kana Scheduled for Day {lockedKanaModalItem.day}
-              </h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                In your {scheduleTargetDays}-day JLPT N5 study plan, 
-                「{lockedKanaModalItem.char}」({lockedKanaModalItem.romaji}) unlocks on <strong>Day {lockedKanaModalItem.day}</strong>. 
-                You are currently on <strong>Day {scheduleCurrentDay}</strong>.
-              </p>
-            </div>
-            <div className="pt-2 flex flex-col gap-2">
-              <button
-                onClick={() => {
-                  studyScheduleStore.setCurrentDay(lockedKanaModalItem.day);
-                  setLockedKanaModalItem(null);
-                  audio.playSuccess();
-                  confetti({ particleCount: 30, spread: 50 });
-                }}
-                className="w-full py-2.5 rounded-xl bg-[#FF5E3A] hover:bg-[#E84E29] text-white font-bold text-xs transition cursor-pointer shadow-md shadow-orange-500/20"
-              >
-                Advance Schedule to Day {lockedKanaModalItem.day} & Unlock
-              </button>
-              <button
-                onClick={() => setLockedKanaModalItem(null)}
-                className="w-full py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white font-semibold text-xs transition cursor-pointer"
-              >
-                Keep Current Day {scheduleCurrentDay}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* 4. Customize Plan Modal */}
-      <CustomizePlanModal
-        isOpen={showCustomizeModal}
-        onClose={() => setShowCustomizeModal(false)}
-        theme={theme}
-      />
-
-      {/* 5. Romaji Comparison Modal Popup */}
+      {/* 3. Romaji Comparison Modal Popup */}
       {renderRomajiPopupModal()}
 
     </div>

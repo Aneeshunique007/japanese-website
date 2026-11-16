@@ -19,10 +19,10 @@ import { NikkiLearningsView } from './components/NikkiLearningsView';
 import { SpeakingView } from './components/SpeakingView';
 import { api, UserProfile, checkServerHealth } from './services/api';
 import audio from './utils/audio';
-import { Mail, ShieldCheck, LogOut, UserPlus } from 'lucide-react';
+import { Mail, ShieldCheck, LogOut, UserPlus, Sparkles, RotateCcw, WifiOff, Flame, Award, BookOpen } from 'lucide-react';
 import { recordStudySession } from './utils/activityTracker';
 import { learnedStore } from './utils/learnedStore';
-import { studyScheduleStore } from './utils/studyScheduleStore';
+import { supabaseService } from './utils/supabaseClient';
 
 export function App() {
   // Current Authenticated User (Saved in MongoDB & cached in localStorage)
@@ -58,6 +58,11 @@ export function App() {
     const stored = localStorage.getItem('anilearn_auth_user');
     return stored ? 'app' : 'landing';
   });
+
+  // Initial sync with Supabase cloud (graceful fallback if unconfigured)
+  useEffect(() => {
+    supabaseService.syncAll().catch(() => {});
+  }, []);
 
   const [activeTab, setActiveTab] = useState<string>('overview');
   const [selectedLessonId, setSelectedLessonId] = useState<string>('lesson-n5-1-1');
@@ -138,7 +143,6 @@ export function App() {
     localStorage.setItem('anilearn_auth_user', JSON.stringify(user));
     setCurrentMode('app');
     setActiveTab('overview');
-    studyScheduleStore.syncFromMongoDB();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -147,7 +151,7 @@ export function App() {
     audio.playClick();
     setCurrentUser(null);
     localStorage.removeItem('anilearn_auth_user');
-    studyScheduleStore.syncFromMongoDB();
+    supabaseService.signOut().catch(() => {});
     setCurrentMode('landing');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -186,6 +190,7 @@ export function App() {
         localStorage.setItem('anilearn_auth_user', JSON.stringify(res.user));
         window.dispatchEvent(new CustomEvent('anilearn_user_update'));
         recordStudySession(currentUser.id, studyMinutes);
+        supabaseService.pushCloudProgress().catch(() => {});
       }
     } catch (err) {
       console.error('Failed to update student progress in MongoDB:', err);
@@ -204,6 +209,7 @@ export function App() {
         localStorage.setItem('anilearn_auth_user', JSON.stringify(updated));
         window.dispatchEvent(new CustomEvent('anilearn_user_update'));
         recordStudySession(currentUser.id, studyMinutes);
+        supabaseService.pushCloudProgress().catch(() => {});
         return updated;
       });
     }
@@ -271,8 +277,8 @@ export function App() {
     // Still checking...
     return (
       <div className={`min-h-screen flex flex-col items-center justify-center gap-6 font-sans ${theme === 'dark' ? 'bg-[#0E0E12] text-white' : 'bg-[#FAF7F5] text-[#1A1A1F]'}`}>
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FF7B5C] to-[#FF5E3A] flex items-center justify-center shadow-xl shadow-orange-500/30 animate-pulse">
-          <span className="text-3xl">🌸</span>
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FF7B5C] to-[#FF5E3A] flex items-center justify-center shadow-xl shadow-orange-500/30 animate-pulse text-white">
+          <Sparkles className="w-8 h-8" />
         </div>
         <div className="text-center space-y-2">
           <h2 className="text-xl font-black">Connecting to AniLearn…</h2>
@@ -290,8 +296,8 @@ export function App() {
   if (serverOnline === false) {
     return (
       <div className={`min-h-screen flex flex-col items-center justify-center gap-6 p-8 font-sans ${theme === 'dark' ? 'bg-[#0E0E12] text-white' : 'bg-[#FAF7F5] text-[#1A1A1F]'}`}>
-        <div className="w-20 h-20 rounded-3xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-4xl shadow-xl">
-          🔌
+        <div className="w-20 h-20 rounded-3xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-500 shadow-xl">
+          <WifiOff className="w-10 h-10" />
         </div>
         <div className="text-center space-y-2 max-w-sm">
           <h2 className="text-2xl font-black text-rose-500">Server Offline</h2>
@@ -305,9 +311,10 @@ export function App() {
         <div className="flex flex-col items-center gap-2">
           <button
             onClick={async () => { setServerOnline(null); const ok = await checkServerHealth(); setServerOnline(ok); }}
-            className="px-6 py-2.5 rounded-xl bg-[#FF5E3A] hover:bg-[#E84E29] text-white text-sm font-black transition cursor-pointer shadow-lg shadow-orange-500/30 active:scale-95"
+            className="px-6 py-2.5 rounded-xl bg-[#FF5E3A] hover:bg-[#E84E29] text-white text-sm font-black transition cursor-pointer shadow-lg shadow-orange-500/30 active:scale-95 flex items-center gap-1.5"
           >
-            🔄 Retry Connection
+            <RotateCcw className="w-4 h-4" />
+            <span>Retry Connection</span>
           </button>
           <p className="text-[11px] text-slate-500">Auto-retrying every 10 seconds…</p>
         </div>
@@ -526,7 +533,10 @@ export function App() {
                                 <span className="text-[10px] px-2 py-0.5 rounded bg-[#FF5E3A] text-white font-bold shrink-0">You</span>
                               )}
                             </div>
-                            <div className="text-[11px] text-slate-400 font-mono">🔥 {player.streak} Days Streak</div>
+                            <div className="text-[11px] text-slate-400 font-mono flex items-center gap-1">
+                              <Flame className="w-3 h-3 text-[#FF5E3A]" />
+                              <span>{player.streak} Days Streak</span>
+                            </div>
                           </div>
                         </div>
                         <div className="font-mono font-black text-xs sm:text-sm text-[#FF5E3A] shrink-0 ml-2">
@@ -574,14 +584,17 @@ export function App() {
                         <span className="truncate">{currentUser.email}</span>
                       </p>
                       <div className="flex flex-wrap items-center gap-2 pt-2">
-                        <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-orange-500/10 text-[#FF5E3A]">
-                          🥇 {currentUser.xp} XP Points
+                        <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-bold bg-orange-500/10 text-[#FF5E3A] flex items-center gap-1">
+                          <Award className="w-3.5 h-3.5" />
+                          <span>{currentUser.xp} XP Points</span>
                         </span>
-                        <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
-                          🔥 {currentUser.streak} Day Streak
+                        <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                          <Flame className="w-3.5 h-3.5 text-[#FF5E3A]" />
+                          <span>{currentUser.streak} Day Streak</span>
                         </span>
-                        <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-indigo-500/10 text-indigo-500">
-                          📚 {currentUser.completedLessons.length} Completed
+                        <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-indigo-500/10 text-indigo-500 flex items-center gap-1">
+                          <BookOpen className="w-3.5 h-3.5 text-indigo-500" />
+                          <span>{currentUser.completedLessons.length} Completed</span>
                         </span>
                       </div>
                     </div>

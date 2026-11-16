@@ -6,13 +6,15 @@ export const LEGACY_PARTICLES_KEY = 'anilearn_speaking_particles_progress';
 export const introKeyFor = (uid: string) => `${LEGACY_INTRO_KEY}_${uid}`;
 export const particlesKeyFor = (uid: string) => `${LEGACY_PARTICLES_KEY}_${uid}`;
 export const introProgressKeyFor = (uid: string) => `anilearn_self_intro_progress_${uid}`;
+export const survivalProgressKeyFor = (uid: string) => `anilearn_speaking_survival_progress_${uid}`;
 export const sessionKeyFor = (uid: string) => `anilearn_speaking_session_${uid}`;
 
 export interface SpeakingSession {
-  activeMode: 'particles' | 'self-intro';
+  activeMode: 'survival' | 'particles' | 'self-intro';
   selectedParticleId: string;
   sentenceIndex: number;
   selfIntroIndex: number;
+  survivalIndex?: number;
 }
 
 export type ParticleProgress = Record<string, number[]>;

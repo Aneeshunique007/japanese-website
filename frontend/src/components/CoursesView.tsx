@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   BookOpen, 
   Clock, 
@@ -6,11 +6,16 @@ import {
   Award, 
   Layers, 
   Sparkles,
-  Lock
+  CheckCircle2,
+  Play,
+  Check,
+  BookMarked,
+  BookA,
+  Target
 } from 'lucide-react';
 import { api } from '../services/api';
-import { studyScheduleStore, SCHEDULE_EVENT } from '../utils/studyScheduleStore';
 import audio from '../utils/audio';
+import { learnedStore } from '../utils/learnedStore';
 
 interface CoursesViewProps {
   initialCourseId?: string;
@@ -27,17 +32,30 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
   const [selectedCourseId, setSelectedCourseId] = useState(initialCourseId);
   const [currentCourse, setCurrentCourse] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
-  const [scheduleTargetDays, setScheduleTargetDays] = useState(() => studyScheduleStore.getTargetDays());
-  const [scheduleCurrentDay, setScheduleCurrentDay] = useState(() => studyScheduleStore.getCurrentDay());
+  const [completedLessonSet, setCompletedLessonSet] = useState<Set<string>>(new Set());
 
+  // Sync with learned updates
   useEffect(() => {
-    const handleScheduleUpdate = () => {
-      setScheduleTargetDays(studyScheduleStore.getTargetDays());
-      setScheduleCurrentDay(studyScheduleStore.getCurrentDay());
+    const updateCompletedLessons = () => {
+      if (!currentCourse?.modules) return;
+      const allLessons: any[] = currentCourse.modules.flatMap((m: any) => m.lessons || []);
+      const completed = new Set<string>();
+      allLessons.forEach((l: any) => {
+        if (learnedStore.isLessonCompleted(l.id)) {
+          completed.add(l.id);
+        }
+      });
+      setCompletedLessonSet(completed);
     };
-    window.addEventListener(SCHEDULE_EVENT, handleScheduleUpdate);
-    return () => window.removeEventListener(SCHEDULE_EVENT, handleScheduleUpdate);
-  }, []);
+
+    updateCompletedLessons();
+    window.addEventListener('anilearn_learned_update', updateCompletedLessons);
+    window.addEventListener('anilearn_user_update', updateCompletedLessons);
+    return () => {
+      window.removeEventListener('anilearn_learned_update', updateCompletedLessons);
+      window.removeEventListener('anilearn_user_update', updateCompletedLessons);
+    };
+  }, [currentCourse]);
 
   useEffect(() => {
     async function loadCourseList() {
@@ -75,18 +93,32 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
 
   const isComingSoon = ['course-n3', 'course-n2', 'course-n1', 'coming-soon'].includes(selectedCourseId) || ['N3', 'N2', 'N1'].includes(currentCourse?.level);
 
+  // Calculate course completion progress
+  const allCourseLessons = useMemo(() => {
+    if (!currentCourse?.modules) return [];
+    return currentCourse.modules.flatMap((m: any) => m.lessons || []);
+  }, [currentCourse]);
+
+  const courseCompletedCount = allCourseLessons.filter((l: any) => completedLessonSet.has(l.id)).length;
+  const courseCompletionPercent = Math.round((courseCompletedCount / (allCourseLessons.length || 1)) * 100);
+
+  // Find next uncompleted lesson to guide beginner
+  const nextLessonToStudy = useMemo(() => {
+    return allCourseLessons.find((l: any) => !completedLessonSet.has(l.id)) || allCourseLessons[0];
+  }, [allCourseLessons, completedLessonSet]);
+
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 animate-fade-in pb-16">
       
       {/* Header & Level Track Selector */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <BookOpen className="w-6 h-6 text-[#FF5E3A]" />
-            <h1 className="text-2xl font-black tracking-tight font-heading">JLPT Certification Tracks (N5 — N1)</h1>
+            <h1 className="text-2xl font-black tracking-tight font-heading">JLPT Course Progression Tracks</h1>
           </div>
           <p className={`text-sm ${subText}`}>
-            Explore what is studied in each JLPT level, official exam structures, Kanji & vocabulary requirements, and passing criteria.
+            Structured curriculums designed to take you from zero Japanese to official fluency certification.
           </p>
         </div>
 
@@ -127,18 +159,33 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
                   : 'bg-white border-slate-200 text-slate-600 hover:text-[#FF5E3A]'
             }`}
           >
-            <span>Coming Soon</span>
+            <span>Coming Soon (N3-N1)</span>
           </button>
+        </div>
+      </div>
+
+      {/* Beginner Explanation Banner */}
+      <div className={`p-4 rounded-2xl border flex items-start gap-3 text-xs leading-relaxed ${
+        theme === 'dark' ? 'bg-orange-950/15 border-orange-500/20 text-orange-200' : 'bg-orange-50/70 border-orange-200/60 text-slate-700'
+      }`}>
+        <div className="w-8 h-8 rounded-xl bg-orange-500/10 text-[#FF5E3A] flex items-center justify-center shrink-0">
+          <Sparkles className="w-4 h-4" />
+        </div>
+        <div>
+          <span className="font-bold text-slate-900 dark:text-white mr-1.5">Beginner Guide: What is JLPT?</span>
+          <span>
+            The <strong>Japanese-Language Proficiency Test (JLPT)</strong> is the official worldwide benchmark for Japanese learners. <strong>Level N5</strong> is the recommended starting foundation, focusing on basic sentence grammar, everyday vocabulary, and essential reading.
+          </span>
         </div>
       </div>
 
       {/* Selected Course Overview Hero Card */}
       {!isComingSoon && currentCourse && (
-        <div className={`p-5 sm:p-8 rounded-2xl sm:rounded-3xl border ${cardBg} shadow-xs space-y-5 sm:space-y-6 relative overflow-hidden`}>
+        <div className={`p-5 sm:p-8 rounded-3xl border ${cardBg} shadow-xs space-y-6 relative overflow-hidden`}>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="px-3.5 py-1 rounded-full text-xs font-mono font-black bg-orange-500/15 text-[#FF5E3A] border border-orange-500/30">
-                JLPT {currentCourse.level} • {currentCourse.badge} Level
+                JLPT {currentCourse.level} • {currentCourse.badge} Track
               </span>
               <span className="text-sm font-jp font-bold text-slate-400">
                 {currentCourse.japaneseTitle}
@@ -157,8 +204,8 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
             </div>
           </div>
 
-          <div>
-            <h2 className="text-xl sm:text-3xl font-black font-heading tracking-tight mb-2">
+          <div className="space-y-2">
+            <h2 className="text-xl sm:text-3xl font-black font-heading tracking-tight">
               {currentCourse.title}
             </h2>
             <p className={`text-xs sm:text-sm ${subText} leading-relaxed max-w-4xl`}>
@@ -166,11 +213,45 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
             </p>
           </div>
 
+          {/* Progress & Next Lesson Action Bar */}
+          <div className={`p-4 sm:p-5 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+            theme === 'dark' ? 'bg-slate-900/60 border-slate-800' : 'bg-slate-50 border-slate-200/80'
+          }`}>
+            <div className="space-y-1.5 flex-1">
+              <div className="flex items-center justify-between text-xs font-mono font-bold pr-4">
+                <span className="text-slate-600 dark:text-slate-300">
+                  Track Mastery: {courseCompletedCount} of {allCourseLessons.length} Lessons Completed
+                </span>
+                <span className="text-emerald-500">{courseCompletionPercent}%</span>
+              </div>
+              <div className="w-full max-w-md h-2 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-emerald-400 to-emerald-500 transition-all duration-300"
+                  style={{ width: `${courseCompletionPercent}%` }}
+                />
+              </div>
+            </div>
+
+            {nextLessonToStudy && (
+              <button
+                onClick={() => {
+                  audio.playClick();
+                  onSelectLesson(nextLessonToStudy.id);
+                }}
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#FF7B5C] to-[#FF5E3A] hover:from-[#FF5E3A] hover:to-[#E84E29] text-white text-xs font-black transition flex items-center gap-2 shadow-md shadow-orange-500/20 shrink-0 cursor-pointer"
+              >
+                <Play className="w-3.5 h-3.5 fill-white" />
+                <span>Continue: {nextLessonToStudy.title}</span>
+              </button>
+            )}
+          </div>
+
           {/* 4 Core JLPT Requirement Badges */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-1 sm:pt-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-1">
             <div className={`p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border ${theme === 'dark' ? 'bg-slate-900/60 border-slate-800' : 'bg-orange-50/40 border-orange-100'} space-y-1`}>
-              <div className="text-[10px] sm:text-xs font-bold uppercase text-slate-400 font-mono flex items-center gap-1">
-                <span>🈁 Kanji Count</span>
+              <div className="text-[10px] sm:text-xs font-bold uppercase text-slate-400 font-mono flex items-center gap-1.5">
+                <BookMarked className="w-3.5 h-3.5 text-slate-400" />
+                <span>Kanji Count</span>
               </div>
               <div className="text-lg sm:text-xl font-black font-heading text-[#FF5E3A]">
                 {currentCourse.kanjiCount ? `${currentCourse.kanjiCount} Kanji` : '100+ Kanji'}
@@ -179,8 +260,9 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
             </div>
 
             <div className={`p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border ${theme === 'dark' ? 'bg-slate-900/60 border-slate-800' : 'bg-orange-50/40 border-orange-100'} space-y-1`}>
-              <div className="text-[10px] sm:text-xs font-bold uppercase text-slate-400 font-mono flex items-center gap-1">
-                <span>📖 Vocabulary</span>
+              <div className="text-[10px] sm:text-xs font-bold uppercase text-slate-400 font-mono flex items-center gap-1.5">
+                <BookA className="w-3.5 h-3.5 text-slate-400" />
+                <span>Vocabulary</span>
               </div>
               <div className="text-lg sm:text-xl font-black font-heading text-[#FF5E3A]">
                 {currentCourse.vocabCount ? `${currentCourse.vocabCount} Words` : '800+ Words'}
@@ -189,8 +271,9 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
             </div>
 
             <div className={`p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border ${theme === 'dark' ? 'bg-slate-900/60 border-slate-800' : 'bg-orange-50/40 border-orange-100'} space-y-1`}>
-              <div className="text-[10px] sm:text-xs font-bold uppercase text-slate-400 font-mono flex items-center gap-1">
-                <span>📐 Grammar Points</span>
+              <div className="text-[10px] sm:text-xs font-bold uppercase text-slate-400 font-mono flex items-center gap-1.5">
+                <Layers className="w-3.5 h-3.5 text-slate-400" />
+                <span>Grammar Points</span>
               </div>
               <div className="text-lg sm:text-xl font-black font-heading text-[#FF5E3A]">
                 {currentCourse.grammarCount ? `${currentCourse.grammarCount} Patterns` : '65 Patterns'}
@@ -199,8 +282,9 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
             </div>
 
             <div className={`p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border ${theme === 'dark' ? 'bg-slate-900/60 border-slate-800' : 'bg-orange-50/40 border-orange-100'} space-y-1`}>
-              <div className="text-[10px] sm:text-xs font-bold uppercase text-slate-400 font-mono flex items-center gap-1">
-                <span>🎯 Passing Score</span>
+              <div className="text-[10px] sm:text-xs font-bold uppercase text-slate-400 font-mono flex items-center gap-1.5">
+                <Target className="w-3.5 h-3.5 text-slate-400" />
+                <span>Passing Score</span>
               </div>
               <div className="text-sm sm:text-base font-black font-heading text-emerald-500">
                 {currentCourse.passingScore ? currentCourse.passingScore.split('•')[0] : '80 / 180 (44%)'}
@@ -331,10 +415,10 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
                 theme === 'dark' ? 'bg-slate-900/60 border-slate-800 text-slate-300' : 'bg-orange-50/60 border-orange-200/60 text-slate-700'
               }`}>
                 <span className="px-2 py-0.5 rounded font-mono font-black bg-[#FF5E3A] text-white text-[11px] shrink-0">
-                  Day {scheduleCurrentDay} / {scheduleTargetDays === 'ALL' ? '60 (All Access)' : scheduleTargetDays}
+                  100% Unlocked
                 </span>
                 <span className="text-slate-500 dark:text-slate-400">
-                  {scheduleTargetDays === 'ALL' ? 'All lessons unlocked' : `Lessons unlock across your ${scheduleTargetDays}-day schedule`}
+                  All lessons available on demand
                 </span>
               </div>
             )}
@@ -350,70 +434,51 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
                 {mod.lessons.map((lesson: any) => {
-                  const isN5 = currentCourse.level === 'N5';
-                  const lessonDay = isN5 ? studyScheduleStore.getLessonDay(lesson.id) : 1;
-                  const isUnlocked = isN5 ? studyScheduleStore.isLessonUnlocked(lesson.id) : true;
-                  const isToday = isN5 ? studyScheduleStore.isLessonToday(lesson.id) : false;
+                  const isCompleted = completedLessonSet.has(lesson.id);
 
                   return (
                     <div
                       key={lesson.id}
                       onClick={() => {
-                        if (!isUnlocked) {
-                          audio.playClick();
-                          // Show a brief locked toast
-                          const el = document.getElementById(`lesson-lock-toast-${lesson.id}`);
-                          if (el) { el.classList.remove('opacity-0'); setTimeout(() => el.classList.add('opacity-0'), 2000); }
-                          return;
-                        }
                         audio.playClick();
                         onSelectLesson(lesson.id);
                       }}
-                      className={`p-4 sm:p-6 rounded-2xl border relative ${
-                        !isUnlocked
-                          ? 'border-slate-200/60 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/30 opacity-60 hover:opacity-80 hover:border-amber-500/40 cursor-not-allowed'
-                          : `${cardBg} hover:border-[#FF5E3A] cursor-pointer hover:shadow-lg`
-                      } transition flex items-center justify-between group shadow-xs`}
+                      className={`p-4 sm:p-6 rounded-2xl border cursor-pointer hover:shadow-lg transition flex items-center justify-between group shadow-xs ${
+                        isCompleted
+                          ? 'border-emerald-500/80 bg-emerald-50/40 dark:bg-emerald-950/20 text-slate-900 dark:text-white'
+                          : `${cardBg} hover:border-[#FF5E3A]`
+                      }`}
                     >
-                      {/* Lock toast */}
-                      {!isUnlocked && (
-                        <div
-                          id={`lesson-lock-toast-${lesson.id}`}
-                          className="opacity-0 transition-opacity duration-300 absolute top-2 right-2 px-3 py-1.5 rounded-xl bg-amber-500 text-white text-[11px] font-black shadow-lg pointer-events-none z-10"
-                        >
-                          🔒 Unlocks Day {lessonDay}
-                        </div>
-                      )}
 
                       <div className="space-y-1.5 flex-1 pr-3">
                         <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-                          {isN5 && (
-                            <span className={`text-[10px] font-mono font-black px-2 py-0.5 rounded flex items-center gap-1 ${
-                              !isUnlocked 
-                                ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20'
-                                : isToday
-                                ? 'bg-[#FF5E3A] text-white'
-                                : 'bg-orange-500/10 text-[#FF5E3A]'
-                            }`}>
-                              {!isUnlocked && <Lock className="w-2.5 h-2.5" />}
-                              <span>{isToday ? `Day ${lessonDay} • Today's Lesson` : isUnlocked ? `Day ${lessonDay}` : `Unlocks Day ${lessonDay}`}</span>
-                            </span>
-                          )}
                           <span className="text-[10px] uppercase font-mono font-black text-slate-400">
                             ⏱️ {lesson.readTimeMinutes} min study
                           </span>
+                          {isCompleted ? (
+                            <span className="text-[10px] font-black px-2 py-0.5 rounded bg-emerald-500 text-white flex items-center gap-1">
+                              <Check className="w-3 h-3 stroke-[3]" />
+                              <span>Completed</span>
+                            </span>
+                          ) : (
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-orange-500/10 text-[#FF5E3A]">
+                              Ready to Learn
+                            </span>
+                          )}
                           {lesson.letterSections && (
                             <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-orange-500/10 text-[#FF5E3A]">
-                              Vowels & Syllabary
+                              Syllabary
                             </span>
                           )}
                           {lesson.blankFillExercises && (
                             <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-500">
-                              Blank Filling
+                              Exercises
                             </span>
                           )}
                         </div>
-                      <h4 className="font-extrabold text-sm sm:text-base group-hover:text-[#FF5E3A] transition-colors">
+                      <h4 className={`font-extrabold text-sm sm:text-base transition-colors ${
+                        isCompleted ? 'text-emerald-950 dark:text-emerald-100' : 'group-hover:text-[#FF5E3A]'
+                      }`}>
                         {lesson.title}
                       </h4>
                       <span className="text-xs font-jp text-slate-400 block">{lesson.japaneseTitle}</span>
@@ -423,13 +488,15 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
                     </div>
 
                     <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl flex items-center justify-center transition shrink-0 shadow-xs ${
-                      !isUnlocked
-                        ? 'bg-slate-200/60 dark:bg-slate-800 text-slate-400'
+                      isCompleted
+                        ? 'bg-emerald-500 text-white'
                         : 'bg-orange-50 dark:bg-slate-800 text-[#FF5E3A] group-hover:bg-[#FF5E3A] group-hover:text-white'
                     }`}>
-                      {!isUnlocked
-                        ? <Lock className="w-4 h-4" />
-                        : <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />}
+                      {isCompleted ? (
+                        <CheckCircle2 className="w-5 h-5" />
+                      ) : (
+                        <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+                      )}
                     </div>
                   </div>
                 );

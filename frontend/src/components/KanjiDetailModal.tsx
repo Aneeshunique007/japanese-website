@@ -172,7 +172,7 @@ export const KanjiDetailModal: React.FC<KanjiDetailModalProps> = ({
               }`}
             >
               <CheckCircle2 className="w-4 h-4" />
-              <span>{isLearned ? 'Marked as Learned ✓' : 'Mark as Learned (+10 XP)'}</span>
+              <span>{isLearned ? 'Marked as Learned' : 'Mark as Learned (+10 XP)'}</span>
             </button>
           </div>
 

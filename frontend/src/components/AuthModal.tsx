@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, User as UserIcon, Mail, Lock, CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
+import { X, User as UserIcon, Mail, Lock, CheckCircle2, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
 import { api, UserProfile } from '../services/api';
 import audio from '../utils/audio';
 
@@ -170,7 +170,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         {/* Error Alert */}
         {errorMsg && (
           <div className="mb-3.5 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-500 text-xs font-semibold flex items-center gap-2 animate-shake">
-            <span>⚠️</span>
+            <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{errorMsg}</span>
           </div>
         )}

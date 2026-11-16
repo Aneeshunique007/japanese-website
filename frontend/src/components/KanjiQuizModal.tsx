@@ -352,8 +352,9 @@ export const KanjiQuizModal: React.FC<KanjiQuizModalProps> = ({
                     {isCurrentCorrect ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
                   </div>
                   {!isCurrentCorrect && (
-                    <span className="text-[11px] font-bold text-amber-500 dark:text-amber-400 hidden sm:inline">
-                      🔄 Repeats at end until corrected!
+                    <span className="text-[11px] font-bold text-amber-500 dark:text-amber-400 hidden sm:inline-flex items-center gap-1">
+                      <RotateCcw className="w-3 h-3" />
+                      <span>Repeats at end until corrected!</span>
                     </span>
                   )}
                 </div>

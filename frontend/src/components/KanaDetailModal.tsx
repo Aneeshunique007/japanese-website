@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Volume2, BookOpen, Play, CheckCircle2 } from 'lucide-react';
+import { X, Volume2, BookOpen, Play, CheckCircle2, AlertCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { KanaDetailsData } from '../data/kanaWords';
 import { learnedStore } from '../utils/learnedStore';
@@ -163,7 +163,7 @@ export const KanaDetailModal: React.FC<KanaDetailModalProps> = ({
               }`}
             >
               <CheckCircle2 className="w-4 h-4" />
-              <span>{isLearned ? 'Marked as Learned ✓' : 'Mark as Learned (+10 XP)'}</span>
+              <span>{isLearned ? 'Marked as Learned' : 'Mark as Learned (+10 XP)'}</span>
             </button>
           </div>
 
@@ -254,8 +254,9 @@ export const KanaDetailModal: React.FC<KanaDetailModalProps> = ({
           {/* Similar Characters to Avoid Confusing */}
           {kanaData.similarChars && kanaData.similarChars.length > 0 && (
             <div className={`p-4 rounded-2xl border ${theme === 'dark' ? 'bg-slate-900/30 border-slate-800' : 'bg-slate-50 border-slate-200'} flex items-center justify-between`}>
-              <div className="text-xs font-bold text-slate-400">
-                ⚠️ Similar Looking Kana (Don't confuse):
+              <div className="text-xs font-bold text-slate-400 flex items-center gap-1.5">
+                <AlertCircle className="w-3.5 h-3.5 text-amber-500" />
+                <span>Similar Looking Kana (Don't confuse):</span>
               </div>
               <div className="flex items-center gap-2">
                 {kanaData.similarChars.map((sim, i) => (

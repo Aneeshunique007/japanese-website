@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import {
   Mic,
   MicOff,
@@ -14,7 +14,9 @@ import {
   Check,
   Sliders,
   HelpCircle,
-  Flame
+  Flame,
+  RotateCcw,
+  Lightbulb
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import audio from '../utils/audio';
@@ -27,6 +29,7 @@ import {
   generateSelfIntroSentences,
   SelfIntroSentence
 } from '../data/speakingParticlesData';
+import { SURVIVAL_PHRASES, SurvivalPhrase } from '../data/survivalPhrasesData';
 
 import {
   type SpeakingSession,
@@ -35,6 +38,7 @@ import {
   introKeyFor,
   particlesKeyFor,
   introProgressKeyFor,
+  survivalProgressKeyFor,
   getCurrentUserId,
   loadJson,
   saveJson,
@@ -105,9 +109,29 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
 }) => {
   const [userId] = useState<string>(() => getCurrentUserId());
   const [initialSession] = useState<Partial<SpeakingSession>>(() => loadSession());
-  const [activeMode, setActiveMode] = useState<'particles' | 'self-intro'>(
-    initialSession.activeMode === 'self-intro' ? 'self-intro' : 'particles'
+  const [activeMode, setActiveMode] = useState<'survival' | 'particles' | 'self-intro'>(() => {
+    if (initialSession.activeMode === 'particles') return 'particles';
+    if (initialSession.activeMode === 'self-intro') return 'self-intro';
+    return 'survival';
+  });
+
+  // Survival phrases state
+  const [completedSurvival, setCompletedSurvival] = useState<string[]>(() =>
+    loadJson<string[]>(survivalProgressKeyFor(getCurrentUserId()), [])
   );
+  const [survivalCategory, setSurvivalCategory] = useState<string>('ALL');
+  const [survivalIndex, setSurvivalIndex] = useState<number>(0);
+
+  const completedSurvivalRef = useRef(completedSurvival);
+  completedSurvivalRef.current = completedSurvival;
+
+  const filteredSurvivalPhrases = useMemo(() => {
+    if (survivalCategory === 'ALL') return SURVIVAL_PHRASES;
+    return SURVIVAL_PHRASES.filter(p => p.category === survivalCategory);
+  }, [survivalCategory]);
+
+  const currentSurvivalPhrase: SurvivalPhrase = filteredSurvivalPhrases[survivalIndex] || filteredSurvivalPhrases[0] || SURVIVAL_PHRASES[0];
+  const isCurrentSurvivalMastered = currentSurvivalPhrase ? completedSurvival.includes(currentSurvivalPhrase.id) : false;
 
   // Particle practice state
   const [completedSentences, setCompletedSentences] = useState<Record<string, number[]>>(() => {
@@ -193,8 +217,8 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
 
   // Persist where the user is so they resume here after logging back in
   useEffect(() => {
-    saveSession(userId, { activeMode, selectedParticleId, sentenceIndex, selfIntroIndex });
-  }, [userId, activeMode, selectedParticleId, sentenceIndex, selfIntroIndex]);
+    saveSession(userId, { activeMode, selectedParticleId, sentenceIndex, selfIntroIndex, survivalIndex });
+  }, [userId, activeMode, selectedParticleId, sentenceIndex, selfIntroIndex, survivalIndex]);
 
   // Track whether the user manually stopped the mic on the current sentence
   const userStoppedRef = useRef<boolean>(false);
@@ -273,11 +297,13 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
       try { recognitionRef.current?.abort(); } catch {}
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeMode, selectedParticleId, sentenceIndex, selfIntroIndex, isEditingProfile]);
+  }, [activeMode, selectedParticleId, sentenceIndex, selfIntroIndex, survivalIndex, survivalCategory, isEditingProfile]);
 
   // Evaluate speech against the current target sentence
   const evaluateSpokenSpeech = (transcript: string) => {
-    const target = activeMode === 'particles' ? currentSentence.japanese : currentIntroSentence.japanese;
+    const target = activeMode === 'survival'
+      ? currentSurvivalPhrase.japanese
+      : (activeMode === 'particles' ? currentSentence.japanese : currentIntroSentence.japanese);
     const score = calculateSpeechSimilarity(transcript, target);
     setSpeechScore(score);
 
@@ -291,13 +317,41 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
         onGainXp(20);
       }
 
-      if (activeMode === 'particles') {
+      if (activeMode === 'survival') {
+        saveSurvivalProgress(currentSurvivalPhrase.id);
+      } else if (activeMode === 'particles') {
         saveParticleProgress(currentParticle.id, currentSentence.id);
       } else {
         saveIntroProgress(currentIntroSentence.japanese);
       }
       // Stay on this sentence — the learner moves on by pressing Next
     }
+  };
+
+  const saveSurvivalProgress = (phraseId: string) => {
+    const prev = completedSurvivalRef.current;
+    if (prev.includes(phraseId)) return;
+    const next = [...prev, phraseId];
+    completedSurvivalRef.current = next;
+    saveJson(survivalProgressKeyFor(userId), next);
+    setCompletedSurvival(next);
+  };
+
+  const handleToggleSurvivalMastered = (phraseId: string) => {
+    const prev = completedSurvivalRef.current;
+    let next: string[];
+    if (prev.includes(phraseId)) {
+      next = prev.filter(id => id !== phraseId);
+      audio.playClick();
+    } else {
+      next = [...prev, phraseId];
+      audio.playFanfare();
+      confetti({ particleCount: 35, spread: 60, origin: { y: 0.7 } });
+      onGainXp?.(20);
+    }
+    completedSurvivalRef.current = next;
+    saveJson(survivalProgressKeyFor(userId), next);
+    setCompletedSurvival(next);
   };
 
   const saveParticleProgress = (particleId: string, sId: number) => {
@@ -385,7 +439,13 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
     setSpeechScore(null);
     setIsSuccessFeedback(false);
 
-    if (activeMode === 'particles') {
+    if (activeMode === 'survival') {
+      if (survivalIndex < filteredSurvivalPhrases.length - 1) {
+        setSurvivalIndex((prev) => prev + 1);
+      } else {
+        confetti({ particleCount: 80, spread: 80 });
+      }
+    } else if (activeMode === 'particles') {
       if (sentenceIndex < currentParticle.sentences.length - 1) {
         setSentenceIndex((prev) => prev + 1);
       } else {
@@ -406,7 +466,9 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
     setSpeechScore(null);
     setIsSuccessFeedback(false);
 
-    if (activeMode === 'particles') {
+    if (activeMode === 'survival') {
+      if (survivalIndex > 0) setSurvivalIndex((prev) => prev - 1);
+    } else if (activeMode === 'particles') {
       if (sentenceIndex > 0) setSentenceIndex((prev) => prev - 1);
     } else {
       if (selfIntroIndex > 0) setSelfIntroIndex((prev) => prev - 1);
@@ -448,7 +510,7 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-            <span>🗣️ Japanese Speaking Practice</span>
+            <span>Japanese Speaking Practice</span>
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
             Speak authentic Japanese sentences aloud. Master particles from easy to hard, and build your custom self-introduction.
@@ -456,7 +518,24 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
         </div>
 
         {/* Mode Selector Tabs */}
-        <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800/80 self-stretch md:self-auto shrink-0">
+        <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800/80 self-stretch md:self-auto shrink-0 flex-wrap sm:flex-nowrap">
+          <button
+            type="button"
+            onClick={() => {
+              audio.playClick();
+              setActiveMode('survival');
+              setSpokenTranscript('');
+              setSpeechScore(null);
+            }}
+            className={`flex-1 sm:flex-none px-3.5 py-2 rounded-xl text-xs font-black transition cursor-pointer flex items-center justify-center gap-1.5 ${
+              activeMode === 'survival'
+                ? 'bg-[#FF5E3A] text-white shadow-md shadow-orange-500/25'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Survival Phrases (Beginner)</span>
+          </button>
           <button
             type="button"
             onClick={() => {
@@ -465,14 +544,14 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
               setSpokenTranscript('');
               setSpeechScore(null);
             }}
-            className={`flex-1 md:flex-none px-4 py-2 rounded-xl text-xs font-black transition cursor-pointer flex items-center justify-center gap-2 ${
+            className={`flex-1 sm:flex-none px-3.5 py-2 rounded-xl text-xs font-black transition cursor-pointer flex items-center justify-center gap-1.5 ${
               activeMode === 'particles'
                 ? 'bg-[#FF5E3A] text-white shadow-md shadow-orange-500/25'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            <BookOpen className="w-4 h-4" />
-            <span>50 Particles Sentences</span>
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>50 Particles</span>
           </button>
           <button
             type="button"
@@ -482,17 +561,264 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
               setSpokenTranscript('');
               setSpeechScore(null);
             }}
-            className={`flex-1 md:flex-none px-4 py-2 rounded-xl text-xs font-black transition cursor-pointer flex items-center justify-center gap-2 ${
+            className={`flex-1 sm:flex-none px-3.5 py-2 rounded-xl text-xs font-black transition cursor-pointer flex items-center justify-center gap-1.5 ${
               activeMode === 'self-intro'
                 ? 'bg-[#FF5E3A] text-white shadow-md shadow-orange-500/25'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            <UserCheck className="w-4 h-4" />
-            <span>My Self-Intro (自己紹介)</span>
+            <UserCheck className="w-3.5 h-3.5" />
+            <span>My Self-Intro</span>
           </button>
         </div>
       </div>
+
+      {/* ========================================================================= */}
+      {/* MODE 0: SURVIVAL JAPANESE & ESSENTIAL PHRASES (BEGINNER-FRIENDLY TRACK)   */}
+      {/* ========================================================================= */}
+      {activeMode === 'survival' && (
+        <div className="space-y-6">
+          {/* Category Filter Pills & Progress */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400 px-1">
+              <span>Filter by Situation:</span>
+              <span className="font-mono text-emerald-500">
+                {completedSurvival.length} / {SURVIVAL_PHRASES.length} Survival Phrases Mastered
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar touch-pan-x">
+              {[
+                { id: 'ALL', label: `All (${SURVIVAL_PHRASES.length})` },
+                { id: 'Greeting', label: 'Greetings' },
+                { id: 'Polite', label: 'Politeness' },
+                { id: 'Travel', label: 'Travel & Directions' },
+                { id: 'Dining', label: 'Food & Dining' },
+                { id: 'Daily', label: 'Everyday' },
+              ].map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => {
+                    audio.playClick();
+                    setSurvivalCategory(cat.id);
+                    setSurvivalIndex(0);
+                  }}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-black transition cursor-pointer shrink-0 border ${
+                    survivalCategory === cat.id
+                      ? 'bg-[#FF5E3A] border-[#FF5E3A] text-white shadow-md shadow-orange-500/20'
+                      : theme === 'dark'
+                      ? 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                      : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Horizontal Phrases Selector Carousel */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar touch-pan-x">
+            {filteredSurvivalPhrases.map((phrase: SurvivalPhrase, pIdx: number) => {
+              const isSelected = pIdx === survivalIndex;
+              const isMastered = completedSurvival.includes(phrase.id);
+
+              return (
+                <button
+                  key={phrase.id}
+                  onClick={() => {
+                    audio.playClick();
+                    setSurvivalIndex(pIdx);
+                    setSpokenTranscript('');
+                    setSpeechScore(null);
+                    setIsSuccessFeedback(false);
+                  }}
+                  className={`px-3 py-2 rounded-2xl border text-xs font-black transition cursor-pointer flex items-center gap-2 shrink-0 ${
+                    isSelected
+                      ? 'bg-gradient-to-r from-[#FF7B5C] to-[#FF5E3A] text-white border-[#FF5E3A] shadow-md shadow-orange-500/20'
+                      : isMastered
+                      ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400'
+                      : theme === 'dark'
+                      ? 'bg-[#17171C] border-slate-800 text-slate-300 hover:text-white'
+                      : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300'
+                  }`}
+                >
+                  <span className="font-jp text-sm">{phrase.japanese}</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono ${
+                    isSelected ? 'bg-white/20 text-white' : 'text-slate-400'
+                  }`}>
+                    {phrase.romaji}
+                  </span>
+                  {isMastered && <Check className="w-3.5 h-3.5 stroke-[3] text-emerald-500" />}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Survival Phrase Spotlight Studio Card */}
+          <div className={`p-6 sm:p-10 rounded-3xl border ${
+            theme === 'dark' ? 'bg-[#17171C] border-slate-800' : 'bg-white border-slate-200/90 shadow-md'
+          } space-y-6 sm:space-y-8 relative overflow-hidden`}>
+            {/* Top Row: Meta info, Category pill, Audio controls & Mastered toggle */}
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-mono font-black px-2.5 py-1 rounded-md bg-orange-500/10 text-[#FF5E3A]">
+                  {currentSurvivalPhrase.category}
+                </span>
+                <span className="text-xs font-mono font-bold text-slate-400">
+                  Phrase {survivalIndex + 1} of {filteredSurvivalPhrases.length}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                {/* Normal audio */}
+                <button
+                  type="button"
+                  onClick={() => handlePlaySentence(currentSurvivalPhrase.japanese)}
+                  className="px-3 py-1.5 rounded-xl bg-orange-500/10 hover:bg-orange-500/20 text-[#FF5E3A] text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+                  title="Listen Natural Speed"
+                >
+                  <Volume2 className="w-4 h-4" />
+                  <span>Listen (1.0x)</span>
+                </button>
+
+                {/* Slow audio */}
+                <button
+                  type="button"
+                  onClick={() => audio.speak(currentSurvivalPhrase.japanese, 0.65)}
+                  className="px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-orange-500/20 text-slate-600 dark:text-slate-300 text-xs font-mono font-bold transition cursor-pointer"
+                  title="Listen Slow Speed (0.7x)"
+                >
+                  <span>0.7x</span>
+                </button>
+
+                {/* Mastered toggle */}
+                <button
+                  type="button"
+                  onClick={() => handleToggleSurvivalMastered(currentSurvivalPhrase.id)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+                    isCurrentSurvivalMastered
+                      ? 'bg-emerald-500 text-white shadow-xs'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-emerald-500'
+                  }`}
+                  title={isCurrentSurvivalMastered ? 'Mastered! Click to unmark' : 'Mark as Mastered (+20 XP)'}
+                >
+                  <Check className="w-3.5 h-3.5 stroke-[3]" />
+                  <span>{isCurrentSurvivalMastered ? 'Mastered' : 'Mark Learned'}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Main Phrase Showcase */}
+            <div className="text-center space-y-3 py-2">
+              <div className="text-sm sm:text-base font-jp text-slate-400 font-bold tracking-wider">
+                {currentSurvivalPhrase.furigana}
+              </div>
+              <div className={`text-3xl sm:text-5xl font-black font-jp tracking-wide transition-colors ${
+                isCurrentSurvivalMastered ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-900 dark:text-white'
+              }`}>
+                {currentSurvivalPhrase.japanese}
+              </div>
+              <div className="text-sm sm:text-base font-mono text-[#FF5E3A] font-bold">
+                {currentSurvivalPhrase.romaji}
+              </div>
+              <div className="text-lg sm:text-2xl font-black text-slate-800 dark:text-slate-100 pt-1">
+                {currentSurvivalPhrase.english}
+              </div>
+            </div>
+
+            {/* Context & Cultural Note Box */}
+            <div className={`p-4 rounded-2xl border text-xs sm:text-sm space-y-1.5 ${
+              theme === 'dark' ? 'bg-slate-900/60 border-slate-800 text-slate-300' : 'bg-orange-50/40 border-orange-100 text-slate-700'
+            }`}>
+              <div className="flex items-center gap-1.5 font-bold text-[#FF5E3A]">
+                <Sparkles className="w-4 h-4" />
+                <span>When & How to Use:</span>
+              </div>
+              <p className="leading-relaxed">{currentSurvivalPhrase.context}</p>
+              {currentSurvivalPhrase.culturalTip && (
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 italic pt-1 border-t border-slate-200/50 dark:border-slate-800">
+                  Tip: {currentSurvivalPhrase.culturalTip}
+                </p>
+              )}
+            </div>
+
+            {/* Interactive Speech Recognition Studio */}
+            <div className={`p-6 rounded-3xl border text-center space-y-4 ${
+              isListening
+                ? 'bg-orange-500/10 border-orange-500/40 ring-2 ring-orange-500/30'
+                : theme === 'dark' ? 'bg-slate-900/40 border-slate-800' : 'bg-slate-50 border-slate-200/80'
+            }`}>
+              <div className="flex flex-col items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={isListening ? handleStopSpeaking : handleStartSpeaking}
+                  className={`w-20 h-20 rounded-full transition-all duration-300 flex items-center justify-center cursor-pointer shadow-lg ${
+                    isListening
+                      ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white animate-pulse shadow-orange-500/50 scale-105'
+                      : 'bg-gradient-to-r from-[#FF7B5C] to-[#FF5E3A] hover:from-[#FF5E3A] hover:to-[#E84E29] text-white shadow-orange-500/30 hover:scale-105'
+                  }`}
+                  title={isListening ? 'Click to stop listening' : 'Click to start speaking Japanese'}
+                >
+                  {isListening ? <Mic className="w-9 h-9 animate-bounce" /> : <Mic className="w-9 h-9" />}
+                </button>
+
+                <div className="space-y-1">
+                  <p className="text-xs font-black uppercase tracking-wider text-slate-500">
+                    {isListening ? 'Listening... Speak this phrase in Japanese now!' : 'Tap the microphone and speak aloud'}
+                  </p>
+                  {spokenTranscript && (
+                    <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-jp font-bold inline-block max-w-md">
+                      Heard: "{spokenTranscript}"
+                    </div>
+                  )}
+                </div>
+
+                {/* Score feedback */}
+                {speechScore !== null && (
+                  <div className={`px-4 py-1.5 rounded-full text-xs font-black inline-flex items-center gap-1.5 ${
+                    speechScore >= 65
+                      ? 'bg-emerald-500 text-white shadow-md shadow-emerald-500/20'
+                      : 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30'
+                  }`}>
+                    {speechScore >= 65 ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 stroke-[3]" />
+                        <span>{speechScore}% Match — Excellent Pronunciation! (+20 XP)</span>
+                      </>
+                    ) : (
+                      <span>{speechScore}% Match — Good try! Practice with slow audio and try again.</span>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Bottom Navigation */}
+            <div className="flex items-center justify-between gap-3 pt-2">
+              <button
+                type="button"
+                onClick={handlePrevSentence}
+                disabled={survivalIndex === 0}
+                className="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-black transition flex items-center gap-1.5 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Prev Phrase</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleNextSentence}
+                disabled={survivalIndex === filteredSurvivalPhrases.length - 1}
+                className="px-5 py-2.5 rounded-xl bg-[#FF5E3A] hover:bg-[#E84E29] text-white text-xs font-black transition flex items-center gap-1.5 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shadow-md shadow-orange-500/20"
+              >
+                <span>Next Phrase</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ========================================================================= */}
       {/* MODE 1: PARTICLES SPEAKING MASTERY (50 SENTENCES PER PARTICLE) */}
@@ -639,7 +965,7 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
                   className="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-800 text-[11px] font-bold hover:text-[#FF5E3A] cursor-pointer"
                   title="Toggle normal or slower pronunciation speed"
                 >
-                  {speechRate === 0.9 ? '1.0x Normal' : '0.7x Slow 🐢'}
+                  {speechRate === 0.9 ? '1.0x Normal' : '0.7x Slow'}
                 </button>
               </div>
             </div>
@@ -662,9 +988,10 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
               </div>
 
               {currentSentence.tip && (
-                <p className="text-xs text-slate-500 dark:text-slate-400 italic">
-                  💡 Tip: {currentSentence.tip}
-                </p>
+                <div className="flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+                  <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Tip: {currentSentence.tip}</span>
+                </div>
               )}
             </div>
 
@@ -683,9 +1010,15 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
                     <div className="text-xs font-mono font-bold mt-1.5 flex items-center justify-center gap-2">
                       <span>Match Accuracy: {speechScore}%</span>
                       {speechScore >= 65 ? (
-                        <span className="text-emerald-500">✅ Great Pronunciation!</span>
+                        <span className="text-emerald-500 flex items-center gap-1">
+                          <Check className="w-3.5 h-3.5 text-emerald-500" />
+                          <span>Great Pronunciation!</span>
+                        </span>
                       ) : (
-                        <span className="text-amber-500">🔄 Try speaking a bit more clearly</span>
+                        <span className="text-amber-500 flex items-center gap-1">
+                          <RotateCcw className="w-3.5 h-3.5 text-amber-500" />
+                          <span>Try speaking a bit more clearly</span>
+                        </span>
                       )}
                     </div>
                   )}
@@ -1103,7 +1436,7 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
                   className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#FF5E3A] to-[#FF7B5C] hover:from-[#FF7B5C] hover:to-[#FF5E3A] text-white text-xs font-black shadow-md shadow-orange-500/20 cursor-pointer transition flex items-center gap-2"
                 >
                   <Sparkles className="w-4 h-4" />
-                  Save & Generate All Sentences 🚀
+                  Save & Generate All Sentences
                 </button>
               </div>
             </form>
@@ -1140,7 +1473,10 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
 
               {/* Explanation of Sentence Construction */}
               <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-xs text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed text-left">
-                <span className="font-bold text-slate-900 dark:text-white block mb-0.5">💡 Why this sentence works:</span>
+                <span className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5 mb-0.5">
+                  <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Why this sentence works:</span>
+                </span>
                 {currentIntroSentence.explanation}
               </div>
             </div>
@@ -1159,9 +1495,15 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
                     <div className="text-xs font-mono font-bold mt-1.5 flex items-center justify-center gap-2">
                       <span>Match Accuracy: {speechScore}%</span>
                       {speechScore >= 65 ? (
-                        <span className="text-emerald-500">✅ Fluent & Clear!</span>
+                        <span className="text-emerald-500 flex items-center gap-1">
+                          <Check className="w-3.5 h-3.5 text-emerald-500" />
+                          <span>Fluent & Clear!</span>
+                        </span>
                       ) : (
-                        <span className="text-amber-500">🔄 Try again for a clearer score</span>
+                        <span className="text-amber-500 flex items-center gap-1">
+                          <RotateCcw className="w-3.5 h-3.5 text-amber-500" />
+                          <span>Try again for a clearer score</span>
+                        </span>
                       )}
                     </div>
                   )}
@@ -1238,7 +1580,8 @@ export const SpeakingView: React.FC<SpeakingViewProps> = ({
                           : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white'
                       }`}
                     >
-                      {completedIntro.includes(s.japanese) ? '✓ ' : ''}Step {idx + 1}
+                      {completedIntro.includes(s.japanese) && <Check className="w-3 h-3 inline mr-1 text-emerald-500" />}
+                      <span>Step {idx + 1}</span>
                     </button>
                   ))}
                 </div>

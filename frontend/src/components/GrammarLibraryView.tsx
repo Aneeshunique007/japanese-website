@@ -3,6 +3,7 @@ import { Search, Volume2, FileText, Sparkles } from 'lucide-react';
 import { api } from '../services/api';
 import { clientCache } from '../services/cacheService';
 import audio from '../utils/audio';
+import { GRAMMAR_LIBRARY } from '../data/grammarData';
 
 interface GrammarLibraryViewProps {
   theme: 'dark' | 'light';
@@ -19,6 +20,21 @@ export const GrammarLibraryView: React.FC<GrammarLibraryViewProps> = ({ theme, s
     async function loadGrammar() {
       const cacheKey = `grammar_${selectedJlpt}_${searchQuery.trim()}`;
       const cached = clientCache.get<any[]>(cacheKey);
+
+      const applyFallback = () => {
+        let list = GRAMMAR_LIBRARY.filter(g => g.jlpt === selectedJlpt);
+        if (searchQuery.trim()) {
+          const q = searchQuery.trim().toLowerCase();
+          list = list.filter(g =>
+            g.title.toLowerCase().includes(q) ||
+            g.japaneseTitle.includes(q) ||
+            g.meaning.toLowerCase().includes(q) ||
+            g.explanation.toLowerCase().includes(q)
+          );
+        }
+        setGrammarList(list);
+      };
+
       if (cached && cached.length > 0) {
         setGrammarList(cached);
         setLoading(false);
@@ -28,15 +44,15 @@ export const GrammarLibraryView: React.FC<GrammarLibraryViewProps> = ({ theme, s
       setLoading(true);
       try {
         const data = await api.getGrammar(selectedJlpt, searchQuery);
-        if (data && data.success && Array.isArray(data.grammar)) {
+        if (data && data.success && Array.isArray(data.grammar) && data.grammar.length > 0) {
           clientCache.set(cacheKey, data.grammar, 60);
           setGrammarList(data.grammar);
         } else {
-          setGrammarList([]);
+          applyFallback();
         }
       } catch (err) {
-        console.error('Failed to load grammar:', err);
-        setGrammarList([]);
+        console.warn('Backend API unavailable, using offline grammar library:', err);
+        applyFallback();
       } finally {
         setLoading(false);
       }

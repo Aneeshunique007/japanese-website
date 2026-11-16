@@ -506,7 +506,7 @@ export const PracticeQuizModal: React.FC<PracticeQuizModalProps> = ({
               </div>
 
               <div className="space-y-1">
-                <h3 className="text-2xl font-black font-heading tracking-tight">Practice Complete! 🎉</h3>
+                <h3 className="text-2xl font-black font-heading tracking-tight">Practice Complete!</h3>
                 <p className="text-xs text-slate-400">
                   Great job mastering all questions in this practice drill.
                 </p>
@@ -558,8 +558,9 @@ export const PracticeQuizModal: React.FC<PracticeQuizModalProps> = ({
                     <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-sm font-black">Not quite right.</h4>
-                      <span className="text-[10px] font-bold text-amber-500 block mt-0.5">
-                        🔄 This question will repeat at the end until answered correctly!
+                      <span className="text-[10px] font-bold text-amber-500 flex items-center gap-1 mt-0.5">
+                        <RotateCcw className="w-3 h-3 shrink-0" />
+                        <span>This question will repeat at the end until answered correctly!</span>
                       </span>
                     </div>
                   </div>

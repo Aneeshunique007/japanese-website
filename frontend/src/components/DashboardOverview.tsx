@@ -5,15 +5,19 @@ import {
   BookOpen, 
   Layers,
   Sparkles,
-  Mic
+  Mic,
+  Compass,
+  CheckCircle2,
+  User,
+  Award,
+  Trophy,
+  Flame,
+  Target
 } from 'lucide-react';
 import audio from '../utils/audio';
 import { api, UserProfile } from '../services/api';
-import { StudyScheduleBar } from './StudyScheduleBar';
 import { learnedStore } from '../utils/learnedStore';
 import { 
-  getWeeklyStudyData, 
-  calculateRealCoursesInProgress, 
   calculateRealLeagueRank 
 } from '../utils/activityTracker';
 
@@ -29,7 +33,6 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
   onNavigate, 
   theme, 
   currentUser, 
-  onGainXp,
   leaderboardList = [] 
 }) => {
   const [courses, setCourses] = useState<any[]>([]);
@@ -110,25 +113,21 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
 
   const completedTotal = completedLessonIds.length;
   const monthlyGoalCount = Math.max(1, currentUser?.goalsInMonth || (completedTotal > 0 ? completedTotal : 1));
-  const currentMonthYear = new Date().toLocaleString('en-US', { month: 'short', year: 'numeric' });
-  const currentWeekNumber = Math.min(4, Math.ceil(new Date().getDate() / 7));
-
   const leagueRank = calculateRealLeagueRank(userXp, leaderboardList, currentUser?.id);
-  const coursesInProgress = calculateRealCoursesInProgress(completedLessonIds);
-  const weeklyDays = getWeeklyStudyData(currentUser?.id);
-  const weeklyTotalMinutes = weeklyDays.reduce((acc, d) => acc + d.minutes, 0);
+
+  const learnedKanaCount = learnedStore.getLearnedKanaList().length;
+  const learnedWordsCount = learnedStore.getLearnedWordsList().length;
 
   return (
     <div className="space-y-6 sm:space-y-8 animate-fade-in overflow-x-hidden">
       
-      {/* SECTION 0: LEARNER PROFILE & ACTIVITY SUMMARY */}
-      <div className={`p-4 sm:p-7 rounded-2xl sm:rounded-3xl border ${cardBg} space-y-5 sm:space-y-6`}>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-center">
-          
-          {/* Left: User Identity & Primary Badges (4 cols) */}
-          <div className="lg:col-span-4 flex flex-col sm:flex-row items-center sm:items-start gap-3.5 sm:gap-4 text-center sm:text-left border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-slate-800 pb-4 sm:pb-5 lg:pb-0 lg:pr-6">
+      {/* SECTION 0: LEARNER PROFILE */}
+      <div className={`p-4 sm:p-6 rounded-2xl sm:rounded-3xl border ${cardBg}`}>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6">
+          {/* User Identity & Avatar */}
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3.5 sm:gap-4 text-center sm:text-left">
             <div className="relative shrink-0">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ring-4 ring-[#FF5E3A] shadow-md overflow-hidden flex items-center justify-center bg-orange-500/10 text-2xl sm:text-3xl">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ring-4 ring-[#FF5E3A] shadow-md overflow-hidden flex items-center justify-center bg-orange-500/10 text-xl font-bold text-[#FF5E3A]">
                 {isImageAvatar ? (
                   <img 
                     className="w-full h-full object-cover" 
@@ -136,13 +135,13 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                     alt={userName} 
                   />
                 ) : (
-                  <span>{rawAvatar || '⛩️'}</span>
+                  <span>{userName ? userName.charAt(0).toUpperCase() : <User className="w-8 h-8 text-[#FF5E3A]" />}</span>
                 )}
               </div>
               <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-[#17171C]"></span>
             </div>
 
-            <div className="space-y-1 min-w-0 w-full sm:w-auto">
+            <div className="space-y-1 min-w-0">
               <div className="flex items-center justify-center sm:justify-start gap-2">
                 <h3 className="font-extrabold text-base sm:text-lg font-heading truncate">{userName}</h3>
                 <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-orange-500/10 text-[#FF5E3A] border border-orange-500/20 shrink-0">
@@ -150,134 +149,187 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-medium truncate">{userTitle}</p>
-              <div className="inline-flex items-center gap-1.5 pt-0.5 text-xs font-bold text-amber-500 font-mono">
-                <span>🥇 {userXp} Pts</span>
+              <div className="inline-flex items-center gap-2 pt-0.5 text-xs font-bold font-mono">
+                <span className="flex items-center gap-1 text-amber-500">
+                  <Award className="w-3.5 h-3.5" />
+                  <span>{userXp} Pts</span>
+                </span>
                 <span className="text-slate-300 dark:text-slate-700">•</span>
-                <span className="text-indigo-500">🏆 #{leagueRank} Rank</span>
-              </div>
-
-              {/* 3 Stats Mini-Row */}
-              <div className="grid grid-cols-3 gap-1.5 sm:gap-2 pt-2 text-center w-full">
-                <div className={`py-1.5 px-1.5 sm:px-2 rounded-xl border ${theme === 'dark' ? 'bg-[#121217] border-slate-800' : 'bg-slate-50 border-slate-200/60'}`}>
-                  <div className="text-xs font-black text-[#FF5E3A] flex items-center justify-center gap-0.5">
-                    <span>🔥</span> {userStreak}
-                  </div>
-                  <div className="text-[9px] text-slate-400 font-semibold">Streak</div>
-                </div>
-                <div className={`py-1.5 px-1.5 sm:px-2 rounded-xl border ${theme === 'dark' ? 'bg-[#121217] border-slate-800' : 'bg-slate-50 border-slate-200/60'}`}>
-                  <div className="text-xs font-black text-amber-500 flex items-center justify-center gap-0.5">
-                    <span>🎯</span> {String(monthlyGoalCount).padStart(2, '0')}
-                  </div>
-                  <div className="text-[9px] text-slate-400 font-semibold">Goals</div>
-                </div>
-                <div className={`py-1.5 px-1.5 sm:px-2 rounded-xl border ${theme === 'dark' ? 'bg-[#121217] border-slate-800' : 'bg-slate-50 border-slate-200/60'}`}>
-                  <div className="text-xs font-black text-indigo-500 flex items-center justify-center gap-0.5">
-                    <span>📚</span> {completedTotal}
-                  </div>
-                  <div className="text-[9px] text-slate-400 font-semibold">Lessons</div>
-                </div>
+                <span className="flex items-center gap-1 text-indigo-500">
+                  <Trophy className="w-3.5 h-3.5" />
+                  <span>#{leagueRank} Rank</span>
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Middle: Weekly Streak 7-Day Bubbles (4 cols) */}
-          <div className="lg:col-span-4 space-y-2.5 border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-slate-800 pb-4 sm:pb-5 lg:pb-0 lg:pr-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1 text-xs font-bold font-heading">
-                <span>Weekly Activity</span>
-                <span className="text-[10px] text-[#FF5E3A] font-bold">({userStreak}d streak)</span>
+          {/* 3 Stats Mini-Row */}
+          <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center">
+            <div className={`py-2 px-3 sm:px-4 rounded-xl border text-center min-w-[76px] ${theme === 'dark' ? 'bg-[#121217] border-slate-800' : 'bg-slate-50 border-slate-200/60'}`}>
+              <div className="text-sm font-black text-[#FF5E3A] flex items-center justify-center gap-1">
+                <Flame className="w-3.5 h-3.5 text-[#FF5E3A]" />
+                <span>{userStreak}</span>
               </div>
-              <span className="text-[10px] font-semibold text-slate-400 border px-2 py-0.5 rounded-lg border-slate-200 dark:border-slate-800">
-                W{currentWeekNumber} • {currentMonthYear}
-              </span>
+              <div className="text-[10px] text-slate-400 font-semibold">Streak</div>
             </div>
-
-            {/* 7-Day Bubbles */}
-            <div className="grid grid-cols-7 gap-1 text-center">
-              {weeklyDays.map((day, idx) => (
-                <div 
-                  key={idx} 
-                  className={`p-1 sm:p-1.5 rounded-xl flex flex-col items-center justify-center text-[10px] transition ${
-                    day.isToday
-                      ? 'bg-[#FF5E3A] text-white font-extrabold ring-2 ring-orange-400/50 shadow-xs'
-                      : day.isActive
-                      ? 'bg-[#FF5E3A]/20 text-[#FF5E3A] font-bold'
-                      : 'bg-slate-100 dark:bg-slate-800/80 text-slate-400'
-                  }`}
-                  title={`${day.dayName} ${day.dateNum}: ${day.minutes}m study time`}
-                >
-                  <span className="text-[8px] opacity-80">{day.dayName}</span>
-                  <span className="font-mono font-bold text-xs">{day.dateNum}</span>
-                </div>
-              ))}
+            <div className={`py-2 px-3 sm:px-4 rounded-xl border text-center min-w-[76px] ${theme === 'dark' ? 'bg-[#121217] border-slate-800' : 'bg-slate-50 border-slate-200/60'}`}>
+              <div className="text-sm font-black text-amber-500 flex items-center justify-center gap-1">
+                <Target className="w-3.5 h-3.5 text-amber-500" />
+                <span>{String(monthlyGoalCount).padStart(2, '0')}</span>
+              </div>
+              <div className="text-[10px] text-slate-400 font-semibold">Goals</div>
             </div>
+            <div className={`py-2 px-3 sm:px-4 rounded-xl border text-center min-w-[76px] ${theme === 'dark' ? 'bg-[#121217] border-slate-800' : 'bg-slate-50 border-slate-200/60'}`}>
+              <div className="text-sm font-black text-indigo-500 flex items-center justify-center gap-1">
+                <BookOpen className="w-3.5 h-3.5 text-indigo-500" />
+                <span>{completedTotal}</span>
+              </div>
+              <div className="text-[10px] text-slate-400 font-semibold">Lessons</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <div className="flex items-center justify-between pt-1 text-[11px] text-slate-400">
-              <span className="flex items-center gap-1 font-semibold truncate">
-                <BookOpen className="w-3 h-3 text-[#FF5E3A] shrink-0" />
-                <span>{coursesInProgress} Course{coursesInProgress > 1 ? 's' : ''} in Progress</span>
+      {/* SECTION 1: BEGINNER PATHWAY - WHERE TO START */}
+      <div className={`p-5 sm:p-7 rounded-2xl sm:rounded-3xl border ${cardBg} space-y-4`}>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#FF5E3A]/10 text-[#FF5E3A] border border-orange-500/20 flex items-center gap-1">
+                <Compass className="w-3 h-3 text-[#FF5E3A]" />
+                <span>Beginner Pathway</span>
               </span>
-              <span className="font-mono text-[10px] text-emerald-500 font-bold shrink-0">
-                ✓ On Track
+              <h2 className="text-lg sm:text-xl font-extrabold font-heading tracking-tight">
+                Where Should I Start?
+              </h2>
+            </div>
+            <p className={`text-xs ${subText} mt-1`}>
+              New to Japanese? Follow this simple sequence to start reading, understanding, and speaking with zero confusion.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 pt-1">
+          {/* STEP 1: HIRAGANA */}
+          <div 
+            onClick={() => {
+              audio.playClick();
+              onNavigate('hiragana');
+            }}
+            className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer relative group overflow-hidden ${
+              learnedKanaCount >= 46
+                ? 'bg-emerald-500/5 border-emerald-500/30 hover:border-emerald-500/60'
+                : 'bg-orange-500/5 hover:bg-orange-500/10 border-orange-500/40 shadow-xs ring-1 ring-orange-500/20'
+            }`}
+          >
+            <div className="flex items-start justify-between">
+              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#FF5E3A] text-white flex items-center justify-center font-black text-xs shadow-xs">
+                01
               </span>
+              {learnedKanaCount >= 46 ? (
+                <span className="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3" />
+                  <span>Mastered ({learnedKanaCount})</span>
+                </span>
+              ) : (
+                <span className="text-[10px] font-bold text-[#FF5E3A] bg-orange-500/15 border border-orange-500/30 px-2 py-0.5 rounded-full animate-pulse">
+                  Start Here
+                </span>
+              )}
+            </div>
+            <h3 className="font-extrabold text-sm sm:text-base mt-3 group-hover:text-[#FF5E3A] transition-colors flex items-center gap-1.5">
+              <span>1. The Alphabet (Kana)</span>
+            </h3>
+            <p className={`text-xs ${subText} mt-1 line-clamp-2`}>
+              Master the 46 foundation characters (あ い う え お). Once you know Kana, you can pronounce any Japanese word.
+            </p>
+            <div className="mt-3.5 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-bold text-[#FF5E3A]">
+              <span>{learnedKanaCount} / 46 Basic Kana</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </div>
 
-          {/* Right: Weekly Study Time Bars (4 cols) */}
-          <div className="lg:col-span-4 space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold font-heading">Weekly Study Time</span>
-              <span className="text-[10px] font-mono text-slate-400">{Math.round(weeklyTotalMinutes)}m this week</span>
+          {/* STEP 2: ESSENTIAL VOCABULARY */}
+          <div 
+            onClick={() => {
+              audio.playClick();
+              onNavigate('words');
+            }}
+            className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer relative group overflow-hidden ${
+              learnedWordsCount >= 20
+                ? 'bg-emerald-500/5 border-emerald-500/30 hover:border-emerald-500/60'
+                : 'hover:border-indigo-400 border-slate-200/80 dark:border-slate-800'
+            }`}
+          >
+            <div className="flex items-start justify-between">
+              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-indigo-500 text-white flex items-center justify-center font-black text-xs shadow-xs">
+                02
+              </span>
+              {learnedWordsCount >= 20 ? (
+                <span className="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3" />
+                  <span>{learnedWordsCount} Words</span>
+                </span>
+              ) : (
+                <span className="text-[10px] font-bold text-indigo-500 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded-full">
+                  Step 2
+                </span>
+              )}
             </div>
-
-            <div className="pt-2 pb-1 relative flex items-end justify-between h-20 px-2">
-              {weeklyDays.map((day, idx) => {
-                const maxMin = Math.max(60, ...weeklyDays.map(d => d.minutes));
-                const heightPx = day.minutes > 0 ? Math.max(12, Math.min(56, Math.round((day.minutes / maxMin) * 56))) : 6;
-                const dayHours = Math.floor(day.minutes / 60);
-                const dayMins = day.minutes % 60;
-
-                return (
-                  <div key={idx} className="flex flex-col items-center gap-1 relative group cursor-pointer">
-                    {day.minutes > 0 && (
-                      <div className={`absolute -top-6 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold shadow-md whitespace-nowrap z-10 transition-all ${
-                        day.isToday 
-                          ? 'bg-[#1A1A1F] text-white ring-1 ring-orange-500/50 shadow-orange-500/20' 
-                          : 'bg-slate-800 text-slate-100 dark:bg-slate-700 dark:text-white'
-                      }`}>
-                        {dayHours > 0 ? `${dayHours}h ` : ''}{dayMins}m
-                      </div>
-                    )}
-                    <div 
-                      style={{ height: `${heightPx}px` }}
-                      className={`w-3 sm:w-3.5 rounded-t-md transition-all ${
-                        day.isToday 
-                          ? 'bg-[#FF5E3A] shadow-xs shadow-orange-500/30' 
-                          : day.minutes > 0
-                          ? 'bg-orange-500/50 dark:bg-orange-500/40'
-                          : 'bg-slate-200 dark:bg-slate-800'
-                      }`}
-                      title={`${day.dayName}: ${day.minutes} mins studied`}
-                    ></div>
-                    <span className={`text-[9px] ${day.isToday ? 'font-bold text-[#FF5E3A]' : 'text-slate-400'}`}>
-                      {day.dayInitial}
-                    </span>
-                  </div>
-                );
-              })}
+            <h3 className="font-extrabold text-sm sm:text-base mt-3 group-hover:text-indigo-500 transition-colors flex items-center gap-1.5">
+              <span>2. Everyday Words</span>
+            </h3>
+            <p className={`text-xs ${subText} mt-1 line-clamp-2`}>
+              Learn polite greetings (Konnichiwa, Arigatou), food, numbers, and survival vocabulary for daily life.
+            </p>
+            <div className="mt-3.5 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-bold text-indigo-500">
+              <span>{learnedWordsCount} Words Learned</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </div>
 
+          {/* STEP 3: FIRST LESSON & SPEAKING */}
+          <div 
+            onClick={() => {
+              audio.playClick();
+              onNavigate('lessons');
+            }}
+            className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer relative group overflow-hidden ${
+              completedTotal >= 1
+                ? 'bg-emerald-500/5 border-emerald-500/30 hover:border-emerald-500/60'
+                : 'hover:border-amber-400 border-slate-200/80 dark:border-slate-800'
+            }`}
+          >
+            <div className="flex items-start justify-between">
+              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center font-black text-xs shadow-xs">
+                03
+              </span>
+              {completedTotal >= 1 ? (
+                <span className="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3" />
+                  <span>{completedTotal} Completed</span>
+                </span>
+              ) : (
+                <span className="text-[10px] font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full">
+                  Step 3
+                </span>
+              )}
+            </div>
+            <h3 className="font-extrabold text-sm sm:text-base mt-3 group-hover:text-amber-500 transition-colors flex items-center gap-1.5">
+              <span>3. First Sentences & Dialogue</span>
+            </h3>
+            <p className={`text-xs ${subText} mt-1 line-clamp-2`}>
+              Put words together! Introduce yourself, understand "wa" vs "desu", and practice anime dialogue with audio.
+            </p>
+            <div className="mt-3.5 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-bold text-amber-500">
+              <span>Lesson 1-1 Ready</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
         </div>
       </div>
       
-      {/* SECTION 1: JLPT N5 DAILY STUDY SCHEDULE (60/90/120 DAYS) */}
-      <StudyScheduleBar
-        theme={theme}
-        variant="full"
-        onNavigateTab={onNavigate}
-        onGainXp={onGainXp}
-      />
+
 
       {/* NIKKI'S JAPANESE CLASSROOM SPOTLIGHT */}
       <div 

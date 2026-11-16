@@ -23,7 +23,6 @@ import { clientCache } from '../services/cacheService';
 import audio from '../utils/audio';
 import { PracticeQuizModal } from './PracticeQuizModal';
 import { Question } from '../types';
-import { studyScheduleStore } from '../utils/studyScheduleStore';
 import { getLessonGrammar10Questions } from '../utils/lessonGrammarQuizData';
 import { learnedStore } from '../utils/learnedStore';
 
@@ -303,7 +302,7 @@ export const LessonDetailView: React.FC<LessonDetailViewProps> = ({
             }`}
           >
             <CheckCircle2 className="w-4 h-4" />
-            <span>{isCompleted ? '✓ Lesson Completed' : 'Mark Lesson Complete (+45 XP)'}</span>
+            <span>{isCompleted ? 'Lesson Completed' : 'Mark Lesson Complete (+45 XP)'}</span>
           </button>
         </div>
       </div>
@@ -651,11 +650,44 @@ export const LessonDetailView: React.FC<LessonDetailViewProps> = ({
               <h3 className="text-lg sm:text-xl font-black mt-2 font-heading">{gp.title}</h3>
             </div>
 
-            {/* Structure Formula Badge */}
-            <div className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl border font-mono text-xs sm:text-sm font-black break-words ${
-              theme === 'dark' ? 'bg-[#101014] border-slate-800 text-amber-300' : 'bg-orange-50/50 border-orange-100 text-orange-950'
+            {/* Visual Beginner-Friendly Formula Blueprint Card */}
+            <div className={`p-4 sm:p-5 rounded-2xl border space-y-2 ${
+              theme === 'dark' 
+                ? 'bg-gradient-to-r from-orange-950/20 via-[#101014] to-amber-950/10 border-orange-500/30' 
+                : 'bg-gradient-to-r from-orange-50/80 via-white to-amber-50/40 border-orange-200/80 shadow-xs'
             }`}>
-              Formula: {gp.structure}
+              <div className="flex items-center justify-between text-xs font-bold text-slate-400">
+                <span className="flex items-center gap-1.5 uppercase font-mono tracking-wider text-[10px] text-[#FF5E3A]">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Grammar Formula Pattern</span>
+                </span>
+                <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">Visual Blueprint</span>
+              </div>
+              <div className="flex items-center gap-2 flex-wrap py-1">
+                {gp.structure.split(/(\s*[\+＋はがをにでへともからまでよりです]\s*)/).filter(Boolean).map((token: string, tIdx: number) => {
+                  const trimmed = token.trim();
+                  if (!trimmed) return null;
+                  const isParticleOrCopula = ['は', 'が', 'を', 'に', 'で', 'へ', 'と', 'も', 'から', 'まで', 'より', 'です', 'だ', 'でした'].includes(trimmed);
+                  const isSymbol = ['+', '＋', '＝', '='].includes(trimmed);
+                  if (isSymbol) {
+                    return <span key={tIdx} className="text-slate-400 font-bold px-0.5">{trimmed}</span>;
+                  }
+                  return (
+                    <span 
+                      key={tIdx} 
+                      className={`px-3 py-1.5 rounded-xl font-mono text-xs sm:text-sm font-black border shadow-2xs ${
+                        isParticleOrCopula
+                          ? 'bg-[#FF5E3A] border-[#FF5E3A] text-white'
+                          : theme === 'dark'
+                          ? 'bg-slate-800 border-slate-700 text-amber-300'
+                          : 'bg-white border-slate-200 text-slate-800'
+                      }`}
+                    >
+                      {trimmed}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
 
             <p className={`text-xs sm:text-sm ${subText} leading-relaxed`}>
@@ -811,7 +843,7 @@ export const LessonDetailView: React.FC<LessonDetailViewProps> = ({
                   <Sparkles className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-lg sm:text-xl font-black font-heading">Checkpoint Passed! ✨</h3>
+                  <h3 className="text-lg sm:text-xl font-black font-heading">Checkpoint Passed!</h3>
                   <p className="text-xs text-slate-400">
                     {quizRepeatCount === 0
                       ? `Flawless! All ${quizInitialTotal} questions correct on first attempt! +45 XP`
@@ -856,7 +888,10 @@ export const LessonDetailView: React.FC<LessonDetailViewProps> = ({
                         </span>
                       )}
                     </div>
-                    <span className="font-bold text-emerald-400">✓ {quizScore}/{quizInitialTotal}</span>
+                    <span className="font-bold text-emerald-400 flex items-center gap-1">
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>{quizScore}/{quizInitialTotal}</span>
+                    </span>
                   </div>
                   <div className="w-full h-1.5 sm:h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                     <div
@@ -876,7 +911,7 @@ export const LessonDetailView: React.FC<LessonDetailViewProps> = ({
                       className="self-start sm:self-center px-2.5 py-1 rounded-lg border border-amber-500/30 text-amber-500 hover:bg-amber-500/10 flex items-center gap-1.5 cursor-pointer transition text-xs font-bold shrink-0"
                     >
                       <Lightbulb className="w-3.5 h-3.5" />
-                      <span>{showQuizHint ? 'Hide Hint' : '💡 Easy Hint'}</span>
+                      <span>{showQuizHint ? 'Hide Hint' : 'Easy Hint'}</span>
                     </button>
                   )}
                 </div>
@@ -953,8 +988,9 @@ export const LessonDetailView: React.FC<LessonDetailViewProps> = ({
                     <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                       <div>
                         {quizSelected !== quizCurrentQ.correctIndex && (
-                          <span className="text-[11px] font-bold text-amber-500 dark:text-amber-400 block text-center sm:text-left">
-                            🔄 Will repeat at end until answered correctly!
+                          <span className="flex items-center gap-1.5 text-[11px] font-bold text-amber-500 dark:text-amber-400 text-center sm:text-left">
+                            <RotateCcw className="w-3.5 h-3.5 shrink-0" />
+                            <span>Will repeat at end until answered correctly!</span>
                           </span>
                         )}
                       </div>
@@ -1038,11 +1074,10 @@ export const LessonDetailView: React.FC<LessonDetailViewProps> = ({
           }`}
         >
           <CheckCircle2 className="w-4 h-4" />
-          <span>{isCompleted ? '✓ Lesson Completed' : 'Mark Lesson as Completed (+45 XP)'}</span>
+          <span>{isCompleted ? 'Lesson Completed' : 'Mark Lesson as Completed (+45 XP)'}</span>
         </button>
 
         {nextLesson && onSelectLesson && (() => {
-          const isNextUnlocked = studyScheduleStore.isLessonUnlocked(nextLesson.id);
           const hasQuiz = lessonQuizQuestions && lessonQuizQuestions.length > 0;
           const canProceed = isCompleted || !hasQuiz || quizSubmitted; // must complete quiz first or already completed
 
@@ -1053,21 +1088,6 @@ export const LessonDetailView: React.FC<LessonDetailViewProps> = ({
                 <span className="hidden sm:inline">Complete the quiz above to unlock</span>
                 <span className="sm:hidden">Finish quiz first</span>
                 <ArrowRight className="w-4 h-4" />
-              </div>
-            );
-          }
-
-          if (!isNextUnlocked) {
-            // Next lesson is day-locked
-            return (
-              <div className="w-full sm:w-auto sm:ml-auto flex flex-col items-center sm:items-end gap-1">
-                <div className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-bold flex items-center justify-center gap-2 cursor-not-allowed">
-                  <span>🔒 {nextLesson.title}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-                <span className="text-[11px] text-slate-400">
-                  Unlocks Day {studyScheduleStore.getLessonDay(nextLesson.id)}
-                </span>
               </div>
             );
           }

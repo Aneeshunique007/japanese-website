@@ -11,7 +11,11 @@ import {
   Moon, 
   Tv,
   LogIn,
-  UserPlus
+  UserPlus,
+  User,
+  Star,
+  Target,
+  Trophy
 } from 'lucide-react';
 import { UserProfile } from '../services/api';
 import audio from '../utils/audio';
@@ -132,7 +136,7 @@ export const AniLearnHome: React.FC<AniLearnHomeProps> = ({
                 {isImageAvatar(currentUser.avatar) ? (
                   <img src={currentUser.avatar} alt="avatar" className="w-full h-full object-cover" />
                 ) : (
-                  <span>{currentUser.avatar || '⛩️'}</span>
+                  <span>{currentUser.name ? currentUser.name.charAt(0).toUpperCase() : <User className="w-3 h-3" />}</span>
                 )}
               </div>
               <span className="truncate">{currentUser.name}</span>
@@ -350,7 +354,11 @@ export const AniLearnHome: React.FC<AniLearnHomeProps> = ({
                       </div>
                       <div className="min-w-0">
                         <h5 className="font-bold text-xs leading-tight truncate">JLPT N5 Masterclass</h5>
-                        <div className="text-[9px] sm:text-[10px] text-slate-400 mt-0.5 truncate">Kenji Takahashi Sensei • ★ 4.9</div>
+                        <div className="text-[9px] sm:text-[10px] text-slate-400 mt-0.5 truncate flex items-center gap-1">
+                          <span>Kenji Takahashi Sensei •</span>
+                          <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
+                          <span>4.9</span>
+                        </div>
                       </div>
                     </div>
 
@@ -360,7 +368,11 @@ export const AniLearnHome: React.FC<AniLearnHomeProps> = ({
                       </div>
                       <div className="min-w-0">
                         <h5 className="font-bold text-xs leading-tight truncate">JLPT N5 to N3 Kanji Mastery</h5>
-                        <div className="text-[9px] sm:text-[10px] text-slate-400 mt-0.5 truncate">Yuki Tanaka Sensei • ★ 4.8</div>
+                        <div className="text-[9px] sm:text-[10px] text-slate-400 mt-0.5 truncate flex items-center gap-1">
+                          <span>Yuki Tanaka Sensei •</span>
+                          <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
+                          <span>4.8</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -374,22 +386,35 @@ export const AniLearnHome: React.FC<AniLearnHomeProps> = ({
                   <img className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover ring-2 ring-[#FF5E3A] shrink-0" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" />
                   <div className="min-w-0">
                     <h4 className="font-extrabold text-xs truncate">Ren Tanaka</h4>
-                    <span className="text-[10px] text-slate-400 truncate block">JLPT N3 Scholar • 🥇 876 XP</span>
+                    <span className="text-[10px] text-slate-400 truncate flex items-center gap-1">
+                      <span>JLPT N3 Scholar •</span>
+                      <Award className="w-3 h-3 text-amber-500 inline" />
+                      <span>876 XP</span>
+                    </span>
                   </div>
                 </div>
 
                 {/* 3 Stat Badges */}
                 <div className="grid grid-cols-3 gap-1.5 text-center">
                   <div className={`p-1.5 sm:p-2 rounded-xl border ${theme === 'dark' ? 'bg-[#17171C] border-slate-800' : 'bg-white border-slate-200'}`}>
-                    <div className="text-xs font-black text-[#FF5E3A]">🔥 54</div>
+                    <div className="text-xs font-black text-[#FF5E3A] flex items-center justify-center gap-1">
+                      <Flame className="w-3 h-3" />
+                      <span>54</span>
+                    </div>
                     <div className="text-[8px] text-slate-400 uppercase">Streak</div>
                   </div>
                   <div className={`p-1.5 sm:p-2 rounded-xl border ${theme === 'dark' ? 'bg-[#17171C] border-slate-800' : 'bg-white border-slate-200'}`}>
-                    <div className="text-xs font-black text-amber-500">🎯 06</div>
+                    <div className="text-xs font-black text-amber-500 flex items-center justify-center gap-1">
+                      <Target className="w-3 h-3" />
+                      <span>06</span>
+                    </div>
                     <div className="text-[8px] text-slate-400 uppercase">Goals</div>
                   </div>
                   <div className={`p-1.5 sm:p-2 rounded-xl border ${theme === 'dark' ? 'bg-[#17171C] border-slate-800' : 'bg-white border-slate-200'}`}>
-                    <div className="text-xs font-black text-emerald-500">🏆 02</div>
+                    <div className="text-xs font-black text-emerald-500 flex items-center justify-center gap-1">
+                      <Trophy className="w-3 h-3" />
+                      <span>02</span>
+                    </div>
                     <div className="text-[8px] text-slate-400 uppercase">Rank</div>
                   </div>
                 </div>

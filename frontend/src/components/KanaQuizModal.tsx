@@ -323,7 +323,7 @@ export const KanaQuizModal: React.FC<KanaQuizModalProps> = ({
             {/* Bottom Action Controls */}
             <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800/80">
               
-              {/* [📄 Entry details] Button */}
+              {/* Entry details Button */}
               <button
                 onClick={handleOpenDetails}
                 className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl hover:bg-orange-500/10 text-[#FF5E3A] font-bold text-xs transition cursor-pointer"
@@ -345,8 +345,9 @@ export const KanaQuizModal: React.FC<KanaQuizModalProps> = ({
                     {isCurrentCorrect ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
                   </div>
                   {!isCurrentCorrect && (
-                    <span className="text-[11px] font-bold text-amber-500 dark:text-amber-400 hidden sm:inline">
-                      🔄 Repeats at end until corrected!
+                    <span className="text-[11px] font-bold text-amber-500 dark:text-amber-400 hidden sm:inline-flex items-center gap-1">
+                      <RotateCcw className="w-3 h-3" />
+                      <span>Repeats at end until corrected!</span>
                     </span>
                   )}
                 </div>
@@ -427,7 +428,7 @@ export const KanaQuizModal: React.FC<KanaQuizModalProps> = ({
 
       </div>
 
-      {/* Entry Details Modal when user clicks [📄 Entry details] */}
+      {/* Entry Details Modal when user clicks Entry details */}
       <KanaDetailModal
         isOpen={detailModalOpen}
         onClose={() => setDetailModalOpen(false)}
