@@ -16,23 +16,27 @@ import {
 import { api } from '../services/api';
 import audio from '../utils/audio';
 import { learnedStore } from '../utils/learnedStore';
+import { SelfStudyMasterTrackView } from './SelfStudyMasterTrackView';
 
 interface CoursesViewProps {
   initialCourseId?: string;
   onSelectLesson: (lessonId: string) => void;
   theme: 'dark' | 'light';
+  showFurigana?: boolean;
 }
 
 export const CoursesView: React.FC<CoursesViewProps> = ({ 
   initialCourseId = 'course-n5', 
   onSelectLesson, 
-  theme 
+  theme,
+  showFurigana = true
 }) => {
   const [courses, setCourses] = useState<any[]>([]);
   const [selectedCourseId, setSelectedCourseId] = useState(initialCourseId);
   const [currentCourse, setCurrentCourse] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const [completedLessonSet, setCompletedLessonSet] = useState<Set<string>>(new Set());
+  const [viewMode, setViewMode] = useState<'tracks' | 'master30'>('tracks');
 
   // Sync with learned updates
   useEffect(() => {
@@ -91,7 +95,7 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
   const cardBg = theme === 'dark' ? 'bg-[#17171C] border-slate-800 text-white' : 'bg-white border-slate-200/80 text-[#1A1A1F] shadow-xs';
   const subText = theme === 'dark' ? 'text-slate-400' : 'text-slate-500';
 
-  const isComingSoon = ['course-n3', 'course-n2', 'course-n1', 'coming-soon'].includes(selectedCourseId) || ['N3', 'N2', 'N1'].includes(currentCourse?.level);
+  const isComingSoon = ['course-n2', 'course-n1', 'coming-soon'].includes(selectedCourseId) || ['N2', 'N1'].includes(currentCourse?.level);
 
   // Calculate course completion progress
   const allCourseLessons = useMemo(() => {
@@ -110,59 +114,101 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
   return (
     <div className="space-y-8 animate-fade-in pb-16">
       
-      {/* Header & Level Track Selector */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <BookOpen className="w-6 h-6 text-[#FF5E3A]" />
-            <h1 className="text-2xl font-black tracking-tight font-heading">JLPT Course Progression Tracks</h1>
-          </div>
-          <p className={`text-sm ${subText}`}>
-            Structured curriculums designed to take you from zero Japanese to official fluency certification.
-          </p>
-        </div>
-
-        {/* Level Track Switcher */}
-        <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 no-scrollbar touch-pan-x whitespace-nowrap">
-          {courses.filter(c => ['N5', 'N4'].includes(c.level)).map((c) => (
-            <button
-              key={c.id}
-              onClick={() => {
-                audio.playClick();
-                setSelectedCourseId(c.id);
-              }}
-              className={`px-4 py-2.5 rounded-xl text-xs font-black transition border cursor-pointer flex items-center gap-2 shrink-0 ${
-                selectedCourseId === c.id
-                  ? 'bg-[#FF5E3A] border-[#FF5E3A] text-white shadow-md shadow-orange-500/30'
-                  : theme === 'dark' 
-                    ? 'bg-[#17171C] border-slate-800 text-slate-400 hover:text-white' 
-                    : 'bg-white border-slate-200 text-slate-600 hover:text-[#FF5E3A]'
-              }`}
-            >
-              <span>{c.level} Track</span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded opacity-80">
-                {c.badge}
-              </span>
-            </button>
-          ))}
+      {/* Top Level Nav Tabs: Standard Tracks vs Master 30-Day Self-Study */}
+      <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 gap-3 flex-wrap">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              audio.playClick();
+              setViewMode('tracks');
+            }}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-2 ${
+              viewMode === 'tracks'
+                ? 'bg-[#FF5E3A] text-white shadow-xs'
+                : 'text-slate-600 dark:text-slate-400 hover:text-[#FF5E3A]'
+            }`}
+          >
+            <BookOpen className="w-4 h-4" />
+            <span>Official JLPT Tracks (N5 · N4 · N3)</span>
+          </button>
 
           <button
             onClick={() => {
               audio.playClick();
-              setSelectedCourseId('course-n3');
+              setViewMode('master30');
             }}
-            className={`px-4 py-2.5 rounded-xl text-xs font-black transition border cursor-pointer flex items-center gap-2 shrink-0 ${
-              isComingSoon
-                ? 'bg-[#FF5E3A] border-[#FF5E3A] text-white shadow-md shadow-orange-500/30'
-                : theme === 'dark' 
-                  ? 'bg-[#17171C] border-slate-800 text-slate-400 hover:text-white' 
-                  : 'bg-white border-slate-200 text-slate-600 hover:text-[#FF5E3A]'
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-2 ${
+              viewMode === 'master30'
+                ? 'bg-[#FF5E3A] text-white shadow-xs'
+                : 'text-slate-600 dark:text-slate-400 hover:text-[#FF5E3A]'
             }`}
           >
-            <span>Coming Soon (N3-N1)</span>
+            <Sparkles className="w-4 h-4" />
+            <span>30-Day Master Self-Study & Workbooks</span>
+            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-orange-500/20 text-[#FF5E3A] font-mono">
+              N5-N3
+            </span>
           </button>
         </div>
       </div>
+
+      {viewMode === 'master30' ? (
+        <SelfStudyMasterTrackView theme={theme} showFurigana={showFurigana} />
+      ) : (
+        <>
+          {/* Header & Level Track Selector */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <BookOpen className="w-6 h-6 text-[#FF5E3A]" />
+                <h1 className="text-2xl font-black tracking-tight font-heading">JLPT Course Progression Tracks</h1>
+              </div>
+              <p className={`text-sm ${subText}`}>
+                Structured curriculums designed to take you from zero Japanese to official fluency certification.
+              </p>
+            </div>
+
+            {/* Level Track Switcher */}
+            <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 no-scrollbar touch-pan-x whitespace-nowrap">
+              {courses.filter(c => ['N5', 'N4', 'N3'].includes(c.level)).map((c) => (
+                <button
+                  key={c.id}
+                  onClick={() => {
+                    audio.playClick();
+                    setSelectedCourseId(c.id);
+                  }}
+                  className={`px-4 py-2.5 rounded-xl text-xs font-black transition border cursor-pointer flex items-center gap-2 shrink-0 ${
+                    selectedCourseId === c.id
+                      ? 'bg-[#FF5E3A] border-[#FF5E3A] text-white shadow-md shadow-orange-500/30'
+                      : theme === 'dark' 
+                        ? 'bg-[#17171C] border-slate-800 text-slate-400 hover:text-white' 
+                        : 'bg-white border-slate-200 text-slate-600 hover:text-[#FF5E3A]'
+                  }`}
+                >
+                  <span>{c.level} Track</span>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded opacity-80">
+                    {c.badge}
+                  </span>
+                </button>
+              ))}
+
+              <button
+                onClick={() => {
+                  audio.playClick();
+                  setSelectedCourseId('course-n2');
+                }}
+                className={`px-4 py-2.5 rounded-xl text-xs font-black transition border cursor-pointer flex items-center gap-2 shrink-0 ${
+                  isComingSoon
+                    ? 'bg-[#FF5E3A] border-[#FF5E3A] text-white shadow-md shadow-orange-500/30'
+                    : theme === 'dark' 
+                      ? 'bg-[#17171C] border-slate-800 text-slate-400 hover:text-white' 
+                      : 'bg-white border-slate-200 text-slate-600 hover:text-[#FF5E3A]'
+                }`}
+              >
+                <span>Coming Soon (N2-N1)</span>
+              </button>
+            </div>
+          </div>
 
       {/* Beginner Explanation Banner */}
       <div className={`p-4 rounded-2xl border flex items-start gap-3 text-xs leading-relaxed ${
@@ -506,6 +552,9 @@ export const CoursesView: React.FC<CoursesViewProps> = ({
           ))}
         </div>
       ) : null}
+
+        </>
+      )}
 
     </div>
   );

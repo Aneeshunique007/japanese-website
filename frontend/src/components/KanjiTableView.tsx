@@ -153,7 +153,7 @@ export const KanjiTableView: React.FC<KanjiTableViewProps> = ({ theme, onGainXp 
   const cardBg = theme === 'dark' ? 'bg-[#17171C] border-slate-800 text-white' : 'bg-white border-slate-200/80 text-[#1A1A1F] shadow-xs';
   const subText = theme === 'dark' ? 'text-slate-400' : 'text-slate-500';
 
-  const isComingSoon = selectedKanjiJlpt === 'COMING_SOON' || ['N3', 'N2', 'N1'].includes(selectedKanjiJlpt);
+  const isComingSoon = selectedKanjiJlpt === 'COMING_SOON' || ['N2', 'N1'].includes(selectedKanjiJlpt);
 
   // Load Kanji from Database
   useEffect(() => {
@@ -194,7 +194,7 @@ export const KanjiTableView: React.FC<KanjiTableViewProps> = ({ theme, onGainXp 
             // Fallback to dataStore if backend unavailable
             let localList: any[] = selectedKanjiJlpt === 'N5'
               ? dataStore.kanjiN5
-              : (selectedKanjiJlpt === 'N4' ? dataStore.kanjiN4 : dataStore.allKanji);
+              : (selectedKanjiJlpt === 'N4' ? dataStore.kanjiN4 : (selectedKanjiJlpt === 'N3' ? dataStore.kanjiN3 : dataStore.allKanji));
             if (kanjiSearchQuery.trim()) {
               const query = kanjiSearchQuery.trim().toLowerCase();
               localList = localList.filter((k: any) =>
@@ -210,7 +210,7 @@ export const KanjiTableView: React.FC<KanjiTableViewProps> = ({ theme, onGainXp 
         .catch(() => {
           let localList: any[] = selectedKanjiJlpt === 'N5'
             ? dataStore.kanjiN5
-            : (selectedKanjiJlpt === 'N4' ? dataStore.kanjiN4 : dataStore.allKanji);
+            : (selectedKanjiJlpt === 'N4' ? dataStore.kanjiN4 : (selectedKanjiJlpt === 'N3' ? dataStore.kanjiN3 : dataStore.allKanji));
           if (kanjiSearchQuery.trim()) {
             const query = kanjiSearchQuery.trim().toLowerCase();
             localList = localList.filter((k: any) =>
@@ -343,7 +343,7 @@ export const KanjiTableView: React.FC<KanjiTableViewProps> = ({ theme, onGainXp 
 
       {/* Kanji Mastery Progress Card */}
       {(() => {
-        const currentLevelKanji = selectedKanjiJlpt === 'N4' ? dataStore.kanjiN4 : dataStore.kanjiN5;
+        const currentLevelKanji = selectedKanjiJlpt === 'N4' ? dataStore.kanjiN4 : (selectedKanjiJlpt === 'N3' ? dataStore.kanjiN3 : dataStore.kanjiN5);
         const currentLearnedCount = currentLevelKanji.filter((k: any) => learnedKanji.has(k.char)).length;
         const currentTotalCount = currentLevelKanji.length;
         const currentPercent = Math.round((currentLearnedCount / (currentTotalCount || 1)) * 100);
@@ -751,7 +751,8 @@ export const KanjiTableView: React.FC<KanjiTableViewProps> = ({ theme, onGainXp 
               {[
                 { id: 'N5', label: 'JLPT N5', badge: `${dataStore.kanjiN5.length} Kanji`, completed: true },
                 { id: 'N4', label: 'JLPT N4', badge: `${dataStore.kanjiN4.length} Kanji`, completed: true },
-                { id: 'COMING_SOON', label: 'Coming Soon', completed: false }
+                { id: 'N3', label: 'JLPT N3', badge: `${dataStore.kanjiN3.length} Kanji`, completed: true },
+                { id: 'COMING_SOON', label: 'Coming Soon (N2-N1)', completed: false }
               ].map((lvl) => {
                 const isSelected = selectedKanjiJlpt === lvl.id;
                 return (
@@ -833,6 +834,7 @@ export const KanjiTableView: React.FC<KanjiTableViewProps> = ({ theme, onGainXp 
                 <span className="font-bold">
                   {selectedKanjiJlpt === 'N5' && `${dataStore.kanjiN5.length} Official Kanji • ${dataStore.kanjiN5.length * 2} Easy Sentences`}
                   {selectedKanjiJlpt === 'N4' && `${dataStore.kanjiN4.length} Official Kanji • ${dataStore.kanjiN4.length * 2} Easy Sentences`}
+                  {selectedKanjiJlpt === 'N3' && `${dataStore.kanjiN3.length} Kanshudo-Standard Kanji • ${dataStore.kanjiN3.length * 2} Contextual Sentences`}
                 </span>
               </div>
               <span className="text-[11px] font-mono text-slate-400">

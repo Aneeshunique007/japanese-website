@@ -8,6 +8,7 @@ import { WORDS_N5_LIST } from '../data/wordsN5';
 import { WORDS_N4_LIST } from '../data/wordsN4';
 import { KANJI_N5_LIST } from '../data/kanjiN5';
 import { KANJI_N4_LIST } from '../data/kanjiN4';
+import { KANJI_N3_LIST } from '../data/kanjiN3';
 
 export interface KanaChar {
   char: string;
@@ -30,6 +31,7 @@ class DataStore {
   wordsN4: any[] = WORDS_N4_LIST;
   kanjiN5: any[] = KANJI_N5_LIST;
   kanjiN4: any[] = KANJI_N4_LIST;
+  kanjiN3: any[] = KANJI_N3_LIST;
   hiraganaData: KanaGroup = HIRAGANA_DATA;
   katakanaData: KanaGroup = KATAKANA_DATA;
 
@@ -44,7 +46,7 @@ class DataStore {
   }
 
   get allKanji(): any[] {
-    return [...this.kanjiN5, ...this.kanjiN4];
+    return [...this.kanjiN5, ...this.kanjiN4, ...this.kanjiN3];
   }
 
   get allKana(): KanaChar[] {

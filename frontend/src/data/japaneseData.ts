@@ -2877,52 +2877,2213 @@ export const COURSES: Course[] = [
       }
     ],
     modules: [
-      /*
+  {
+    "id": "mod-n3-1",
+    "moduleNumber": 1,
+    "title": "Voice, Perspective & Politeness Foundations",
+    "japaneseTitle": "態（受身・使役）と敬意表現",
+    "description": "Master passive, causative, causative-passive forms, and polite embedded questions.",
+    "lessons": [
       {
-        id: 'mod-n3-1',
-        moduleNumber: 1,
-        title: 'Nuanced Conjunctions & Modifiers',
-        japaneseTitle: '複文とニュアンス表現',
-        description: 'Expressions like 〜わけではない, 〜うちに, and 〜ようにする.',
-        lessons: [
+        "id": "lesson-n3-1",
+        "title": "Lesson 1: Passive causative and point of view",
+        "japaneseTitle": "第1課：Passive causative and point of view",
+        "summary": "Master Passive causative and point of view with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
           {
-            id: 'lesson-n3-1-1',
-            title: 'Expressing Efforts & Habits (〜ようにする)',
-            japaneseTitle: '〜ようにする（努力・習慣）',
-            summary: 'How to describe making a conscious effort to do or avoid something.',
-            readTimeMinutes: 20,
-            grammarPoints: [
+            "title": "passive",
+            "structure": "passive",
+            "explanation": "Godan u becomes a plus れる; ichidan adds られる. する→される; 来る→来られる.",
+            "examples": [
               {
-                title: 'Verb (Dictionary / Nai Form) + ようにする',
-                structure: '[Verb Dict/Nai] + ようにする',
-                explanation: 'Expresses making an ongoing conscious effort to maintain a habit.',
-                examples: [
-                  {
-                    japanese: '毎日日本語のニュースを読むようにしています。',
-                    furigana: 'まいにち にほんご の ニュース を よむ ように しています。',
-                    romaji: 'Mainichi nihongo no nyuusu o yomu you ni shite imasu.',
-                    english: 'I make an effort to read Japanese news every day.'
-                  }
-                ]
+                "japanese": "私は先生に褒められました。",
+                "furigana": "私は先生に褒められました。",
+                "romaji": "",
+                "english": "I was praised by the teacher."
               }
-            ],
-            vocabulary: [
-              { kanji: '習慣', furigana: 'しゅうかん', romaji: 'shuukan', english: 'Habit / Custom', pos: 'Noun' },
-              { kanji: '努力', furigana: 'どりょく', romaji: 'doryoku', english: 'Effort', pos: 'Noun' }
-            ],
-            quiz: [
+            ]
+          },
+          {
+            "title": "causative",
+            "structure": "causative",
+            "explanation": "Godan u becomes a plus せる; ichidan adds させる. It can mean make or let.",
+            "examples": [
               {
-                question: 'What does "甘いものを食べないようにしています" mean?',
-                options: ['I make an effort not to eat sweet things', 'I cannot eat sweets', 'I like sweets', 'I must eat sweets'],
-                correctIndex: 0,
-                explanation: '〜ないようにする indicates a conscious effort to avoid an action.'
+                "japanese": "母は子どもに野菜を食べさせました。",
+                "furigana": "母は子どもに野菜を食べさせました。",
+                "romaji": "",
+                "english": "The mother made or let the child eat vegetables."
+              }
+            ]
+          },
+          {
+            "title": "causative passive",
+            "structure": "causative passive",
+            "explanation": "Express being made to do something. Learn full and common contracted godan forms.",
+            "examples": [
+              {
+                "japanese": "私は一時間待たされました。",
+                "furigana": "私は一時間待たされました。",
+                "romaji": "",
+                "english": "I was made to wait for an hour."
+              }
+            ]
+          },
+          {
+            "title": "potential versus passive られる",
+            "structure": "potential versus passive られる",
+            "explanation": "The form overlaps for ichidan verbs; use agent, particles, and context to distinguish.",
+            "examples": [
+              {
+                "japanese": "この本は子どもにも読めます。",
+                "furigana": "この本は子どもにも読めます。",
+                "romaji": "",
+                "english": "Even children can read this book."
               }
             ]
           }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "新人",
+            "furigana": "しんじん",
+            "romaji": "",
+            "english": "newcomer",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 記録",
+            "furigana": "きろく",
+            "romaji": "",
+            "english": "record",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 頼む",
+            "furigana": "たのむ",
+            "romaji": "",
+            "english": "request",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 自信",
+            "furigana": "じしん",
+            "romaji": "",
+            "english": "confidence",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Who acts: 私は先生に呼ばれました。",
+            "options": [
+              "The teacher calls the speaker.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "先生に identifies the agent."
+          },
+          {
+            "question": "Make causative: 食べる。",
+            "options": [
+              "食べさせる",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Ichidan stem plus させる."
+          },
+          {
+            "question": "Translate: I was made to wait.",
+            "options": [
+              "待たされました。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "A common contracted causative-passive form of 待つ."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-2",
+        "title": "Lesson 2: Polite interaction and embedded questions",
+        "japaneseTitle": "第2課：Polite interaction and embedded questions",
+        "summary": "Master Polite interaction and embedded questions with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "respectful verbs",
+            "structure": "respectful verbs",
+            "explanation": "Use respectful language for the other person's actions: いらっしゃる, おっしゃる, 召し上がる.",
+            "examples": [
+              {
+                "japanese": "先生は何とおっしゃいましたか。",
+                "furigana": "先生は何とおっしゃいましたか。",
+                "romaji": "",
+                "english": "What did the teacher say?"
+              }
+            ]
+          },
+          {
+            "title": "humble verbs",
+            "structure": "humble verbs",
+            "explanation": "Use humble language for your own side's actions toward others: 伺う, 申す, 拝見する.",
+            "examples": [
+              {
+                "japanese": "明日、先生の研究室に伺います。",
+                "furigana": "明日、先生の研究室に伺います。",
+                "romaji": "",
+                "english": "I will visit the teacher's office tomorrow."
+              }
+            ]
+          },
+          {
+            "title": "かどうか and question clause か",
+            "structure": "かどうか and question clause か",
+            "explanation": "Embed yes/no questions with かどうか; question-word clauses take か.",
+            "examples": [
+              {
+                "japanese": "何時に始まるか知っていますか。",
+                "furigana": "何時に始まるか知っていますか。",
+                "romaji": "",
+                "english": "Do you know what time it starts?"
+              }
+            ]
+          },
+          {
+            "title": "んです and いただけませんか",
+            "structure": "んです and いただけませんか",
+            "explanation": "んです adds explanatory context; ていただけませんか makes a courteous request.",
+            "examples": [
+              {
+                "japanese": "もう一度説明していただけませんか。",
+                "furigana": "もう一度説明していただけませんか。",
+                "romaji": "",
+                "english": "Could you explain once more?"
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "説明会",
+            "furigana": "せつめいかい",
+            "romaji": "",
+            "english": "information session",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 確認",
+            "furigana": "かくにん",
+            "romaji": "",
+            "english": "checking",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " お願い",
+            "furigana": "おねがい",
+            "romaji": "",
+            "english": "request",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Respectful of 言う is",
+            "options": [
+              "おっしゃる",
+              "申す",
+              "拝見する",
+              "です"
+            ],
+            "correctIndex": 0,
+            "explanation": "申す is humble; 拝見する is humble looking."
+          },
+          {
+            "question": "Complete: 参加できる（　）、まだ分かりません。",
+            "options": [
+              "かどうか",
+              "か何",
+              "どう",
+              "です"
+            ],
+            "correctIndex": 0,
+            "explanation": "Embed whether participation is possible."
+          },
+          {
+            "question": "Translate: I do not know where the room is.",
+            "options": [
+              "部屋がどこにあるか分かりません。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Embedded question keeps か."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-3",
+        "title": "Lesson 3: Time windows and stages",
+        "japaneseTitle": "第3課：Time windows and stages",
+        "summary": "Master Time windows and stages with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "うちに",
+            "structure": "うちに",
+            "explanation": "While a favourable condition holds, or a change happens during an ongoing state. Attachment varies by word class.",
+            "examples": [
+              {
+                "japanese": "温かいうちに食べてください。",
+                "furigana": "温かいうちに食べてください。",
+                "romaji": "",
+                "english": "Please eat while it is warm."
+              }
+            ]
+          },
+          {
+            "title": "間 and 間に",
+            "structure": "間 and 間に",
+            "explanation": "間 commonly describes something throughout a period; 間に places an event within it.",
+            "examples": [
+              {
+                "japanese": "留守の間に荷物が届きました。",
+                "furigana": "留守の間に荷物が届きました。",
+                "romaji": "",
+                "english": "A package arrived while I was out."
+              }
+            ]
+          },
+          {
+            "title": "ところだ",
+            "structure": "ところだ",
+            "explanation": "Dictionary form: about to; ている: in progress; た: just completed.",
+            "examples": [
+              {
+                "japanese": "今、家を出るところです。",
+                "furigana": "今、家を出るところです。",
+                "romaji": "",
+                "english": "I am just about to leave home."
+              }
+            ]
+          },
+          {
+            "title": "たばかり",
+            "structure": "たばかり",
+            "explanation": "Describes something as recent from the speaker's viewpoint; it need not mean seconds ago.",
+            "examples": [
+              {
+                "japanese": "先月、引っ越したばかりです。",
+                "furigana": "先月、引っ越したばかりです。",
+                "romaji": "",
+                "english": "I only moved last month."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "引っ越す",
+            "furigana": "ひっこす",
+            "romaji": "",
+            "english": "move house",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 焼く",
+            "furigana": "やく",
+            "romaji": "",
+            "english": "bake",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 戻る",
+            "furigana": "もどる",
+            "romaji": "",
+            "english": "return",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Choose: 温かい（うちに／たびに）食べてください。",
+            "options": [
+              "うちに",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Eat before the condition changes."
+          },
+          {
+            "question": "What stage: 今から出るところです。",
+            "options": [
+              "About to leave.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Dictionary form plus ところ."
+          },
+          {
+            "question": "Order: 荷物が / 間に / 留守の / 届いた",
+            "options": [
+              "留守の間に荷物が届いた。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "The arrival occurs within the absence."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-4",
+        "title": "Lesson 4: Decisions habits and change",
+        "japaneseTitle": "第4課：Decisions habits and change",
+        "summary": "Master Decisions habits and change with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "ことにする and ことになる",
+            "structure": "ことにする and ことになる",
+            "explanation": "Distinguish a personal decision from a decision/arrangement or outcome of circumstances.",
+            "examples": [
+              {
+                "japanese": "毎朝歩くことにしました。",
+                "furigana": "毎朝歩くことにしました。",
+                "romaji": "",
+                "english": "I decided to walk every morning."
+              }
+            ]
+          },
+          {
+            "title": "ようにする",
+            "structure": "ようにする",
+            "explanation": "Make an effort or establish a practice, often with している for an ongoing habit.",
+            "examples": [
+              {
+                "japanese": "毎日復習するようにしています。",
+                "furigana": "毎日復習するようにしています。",
+                "romaji": "",
+                "english": "I make a point of reviewing daily."
+              }
+            ]
+          },
+          {
+            "title": "ようになる",
+            "structure": "ようになる",
+            "explanation": "Describe a change in behaviour or ability. Potential forms are common before it.",
+            "examples": [
+              {
+                "japanese": "日本語のニュースが少し分かるようになりました。",
+                "furigana": "日本語のニュースが少し分かるようになりました。",
+                "romaji": "",
+                "english": "I have become able to understand some Japanese news."
+              }
+            ]
+          },
+          {
+            "title": "ようとする",
+            "structure": "ようとする",
+            "explanation": "Volitional plus とする expresses an attempt or being about to act.",
+            "examples": [
+              {
+                "japanese": "出かけようとした時、電話が鳴りました。",
+                "furigana": "出かけようとした時、電話が鳴りました。",
+                "romaji": "",
+                "english": "The phone rang when I was about to go out."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "通勤中",
+            "furigana": "つうきんちゅう",
+            "romaji": "",
+            "english": "while commuting",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 増やす",
+            "furigana": "ふやす",
+            "romaji": "",
+            "english": "increase",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 理解",
+            "furigana": "りかい",
+            "romaji": "",
+            "english": "understanding",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Personal decision: 毎日歩く（ことにした／ことになった）。",
+            "options": [
+              "ことにした",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "The prompt specifies the learner's own decision."
+          },
+          {
+            "question": "Translate: I have become able to read kanji.",
+            "options": [
+              "漢字が読めるようになりました。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Potential plus ようになる."
+          },
+          {
+            "question": "Order: した時 / 電話が / 出かけようと / 鳴った",
+            "options": [
+              "出かけようとした時、電話が鳴った。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "ようとする marks being about to act."
+          }
         ]
       }
-      */
     ]
+  },
+  {
+    "id": "mod-n3-2",
+    "moduleNumber": 2,
+    "title": "Time Windows, Decisions & Appearance",
+    "japaneseTitle": "時間段階・意思決定・様態証拠",
+    "description": "Nuanced conjunctions, time constraints, habits, decisions, and conjectural appearance.",
+    "lessons": [
+      {
+        "id": "lesson-n3-5",
+        "title": "Lesson 5: Evidence appearance and reports",
+        "japaneseTitle": "第5課：Evidence appearance and reports",
+        "summary": "Master Evidence appearance and reports with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "そうだ for appearance",
+            "structure": "そうだ for appearance",
+            "explanation": "Verb stem plus そう; adjective stems also combine with it. いい becomes よさそう; negative ない becomes なさそう.",
+            "examples": [
+              {
+                "japanese": "雨が降りそうです。",
+                "furigana": "雨が降りそうです。",
+                "romaji": "",
+                "english": "It looks as if it will rain."
+              }
+            ]
+          },
+          {
+            "title": "そうだ for hearsay",
+            "structure": "そうだ for hearsay",
+            "explanation": "A plain clause plus そう reports information; noun/な-adjective affirmative uses だそう.",
+            "examples": [
+              {
+                "japanese": "予報によると、明日は雨だそうです。",
+                "furigana": "予報によると、明日は雨だそうです。",
+                "romaji": "",
+                "english": "The forecast says it will rain tomorrow."
+              }
+            ]
+          },
+          {
+            "title": "ようだ and みたいだ",
+            "structure": "ようだ and みたいだ",
+            "explanation": "Express a judgment based on evidence or resemblance; みたい is more conversational.",
+            "examples": [
+              {
+                "japanese": "隣の部屋には誰もいないようです。",
+                "furigana": "隣の部屋には誰もいないようです。",
+                "romaji": "",
+                "english": "It seems nobody is in the next room."
+              }
+            ]
+          },
+          {
+            "title": "らしい",
+            "structure": "らしい",
+            "explanation": "Can mark information-based inference or a typical quality; interpret the context.",
+            "examples": [
+              {
+                "japanese": "田中さんは来週休むらしいです。",
+                "furigana": "田中さんは来週休むらしいです。",
+                "romaji": "",
+                "english": "Apparently Tanaka will be off next week."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "暗い",
+            "furigana": "くらい",
+            "romaji": "",
+            "english": "dark",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 傘",
+            "furigana": "かさ",
+            "romaji": "",
+            "english": "umbrella",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 場所によって depending on location",
+            "furigana": "",
+            "romaji": "",
+            "english": " 場所によって depending on location",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Hearsay: 天気予報によると、雨が（降るそう／降りそう）です。",
+            "options": [
+              "降るそう",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Plain verb form marks a report."
+          },
+          {
+            "question": "Appearance of おいしい is",
+            "options": [
+              "おいしそう",
+              "おいしいそう",
+              "おいしくそう",
+              "です"
+            ],
+            "correctIndex": 0,
+            "explanation": "Remove final い in this appearance pattern."
+          },
+          {
+            "question": "Translate: It seems nobody is here.",
+            "options": [
+              "ここには誰もいないようです。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "ない plus ようだ makes an evidence-based judgment."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-6",
+        "title": "Lesson 6: Expectations explanations and limits",
+        "japaneseTitle": "第6課：Expectations explanations and limits",
+        "summary": "Master Expectations explanations and limits with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "はずだ and はずがない",
+            "structure": "はずだ and はずがない",
+            "explanation": "Express a grounded expectation or strong impossibility based on reasoning.",
+            "examples": [
+              {
+                "japanese": "もう発送したので、明日届くはずです。",
+                "furigana": "もう発送したので、明日届くはずです。",
+                "romaji": "",
+                "english": "It has shipped, so it should arrive tomorrow."
+              }
+            ]
+          },
+          {
+            "title": "わけだ",
+            "structure": "わけだ",
+            "explanation": "Express a conclusion or an explanation that follows from information.",
+            "examples": [
+              {
+                "japanese": "毎日練習しているんですね。上手なわけです。",
+                "furigana": "毎日練習しているんですね。上手なわけです。",
+                "romaji": "",
+                "english": "You practise daily; that explains your skill."
+              }
+            ]
+          },
+          {
+            "title": "わけではない",
+            "structure": "わけではない",
+            "explanation": "Deny a generalisation or full implication: not necessarily, not entirely.",
+            "examples": [
+              {
+                "japanese": "高い物がいつも良いわけではありません。",
+                "furigana": "高い物がいつも良いわけではありません。",
+                "romaji": "",
+                "english": "Expensive things are not always good."
+              }
+            ]
+          },
+          {
+            "title": "かもしれない and に違いない",
+            "structure": "かもしれない and に違いない",
+            "explanation": "Possibility versus strong conviction; do not treat them as equal certainty.",
+            "examples": [
+              {
+                "japanese": "彼は道に迷ったのかもしれません。",
+                "furigana": "彼は道に迷ったのかもしれません。",
+                "romaji": "",
+                "english": "He may have lost his way."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "料金",
+            "furigana": "りょうきん",
+            "romaji": "",
+            "english": "fee",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 内容",
+            "furigana": "ないよう",
+            "romaji": "",
+            "english": "content",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 疑問",
+            "furigana": "ぎもん",
+            "romaji": "",
+            "english": "question or doubt",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 解決",
+            "furigana": "かいけつ",
+            "romaji": "",
+            "english": "solution",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A grounded expectation: 予約したので、席がある（はず／たび）です。",
+            "options": [
+              "はず",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "There is a stated basis for the expectation."
+          },
+          {
+            "question": "Explain: 日本語が全く分からないわけではない。",
+            "options": [
+              "It is not that I understand no Japanese at all.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "わけではない rejects the complete negative implication."
+          },
+          {
+            "question": "Order: 物が / 良いわけではない / 高い / いつも",
+            "options": [
+              "高い物がいつも良いわけではない。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "The final negation limits the generalisation."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-7",
+        "title": "Lesson 7: Purpose causes and unintended results",
+        "japaneseTitle": "第7課：Purpose causes and unintended results",
+        "summary": "Master Purpose causes and unintended results with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "ために and ように",
+            "structure": "ために and ように",
+            "explanation": "For purpose, ために commonly combines with deliberate action; ように often aims at a state, ability, or avoiding a result.",
+            "examples": [
+              {
+                "japanese": "忘れないようにメモします。",
+                "furigana": "忘れないようにメモします。",
+                "romaji": "",
+                "english": "I take notes so I will not forget."
+              }
+            ]
+          },
+          {
+            "title": "おかげで and せいで",
+            "structure": "おかげで and せいで",
+            "explanation": "Attribute a favourable result or blame a cause for an unfavourable result; ironic uses also exist.",
+            "examples": [
+              {
+                "japanese": "友達のおかげで間に合いました。",
+                "furigana": "友達のおかげで間に合いました。",
+                "romaji": "",
+                "english": "Thanks to my friend, I made it in time."
+              }
+            ]
+          },
+          {
+            "title": "のに and ても",
+            "structure": "のに and ても",
+            "explanation": "のに often expresses an unexpected outcome despite a fact; ても allows even if/even though.",
+            "examples": [
+              {
+                "japanese": "勉強したのに、答えられませんでした。",
+                "furigana": "勉強したのに、答えられませんでした。",
+                "romaji": "",
+                "english": "Although I studied, I could not answer."
+              }
+            ]
+          },
+          {
+            "title": "によって causal use",
+            "structure": "によって causal use",
+            "explanation": "によって can mark a cause, means, agent, or variation. Identify the relationship in context.",
+            "examples": [
+              {
+                "japanese": "大雨によって電車が止まりました。",
+                "furigana": "大雨によって電車が止まりました。",
+                "romaji": "",
+                "english": "The trains stopped because of heavy rain."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "交通情報",
+            "furigana": "こうつうじょうほう",
+            "romaji": "",
+            "english": "traffic information",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 何とか",
+            "furigana": "なんとか",
+            "romaji": "",
+            "english": "somehow",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 別",
+            "furigana": "べつ",
+            "romaji": "",
+            "english": "different",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Choose: 聞こえる（ように／ために）、大きな声で話してください。",
+            "options": [
+              "ように",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "The desired outcome is audibility."
+          },
+          {
+            "question": "Positive attribution: 先生の（おかげ／せい）で分かりました。",
+            "options": [
+              "おかげ",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "The stated result is favourable."
+          },
+          {
+            "question": "Translate: I studied, but could not answer, unexpectedly.",
+            "options": [
+              "勉強したのに、答えられませんでした。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "のに expresses the unexpected contrast."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-8",
+        "title": "Lesson 8: Degree comparisons and restrictions",
+        "japaneseTitle": "第8課：Degree comparisons and restrictions",
+        "summary": "Master Degree comparisons and restrictions with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "ほど and くらい",
+            "structure": "ほど and くらい",
+            "explanation": "Express degree; くらい also approximates amounts. Context determines the nuance.",
+            "examples": [
+              {
+                "japanese": "歩けないほど疲れました。",
+                "furigana": "歩けないほど疲れました。",
+                "romaji": "",
+                "english": "I was so tired I could not walk."
+              }
+            ]
+          },
+          {
+            "title": "ば ほど",
+            "structure": "ば ほど",
+            "explanation": "Express a correlated increase: the more X, the more Y.",
+            "examples": [
+              {
+                "japanese": "読めば読むほど面白くなります。",
+                "furigana": "読めば読むほど面白くなります。",
+                "romaji": "",
+                "english": "The more I read, the more interesting it becomes."
+              }
+            ]
+          },
+          {
+            "title": "しか ない and だけ",
+            "structure": "しか ない and だけ",
+            "explanation": "しか requires a negative predicate and can stress insufficiency; だけ limits scope without that requirement.",
+            "examples": [
+              {
+                "japanese": "あと十分しかありません。",
+                "furigana": "あと十分しかありません。",
+                "romaji": "",
+                "english": "Only ten minutes remain."
+              }
+            ]
+          },
+          {
+            "title": "ばかり and ばかりでなく",
+            "structure": "ばかり and ばかりでなく",
+            "explanation": "ばかり can indicate exclusive/repeated activity; ばかりでなく means not only.",
+            "examples": [
+              {
+                "japanese": "彼は英語ばかりでなく、中国語も話せます。",
+                "furigana": "彼は英語ばかりでなく、中国語も話せます。",
+                "romaji": "",
+                "english": "He speaks Chinese as well as English."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "以前",
+            "furigana": "いぜん",
+            "romaji": "",
+            "english": "previously",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 場面",
+            "furigana": "ばめん",
+            "romaji": "",
+            "english": "situation",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 気づく",
+            "furigana": "きづく",
+            "romaji": "",
+            "english": "notice",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Choose: あと五分しか（あります／ありません）。",
+            "options": [
+              "ありません",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "しか pairs with a negative predicate."
+          },
+          {
+            "question": "Complete: 練習すれば練習する（　）、上手になります。",
+            "options": [
+              "ほど",
+              "たび",
+              "だけに",
+              "です"
+            ],
+            "correctIndex": 0,
+            "explanation": "The paired construction is ～ば～ほど."
+          },
+          {
+            "question": "Explain: 漢字ばかり勉強している。",
+            "options": [
+              "Spending one's study time only or overwhelmingly on kanji.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "ばかり can suggest an unbalanced repeated focus."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-n3-3",
+    "moduleNumber": 3,
+    "title": "Purposes, Relationships & Perspectives",
+    "japaneseTitle": "目的・関係性・視点構文",
+    "description": "Expressing intentions, unexpected outcomes, perspectives, and repeated opportunities.",
+    "lessons": [
+      {
+        "id": "lesson-n3-9",
+        "title": "Lesson 9: Topics perspectives and relationships",
+        "japaneseTitle": "第9課：Topics perspectives and relationships",
+        "summary": "Master Topics perspectives and relationships with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "について and に関して",
+            "structure": "について and に関して",
+            "explanation": "Mark the topic: about or concerning. Learn noun-modifying forms such as についての.",
+            "examples": [
+              {
+                "japanese": "試験について質問があります。",
+                "furigana": "試験について質問があります。",
+                "romaji": "",
+                "english": "I have a question about the exam."
+              }
+            ]
+          },
+          {
+            "title": "に対して",
+            "structure": "に対して",
+            "explanation": "Can mark a target or a contrast. Do not replace every use with について.",
+            "examples": [
+              {
+                "japanese": "お客様に対して丁寧に話します。",
+                "furigana": "お客様に対して丁寧に話します。",
+                "romaji": "",
+                "english": "I speak politely to customers."
+              }
+            ]
+          },
+          {
+            "title": "にとって and として",
+            "structure": "にとって and として",
+            "explanation": "にとって gives a viewpoint; として gives a role or status.",
+            "examples": [
+              {
+                "japanese": "教師として働いています。",
+                "furigana": "教師として働いています。",
+                "romaji": "",
+                "english": "I work as a teacher."
+              }
+            ]
+          },
+          {
+            "title": "によって and に比べて",
+            "structure": "によって and に比べて",
+            "explanation": "によって can mark variation by a factor; に比べて establishes a comparison baseline.",
+            "examples": [
+              {
+                "japanese": "人によって意見が違います。",
+                "furigana": "人によって意見が違います。",
+                "romaji": "",
+                "english": "Opinions differ from person to person."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "在宅勤務",
+            "furigana": "ざいたくきんむ",
+            "romaji": "",
+            "english": "working from home",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 制度",
+            "furigana": "せいど",
+            "romaji": "",
+            "english": "system",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 社員",
+            "furigana": "しゃいん",
+            "romaji": "",
+            "english": "employee",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Choose viewpoint: 私（にとって／について）、家族は大切です。",
+            "options": [
+              "にとって",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "The sentence evaluates from the speaker's perspective."
+          },
+          {
+            "question": "Translate: I work as an engineer.",
+            "options": [
+              "エンジニアとして働いています。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "として marks the role."
+          },
+          {
+            "question": "Order: 違います / 人によって / 考え方が",
+            "options": [
+              "人によって考え方が違います。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "によって marks the factor of variation."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-10",
+        "title": "Lesson 10: Repeated events sequence and opportunity",
+        "japaneseTitle": "第10課：Repeated events sequence and opportunity",
+        "summary": "Master Repeated events sequence and opportunity with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "たびに",
+            "structure": "たびに",
+            "explanation": "Dictionary verb or noun の plus たびに means every time.",
+            "examples": [
+              {
+                "japanese": "この写真を見るたびに旅行を思い出します。",
+                "furigana": "この写真を見るたびに旅行を思い出します。",
+                "romaji": "",
+                "english": "Every time I see this photo, I remember the trip."
+              }
+            ]
+          },
+          {
+            "title": "ついでに",
+            "structure": "ついでに",
+            "explanation": "Use an existing trip/action as an opportunity to do another thing; dictionary/past verb or noun の can precede it.",
+            "examples": [
+              {
+                "japanese": "買い物のついでに郵便局に寄ります。",
+                "furigana": "買い物のついでに郵便局に寄ります。",
+                "romaji": "",
+                "english": "I will stop at the post office while out shopping."
+              }
+            ]
+          },
+          {
+            "title": "てからでないと",
+            "structure": "てからでないと",
+            "explanation": "Unless something is done first; the following clause commonly describes inability or a restriction.",
+            "examples": [
+              {
+                "japanese": "確認してからでないと、送れません。",
+                "furigana": "確認してからでないと、送れません。",
+                "romaji": "",
+                "english": "I cannot send it until I have checked it."
+              }
+            ]
+          },
+          {
+            "title": "とおりに and まま",
+            "structure": "とおりに and まま",
+            "explanation": "とおり follows an example/instruction; まま preserves a state.",
+            "examples": [
+              {
+                "japanese": "説明書のとおりに組み立ててください。",
+                "furigana": "説明書のとおりに組み立ててください。",
+                "romaji": "",
+                "english": "Please assemble it according to the instructions."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "機械",
+            "furigana": "きかい",
+            "romaji": "",
+            "english": "machine",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 操作",
+            "furigana": "そうさ",
+            "romaji": "",
+            "english": "operation",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 電源",
+            "furigana": "でんげん",
+            "romaji": "",
+            "english": "power supply",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Choose: この歌を聞く（たびに／ついでに）、故郷を思い出す。",
+            "options": [
+              "たびに",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "The memory happens every time."
+          },
+          {
+            "question": "Explain: 電気をつけたまま寝た。",
+            "options": [
+              "Went to sleep with the light still on.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "まま preserves the lit state."
+          },
+          {
+            "question": "Order: 送れない / してからでないと / 確認",
+            "options": [
+              "確認してからでないと、送れない。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Checking must happen first."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-11",
+        "title": "Lesson 11: Duties advice and social constraints",
+        "japaneseTitle": "第11課：Duties advice and social constraints",
+        "summary": "Master Duties advice and social constraints with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "べきだ and べきではない",
+            "structure": "べきだ and べきではない",
+            "explanation": "Give normative advice or state a duty. Use dictionary form; するべき and すべき are both possible.",
+            "examples": [
+              {
+                "japanese": "約束は守るべきです。",
+                "furigana": "約束は守るべきです。",
+                "romaji": "",
+                "english": "You should keep promises."
+              }
+            ]
+          },
+          {
+            "title": "わけにはいかない",
+            "structure": "わけにはいかない",
+            "explanation": "Cannot do something because of duty or social circumstances rather than physical inability.",
+            "examples": [
+              {
+                "japanese": "明日は試験なので、今夜は遊ぶわけにはいきません。",
+                "furigana": "明日は試験なので、今夜は遊ぶわけにはいきません。",
+                "romaji": "",
+                "english": "I cannot go out for fun tonight because my exam is tomorrow."
+              }
+            ]
+          },
+          {
+            "title": "ないわけにはいかない",
+            "structure": "ないわけにはいかない",
+            "explanation": "Cannot avoid doing something; the double negative creates obligation.",
+            "examples": [
+              {
+                "japanese": "お世話になったので、お礼を言わないわけにはいきません。",
+                "furigana": "お世話になったので、お礼を言わないわけにはいきません。",
+                "romaji": "",
+                "english": "I have to thank them because they helped me."
+              }
+            ]
+          },
+          {
+            "title": "ことはない and しかない",
+            "structure": "ことはない and しかない",
+            "explanation": "Dictionary verb plus ことはない often means no need to; dictionary verb plus しかない means no choice but to.",
+            "examples": [
+              {
+                "japanese": "一人で心配することはありません。",
+                "furigana": "一人で心配することはありません。",
+                "romaji": "",
+                "english": "There is no need to worry alone."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "発表",
+            "furigana": "はっぴょう",
+            "romaji": "",
+            "english": "presentation",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 代わる",
+            "furigana": "かわる",
+            "romaji": "",
+            "english": "substitute",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 断る",
+            "furigana": "ことわる",
+            "romaji": "",
+            "english": "refuse",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Choose duty: 約束は守る（べき／たび）です。",
+            "options": [
+              "べき",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "べき states a normative expectation."
+          },
+          {
+            "question": "Explain: 行かないわけにはいかない。",
+            "options": [
+              "I cannot avoid going; I have to go.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Follow both negatives."
+          },
+          {
+            "question": "Translate: There is no choice but to wait.",
+            "options": [
+              "待つしかありません。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Dictionary verb plus しかない."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-12",
+        "title": "Lesson 12: Contrast alternatives and balanced judgments",
+        "japaneseTitle": "第12課：Contrast alternatives and balanced judgments",
+        "summary": "Master Contrast alternatives and balanced judgments with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "一方で",
+            "structure": "一方で",
+            "explanation": "Present another side of a situation or a contrast; noun/な-adjective forms need appropriate attachment.",
+            "examples": [
+              {
+                "japanese": "この仕事は忙しい一方で、学ぶことも多いです。",
+                "furigana": "この仕事は忙しい一方で、学ぶことも多いです。",
+                "romaji": "",
+                "english": "The work is busy, but offers much to learn."
+              }
+            ]
+          },
+          {
+            "title": "かわりに",
+            "structure": "かわりに",
+            "explanation": "Express substitution or compensation. Noun plus のかわりに is common.",
+            "examples": [
+              {
+                "japanese": "車のかわりに電車で行きます。",
+                "furigana": "車のかわりに電車で行きます。",
+                "romaji": "",
+                "english": "I will go by train instead of by car."
+              }
+            ]
+          },
+          {
+            "title": "と言っても",
+            "structure": "と言っても",
+            "explanation": "Qualify what has just been said: although I say X, the reality is limited in some way.",
+            "examples": [
+              {
+                "japanese": "旅行と言っても、日帰りです。",
+                "furigana": "旅行と言っても、日帰りです。",
+                "romaji": "",
+                "english": "I say a trip, but it is only a day trip."
+              }
+            ]
+          },
+          {
+            "title": "からといって",
+            "structure": "からといって",
+            "explanation": "Reject an inference from a reason; often followed by a negative evaluation or わけではない.",
+            "examples": [
+              {
+                "japanese": "安いからといって、必要のない物まで買ってはいけません。",
+                "furigana": "安いからといって、必要のない物まで買ってはいけません。",
+                "romaji": "",
+                "english": "Do not buy unnecessary things just because they are cheap."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "実力",
+            "furigana": "じつりょく",
+            "romaji": "",
+            "english": "actual ability",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 問題数",
+            "furigana": "もんだいすう",
+            "romaji": "",
+            "english": "number of questions",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 気になる here: come to feel",
+            "furigana": "",
+            "romaji": "",
+            "english": " 気になる here: come to feel",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Choose: 安いからといって、全部良い（わけではない／ところだ）。",
+            "options": [
+              "わけではない",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "The sentence rejects a broad inference."
+          },
+          {
+            "question": "Explain: 旅行と言っても、日帰りです。",
+            "options": [
+              "It is a trip, but only a day trip.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "と言っても narrows the earlier description."
+          },
+          {
+            "question": "Order: 電車で / 車の / 行く / かわりに",
+            "options": [
+              "車のかわりに電車で行く。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Noun のかわりに marks substitution."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-13",
+        "title": "Lesson 13: Developing actions and word endings",
+        "japaneseTitle": "第13課：Developing actions and word endings",
+        "summary": "Master Developing actions and word endings with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "始める 出す 続ける 終わる",
+            "structure": "始める 出す 続ける 終わる",
+            "explanation": "Attach these to verb stems: begin, suddenly start, continue, finish. 出す often suggests sudden onset.",
+            "examples": [
+              {
+                "japanese": "急に雨が降り出しました。",
+                "furigana": "急に雨が降り出しました。",
+                "romaji": "",
+                "english": "It suddenly started raining."
+              }
+            ]
+          },
+          {
+            "title": "かける and 切る",
+            "structure": "かける and 切る",
+            "explanation": "Stem plus かける can indicate an unfinished action; 切る can indicate doing fully.",
+            "examples": [
+              {
+                "japanese": "読みかけの本が机にあります。",
+                "furigana": "読みかけの本が机にあります。",
+                "romaji": "",
+                "english": "There is a partly read book on the desk."
+              }
+            ]
+          },
+          {
+            "title": "やすい and にくい",
+            "structure": "やすい and にくい",
+            "explanation": "Attach to a verb stem to express ease or difficulty of doing.",
+            "examples": [
+              {
+                "japanese": "この説明は分かりやすいです。",
+                "furigana": "この説明は分かりやすいです。",
+                "romaji": "",
+                "english": "This explanation is easy to understand."
+              }
+            ]
+          },
+          {
+            "title": "ずに and ないで",
+            "structure": "ずに and ないで",
+            "explanation": "Express doing without doing another action. する has exceptional せずに.",
+            "examples": [
+              {
+                "japanese": "朝ご飯を食べずに出かけました。",
+                "furigana": "朝ご飯を食べずに出かけました。",
+                "romaji": "",
+                "english": "I went out without eating breakfast."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "登場人物",
+            "furigana": "とうじょうじんぶつ",
+            "romaji": "",
+            "english": "characters in a story",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 続き",
+            "furigana": "つづき",
+            "romaji": "",
+            "english": "continuation",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 最後",
+            "furigana": "さいご",
+            "romaji": "",
+            "english": "end",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Choose: 急に赤ちゃんが泣き（出した／終わった）。",
+            "options": [
+              "出した",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "The sentence describes sudden onset."
+          },
+          {
+            "question": "Make: 読む + easy to.",
+            "options": [
+              "読みやすい",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Use the ます stem 読み."
+          },
+          {
+            "question": "Translate: I went without studying.",
+            "options": [
+              "勉強せずに行きました。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "する becomes せずに; 勉強しないで行きました is also natural."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mod-n3-4",
+    "moduleNumber": 4,
+    "title": "Social Constraints & Master Checkpoints",
+    "japaneseTitle": "社会的助言・対比・実践読解総まとめ",
+    "description": "Duties, social norms, balanced judgments, and authentic reading passage checkpoints.",
+    "lessons": [
+      {
+        "id": "lesson-n3-14",
+        "title": "Lesson 14: Names definitions attitudes and feelings",
+        "japaneseTitle": "第14課：Names definitions attitudes and feelings",
+        "summary": "Master Names definitions attitudes and feelings with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "という and ということ",
+            "structure": "という and ということ",
+            "explanation": "Name or define things; ということ can package a statement or its implication.",
+            "examples": [
+              {
+                "japanese": "これは予定を管理するという目的で作りました。",
+                "furigana": "これは予定を管理するという目的で作りました。",
+                "romaji": "",
+                "english": "I made this for the purpose of managing schedules."
+              }
+            ]
+          },
+          {
+            "title": "ように言う",
+            "structure": "ように言う",
+            "explanation": "Report an instruction. Use dictionary/negative form plus ように言う.",
+            "examples": [
+              {
+                "japanese": "先生は毎日復習するように言いました。",
+                "furigana": "先生は毎日復習するように言いました。",
+                "romaji": "",
+                "english": "The teacher told us to review daily."
+              }
+            ]
+          },
+          {
+            "title": "がる and たがる",
+            "structure": "がる and たがる",
+            "explanation": "Describe outward signs of others' feelings or desires; stems precede these forms.",
+            "examples": [
+              {
+                "japanese": "子どもが新しい本を読みたがっています。",
+                "furigana": "子どもが新しい本を読みたがっています。",
+                "romaji": "",
+                "english": "The child shows a desire to read a new book."
+              }
+            ]
+          },
+          {
+            "title": "ふりをする and らしい typicality",
+            "structure": "ふりをする and らしい typicality",
+            "explanation": "ふりをする means pretend; らしい can describe qualities typical of a noun.",
+            "examples": [
+              {
+                "japanese": "分かったふりをしないでください。",
+                "furigana": "分かったふりをしないでください。",
+                "romaji": "",
+                "english": "Please do not pretend to understand."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "理解",
+            "furigana": "りかい",
+            "romaji": "",
+            "english": "understanding",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 授業",
+            "furigana": "じゅぎょう",
+            "romaji": "",
+            "english": "lesson",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 場合",
+            "furigana": "ばあい",
+            "romaji": "",
+            "english": "case or situation",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Reported instruction: 毎日読む（ように／そうに）言われた。",
+            "options": [
+              "ように",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "ように言う reports directions."
+          },
+          {
+            "question": "Make desire observed in a child: 読む →",
+            "options": [
+              "読みたがっている",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Use the stem plus たがる."
+          },
+          {
+            "question": "Explain: 知らないふりをした。",
+            "options": [
+              "Pretended not to know.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "ふり marks pretence."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-15",
+        "title": "Lesson 15: Changing over time and connecting a text",
+        "japaneseTitle": "第15課：Changing over time and connecting a text",
+        "summary": "Master Changing over time and connecting a text with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "てくる and ていく",
+            "structure": "てくる and ていく",
+            "explanation": "Track movement or change toward now/the speaker and onward from a reference point.",
+            "examples": [
+              {
+                "japanese": "少しずつ寒くなってきました。",
+                "furigana": "少しずつ寒くなってきました。",
+                "romaji": "",
+                "english": "It has gradually been getting colder."
+              }
+            ]
+          },
+          {
+            "title": "ばかりだ",
+            "structure": "ばかりだ",
+            "explanation": "Dictionary verb plus ばかりだ can express a trend continuing in one direction, often unfavourably.",
+            "examples": [
+              {
+                "japanese": "仕事が増えるばかりです。",
+                "furigana": "仕事が増えるばかりです。",
+                "romaji": "",
+                "english": "The work keeps increasing."
+              }
+            ]
+          },
+          {
+            "title": "しかも つまり そのため",
+            "structure": "しかも つまり そのため",
+            "explanation": "Distinguish addition, restatement/conclusion, and consequence when linking sentences.",
+            "examples": [
+              {
+                "japanese": "駅に近く、しかも家賃が安いです。",
+                "furigana": "駅に近く、しかも家賃が安いです。",
+                "romaji": "",
+                "english": "It is near the station, and the rent is cheap too."
+              }
+            ]
+          },
+          {
+            "title": "ただし and それでも",
+            "structure": "ただし and それでも",
+            "explanation": "ただし adds a qualification; それでも indicates persistence despite what came before.",
+            "examples": [
+              {
+                "japanese": "参加は無料です。ただし、予約が必要です。",
+                "furigana": "参加は無料です。ただし、予約が必要です。",
+                "romaji": "",
+                "english": "Participation is free; however, a reservation is required."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "電子書籍",
+            "furigana": "でんししょせき",
+            "romaji": "",
+            "english": "electronic books",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 返却",
+            "furigana": "へんきゃく",
+            "romaji": "",
+            "english": "return",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 電子版",
+            "furigana": "でんしばん",
+            "romaji": "",
+            "english": "digital edition",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Restatement connector: （つまり／しかも）、予約が必要ということです。",
+            "options": [
+              "つまり",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "It introduces a reformulation."
+          },
+          {
+            "question": "Explain: 値段が上がるばかりだ。",
+            "options": [
+              "Prices just keep rising.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Dictionary form plus ばかりだ marks the continuing trend."
+          },
+          {
+            "question": "Order: 必要です / ただし / 予約が / 参加は無料です",
+            "options": [
+              "参加は無料です。ただし、予約が必要です。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "ただし introduces the condition."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-16",
+        "title": "Lesson 16: Checkpoint one practical notices",
+        "japaneseTitle": "第16課：Checkpoint one practical notices",
+        "summary": "Master Checkpoint one practical notices with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "conditional review",
+            "structure": "conditional review",
+            "explanation": "Compare automatic と, contextual なら, ば conditions, and flexible たら. Select by the whole sentence.",
+            "examples": [
+              {
+                "japanese": "予約ができたら、連絡してください。",
+                "furigana": "予約ができたら、連絡してください。",
+                "romaji": "",
+                "english": "Please contact me when you have made the reservation."
+              }
+            ]
+          },
+          {
+            "title": "deadline review",
+            "structure": "deadline review",
+            "explanation": "Check whether an action continues until a point or must be finished by it.",
+            "examples": [
+              {
+                "japanese": "受付は五時までです。五時までに来てください。",
+                "furigana": "受付は五時までです。五時までに来てください。",
+                "romaji": "",
+                "english": "Reception is open until five. Please arrive by five."
+              }
+            ]
+          },
+          {
+            "title": "reference review",
+            "structure": "reference review",
+            "explanation": "Resolve それ, この, and omitted subjects from nearby context before selecting an answer.",
+            "examples": [
+              {
+                "japanese": "予約が必要です。それを忘れないでください。",
+                "furigana": "予約が必要です。それを忘れないでください。",
+                "romaji": "",
+                "english": "A reservation is necessary. Please do not forget that."
+              }
+            ]
+          },
+          {
+            "title": "exception review",
+            "structure": "exception review",
+            "explanation": "Look for ただし, 除く, and 場合; these can change eligibility or required action.",
+            "examples": [
+              {
+                "japanese": "日曜日を除き、毎日開いています。",
+                "furigana": "日曜日を除き、毎日開いています。",
+                "romaji": "",
+                "english": "It is open daily except Sundays."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "不要",
+            "furigana": "ふよう",
+            "romaji": "",
+            "english": "unnecessary",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 教材",
+            "furigana": "きょうざい",
+            "romaji": "",
+            "english": "learning materials",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 筆記用具",
+            "furigana": "ひっきようぐ",
+            "romaji": "",
+            "english": "writing implements",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 各自",
+            "furigana": "かくじ",
+            "romaji": "",
+            "english": "each person",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Submit by Friday: 金曜日（まで／までに）提出してください。",
+            "options": [
+              "までに",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Completion deadline."
+          },
+          {
+            "question": "Explain: 日曜日を除く。",
+            "options": [
+              "Excluding Sundays.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "除く removes Sundays from the stated range."
+          },
+          {
+            "question": "Order: ください / 予約が / 連絡して / できたら",
+            "options": [
+              "予約ができたら、連絡してください。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "The reservation precedes contact."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-17",
+        "title": "Lesson 17: Checkpoint two reasons and final decisions",
+        "japaneseTitle": "第17課：Checkpoint two reasons and final decisions",
+        "summary": "Master Checkpoint two reasons and final decisions with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "reason review",
+            "structure": "reason review",
+            "explanation": "Distinguish the immediate reason for an action from background information.",
+            "examples": [
+              {
+                "japanese": "雨なので、会場を変えます。",
+                "furigana": "雨なので、会場を変えます。",
+                "romaji": "",
+                "english": "We will change the venue because of rain."
+              }
+            ]
+          },
+          {
+            "title": "viewpoint review",
+            "structure": "viewpoint review",
+            "explanation": "Identify the giver, receiver, agent, and affected person before interpreting a verb ending.",
+            "examples": [
+              {
+                "japanese": "先輩に手伝ってもらいました。",
+                "furigana": "先輩に手伝ってもらいました。",
+                "romaji": "",
+                "english": "I received help from a senior colleague."
+              }
+            ]
+          },
+          {
+            "title": "final decision review",
+            "structure": "final decision review",
+            "explanation": "A plan can be revised after でも, やっぱり, or それより. Follow the final instruction.",
+            "examples": [
+              {
+                "japanese": "最初はバスの予定でしたが、電車にします。",
+                "furigana": "最初はバスの予定でしたが、電車にします。",
+                "romaji": "",
+                "english": "Initially I planned to take the bus, but I will take the train."
+              }
+            ]
+          },
+          {
+            "title": "scope of negation",
+            "structure": "scope of negation",
+            "explanation": "Read the full predicate: ないわけではない and わけにはいかない have different implications.",
+            "examples": [
+              {
+                "japanese": "嫌いなわけではありません。",
+                "furigana": "嫌いなわけではありません。",
+                "romaji": "",
+                "english": "It is not that I dislike it."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "訪問",
+            "furigana": "ほうもん",
+            "romaji": "",
+            "english": "visit",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 二時半",
+            "furigana": "にじはん",
+            "romaji": "",
+            "english": "2:30",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 先に",
+            "furigana": "さきに",
+            "romaji": "",
+            "english": "ahead or first",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Who helps: 同僚に説明してもらった。",
+            "options": [
+              "The colleague explains to the speaker.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "に marks the provider of the helpful action."
+          },
+          {
+            "question": "Explain: 行けないわけではない。",
+            "options": [
+              "It is not that I cannot go; going is possible in principle.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "The outer negative rejects the impossibility."
+          },
+          {
+            "question": "Order: にします / やっぱり / 電車 / 明日は",
+            "options": [
+              "明日はやっぱり電車にします。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "にする marks the chosen option."
+          }
+        ]
+      },
+      {
+        "id": "lesson-n3-18",
+        "title": "Lesson 18: Checkpoint three opinions and next steps",
+        "japaneseTitle": "第18課：Checkpoint three opinions and next steps",
+        "summary": "Master Checkpoint three opinions and next steps with native sentences, practice drills, and reading passage.",
+        "readTimeMinutes": 20,
+        "grammarPoints": [
+          {
+            "title": "main point review",
+            "structure": "main point review",
+            "explanation": "Separate an author's claim from the example used to support it.",
+            "examples": [
+              {
+                "japanese": "量だけでなく、復習の仕方も大切です。",
+                "furigana": "量だけでなく、復習の仕方も大切です。",
+                "romaji": "",
+                "english": "Not only quantity but also the way you review matters."
+              }
+            ]
+          },
+          {
+            "title": "contrast review",
+            "structure": "contrast review",
+            "explanation": "After しかし or 一方で, check whether the writer limits an earlier claim.",
+            "examples": [
+              {
+                "japanese": "便利ですが、全ての人に合うわけではありません。",
+                "furigana": "便利ですが、全ての人に合うわけではありません。",
+                "romaji": "",
+                "english": "It is convenient, but does not suit everyone."
+              }
+            ]
+          },
+          {
+            "title": "inference review",
+            "structure": "inference review",
+            "explanation": "Choose what is supported by the text, not what sounds generally sensible.",
+            "examples": [
+              {
+                "japanese": "本文から分かることを選んでください。",
+                "furigana": "本文から分かることを選んでください。",
+                "romaji": "",
+                "english": "Choose what can be understood from the passage."
+              }
+            ]
+          },
+          {
+            "title": "study transfer",
+            "structure": "study transfer",
+            "explanation": "Explain one grammar contrast, read an unseen passage, and listen without text before checking.",
+            "examples": [
+              {
+                "japanese": "間違えた理由を説明できるようになりました。",
+                "furigana": "間違えた理由を説明できるようになりました。",
+                "romaji": "",
+                "english": "I have become able to explain why I made a mistake."
+              }
+            ]
+          }
+        ],
+        "vocabulary": [
+          {
+            "kanji": "項目",
+            "furigana": "こうもく",
+            "romaji": "",
+            "english": "item",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 触れる",
+            "furigana": "ふれる",
+            "romaji": "",
+            "english": "encounter",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 進歩",
+            "furigana": "しんぽ",
+            "romaji": "",
+            "english": "progress",
+            "pos": "Noun"
+          },
+          {
+            "kanji": " 目標",
+            "furigana": "もくひょう",
+            "romaji": "",
+            "english": "goal",
+            "pos": "Noun"
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Choose limitation: 全員に合う（わけではない／に違いない）。",
+            "options": [
+              "わけではない",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Rejects the universal claim."
+          },
+          {
+            "question": "Explain: 量ばかりでなく、質も大切だ。",
+            "options": [
+              "Quality matters as well as quantity.",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "ばかりでなく adds a second relevant aspect."
+          },
+          {
+            "question": "Order: 説明できる / なった / ように / 理由を",
+            "options": [
+              "理由を説明できるようになった。",
+              "です",
+              "ます",
+              "こと"
+            ],
+            "correctIndex": 0,
+            "explanation": "Potential plus ようになる expresses gained ability."
+          }
+        ]
+      }
+    ]
+  }
+]
   },
   {
     id: 'course-n2',

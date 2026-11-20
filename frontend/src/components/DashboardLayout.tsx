@@ -20,7 +20,9 @@ import {
   Sparkles,
   Zap,
   Mic,
-  User
+  User,
+  Trophy,
+  Award
 } from 'lucide-react';
 import audio from '../utils/audio';
 import { UserProfile } from '../services/api';
@@ -90,8 +92,20 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         setOpenDropdown(null);
       }
     };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsSearchOpen(false);
+        setUserDropdownOpen(false);
+        setOpenDropdown(null);
+        setMobileMenuOpen(false);
+      }
+    };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const userXp = currentUser?.xp || 0;
@@ -105,7 +119,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
     {
       id: 'alphabet',
       title: 'Alphabet & Words',
-      activeItemIds: ['hiragana', 'katakana', 'kanji', 'words'],
+      activeItemIds: ['hiragana', 'katakana', 'kana', 'kanji', 'words'],
       items: [
         { id: 'hiragana', label: 'Hiragana', japanese: 'ひらがな', description: 'Basic phonetic syllabary (Start Here)', icon: Languages },
         { id: 'katakana', label: 'Katakana', japanese: 'カタカナ', description: 'Phonetic script for foreign loanwords', icon: Zap },
@@ -116,7 +130,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
     {
       id: 'curriculum',
       title: 'Curriculum & Stories',
-      activeItemIds: ['courses', 'lessons', 'nikki'],
+      activeItemIds: ['courses', 'lessons', 'nikki', 'master30'],
       items: [
         { id: 'courses', label: 'Course Tracks', japanese: 'コース', description: 'Official JLPT N5 to N1 progression roadmap', icon: GraduationCap },
         { id: 'lessons', label: 'Master Lessons', japanese: 'レッスン', description: 'Structured grammar & syllabary modules', icon: BookOpen },
@@ -125,11 +139,13 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
     },
     {
       id: 'practice',
-      title: 'Practice & Voice',
-      activeItemIds: ['speaking', 'quizzes'],
+      title: 'Practice & League',
+      activeItemIds: ['speaking', 'quizzes', 'exam', 'leaderboard'],
       items: [
         { id: 'speaking', label: 'Speaking Studio', japanese: '発話練習', description: 'Survival phrases & AI voice recognition', icon: Mic },
-        { id: 'quizzes', label: 'Quizzes & Puzzles', japanese: 'クイズ', description: 'Sentence builders, listening & matching drills', icon: Puzzle }
+        { id: 'quizzes', label: 'Quizzes & Puzzles', japanese: 'クイズ', description: 'Sentence builders, listening & matching drills', icon: Puzzle },
+        { id: 'exam', label: 'JLPT Mock Exam', japanese: '試験', description: 'Official JLPT certification mock test', icon: Award },
+        { id: 'leaderboard', label: 'Learner League', japanese: '順位表', description: 'Global student rankings & Diamond League', icon: Trophy }
       ]
     }
   ];
@@ -162,10 +178,12 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       ]
     },
     {
-      category: 'Interactive Practice',
+      category: 'Interactive Practice & League',
       items: [
         { id: 'speaking', label: 'Speaking', icon: Mic },
-        { id: 'quizzes', label: 'Quizzes', icon: Puzzle }
+        { id: 'quizzes', label: 'Quizzes', icon: Puzzle },
+        { id: 'exam', label: 'Mock Exam', icon: Award },
+        { id: 'leaderboard', label: 'Leaderboard', icon: Trophy }
       ]
     }
   ];
@@ -258,53 +276,55 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
                   {/* Dropdown Menu Panel */}
                   {isOpen && (
-                    <div className={`absolute left-0 top-full mt-1.5 w-72 rounded-2xl border p-2 shadow-2xl backdrop-blur-md z-50 animate-fade-in ${
-                      theme === 'dark' 
-                        ? 'bg-[#17171C]/95 border-slate-800 text-white shadow-black/80' 
-                        : 'bg-white/95 border-slate-200 text-slate-900 shadow-xl'
-                    }`}>
-                      <div className="space-y-1">
-                        {hub.items.map((item) => {
-                          const Icon = item.icon;
-                          const isSelected = activeTab === item.id;
+                    <div className="absolute left-0 top-full pt-1 w-72 z-50 animate-fade-in">
+                      <div className={`rounded-2xl border p-2 shadow-2xl backdrop-blur-md ${
+                        theme === 'dark' 
+                          ? 'bg-[#17171C]/95 border-slate-800 text-white shadow-black/80' 
+                          : 'bg-white/95 border-slate-200 text-slate-900 shadow-xl'
+                      }`}>
+                        <div className="space-y-1">
+                          {hub.items.map((item) => {
+                            const Icon = item.icon;
+                            const isSelected = activeTab === item.id;
 
-                          return (
-                            <div
-                              key={item.id}
-                              onClick={() => {
-                                audio.playClick();
-                                onSelectTab(item.id);
-                                setOpenDropdown(null);
-                              }}
-                              className={`p-2.5 rounded-xl cursor-pointer transition flex items-start gap-3 group ${
-                                isSelected
-                                  ? 'bg-orange-500/15 border border-orange-500/30 text-[#FF5E3A]'
-                                  : 'hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
-                              }`}
-                            >
-                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition ${
-                                isSelected
-                                  ? 'bg-[#FF5E3A] text-white shadow-xs'
-                                  : 'bg-slate-100 dark:bg-slate-800 text-slate-500 group-hover:text-[#FF5E3A] group-hover:bg-orange-500/10'
-                              }`}>
-                                <Icon className="w-4 h-4" />
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-center justify-between">
-                                  <span className={`text-xs font-bold ${isSelected ? 'text-[#FF5E3A]' : ''}`}>
-                                    {item.label}
-                                  </span>
-                                  <span className="text-[10px] font-jp text-slate-400 font-medium">
-                                    {item.japanese}
-                                  </span>
+                            return (
+                              <div
+                                key={item.id}
+                                onClick={() => {
+                                  audio.playClick();
+                                  onSelectTab(item.id);
+                                  setOpenDropdown(null);
+                                }}
+                                className={`p-2.5 rounded-xl cursor-pointer transition flex items-start gap-3 group ${
+                                  isSelected
+                                    ? 'bg-orange-500/15 border border-orange-500/30 text-[#FF5E3A]'
+                                    : 'hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                                }`}
+                              >
+                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition ${
+                                  isSelected
+                                    ? 'bg-[#FF5E3A] text-white shadow-xs'
+                                    : 'bg-slate-100 dark:bg-slate-800 text-slate-500 group-hover:text-[#FF5E3A] group-hover:bg-orange-500/10'
+                                }`}>
+                                  <Icon className="w-4 h-4" />
                                 </div>
-                                <p className="text-[10px] text-slate-400 line-clamp-1 mt-0.5">
-                                  {item.description}
-                                </p>
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center justify-between">
+                                    <span className={`text-xs font-bold ${isSelected ? 'text-[#FF5E3A]' : ''}`}>
+                                      {item.label}
+                                    </span>
+                                    <span className="text-[10px] font-jp text-slate-400 font-medium">
+                                      {item.japanese}
+                                    </span>
+                                  </div>
+                                  <p className="text-[10px] text-slate-400 line-clamp-1 mt-0.5">
+                                    {item.description}
+                                  </p>
+                                </div>
                               </div>
-                            </div>
-                          );
-                        })}
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
                   )}
@@ -618,7 +638,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       )}
 
       {/* Mobile Menu Drawer (Slide over from right) */}
-      <div className={`fixed top-0 right-0 z-50 h-screen w-72 max-w-[85vw] border-l p-5 sm:p-6 flex flex-col justify-between transition-transform duration-300 xl:hidden overflow-y-auto ${
+      <div className={`fixed top-0 right-0 z-[60] h-screen w-72 max-w-[85vw] border-l p-5 sm:p-6 flex flex-col justify-between transition-transform duration-300 xl:hidden overflow-y-auto ${
         theme === 'dark' ? 'bg-[#17171C] border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'
       } ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div>

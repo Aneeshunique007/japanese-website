@@ -484,6 +484,7 @@ export function App() {
               initialCourseId={selectedCourseId}
               onSelectLesson={handleSelectLesson}
               theme={theme}
+              showFurigana={showFurigana}
             />
           )}
 

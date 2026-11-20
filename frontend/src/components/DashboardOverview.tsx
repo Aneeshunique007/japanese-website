@@ -75,7 +75,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
   const localLessons = learnedStore.getCompletedLessonsList();
   const completedLessonIds: string[] = Array.from(new Set([...userLessons, ...localLessons]));
 
-  const availableCourses = courses.filter(c => ['N5', 'N4'].includes(c.level));
+  const availableCourses = courses.filter(c => ['N5', 'N4', 'N3'].includes(c.level));
 
   const continueLearning = availableCourses.slice(0, 2).map((course, idx) => {
     const total = course.lessonsCount || 12;
@@ -553,12 +553,12 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
               </div>
             ))}
 
-            {/* Single Coming Soon Card for N3, N2 & N1 */}
+            {/* Single Coming Soon Card for N2 & N1 */}
             {(activeFilter === 'All' || activeFilter === 'COMING_SOON') && (
               <div
                 onClick={() => {
                   audio.playClick();
-                  onNavigate('courses', 'course-n3');
+                  onNavigate('courses', 'course-n2');
                 }}
                 className={`rounded-2xl sm:rounded-3xl border ${cardBg} p-4 sm:p-6 border-dashed hover:border-[#FF5E3A]/50 transition cursor-pointer flex flex-col justify-between group bg-gradient-to-br from-orange-500/[0.02] to-transparent`}
               >
@@ -568,17 +568,17 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                       Coming Soon
                     </span>
                     <span className="text-xs font-bold text-slate-400 font-jp">
-                      中級・上級・最上級
+                      上級・最上級
                     </span>
                   </div>
 
                   <h3 className="font-extrabold text-sm sm:text-base leading-snug group-hover:text-[#FF5E3A] transition font-heading mb-1.5 flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-[#FF5E3A]" />
-                    <span>JLPT N3, N2 & N1 Tracks</span>
+                    <span>JLPT N2 & N1 Tracks</span>
                   </h3>
 
                   <p className={`text-xs ${subText} line-clamp-2 leading-relaxed mb-3 sm:mb-4`}>
-                    Intermediate, Advanced, and Mastery curriculum tracks with audio listening drills, vocabulary banks, and mock exams are currently in active development.
+                    Advanced and Mastery pre-fluency curriculum tracks with business Japanese, nuance grammar, and mock exams are in development.
                   </p>
                 </div>
 

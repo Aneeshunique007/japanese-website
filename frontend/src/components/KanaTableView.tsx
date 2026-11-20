@@ -3,7 +3,6 @@ import {
   Play, 
   Volume2,
   Check,
-  Lock,
   X,
   ArrowLeft,
   RotateCcw,
@@ -209,6 +208,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
   const [kanaDetailModalOpen, setKanaDetailModalOpen] = useState(false);
   const [kanaQuizModalOpen, setKanaQuizModalOpen] = useState(false);
   const [kanaQuizTargetChar, setKanaQuizTargetChar] = useState<string | undefined>(undefined);
+  const [drillPoolSize, setDrillPoolSize] = useState<10 | 30 | 'all'>(10);
 
   const hiraganaData = dataStore.hiraganaData;
   const katakanaData = dataStore.katakanaData;
@@ -298,37 +298,46 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
     setKanaQuizModalOpen(true);
   };
 
-  // Only Kana that have been marked as learned/completed by the user
-  const allKanaItems = [
+  // Only Kana that have been marked as learned/completed by the user, strictly isolated by active script
+  const hiraganaAllItems = useMemo(() => [
     ...dataStore.hiraganaData.basic,
     ...dataStore.hiraganaData.dakuten,
-    ...dataStore.hiraganaData.yoon,
+    ...dataStore.hiraganaData.yoon
+  ], [dataStore]);
+
+  const katakanaAllItems = useMemo(() => [
     ...dataStore.katakanaData.basic,
     ...dataStore.katakanaData.dakuten,
     ...dataStore.katakanaData.yoon
-  ];
-  const learnedKanaObjects = useMemo(
-    () => allKanaItems.filter(k => learnedKana.has(k.char)),
-    [learnedKana]
-  );
+  ], [dataStore]);
+
+  const learnedKanaObjects = useMemo(() => {
+    if (activeScript === 'hiragana') {
+      return hiraganaAllItems.filter(k => learnedKana.has(k.char));
+    }
+    if (activeScript === 'katakana') {
+      return katakanaAllItems.filter(k => learnedKana.has(k.char));
+    }
+    return [...hiraganaAllItems, ...katakanaAllItems].filter(k => learnedKana.has(k.char));
+  }, [activeScript, hiraganaAllItems, katakanaAllItems, learnedKana]);
 
   const hiraganaLearnedCount = useMemo(() => {
-    return [...hiraganaData.basic, ...hiraganaData.dakuten].filter(k => learnedKana.has(k.char)).length;
-  }, [learnedKana, hiraganaData]);
+    return hiraganaAllItems.filter(k => learnedKana.has(k.char)).length;
+  }, [learnedKana, hiraganaAllItems]);
 
   const katakanaLearnedCount = useMemo(() => {
-    return [...katakanaData.basic, ...katakanaData.dakuten].filter(k => learnedKana.has(k.char)).length;
-  }, [learnedKana, katakanaData]);
+    return katakanaAllItems.filter(k => learnedKana.has(k.char)).length;
+  }, [learnedKana, katakanaAllItems]);
 
   const scriptLearnedCount = activeScript === 'katakana' ? katakanaLearnedCount : (activeScript === 'hiragana' ? hiraganaLearnedCount : learnedKanaObjects.length);
   const scriptTotalCount = (activeScript === 'katakana' || activeScript === 'hiragana') ? 82 : 164;
   const scriptName = activeScript === 'katakana' ? 'Katakana' : (activeScript === 'hiragana' ? 'Hiragana' : 'Kana');
-  const isDrillUnlocked = scriptLearnedCount >= 10;
 
-  // Drill question count: 10 questions if < 100 learned, 30 questions if >= 100 learned
-  const drillQuestionCount = scriptLearnedCount >= 100
-    ? Math.min(30, scriptLearnedCount)
-    : Math.min(10, Math.max(5, scriptLearnedCount));
+  // Selected question count for the drill:
+  const activePoolTotal = scriptLearnedCount >= 10 ? scriptLearnedCount : scriptTotalCount;
+  const drillQuestionCount = drillPoolSize === 'all'
+    ? activePoolTotal
+    : (drillPoolSize === 30 ? Math.min(30, activePoolTotal) : Math.min(10, activePoolTotal));
 
   // Romaji Comparison Popup Modal (Opens when clicking any Romaji letter)
   const renderRomajiPopupModal = () => {
@@ -705,46 +714,71 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
           </p>
         </div>
 
-        <div className="flex flex-col items-start sm:items-end gap-1.5 shrink-0 w-full sm:w-auto">
+        <div className="flex flex-col items-start sm:items-end gap-2 shrink-0 w-full sm:w-auto">
+          {/* Question Pool Size Selector */}
+          <div className="flex items-center gap-1 p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-xs font-bold w-full sm:w-auto justify-center">
+            <span className="text-[10px] text-slate-400 uppercase tracking-wider px-2 font-mono hidden xs:inline">
+              Pool:
+            </span>
+            <button
+              type="button"
+              onClick={() => {
+                audio.playClick();
+                setDrillPoolSize(10);
+              }}
+              className={`px-3 py-1.5 rounded-xl transition cursor-pointer text-xs flex items-center gap-1 ${
+                drillPoolSize === 10
+                  ? 'bg-white dark:bg-slate-700 text-[#FF5E3A] shadow-xs font-black'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-[#FF5E3A]'
+              }`}
+            >
+              <span>10 Qs</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                audio.playClick();
+                setDrillPoolSize(30);
+              }}
+              className={`px-3 py-1.5 rounded-xl transition cursor-pointer text-xs flex items-center gap-1 ${
+                drillPoolSize === 30
+                  ? 'bg-white dark:bg-slate-700 text-[#FF5E3A] shadow-xs font-black'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-[#FF5E3A]'
+              }`}
+            >
+              <span>30 Qs</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                audio.playClick();
+                setDrillPoolSize('all');
+              }}
+              className={`px-3 py-1.5 rounded-xl transition cursor-pointer text-xs flex items-center gap-1 ${
+                drillPoolSize === 'all'
+                  ? 'bg-white dark:bg-slate-700 text-[#FF5E3A] shadow-xs font-black'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-[#FF5E3A]'
+              }`}
+            >
+              <span>All ({activePoolTotal})</span>
+            </button>
+          </div>
+
           <button
+            type="button"
             onClick={() => {
-              if (!isDrillUnlocked) {
-                audio.playError();
-                return;
-              }
               audio.playClick();
               setKanaQuizTargetChar(undefined);
               setKanaQuizModalOpen(true);
             }}
-            disabled={!isDrillUnlocked}
-            className={`w-full sm:w-auto justify-center px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-black text-xs transition flex items-center gap-2 shrink-0 ${
-              isDrillUnlocked
-                ? 'bg-gradient-to-r from-[#FF7B5C] to-[#FF5E3A] hover:from-[#FF5E3A] hover:to-[#E84E29] text-white shadow-lg shadow-orange-500/25 cursor-pointer transform hover:-translate-y-0.5'
-                : 'bg-slate-100 dark:bg-slate-800/80 text-slate-400 dark:text-slate-500 cursor-not-allowed border border-slate-200 dark:border-slate-800'
-            }`}
-            title={
-              isDrillUnlocked
-                ? `Start drill on ${drillQuestionCount} questions from your ${scriptLearnedCount} learned ${scriptName}`
-                : `Learn at least 10 ${scriptName} to unlock drill (${scriptLearnedCount}/10 completed)`
-            }
+            className="w-full sm:w-auto justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-2xl font-black text-xs transition flex items-center gap-2 shrink-0 bg-gradient-to-r from-[#FF7B5C] to-[#FF5E3A] hover:from-[#FF5E3A] hover:to-[#E84E29] text-white shadow-lg shadow-orange-500/25 cursor-pointer transform hover:-translate-y-0.5 active:translate-y-0"
+            title={`Start drill on ${drillPoolSize === 'all' ? `All ${activePoolTotal}` : `${drillQuestionCount}`} questions (${scriptName})`}
           >
-            {isDrillUnlocked ? (
-              <>
-                <Play className="w-4 h-4 fill-white" />
-                <span>Start {scriptName} Drill ({drillQuestionCount} Questions)</span>
-              </>
-            ) : (
-              <>
-                <Lock className="w-4 h-4 text-slate-400 dark:text-slate-500" />
-                <span>Learn 10 {scriptName} to Unlock Drill ({scriptLearnedCount}/10)</span>
-              </>
-            )}
-          </button>
-          {!isDrillUnlocked && (
-            <span className="text-[11px] font-bold text-amber-500 dark:text-amber-400 self-center sm:self-auto">
-              Mark {10 - scriptLearnedCount} more {scriptName} as learned to unlock drill
+            <Play className="w-4 h-4 fill-white" />
+            <span>
+              Start {scriptName} Drill ({drillPoolSize === 'all' ? `All ${activePoolTotal}` : `${drillQuestionCount}`} Questions)
             </span>
-          )}
+          </button>
         </div>
       </div>
 
@@ -1662,6 +1696,7 @@ export const KanaTableView: React.FC<KanaTableViewProps> = ({
         kanaList={learnedKanaObjects}
         initialScript={activeScript === 'both' ? 'hiragana' : activeScript}
         targetChar={kanaQuizTargetChar}
+        questionPoolSize={drillPoolSize}
         theme={theme}
         onCompleteQuiz={(xp) => {
           if (onGainXp) onGainXp(xp);

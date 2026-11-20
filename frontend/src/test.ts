@@ -127,6 +127,8 @@ import { NIKKI_DAYS } from './data/nikkiData';
 import { searchAll } from './utils/searchEngine';
 import { api } from './services/api';
 import { supabaseService } from './utils/supabaseClient';
+import { MASTER_LESSONS_30, MASTER_WORKBOOKS, MASTER_KANJI_620 } from './data/n5ToN3MasterData';
+import { KANJI_N3_LIST, getKanjiN3 } from './data/kanjiN3';
 
 // ---------------------------------------------------------------------------
 // Test Runner Engine
@@ -1320,6 +1322,44 @@ test('97. formatDateKey formats Date into YYYY-MM-DD string', () => {
     assert(Array.isArray(res.learnedKana), 'learnedKana must be an array');
   });
 
+  // ===========================================================================
+  // Heading 20: Master N5-N3 Self-Study Dataset & Kanshudo Kanji (5 Tests)
+  // ===========================================================================
+  section('Heading 20: Master N5-N3 Self-Study Dataset & Kanshudo Kanji');
+
+  test('161. MASTER_LESSONS_30 contains exactly 30 structured units with grammar & reading', () => {
+    assertEqual(MASTER_LESSONS_30.length, 30);
+    assert(MASTER_LESSONS_30[0].grammar.length > 0, 'Unit 1 grammar must exist');
+    assert(Boolean(MASTER_LESSONS_30[0].reading.text), 'Unit 1 reading text must exist');
+  });
+
+  test('162. MASTER_WORKBOOKS contains 4 official printable reference PDFs with valid paths', () => {
+    assertEqual(MASTER_WORKBOOKS.length, 4);
+    assert(MASTER_WORKBOOKS.every(w => w.path.startsWith('/workbooks/')), 'All workbooks must link to /workbooks/');
+  });
+
+  test('163. MASTER_KANJI_620 contains exactly 620 Kanshudo-standard Kanji across N5, N4, N3', () => {
+    assertEqual(MASTER_KANJI_620.length, 620);
+    const n5Count = MASTER_KANJI_620.filter(k => k.level === 'N5').length;
+    const n4Count = MASTER_KANJI_620.filter(k => k.level === 'N4').length;
+    const n3Count = MASTER_KANJI_620.filter(k => k.level === 'N3').length;
+    assertEqual(n5Count, 80);
+    assertEqual(n4Count, 170);
+    assertEqual(n3Count, 370);
+  });
+
+  test('164. KANJI_N3_LIST provides complete 370 N3 characters with lookup support', () => {
+    assertEqual(KANJI_N3_LIST.length, 370);
+    const match = getKanjiN3('合');
+    assert(Boolean(match), 'Should find kanji 合 in N3');
+    assertEqual(match?.jlpt, 'N3');
+  });
+
+  test('165. dataStore.allKanji contains complete N5, N4, and N3 kanji lists (>= 620 total)', () => {
+    assert(dataStore.allKanji.length >= 620, 'allKanji must contain all 620 characters');
+    assert(dataStore.kanjiN3.length === 370, 'kanjiN3 must contain 370 characters');
+  });
+
   // ---------------------------------------------------------------------------
   // Final Grand Summary
   // ---------------------------------------------------------------------------
@@ -1331,5 +1371,5 @@ test('97. formatDateKey formats Date into YYYY-MM-DD string', () => {
     failures.forEach((f) => console.log(`  - ${f}`));
     process.exit(1);
   }
-  console.log('\n🎉 ALL 160 TESTS PASSED CLEANLY! The entire website is verified.');
+  console.log('\n🎉 ALL 165 TESTS PASSED CLEANLY! The entire website is verified.');
   console.log(`${'='.repeat(60)}\n`);

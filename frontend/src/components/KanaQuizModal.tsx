@@ -19,6 +19,7 @@ interface KanaQuizModalProps {
   kanaList?: Array<{ char: string; romaji: string; script?: string; example?: string }>;
   initialScript?: 'hiragana' | 'katakana';
   targetChar?: string;
+  questionPoolSize?: 10 | 30 | 'all';
   theme: 'dark' | 'light';
   onCompleteQuiz?: (xpEarned: number) => void;
 }
@@ -36,10 +37,11 @@ export const KanaQuizModal: React.FC<KanaQuizModalProps> = ({
   kanaList = [],
   initialScript = 'hiragana',
   targetChar,
+  questionPoolSize = 10,
   theme,
   onCompleteQuiz
 }) => {
-  const [script] = useState<'hiragana' | 'katakana'>(initialScript);
+  const [script, setScript] = useState<'hiragana' | 'katakana'>(initialScript);
   const [questions, setQuestions] = useState<QuestionItem[]>([]);
   const [initialTotal, setInitialTotal] = useState<number>(10);
   const [masteredCount, setMasteredCount] = useState<number>(0);
@@ -56,28 +58,53 @@ export const KanaQuizModal: React.FC<KanaQuizModalProps> = ({
   // Track modal open state to prevent spurious regeneration while quiz is open
   const prevIsOpenRef = React.useRef(false);
 
+  useEffect(() => {
+    setScript(initialScript);
+  }, [initialScript]);
+
   const generateQuestions = () => {
     const hira = dataStore.hiraganaData;
     const kata = dataStore.katakanaData;
-    const allBasic = [
-      ...(hira.basic || []),
-      ...(hira.dakuten || []),
-      ...(hira.yoon || []),
-      ...(kata.basic || []),
-      ...(kata.dakuten || []),
-      ...(kata.yoon || [])
-    ];
+    const currentScript = initialScript || script;
 
-    // All available romaji readings for rich distractors
-    const allRomajis = Array.from(new Set(allBasic.map(k => k.romaji)));
+    const scriptBasic = currentScript === 'katakana'
+      ? [
+          ...(kata.basic || []),
+          ...(kata.dakuten || []),
+          ...(kata.yoon || [])
+        ]
+      : [
+          ...(hira.basic || []),
+          ...(hira.dakuten || []),
+          ...(hira.yoon || [])
+        ];
 
-    // Pool from learned kana if provided
-    const source = (kanaList && kanaList.length > 0) ? kanaList : allBasic;
+    // All available romaji readings for rich distractors within the same script
+    const allRomajis = Array.from(new Set(scriptBasic.map(k => k.romaji)));
+
+    // Strictly filter source to only include characters of the target script
+    const isMatchingScript = (item: { char: string; script?: string }) => {
+      if (item.script) {
+        return currentScript === 'katakana'
+          ? item.script.toLowerCase() === 'katakana'
+          : item.script.toLowerCase() === 'hiragana';
+      }
+      return currentScript === 'katakana'
+        ? /[\u30A0-\u30FF]/.test(item.char)
+        : /[\u3040-\u309F]/.test(item.char);
+    };
+
+    const scriptFilteredLearned = (kanaList && kanaList.length > 0)
+      ? kanaList.filter(isMatchingScript)
+      : [];
+
+    // Pool from learned kana if at least 5 available, otherwise fallback to scriptBasic
+    const source = scriptFilteredLearned.length >= 5 ? scriptFilteredLearned : scriptBasic;
 
     // Shuffle characters
     let pool = [...source];
     if (targetChar) {
-      const match = pool.find(k => k.char === targetChar);
+      const match = pool.find(k => k.char === targetChar) || scriptBasic.find(k => k.char === targetChar);
       if (match) {
         pool = [match, ...pool.filter(k => k.char !== targetChar)];
       }
@@ -85,10 +112,16 @@ export const KanaQuizModal: React.FC<KanaQuizModalProps> = ({
       pool.sort(() => Math.random() - 0.5);
     }
 
-    // Question count: 10 if < 100 learned, 30 if >= 100 learned
+    // Question count selection based on user pool preference: 10, 30, or All
     let questionCount = 10;
     if (targetChar) {
       questionCount = Math.min(5, pool.length);
+    } else if (questionPoolSize === 'all') {
+      questionCount = pool.length;
+    } else if (questionPoolSize === 30) {
+      questionCount = Math.min(30, pool.length);
+    } else if (questionPoolSize === 10) {
+      questionCount = Math.min(10, pool.length);
     } else if (pool.length >= 100) {
       questionCount = Math.min(30, pool.length);
     } else {
@@ -106,7 +139,7 @@ export const KanaQuizModal: React.FC<KanaQuizModalProps> = ({
       return {
         char: item.char,
         romaji: item.romaji,
-        script: (item.script as any) || (script === 'hiragana' ? 'Hiragana' : 'Katakana'),
+        script: currentScript === 'katakana' ? 'Katakana' : 'Hiragana',
         options
       };
     });
@@ -127,11 +160,11 @@ export const KanaQuizModal: React.FC<KanaQuizModalProps> = ({
 
     if (!isOpen) return;
 
-    // Only generate on fresh open or when targetChar/script changes, never while drill is active/finished
+    // Only generate on fresh open or when targetChar/initialScript changes, never while drill is active/finished
     if (!justOpened && questions.length > 0) return;
 
     generateQuestions();
-  }, [isOpen, script, targetChar]);
+  }, [isOpen, initialScript, targetChar, questionPoolSize]);
 
   // Audio is played only when user clicks the speaker button
 
@@ -199,6 +232,9 @@ export const KanaQuizModal: React.FC<KanaQuizModalProps> = ({
             <div className="flex items-center gap-2">
               <span className="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-orange-500/10 text-[#FF5E3A] border border-orange-500/20">
                 {currentQ ? currentQ.script : 'Kana'} Drill
+              </span>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono">
+                {totalQuestions} Qs
               </span>
               {!targetChar && kanaList && kanaList.length > 0 && !isReviewItem && (
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
